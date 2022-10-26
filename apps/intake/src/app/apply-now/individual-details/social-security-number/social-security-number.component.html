@@ -1,0 +1,23 @@
+<form class="form-horizontal" [formGroup] = 'socialSecurityForm' (ngSubmit)="onSubmit()">
+    <h1>{{'afsssn' | translate: { name: currentUser.firstName} }}</h1>
+    <compass-ui-text [fieldId]="'socialSecurityNumber'" [FormGroup]="socialSecurityForm" ngDefaultControl formControlName="socialSecurityNumber"
+      [fieldLabel]="''" [requiredText]="'lblrequired' | translate" [requiredIndicator]="false"
+      [errorText]="errorMap('socialSecurityNumber')" [maxLength]="11" [displayError]="isFieldValid('socialSecurityNumber')"
+      type="ssn" [errorMsg]="errorMap('socialSecurityNumber')">
+    </compass-ui-text>
+    <div class="alert alert-info">
+        <p>Providing an SSN is optional for persons not applying for health care coverage, but providing it can speed up the application process.</p>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+</form>

@@ -1,0 +1,28 @@
+<div class="card-body">
+    <h1 class="standard-mb">Tell us which heating source you're reporting the crisis for.</h1>
+    <label class="form-subtitle standard-mb">Select all that apply.</label>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <div class="form-check custom standard-mb" [formGroup]="heatingCrisisForm">
+                <input class="form-check-input" type="checkbox" formControlName="electric" value="" id="electric">
+                <label class="form-check-label" for="chkHealthCareCoverage">
+                    Electric
+                </label>
+            </div>
+            <p></p>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <div class="form-check custom standard-mb" [formGroup]="heatingCrisisForm">
+                <input class="form-check-input" type="checkbox" formControlName="other" value="" id="other">
+                <label class="form-check-label" for="chkHealthCareCoverage">
+                    Other
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

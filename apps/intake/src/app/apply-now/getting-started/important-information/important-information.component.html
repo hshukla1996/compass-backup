@@ -1,0 +1,86 @@
+<h1>{{ 'afsGSIItitle' | translate}}</h1>
+<p>{{ 'afsGSIItext1' | translate}}<span class="fw-bold">{{ ' ' + ('afsGSIItext2' | translate)}}</span></p>
+<p>{{ 'afsGSIItext3' | translate}}</p>
+<p class="fw-bold">{{ 'afsGSIItext4' | translate }}</p>
+<ul>
+    <li>{{ ('afsGSIIbullet1' |translate) + ' '}}<a target="_blank"
+            href="https://www.compass-t.state.pa.us/Compass.Web/Menuitems/Confidential.aspx?Language=EN">{{ 'afsGSIIlink1' | translate}}</a></li>
+    <li>{{ ('afsGSIIbullet2' | translate) + ' '}} <a target="_blank"
+            href="https://www.dhs.pa.gov/providers/Providers/Documents/MA/S_001608.pdf">{{ 'afsGSIIlink2' | translate}}</a></li>
+    <li>{{ ('afsGSText' | translate) + ' '}} <a target="_blank"
+            href="https://www.compass-t.state.pa.us/Compass.Web/Menuitems/RightsResPage.aspx?Language=EN">{{ 'afsGSIIlink3' | translate}}</a> </li>
+</ul>
+<p>{{ ' ' + ('afsGSIIbullet4' | translate)}}</p>
+<div class="accordion page-tip mb-md-4 mb-3" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                {{ 'afsGSIItext5' | translate}}
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <hr />
+                <p>{{ 'afsGSIItip' | translate}}</p>
+                <ul>
+                    <li>{{ 'afsGSIItip1' | translate}}</li>
+                    <li>{{ 'afsGSIItip2' |translate}}</li>
+                    <li>{{ 'afsGSIItip3' | translate}}</li>
+                    <li>{{ 'afsGSIItip4' |translate}}</li>
+                    <li>{{ 'afsGSIItip5' | translate}}</li>
+                    <li>{{ 'afsGSIItip6' |translate}}</li>
+                    <li>{{ 'afsGSIItip7' |translate}}</li>
+                    <li>{{ 'afsGSIItip8' |translate}}</li>
+                    <li>{{ 'afsGSIItip9' | translate}}
+                    </li>
+
+                </ul>
+
+                <p>{{ 'afsGSII2tip' | translate}}</p>
+                <ul>
+                    <li>{{ 'afsGSII2tip1' | translate}}</li>
+                    <li>{{ 'afsGSII2tip2' |translate}}</li>
+                    <li>{{ 'afsGSII2tip3' | translate}}</li>
+                    <li>{{ 'afsGSII2tip4' | translate }}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<h3>{{ 'afsGSII2text6' | translate}}</h3>
+<p>{{ 'afsGSII2text7' | translate}}</p>
+<div class="accordion page-tip mb-md-4 mb-3" id="nonUSAcc">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="nonUSAccHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#nonUSAccBody" aria-expanded="true" aria-controls="nonUSAccBody">
+                {{ 'afsGSII2text8' | translate}}
+            </button>
+        </h2>
+        <div id="nonUSAccBody" class="accordion-collapse collapse" aria-labelledby="nonUSAccHeading"
+            data-bs-parent="#nonUSAcc">
+            <div class="accordion-body">
+                <p>{{ 'afsGSII2text9' | translate}}</p>
+                <p>{{ 'afsGSII2text10' | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            {{ 'back' | translate}}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+            {{ 'next' | translate}}
+        </button>
+    </div>
+</nav>

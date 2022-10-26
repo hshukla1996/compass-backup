@@ -1,0 +1,59 @@
+<form class="form-horizontal" [formGroup]='transportationExpDlsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>What is {{currentUser.firstName}}'s transportation expense?</h1>
+  <p>Tell us about this expense.</p>
+  <compass-ui-cw-select [fieldId]="'employer'" [fieldLabel]="'whichEmployerIsTheTransportationFor' | translate"
+   (OnSelectedChange)="selectEmployer($event)"
+    [requiredIndicator]="requiredFields.indexOf('employer')>-1" [FormGroup]="transportationExpDlsForm"
+    [isVisible]="fieldDisplays.employer"
+    [requiredText]="'(required)'" [displayError]="isFieldValid('employer')" [errorMsg]="errorMap('employer')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let employer of employeerList" value="{{employer.key}}">
+      {{employer.displayValue}}
+    </option>
+  </compass-ui-cw-select>
+  <div class="card arrow-card standard-mb right-arrow-1"
+    *ngIf="transportationExpDlsForm.value.employer === 'Self-Employment-Farming'">
+    <div class="card-body">
+      <div class="form-group">
+        <h2>What type of other income is this?</h2>
+        <compass-ui-text [fieldId]="'otherIncomeType'"
+        [FormGroup]="transportationExpDlsForm"
+          >
+        </compass-ui-text>
+      </div>
+    </div>
+  
+  </div>
+  <compass-ui-text [fieldId]="'costPerWeek'" [FormGroup]="transportationExpDlsForm"
+    [fieldLabel]="'howMuchDoesItCostEachWeek' | translate" [maxLength]="8" type="currency"
+    [requiredIndicator]="requiredFields.indexOf('costPerWeek')>-1"
+        [isVisible]="fieldDisplays.costPerWeek"
+>
+  </compass-ui-text>
+  <div class="alert alert-info">
+    <p>Include any costs of driving with another person or taking a bus, subway, trolley, or other method of
+      transportation.</p>
+  </div>
+  <compass-ui-text [fieldId]="'milesDrivenForJob'" [FormGroup]="transportationExpDlsForm"
+    [requiredIndicator]="requiredFields.indexOf('milesDrivenForJob')>-1"
+    [isVisible]="fieldDisplays.milesDrivenForJob"
+    [fieldLabel]="'howManyMilesAreDriven' | translate" [maxLength]="7" [fieldType]="'numberType'">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'montlyCarPayment'" [FormGroup]="transportationExpDlsForm"
+    [requiredIndicator]="requiredFields.indexOf('montlyCarPayment')>-1"
+    [isVisible]="fieldDisplays.montlyCarPayment"
+    [fieldLabel]="'monthlyCarPayment' | translate:{name: currentUser.firstName}" [maxLength]="8" type="currency">
+  </compass-ui-text>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

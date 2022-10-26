@@ -1,0 +1,38 @@
+<h1>{{ 'afsGSCORtitle' | translate}}</h1>
+<p>{{ 'afsGSCORtext1' | translate}}</p>
+<p>{{ 'afsGSCORtext2' | translate}}</p>
+<ul>
+    <li>{{ 'afsGSCORbullet1' | translate}}</li>
+    <li>{{ 'afsGSCORbullet2' | translate}}</li>
+    <li>{{ 'afsGSCORbullet3' | translate}}</li>
+    <li>{{ 'afsGSCORbullet4' | translate}}</li>
+    <li>{{ 'afsGSCORbullet5' | translate}}</li>
+    <li>{{ 'afsGSCORbullet6' | translate}}</li>
+    <li>{{ 'afsGSCORbullet7' | translate}}</li>
+    <li>{{ 'afsGSCORbullet8' | translate}}</li> 
+    <li>{{ 'afsGSCORbullet9' | translate}}</li>
+
+</ul>
+<div class="alert alert-info">
+    <p>{{ 'afsGSCORtext3' | translate }}</p>
+    <a href="https://www.compass-t.state.pa.us/Compass.Web/Custom/PDF/CompassCPOnlineSelf-RegQRG.pdf" target="_blank">If you need help, visit the Online Self-Registration Guide.</a>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <button type="button" class="btn btn-secondary"  (click)="selfRegistration()">
+            {{ 'afsGSCORtext4' | translate}}
+        </button>
+    </div> 
+</div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            {{ 'back' | translate }}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+            {{ 'next' | translate}}
+        </button>
+    </div>
+</nav>

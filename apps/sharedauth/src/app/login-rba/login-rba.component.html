@@ -1,0 +1,71 @@
+<form [formGroup]="verifyMethodGroup">
+  <h1>{{ 'sa_loginrbaVMStitle' | translate }}</h1>
+
+  <fieldset class="button-group">
+    <legend>{{'sa_loginrbaVMSlbl1' | translate }}
+      <!--<span>{{'lblrequired' |
+        translate}}</span>-->
+    </legend>
+
+    <div class="accordion page-tip mb-3" id="vmsAcc">
+      <div class="accordion-item">
+          <h2 class="accordion-header" id="vmsAccHead">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#vmsAccBody" aria-expanded="true" aria-controls="vmsAccBody">
+                  {{ 'sa_loginrbaVMStext1' | translate}}
+              </button>
+          </h2>
+          <div id="vmsAccBody" class="accordion-collapse collapse" aria-labelledby="vmsAccHead"
+              data-bs-parent="#vmsAcc">
+              <div class="accordion-body">
+                <p class="fw-bold">{{ 'sa_loginrbaVMStext2' | translate}}</p>
+                <p>{{ 'sa_loginrbaVMStext3' | translate}}</p>
+                <p class="fw-bold">{{ 'sa_loginrbaVMStext4' | translate}}</p>
+                <p>{{ 'sa_loginrbaVMStext5' | translate}}</p>
+                <ul>
+                  <li>{{ 'sa_loginrbaVMSbullet1' | translate }}</li>
+                  <li>{{ 'sa_loginrbaVMSbullet2' | translate }}</li>
+                  <li>{{ 'sa_loginrbaVMSbullet3' | translate }}</li>
+                  <li>{{ 'sa_loginrbaVMSbullet4' | translate }}</li>
+                  <li>{{ 'sa_loginrbaVMSbullet5' | translate }}</li>
+                  <li>{{ 'sa_loginrbaVMSbullet6' | translate }}</li>
+                </ul>
+                <p class="fw-bold">{{ 'sa_loginrbaVMStext6' | translate}}</p>
+                <p>{{ 'sa_loginrbaVMStext7' | translate}}</p>
+
+                <!-- TOODAM3Q Are we providing the last section of text here? -->
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <cw-field-error-display [errorMsg]="'sa_ERRrequired' | translate"
+      [displayError]="isFieldInvalid('verifyMethod')">
+    </cw-field-error-display>
+    <div class="mb-3 row">
+      <compass-ui-cw-radiobutton [disabled]="!isEmailViable" textStyle="custom p-3 col-12" ngDefaultControl [showError]="isFieldInvalid('verifyMethod')"
+        formControlName="verifyMethod" [required]="true" radioBtnValue="email" radioBtnId="email"
+        radioButtonGroupName="verifyMethod" [radioLabel]="'sa_loginrbaVMSlbl2'| translate: {email: email}">
+      </compass-ui-cw-radiobutton>
+    </div>
+
+    <div class="mb-3 row">
+      <compass-ui-cw-radiobutton textStyle="custom p-3 col-12" ngDefaultControl [showError]="isFieldInvalid('verifyMethod')"
+        formControlName="verifyMethod" [required]="true" radioBtnValue="securityQuestions" radioBtnId="securityQuestions"
+        radioButtonGroupName="verifyMethod" [radioLabel]="'sa_loginrbaVMSlbl3'| translate">
+      </compass-ui-cw-radiobutton>
+    </div>
+
+    <div class="mb-3 row">
+      <compass-ui-cw-radiobutton [disabled]="!isSSNViable" textStyle="custom p-3 col-12" ngDefaultControl [showError]="isFieldInvalid('verifyMethod')"
+        formControlName="verifyMethod" [required]="true" radioBtnValue="dob" radioBtnId="dob"
+        radioButtonGroupName="verifyMethod" [radioLabel]="'sa_loginrbaVMSlbl4'| translate">
+      </compass-ui-cw-radiobutton>
+    </div>
+  </fieldset>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'next'| translate}}"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

@@ -1,0 +1,90 @@
+<form [formGroup]="householdReviewAddressForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="card-body"> -->
+    <h1 class="standard-mb">We have reviewed the address you entered.</h1>
+    <div class="alert alert-info standard-mb">
+        <p class="text-left">
+            This helps us send your application to the right office.
+        </p>
+    </div>
+    <p class="form-subtitle standard-mb">Choose the closest match from the USPS Formatted Address(es) below. If none of
+        the suggested choices are
+        right, choose
+        the address you entered</p>
+    <cw-field-error-display [displayError]="mailingAddError" errorMsg="Please select the Mailing address">
+    </cw-field-error-display>
+    <cw-field-error-display [displayError]="applicantAddError" errorMsg="Please select the applicant address">
+    </cw-field-error-display>
+    <div *ngIf="validatedAddress.primary">
+        <hr>
+        <h2 class="standard-mb">Household Address</h2>
+        <label class="standard-mb">
+            USPS Address
+        </label>
+        <div class="form-check custom standard-mb">
+            <input class="form-check-input" type="radio" value="uspsform" name="uspsformat" id="uspsradio"
+                formControlName="uspsformat">
+            <label class="form-check-label" for="uspsradio">
+                {{validatedAddress.primary.street1}} {{validatedAddress.primary.street2 && ',
+                '+validatedAddress.primary.street2}},
+                {{ validatedAddress.primary.city}}, {{ validatedAddress.primary.state}} {{
+                validatedAddress.primary.zip}}
+            </label>
+        </div>
+        <label class="standard-mb">
+            Address You Entered
+        </label>
+        <div class="form-check custom standard-mb">
+            <input class="form-check-input" type="radio" value="enteredAddress" name="uspsformat" id="householdRadio"
+                formControlName="uspsformat">
+            <label class="form-check-label" for="householdRadio">
+                {{houseHoldApplicantAddress.addressLine1 | uppercase}} {{houseHoldApplicantAddress.addressline2 && ',
+                ' +houseHoldApplicantAddress.addressline2 | uppercase}},
+                {{houseHoldApplicantAddress.city | uppercase}},
+                {{houseHoldApplicantAddress.state | uppercase}} {{houseHoldApplicantAddress.zip}}
+            </label>
+        </div>
+    </div>
+    <div *ngIf="houseHoldMailingAddress.addressLine1 && validatedAddress.mailing">
+        <hr />
+        <h2 class="standard-mb">Mailing Address</h2>
+        <label class="standard-mb">
+            USPS Formatted Address
+        </label>
+        <div class="form-check custom standard-mb">
+            <input class="form-check-input" type="radio" name="addr" id="optAdd1" value="uspsmailingform"
+                formControlName="addr">
+            <label class="form-check-label" for="optAdd1">
+                {{validatedAddress.mailing.street1}} {{validatedAddress.mailing.street2 &&
+                ','+validatedAddress.mailing.street2}}, {{validatedAddress.mailing.city}},
+                {{validatedAddress.mailing.state}}
+                {{validatedAddress.mailing.zip}}
+            </label>
+        </div>
+        <label class="standard-mb">Address You Entered</label>
+        <div class="form-check custom standard-mb">
+            <input class="form-check-input" type="radio" name="addr" id="optAdd2" value="enteredMailing"
+                formControlName="addr">
+            <label class="form-check-label" for="optAdd2">
+                {{houseHoldMailingAddress.addressLine1 | uppercase}} {{houseHoldMailingAddress.addressline2 && ', '+
+                houseHoldMailingAddress.addressline2 | uppercase}}, {{houseHoldMailingAddress.city | uppercase}},
+                {{houseHoldMailingAddress.state | uppercase}}
+                {{houseHoldMailingAddress.zip}}
+            </label>
+        </div>
+        <p class="form-subtitle">If none of the addresses above are right, including Address You Entered, you can go
+            back to update your address.
+        </p>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

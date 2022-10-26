@@ -1,0 +1,16 @@
+<div class="card-bordy">
+<h1>Your child support expenses.</h1>
+<p>Look below to make sure all child support expenses are here.</p>
+<cw-simpletile-summary
+    [simpleTileSummaryData]="jsonData"
+    (deleteButtonClicked)="deleteClicked($event)"
+    (recordNumberToOp) = "recordIndexToOp($event)"
+    (editButtonClicked)="editClicked($event)"
+    (addAnotherPerson)="addClicked()"
+    (nextPage)="next()"
+    (previousPage)="back()"
+    [updatedJson]="jsonData">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>
+</div>

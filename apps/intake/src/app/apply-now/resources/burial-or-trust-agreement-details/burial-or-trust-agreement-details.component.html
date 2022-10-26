@@ -1,0 +1,62 @@
+<h1>You told us someone has a burial or trust agreement with a bank or funeral home. Tell us about this resource.</h1>
+<p class="alert alert-info">Don't worry, you can add more burial or trust agreements later if you need to.</p>
+<div class="form-group" [formGroup]="burialTrustAgreementForm">
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'bankName'" [fieldLabel]="'Bank or Funeral Home Name'"
+            [FormGroup]="burialTrustAgreementForm" [displayError]="isFieldValid('bankName')"
+            [requiredText]="'(required)'" [errorText]="errorMap('bankName')"
+            [requiredIndicator]="requiredFields.indexOf('bankName')>-1">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'streetaddress'" [fieldLabel]="'Street Address'"
+            [FormGroup]="burialTrustAgreementForm" [displayError]="isFieldValid('streetaddress')"
+            [requiredText]="'(required)'" [errorText]="errorMap('streetaddress')"
+            [requiredIndicator]="requiredFields.indexOf('streetaddress')>-1"
+            pattern="[#.0-9a-zA-Z\s,-]*">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'streetAddress2'" [fieldLabel]="'Street Address (2)'"
+            [FormGroup]="burialTrustAgreementForm" [displayError]="isFieldValid('streetAddress2')"
+            [requiredText]="'(required)'" [errorText]="errorMap('streetaddress2')"
+            [requiredIndicator]="requiredFields.indexOf('streetaddress2')>-1"
+            pattern="[#.0-9a-zA-Z\s,-]*">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'city'" [fieldLabel]="'City'" [FormGroup]="burialTrustAgreementForm"
+            [displayError]="isFieldValid('city')" [requiredText]="'(required)'" [errorText]="errorMap('city')"
+            [requiredIndicator]="requiredFields.indexOf('city')>-1">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">        
+        <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [requiredText]="'(required)'"
+            [FormGroup]="burialTrustAgreementForm" [displayError]="isFieldValid('state')"
+            [errorMsg]="'Please select State.'" [requiredIndicator]="requiredFields.indexOf('state')>-1">
+            <option value="" selected>-Select One-</option>
+            <option *ngFor="let state of states" value="{{state.displayValue}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+
+    </div>
+    <div>
+        <compass-ui-text [type]="'text'" [fieldId]="'zipcode'" [fieldLabel]="'Zip'"
+            [FormGroup]="burialTrustAgreementForm" [displayError]="isFieldValid('zipcode')"
+            [requiredText]="'(required)'" [errorText]="errorMap('zipcode')"
+            [requiredIndicator]="requiredFields.indexOf('zipcode')>-1">
+        </compass-ui-text>
+    </div>
+</div>
+
+<div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>

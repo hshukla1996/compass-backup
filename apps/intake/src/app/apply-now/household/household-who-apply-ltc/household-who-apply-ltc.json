@@ -1,0 +1,18 @@
+{
+    "questionText": "You told us someone wants to apply for Long-Term Living Services from a nursing home or similar facility. Tell us who.",
+    "subHeading": "Select all that apply.",
+    "toolTip":"",
+    "requiredText": "Please select at least one",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "Jane Sample 57 F",
+            "isChecked": false
+        },
+        {
+            "id": 2,
+            "label": "Jill Sample 28 F",
+            "isChecked": false
+        }
+    ]
+}

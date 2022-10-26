@@ -1,0 +1,130 @@
+{
+    "projectType": "application",
+    "sourceRoot": "apps/mca/src",
+    "prefix": "compass-ui",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/mca",
+                "index": "apps/mca/src/index.html",
+                "main": "apps/mca/src/main.ts",
+                "polyfills": "apps/mca/src/polyfills.ts",
+                "tsConfig": "apps/mca/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "apps/mca/src/favicon.ico",
+                    "apps/mca/src/assets",
+                    {
+                        "input": "libs/ui/src/assets",
+                        "glob": "**/*",
+                        "output": "assets"
+                    }
+                ],
+                "styles": [
+                    "libs/ui/src/styles.scss",
+                    "apps/mca/src/styles.scss"
+                ],
+                "scripts": [
+                    "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+                ]
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/mca/src/environments/environment.ts",
+                            "with": "apps/mca/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "int": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/mca/src/environments/environment.ts",
+                            "with": "apps/mca/src/environments/environment.int.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "mca:build:production"
+                },
+                "int": {
+                    "browserTarget": "mca:build:int"
+                },
+                "development": {
+                    "browserTarget": "mca:build:development"
+                }
+            },
+            "defaultConfiguration": "development",
+            "options": {
+                "proxyConfig": "apps/mca/proxy.conf.json"
+            }
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "mca:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/mca/src/**/*.ts",
+                    "apps/mca/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/mca"],
+            "options": {
+                "jestConfig": "apps/mca/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

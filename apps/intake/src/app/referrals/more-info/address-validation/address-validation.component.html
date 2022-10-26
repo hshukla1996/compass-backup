@@ -1,0 +1,75 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-12">
+        <div class="loading-container">
+            <div class="p-5">
+                <p>{{loadingText}}</p>
+            </div>
+            <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+        </div>
+
+    </div>
+</div>
+<form [formGroup]="addressValidationForm" *ngIf="!isLoading">
+
+    <h1>{{'referralresidentialAddress' | translate}}</h1>
+    <div class="alert alert-info align-items-center">
+        <p>{{'referralApplication' | translate}}
+        </p>
+        <p>{{'referralApplication2'| translate}}</p>
+
+    </div>
+    <p>{{'referralClosesetMatch' | translate}}</p>
+    <!-- *ngFor="let address of validatedAddress; let i=index;" -->
+    <cw-field-error-display [displayError]="isFieldValid('exampleRadios')"
+        errorMsg=" {{'basidDetailRequiredMessage' | translate}}">
+
+    </cw-field-error-display>
+    <div class="mb-3">
+        <label class="form-label">
+            {{'referralUSPS' | translate}}
+        </label>
+        <div class="form-check custom">
+            <input class="form-check-input" formControlName="exampleRadios" name="exampleRadios"
+                [ngClass]="{ 'error': isFieldValid('exampleRadios') }" (click)="onradioCheck(0)" type="radio"
+                id="addressRadio" value="0">
+            <label class="form-check-label" for="addressRadio">
+                {{validatedAddress && validatedAddress.street1}} {{validatedAddress && validatedAddress.street2}}
+                {{validatedAddress && validatedAddress.city}},
+                {{validatedAddress && validatedAddress.state}}, {{validatedAddress &&
+                validatedAddress.zip}}-{{validatedAddress && validatedAddress.zipExt}}
+            </label>
+
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            {{'referralAddressEntered' | translate}}
+        </label>
+        <div class="form-check custom">
+            <input class="form-check-input" [ngClass]="{ 'error': isFieldValid('exampleRadios') }" name="exampleRadios"
+                formControlName="exampleRadios" type="radio" (click)="onradioCheck(1)" id="addressEntered" value="1">
+            <label class="form-check-label" for="addressEntered">
+                {{householdAddress?.addressLine1 || householdAddress?.street1}} {{householdAddress?.addressLine2||
+                householdAddress?.street2}} {{householdAddress?.city}}, {{householdAddress?.state}},
+                {{householdAddress?.zip}}
+            </label>
+        </div>
+
+    </div>
+    <p>{{'referraladdresstext1' | translate}}</p>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{'referralBack' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="next()">
+                {{'referralNext' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

@@ -1,0 +1,56 @@
+.parent_layout_image_section-2 {
+    width: 283px;
+    height: 207px;
+    background: url("../../../../assets/images/image.png");
+    background-size: 273px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parent-layout-child-Image-Section {
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0.007em;
+    margin-bottom: 15px;
+}
+
+.parent_layout_image_section-1 {
+    display: flex;
+    padding: 10px;
+    background: #fff7e6;
+    box-shadow: 0px 1px 5px rgba(66, 66, 66, 0.25);
+    border-radius: 10px;
+    border: 0.0625rem solid #fcb92f;
+}
+
+.parent_layout_image_area {
+    height: 50px;
+    font-size: 50px;
+    display: flex;
+    letter-spacing: 0.4px;
+    color: #265c76;
+    padding-right: 10px;
+}
+
+.parent-layout-child-heading {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.007em;
+    color: #3D3D3D;
+}
+
+.footer {
+    height: 37px;
+    font-family: 'Helvetica Neue';
+    line-height: 18px;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+.text_color {
+    color: #003f5e;
+}

@@ -1,0 +1,87 @@
+<form [formGroup]="basicDetailsGroup">
+  <h1>
+    {{ 'afsVoterBDTitle' | translate }}
+  </h1>
+
+  <div class="alert alert-info">
+    <p>{{ 'afsVoterBDTip1' | translate }}</p>
+    <p>{{ 'afsVoterBDTip2' | translate }}
+      <a target="_blank" href="https://www.vote.pa.gov/Pages/default.aspx">{{ 'afsVoterBDTip3Link' | translate }}</a>
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="firstName" ngDefaultControl  [fieldType]="'nameType'" [FormGroup]="basicDetailsGroup" formControlName="firstName" [maxLength]="11"
+      [fieldLabel]="'afsVoterBDLbl1' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+      [errorText]="'This is required.'"  [displayError]="isFieldValid('firstName')">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="middleInitial" (keypress)="checkMiddleNameChar($event)" ngDefaultControl [FormGroup]="basicDetailsGroup"  [maxLength]="1"
+      formControlName="middleInitial" [fieldLabel]="'afsVoterBDLbl2' | translate" 
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('middleInitial')">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="lastName" ngDefaultControl [FormGroup]="basicDetailsGroup" [fieldType]="'nameType'"  formControlName="lastName"  [maxLength]="14"
+      [fieldLabel]="'afsVoterBDLbl3' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+      [errorText]="'This is required.'"  [displayError]="isFieldValid('lastName')">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="suffix" fieldId="suffix"
+      [fieldLabel]="'afsVoterBDLbl4' | translate" [FormGroup]="basicDetailsGroup" [errorMsg]="'This is required.'"
+      [displayError]="isFieldValid('suffix')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let suffixs of suffixls" value="{{suffixs.id}}">{{suffixs.displayValue}}
+
+    </compass-ui-cw-select>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-cw-datepicker fieldId="dateOfBirth" [maxRange]="maxDateRange" showFieldHelpText="MM/DD/YYYY"  [label]="'afsVoterBDLbl5' | translate" ngDefaultControl
+      formControlName="dateOfBirth" hintClass="form-text" [helpText]="'afsVoterBDHelp1' | translate" [required]="true"  [showError]="isFieldValid('dateOfBirth')"
+      [requiredText]="'lblrequired' | translate"   errorMsg="{{errorMap('dateOfBirth') | translate}}" [displayError]="isFieldValid('dateOfBirth')">
+    </compass-ui-cw-datepicker>
+  </div>
+
+  <div class="mb-3">
+    <fieldset class="button-group">
+      <legend>{{'afsVoterBDLbl6' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
+      <compass-ui-cw-radiobutton ngDefaultControl 
+        [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
+        [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="{{'genderlblmale'| translate}}"></compass-ui-cw-radiobutton>
+      <compass-ui-cw-radiobutton ngDefaultControl 
+        [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
+        [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="{{'genderlblfemale'| translate}}">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+    
+    <div *ngIf="isFieldValid('gender')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+      {{'basidDetailRequiredMessage' | translate}}</div>
+   
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="email" ngDefaultControl [FormGroup]="basicDetailsGroup" formControlName="email"
+      [fieldLabel]="'afsVoterBDLbl7' | translate" [errorText]="'This is required.'"   [maxLength]="50"  >
+    </compass-ui-text>
+  </div>
+  <div class="alert alert-info">
+    <p>If you provide your email, you'll receive the status and number of your voter registration application.</p>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text fieldId="phone" ngDefaultControl [FormGroup]="basicDetailsGroup"  type="phone" formControlName="phone"
+      [fieldLabel]="'afsVoterBDLbl8' | translate" [errorText]="'This is required.'"  >
+    </compass-ui-text>
+  </div>
+<compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>
+  
+</form>

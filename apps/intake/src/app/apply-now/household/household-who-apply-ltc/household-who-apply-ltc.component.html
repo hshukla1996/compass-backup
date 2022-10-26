@@ -1,0 +1,40 @@
+ <form class="form-horizontal" *ngIf="householdMembers.length>0" [formGroup]='householdWhoApplyLtcForm'
+    #householdWhoApplyLtcFormEle="ngForm">
+                <h1 class="standard-mb">
+                    You told us someone wants to apply for Long-Term Living Services from a nursing home or similar facility. Tell us who.
+                    <span class="required-span">(required)</span>
+                </h1>
+                <p class="form-subtitle standard-mb">Select all that apply.</p>
+            <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+            <div *ngFor="let individual of individualFormArray.controls;let i =index" formArrayName="id"
+                class="standard-mb">
+                    <div class="form-check custom">
+                        <input class="form-check-input" id={{householdMembers[i].id}} type="checkbox"
+                            value={{householdMembers[i].id.toString()}} (change)="onCheckboxChange($event)"
+                            [checked]="selectedUserids.indexOf(householdMembers[i].id.toString()) !== -1 ? true : false">
+
+                        <label class="form-check-label text-capitalize" for="{{householdMembers[i].id}}">
+                            {{householdMembers[i].firstName}} {{householdMembers[i].lastName}}
+                            {{getAge(householdMembers[i]?.dateOfBirth)}} ({{householdMembers[i].gender.charAt(0)}})
+                        </label>
+                    </div>
+            </div>
+  
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" (click)="previous()" class="btn btn-outline-tertiary">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>
+<!-- <cw-simpletile-checkbox [simpleTileCheckboxData]="householdWhoApplyLtcJsonData"
+ (nextPage)="showNextPage($event)"
+ (previousPage)="showPreviousPage()">
+</cw-simpletile-checkbox>
+ -->

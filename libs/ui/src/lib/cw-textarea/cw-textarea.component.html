@@ -1,0 +1,19 @@
+<div class="standard-mb {{textClass}}">
+    <label class="form-label {{labelClass}}" for="{{id}}" id="lbl-{{id}}"> {{label}} </label>
+    <textarea
+            type="text"
+            [required]="required"
+            class="form-control {{textareaClass}}"
+            placeholder="{{placeholder}}"
+            id="{{id}}"
+            title="{{fieldTitle}}"
+            rows="{{rows}}"
+            [attr.aria-describedby]="label"
+            (input)="textChange($event.target)"
+            [attr.maxlength]="restrictInputLength"
+            [ngClass]="{ 'error': showError }"
+            [disabled]="disabled">{{text}}
+      </textarea>
+    <div *ngIf="showFieldHelpText" id='hlp-txt-{{id}}' class={{hintClass}}>{{helpText}}</div>
+    <span *ngIf="required" id="err-txt-{{id}}"><i class="fa-regular fa-circle-exclamation"></i> {{requiredText}}</span>
+</div>

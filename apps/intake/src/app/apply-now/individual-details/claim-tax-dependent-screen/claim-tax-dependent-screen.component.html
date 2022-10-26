@@ -1,0 +1,44 @@
+<form class="form-horizontal" *ngIf="houseHoldHeadPersons.length>0" [formGroup]='claimTaxDependentForm'>
+        <div class="parent_heading_text">
+            <h1> {{questionText}} </h1>
+        </div>
+        <div class="form-group mb-3">
+            <div class="mb-3">
+                <fieldset class="button-group">
+                    <legend></legend>
+                    <compass-ui-cw-radiobutton [showError]="isFieldValid('isClaimTaxDependent')" ngDefaultControl
+                        [formControlName]="'isClaimTaxDependent'" [required]="true"
+                        [radioButtonGroupName]="'isClaimTaxDependent'"
+                        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                        radioLabel="Yes"
+                        [required]="requiredFields.indexOf('isClaimTaxDependent')>-1"></compass-ui-cw-radiobutton>
+
+                    <compass-ui-cw-radiobutton [showError]="isFieldValid('isClaimTaxDependent')" ngDefaultControl
+                        [formControlName]="'isClaimTaxDependent'" [required]="true"
+                        [radioButtonGroupName]="'isClaimTaxDependent'"
+                        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                        radioLabel="No"
+                        [required]="requiredFields.indexOf('isClaimTaxDependent')>-1">
+                    </compass-ui-cw-radiobutton>
+                    <div>
+                        <cw-field-error-display [displayError]="isFieldValid('isClaimTaxDependent')"
+                            errorMsg="{{errorMap('isClaimTaxDependent')}}">
+                        </cw-field-error-display>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" (click)="showPreviousPage()" class="btn btn-outline-tertiary">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" (click)="showNextPage()" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

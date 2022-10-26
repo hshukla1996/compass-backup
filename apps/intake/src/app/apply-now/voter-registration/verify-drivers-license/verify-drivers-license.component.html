@@ -1,0 +1,11 @@
+<form [formGroup]="verifyLicenseGroup">
+  <h1>{{ 'afsVerifyLicenseTitle' | translate}} <span class="required-span">(required)</span></h1>
+
+  <compass-ui-text fieldId="cardNumber" ngDefaultControl [FormGroup]="verifyLicenseGroup" formControlName="cardNumber" [maxLength]="8" (keypress)="OnlyNumberAllowed($event)"
+    [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"  [errorText]="'This is required.'" [displayError]="isFieldValid('cardNumber')">
+  </compass-ui-text>
+
+  <compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

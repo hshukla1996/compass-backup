@@ -1,0 +1,23 @@
+<form [formGroup]="verifySecurityQuestionGroup">
+  <h1> {{ 'sa_loginrbaVSQtitle' | translate }}</h1>
+
+  <ng-container *ngFor="let securityQuestion of requiredQuestions; let i = index">
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'answer' + i" (inputModelChange)="resetCorrectness(i)" [FormGroup]="verifySecurityQuestionGroup" [fieldLabel]="securityQuestion.displayValue"
+        [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+        [displayError]="isFieldInvalid('answer' + i, i)" [errorText]="errorMap('answer' + i, i) | translate"
+        [maxLength]="answerMaxL">
+      </compass-ui-text>
+    </div>
+  </ng-container>
+
+  <nav class="action-bar d-flex justify-content-between row text-center">
+    <div>
+        <button type="submit" class="btn btn-primary col-6" (click)="next()">
+            {{ 'next' | translate }}
+        </button>
+    </div>
+  </nav>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="tryAnotherVerifyMethod()">{{ 'sa_tryAnotherVerifyMethod' | translate }}</a></p>
+</form>

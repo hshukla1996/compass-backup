@@ -1,0 +1,31 @@
+<form class="form-horizontal" [formGroup]='receivedLongTermServicesDetailsForm'>
+    <h1>
+        How were {{getUserFirstName}} expenses being paid?
+    </h1>    
+    <div class="mb-3">
+        <div class="d-md-flex">
+            <compass-ui-cw-select [fieldId]="'receivedLongTermService'" [fieldLabel]="''"
+                [requiredText]="'(required)'" [FormGroup]="receivedLongTermServicesDetailsForm"
+                [displayError]="isFieldValid('receivedLongTermService')" [errorMsg]="'Please select received LongTerm Service.'"
+                [requiredIndicator]="requiredFields.indexOf('receivedLongTermService')>-1">
+                <option value="" selected>-Select One-</option>
+                <option *ngFor="let serviceDetails of receivedLongTermServiceDetails" [ngValue]="serviceDetails.id">
+                    {{ serviceDetails.displayValue }}
+                </option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

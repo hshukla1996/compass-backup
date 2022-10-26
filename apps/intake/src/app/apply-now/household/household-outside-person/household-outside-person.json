@@ -1,0 +1,21 @@
+{
+    "questionText": "Is anyone listed below not currently living with you?",
+    "subHeading": "Select all that apply.",
+    "toolTip": "If you are applying for health care, we need to know about everyone on your federal income tax return even if they don't live in the same household as you.\n\n If you need to add another person to your household, you can add them using the Add Another Person button and come back to this screen.\n",
+    "isRequired": false,
+    "requiredText": "",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "Jane Sample 57 F",
+            "isChecked": false
+        },
+        {
+            "id": 2,
+            "label": "Jill Sample 28 F",
+            "isChecked": false
+        }
+    ],
+    "buttonName": "+ Add Another Person"
+
+}

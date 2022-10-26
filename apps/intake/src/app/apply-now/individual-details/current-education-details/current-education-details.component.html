@@ -1,0 +1,63 @@
+<form class="form-horizontal" [formGroup]='currentEducationDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+  <h1>Tell us about {{currentUser.firstName}}'s current education.</h1>
+  <!-- </div> -->
+
+  <!-- <div class="panel-body"> -->
+  <compass-ui-text [fieldId]="'schoolName'" [FormGroup]="currentEducationDetailsForm"
+    requiredText="{{'lblrequired' | translate}}"
+                   [fieldLabel]="'afsSchoolName' | translate"
+                   [isVisible]="fieldDisplays.schoolName"
+                   [fieldType]="'schoolType'"
+    [displayError]="isFieldValid('schoolName')"
+                   [errorText]="errorMap('schoolName')"
+    [requiredIndicator]="requiredFields.indexOf('schoolName')>-1">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'schoolType'" [fieldLabel]="'afsTypeOfSchool' | translate"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="currentEducationDetailsForm"
+    [displayError]="isFieldValid('schoolType')" [errorMsg]="errorMap('schoolType')"
+                        [isVisible]="fieldDisplays.schoolType"
+    [requiredIndicator]="requiredFields.indexOf('schoolType')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let schoolType of schoolTypes" value="{{schoolType.id}}">
+      {{schoolType.displayValue}}</option>
+  </compass-ui-cw-select>
+  <fieldset class="button-group" *ngIf="fieldDisplays.fullOrPartTime">
+    <legend>Does {{currentUser.firstName}} attend school full-time or part-time? <span>(required)</span></legend>
+    <input class="btn-check" id="'fullTime'" type="radio" [checked]="partTimeOrFullTime === 'fullTime'" value="fullTime"
+      name="fullOrPartTime" formControlName="fullOrPartTime" required="requiredFields.indexOf('fullOrPartTime')>-1">
+    <label class="btn btn-outline-tertiary" (change)="setEducationType('partTime')" for="'fullTime'">Full-Time</label>
+    <input class="btn-check" id="'partTime'" type="radio" [checked]="partTimeOrFullTime === 'partTime'" value="partTime"
+      name="fullOrPartTime" formControlName="fullOrPartTime" required="requiredFields.indexOf('fullOrPartTime')>-1">
+    <label class="btn btn-outline-tertiary" (change)="setEducationType('partTime')" for="'partTime'">Part-Time</label>
+  </fieldset>
+  <div class="form-group mt-3 mb-3">
+    <compass-ui-cw-datepicker label="When does {{currentUser.firstName}} expect to finish or graduate?"
+      [required]="requiredFields.indexOf('educationEndDate')>-1" ngDefaultControl
+                              [formControlName]="'educationEndDate'"
+      [minRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+                              [isVisible]="fieldDisplays.educationEndDate"
+                              showFieldHelpText="MM/DD/YYYY"
+      [displayError]="isFieldValid('educationEndDate')"
+                              [showError]="isFieldValid('educationEndDate')"
+      [errorMsg]="errorMap('educationEndDate') | translate">
+    </compass-ui-cw-datepicker>
+
+
+  </div>
+  <!-- </div> -->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+  <!-- </div> -->
+</form>

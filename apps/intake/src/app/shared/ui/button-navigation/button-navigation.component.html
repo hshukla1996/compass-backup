@@ -1,0 +1,25 @@
+<nav
+  *ngIf="false"
+  [ngClass]="{'action-bar ': !(this.hideBackButton && this.hideNextButton) , 'd-flex': true, 'justify-content-between': true}"
+>
+  <div>
+    <button
+      type="button"
+      class="btn btn-outline-tertiary"
+      (click)="goTo(direction.BACK)"
+      *ngIf="!this.hideBackButton"
+    >
+      {{ this.backButtonText }}
+    </button>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="goTo(direction.NEXT)"
+      *ngIf="!this.hideNextButton"
+    >
+      {{ this.nextButtonText }}
+    </button>
+  </div>
+</nav>

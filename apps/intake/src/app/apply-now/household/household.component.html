@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="text-center">
+        <img src="./assets/images/image.png" class="gatepost-img" />
+        <h1 class="standard-mb">Household</h1>
+        <p class="form-subtitle standard-mb">Now, let's enter information about the people in your household.
+            A household is all the people who live in a housing unit together even if they are not related.</p>
+    </div>
+    <div class="alert alert-info standard-mb">
+        <div class="text-left">
+            <p>For the household section, you might need this information:</p>
+            <ul>
+                <li>
+                    Names and birthdates of everyone in your household, including people who are away from home right now
+                </li>
+                <li>Home address details</li>
+                <li>Current contact information</li>
+            </ul>
+        </div>
+    </div>
+    
+        <p class="text-center standard-mb"><a href="#" class="hyperlink-lg">Save and exit</a> if you’d like to come back later.</p>
+    
+<nav class="action-bar d-flex justify-content-between">
+    <button type="button" class="btn btn-primary" [routerLink]="['../reviewandsubmit/lgbtqsurvey']">
+        LGBTQ
+    </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['../reviewandsubmit/notificationpreferences']">
+        Notification Preferences
+    </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['../reviewandsubmit/rightandresponsibilities']">
+        Rights & Responsibilities
+    </button>
+</nav>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previousRoute()">
+            Back
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">
+            Next
+        </button>
+    </div>
+</nav>
+</form>

@@ -1,0 +1,38 @@
+<h1 class="standard-mb">
+    {{ simpleTileCheckboxData['questionText'] | translate : simpleTileCheckboxData['questionTextTO']}}
+</h1>
+<div class="standard-mb" *ngIf="simpleTileCheckboxData['toolTip'] !== ''">
+    <p class="alert alert-info" *ngIf = "isAlertApplicableinToolTip">
+        {{ simpleTileCheckboxData['toolTip'] | translate : simpleTileCheckboxData['toolTipTO']}}
+    </p>
+    <p *ngIf = "!isAlertApplicableinToolTip">
+        {{ simpleTileCheckboxData['toolTip'] | translate : simpleTileCheckboxData['toolTipTO']}}
+    </p>
+</div>
+<p class="fw-bold standard-mb">{{ simpleTileCheckboxData['subHeading'] | translate : simpleTileCheckboxData['subHeadingTO']}}</p>
+<cw-field-error-display [displayError]="formSubmitAttempt && simpleTileCheckboxData['isRequired']"
+    errorMsg="{{ simpleTileCheckboxData['requiredText'] | translate : simpleTileCheckboxData['requiredTextTO'] }}">
+</cw-field-error-display>
+<div [formGroup]="simpleTileCheckboxForm" class="standard-mb">
+    <ng-container *ngFor="let simpleTileCheckbox of simpleTileCheckboxData['questionAnswers']">
+        <compass-ui-cw-checkbox id="{{ simpleTileCheckbox['id'] }}" textStyle="custom small-mb"
+            label="{{ simpleTileCheckbox['label'] | translate : simpleTileCheckbox['labelTO']}}" helpText="{{ simpleTileCheckbox['helpText'] | translate : simpleTileCheckbox['helpTextTO'] }}"
+            [link]="(simpleTileCheckbox['link']) ? { href: simpleTileCheckbox['link'].href, label: simpleTileCheckbox['link'].label | translate}: {href: '', label: ''}" [isChecked]="simpleTileCheckbox['isChecked']"
+            (inputModelChange)="onCheckboxChange(simpleTileCheckbox['id'], $event)"
+            [disabled]="simpleTileCheckbox['disabled']">
+        </compass-ui-cw-checkbox>
+    </ng-container>
+</div>
+<div *ngIf="simpleTileCheckboxData['buttonName'] !== undefined" class="text-center">
+    <button type="button w-100" class="btn btn btn-tertiary text-capitalize" (click)="addPerson()">
+        {{simpleTileCheckboxData['buttonName'] | translate : simpleTileCheckboxData['buttonNameTO']}}
+    </button>
+</div>
+<div class="alert alert-info" *ngIf="alertTextRequired">
+    <div class="text-left mt-3" class="col">
+        <span class="d-block">{{alertText | translate}}</span>
+        <a href="javascript:void(0);" class="hyperlink-lg" (click)="onAlertTextClick()">{{addHouseholdMember | translate}}</a>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel="{{'backBtnText' | translate}}" nextButtonLabel="{{'nextBtnText' | translate}}" (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

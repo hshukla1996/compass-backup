@@ -1,0 +1,30 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-12">
+    <div class="loading-container">
+      <div class="p-5">
+        <p>{{loadingText}}</p>
+      </div>
+      <span class="loading">
+        <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+      </span>
+    </div>
+
+  </div>
+</div>
+<div class="text-center" *ngIf="!isLoading">
+<!-- <div class="text-center"  > -->
+  
+    <i class="fa-light fa-thumbs-up fa-10x"> </i>
+   
+  <h1>{{ 'afsCompleteTitle' | translate }}</h1>
+  <h3>{{ 'afsCompleteSubtitle' | translate }}</h3>
+  <p>{{ 'afsCompleteNeedsProcessed' | translate }}</p>
+  <div class="alert alert-info">
+    <p>{{ 'afsCompleteToCheck' | translate }}<a target="_blank" href="https://www.vote.pa.gov/Pages/default.aspx">{{ 'afsCompleteCheckLink' | translate
+        }}</a></p>
+  </div>
+  <p>{{ 'afsCompleteNextSteps' | translate }}</p>
+    <compass-ui-cw-button buttonId="back-to-compass" [textStyle]="'btn btn-outline-tertiary'"
+    [buttonLabel]="'afsCompleteBackHome' | translate" (onClick)="back()">
+  </compass-ui-cw-button>
+</div>

@@ -1,0 +1,74 @@
+ 
+        <h1>Tell us your Medical Assistance (MA) or Non-Medical Assistance (Non-MA) provider information.</h1>
+        <div class="row">
+            <div class="col mb-md-4 mb-3">
+                <label for="medicalService" class="form-label">Type of Medical Service<span>(required)</span></label>
+                <select class="form-select" aria-label="Default select example" id="medicalService">
+                    <option selected>-Select One-</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="maNonMA" class="form-label">Is this an MA or Non-MA provider?<span>(required)</span></label>
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" name="radSex" id="Yes" autocomplete="off">
+                    <label class="btn btn-sm btn-outline-tertiary" for="Yes" (click)="showMACard()">Yes</label>
+                    <input type="radio" class="btn-check" name="radSex" id="nonMA" autocomplete="off">
+                    <label class="btn btn-sm btn-outline-tertiary" for="nonMA" (click)="hideMACard()">Non-MA</label>
+                </fieldset>
+
+            </div>
+
+        </div>
+        <div class="card arrow-card standard-mb" *ngIf="!showCard">
+            <div class="card-body">
+                <div class="mb-md-4 mb-3">
+                    <label for="provideNum" class="form-label">MA Provider Number<span>(required)</span></label>
+                    <input type="text" class="form-control" id="provideNum" />
+                    <small class="text-muted">123456789-1234</small>
+                </div>
+
+                <div class="mb-md-4 mb-3">
+                    <label for="firstAdmission" class="form-label">Date of First Admission or Treatment
+                        (required)<span>(required)</span></label>
+                    <input type="date" id="firstAdmission" class="form-control">
+                    <small class="text-muted">MM/DD/YYYY</small>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="card arrow-card standard-mb" *ngIf="showCard">
+            <div class="card-body">
+                <div class="mb-md-4 mb-3">
+                    <label for="nonMA" class="form-label">Non-MA Provider Number<span>(required)</span></label>
+                    <input type="text" class="form-control" id="nonMA" />
+                    <small class="text-muted">A1234567</small>
+                </div>
+
+                <div class="mb-md-4 mb-3">
+                    <label for="dateofFirstAdmission" class="form-label">Date of First Admission or Treatment
+                        <span>(required)</span></label>
+                    <input type="date" id="dateofFirstAdmission" class="form-control">
+                    <small class="text-muted">MM/DD/YYYY</small>
+                </div>
+
+
+            </div>
+        </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary"  >
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary"  >
+                Next
+            </button>
+        </div>
+    </nav>
+ 

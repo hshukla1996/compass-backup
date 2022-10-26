@@ -1,0 +1,25 @@
+<div class="text-center">
+  <i class="fa-light fa-thumbs-up fa-10x mb-5"></i>
+  <h1>{{ confirmationData["title"] | translate : confirmationData["titleTO"]}}</h1>
+  <p class="fw-bold">{{ confirmationData["text1"] | translate : confirmationData["text1TO"] }}</p>
+  <p *ngIf="!!confirmationData['text2']">{{ confirmationData["text2"] | translate : confirmationData["text2TO"] }}</p>
+  <div class="alert alert-info text-start" *ngIf="!!confirmationData['tip']">
+    {{ confirmationData["tip"] | translate: confirmationData["tipTO"] }}
+  </div>
+
+  <nav class="action-bar d-flex justify-content-between" [ngClass]="{'row': !confirmationData['backButtonLabel'] || !confirmationData['nextButtonLabel'] }">
+    <div *ngIf="!!confirmationData['backButtonLabel']">
+      <button type="button" class="btn btn-outline-tertiary" (click)="previousPage()">
+        {{confirmationData['backButtonLabel'] | translate: confirmationData['backButtonLabelTO']}}
+      </button>
+    </div>
+    <div *ngIf="!!confirmationData['nextButtonLabel']">
+      <button type="submit" class="btn btn-primary" (click)="nextPage()">
+        {{confirmationData['nextButtonLabel'] | translate: confirmationData['nextButtonLabelTO']}}
+      </button>
+    </div>
+  </nav>
+  <div class="mt-3" *ngIf="!!confirmationData['navLinkText'] && !!confirmationData['navLink']">
+    <a class="hyperlink" (click)="confirmationData['navLink']()">{{ confirmationData['navLinkText'] | translate : confirmationData['navLinkTextTO'] }}</a>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<form [formGroup]="basicInfoGroup">
+  <h1>{{ 'sa_forgotuserBItitle' | translate }}</h1>
+  <p class="fw-bold">{{ 'sa_forgotuserBItext1' | translate }}</p>
+
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'firstName'" (inputModelChange)="infoError = false" [FormGroup]="basicInfoGroup" [fieldLabel]="'sa_forgotuserBIlbl1' | translate"
+       [displayError]="isFieldInvalid('firstName')" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+      [errorText]="errorMap('firstName') | translate" [maxLength]="firstNameMaxL" [fieldType]="'nameParts'">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'lastName'" (inputModelChange)="infoError = false" [FormGroup]="basicInfoGroup" [fieldLabel]="'sa_forgotuserBIlbl2' | translate"
+       [displayError]="isFieldInvalid('lastName')" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+      [errorText]="errorMap('lastName') | translate" [maxLength]="lastNameMaxL" [fieldType]="'nameParts'">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-cw-datepicker (inputModelChange)="infoError = false" [formControlName]="'dob'" [maxRange]="today" ngDefaultControl
+      requiredText="{{'lblrequired' | translate}}" [required]="true" [displayError]="isFieldInvalid('dob')" [showError]="isFieldInvalid('dob')"
+      [errorMsg]="errorMap('dob') | translate" [fieldId]="'dob'" [label]="'sa_forgotuserBIlbl3' | translate"
+      [showFieldHelpText]="'sa_forgotuserBIhelp1' | translate">
+    </compass-ui-cw-datepicker>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'next'| translate}}"
+  (back)="cancel()" (next)="next()">
+</compass-ui-cw-dpq-button>
+</form>

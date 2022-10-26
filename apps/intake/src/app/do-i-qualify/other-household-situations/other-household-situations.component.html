@@ -1,0 +1,745 @@
+<h1>{{'diqsituationheader' | translate}}</h1>
+<p class="fw-bold">{{'diqsituationsubheader' | translate}}</p>
+<!-- <cw-field-error-display [displayError]="isFieldValid()"
+    errorMsg="{{'diqProgramSelectOneOptionErrorMessage' | translate}}">
+</cw-field-error-display> -->
+<!-- PayingHeat -->
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isPayingHeat">
+    <div class="card-body">
+        <legend>{{'diqsit1' | translate}}</legend>
+
+        <p class="mb-3">{{'diqsit1p' | translate}}</p>
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group" [disabled]="isDisabled">
+
+
+
+                    <input type="radio" name="isPayingHeat" class="btn-check"
+                        (click)="onRadioChecked('isPayingHeat',true,$event)" id="radisPayingHeatYes" autocomplete="off"
+                        [value]="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isPayingHeat==null)?false:householdSituations?.isPayingHeat,'unselected':(householdSituations?.isPayingHeat==null)?false:!householdSituations?.isPayingHeat}"
+                        for="radisPayingHeatYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isPayingHeat" id="radisPayingHeatNo" autocomplete="off"
+                        [value]="false" (click)="onRadioChecked('isPayingHeat',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisPayingHeatNo"
+                        [ngClass]="{'selected' : (householdSituations?.isPayingHeat==null)?false:!householdSituations?.isPayingHeat?true:false,'unselected':(householdSituations?.isPayingHeat==null)?false:householdSituations?.isPayingHeat?true:false}">No</label>
+
+
+                    <button type="button" class="btn btn-link float-end"
+                        (click)="resetRadioButton('isPayingHeat')">
+                        Reset
+                    </button>
+
+                </fieldset>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isTwentyOneOrYoungerAndNoParent">
+    <div class="card-body">
+        <legend>{{'diqsit2' | translate}}</legend>
+     
+
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <input type="radio" name="radisTwentyOneOrYoungerAndNoParent" class="btn-check"
+                        (click)="onRadioChecked('isTwentyOneOrYoungerAndNoParent',true,$event)"
+                        id="radisTwentyOneOrYoungerAndNoParentYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isTwentyOneOrYoungerAndNoParent==null)?false:householdSituations?.isTwentyOneOrYoungerAndNoParent,'unselected':(householdSituations?.isTwentyOneOrYoungerAndNoParent==null)?false:!householdSituations?.isTwentyOneOrYoungerAndNoParent}"
+                        for="radisTwentyOneOrYoungerAndNoParentYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisTwentyOneOrYoungerAndNoParent"
+                        id="radisTwentyOneOrYoungerAndNoParentNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isTwentyOneOrYoungerAndNoParent',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisTwentyOneOrYoungerAndNoParentNo"
+                        [ngClass]="{'selected' : (householdSituations?.isTwentyOneOrYoungerAndNoParent==null)?false:(householdSituations?.isTwentyOneOrYoungerAndNoParent==null)?false:!householdSituations?.isTwentyOneOrYoungerAndNoParent,'unselected':householdSituations?.isTwentyOneOrYoungerAndNoParent}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end"
+                        (click)="resetRadioButton('isTwentyOneOrYoungerAndNoParent')">
+                        Reset
+                    </button>
+
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- isSpouseAbsentee -->
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isSpouseAbsentee">
+    <div class="card-body">
+        <legend>{{'diqsit3' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="radisisSpouseAbsentee"
+                        (click)="onRadioChecked('isSpouseAbsentee',true,$event)" id="radisSpouseAbsenteeYes"
+                        autocomplete="off" value="Yes">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isSpouseAbsentee==null)?false:householdSituations?.isSpouseAbsentee,'unselected':(householdSituations?.isSpouseAbsentee==null)?false:!householdSituations?.isSpouseAbsentee}"
+                        for="radisSpouseAbsenteeYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisisSpouseAbsentee" id="radisSpouseAbsenteeNo"
+                        autocomplete="off" value="No" (click)="onRadioChecked('isSpouseAbsentee',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisSpouseAbsenteeNo"
+                        [ngClass]="{'selected' : (householdSituations?.isSpouseAbsentee==null)?false:(householdSituations?.isSpouseAbsentee==null)?false:!householdSituations?.isSpouseAbsentee,'unselected':householdSituations?.isSpouseAbsentee}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isSpouseAbsentee')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isLostJobOrReducedHoursLastYear">
+    <div class="card-body">
+        <legend>{{'diqsit4' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="isLostJobOrReducedHoursLastYear"
+                        (click)="onRadioChecked('isLostJobOrReducedHoursLastYear',true,$event)"
+                        id="radisisLostJobOrReducedHoursLastYearYes" autocomplete="off" value="Yes">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isLostJobOrReducedHoursLastYear==null)?false:householdSituations?.isLostJobOrReducedHoursLastYear,'unselected':(householdSituations?.isLostJobOrReducedHoursLastYear==null)?false:!householdSituations?.isLostJobOrReducedHoursLastYear}"
+                        for="radisisLostJobOrReducedHoursLastYearYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isLostJobOrReducedHoursLastYear"
+                        id="radisLostJobOrReducedHoursLastYearNo" autocomplete="off" value="No"
+                        (click)="onRadioChecked('isLostJobOrReducedHoursLastYear',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisLostJobOrReducedHoursLastYearNo"
+                        [ngClass]="{'selected' : (householdSituations?.isLostJobOrReducedHoursLastYear==null)?false:(householdSituations?.isLostJobOrReducedHoursLastYear==null)?false:!householdSituations?.isLostJobOrReducedHoursLastYear,'unselected':householdSituations?.isLostJobOrReducedHoursLastYear}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isLostJobOrReducedHoursLastYear')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isWantHelpPayingMedicalBillsForLastThreeMonths">
+    <div class="card-body">
+        <legend>{{'diqsit5' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="isWantHelpPayingMedicalBillsForLastThreeMonths"
+                        (click)="onRadioChecked('isWantHelpPayingMedicalBillsForLastThreeMonths',true,$event)"
+                        id="radisWantHelpPayingMedicalBillsForLastThreeMonthsYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths==null)?false:householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths,'unselected':(householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths==null)?false:!householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths}"
+                        for="radisWantHelpPayingMedicalBillsForLastThreeMonthsYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isWantHelpPayingMedicalBillsForLastThreeMonths"
+                        id="radisWantHelpPayingMedicalBillsForLastThreeMonthsNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isWantHelpPayingMedicalBillsForLastThreeMonths',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2"
+                        for="radisWantHelpPayingMedicalBillsForLastThreeMonthsNo"
+                        [ngClass]="{'selected' : (householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths==null)?false:(householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths==null)?false:!householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths,'unselected':householdSituations?.isWantHelpPayingMedicalBillsForLastThreeMonths}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isWantHelpPayingMedicalBillsForLastThreeMonths')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isInMedicalOrLivingServices">
+    <div class="card-body">
+        <legend>{{'diqsit6' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group mb-3" [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="isInMedicalOrLivingServices"
+                        (click)="onRadioChecked('isInMedicalOrLivingServices',true,$event)"
+                        id="radisInMedicalOrLivingServicesYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isInMedicalOrLivingServices==null)?false:householdSituations?.isInMedicalOrLivingServices,'unselected':(householdSituations?.isInMedicalOrLivingServices==null)?false:!householdSituations?.isInMedicalOrLivingServices}"
+                        for="radisInMedicalOrLivingServicesYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isInMedicalOrLivingServices"
+                        id="radisInMedicalOrLivingServicesNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isInMedicalOrLivingServices',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisInMedicalOrLivingServicesNo"
+                        [ngClass]="{'selected' : (householdSituations?.isInMedicalOrLivingServices==null)?false:(householdSituations?.isInMedicalOrLivingServices==null)?false:!householdSituations?.isInMedicalOrLivingServices,'unselected':householdSituations?.isInMedicalOrLivingServices}">No</label>
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isInMedicalOrLivingServices')">
+                        Reset
+                    </button>
+                </fieldset>
+
+                <div class="accordion page-tip mt-3" id="accordionIsInMedicalOrLivingServices">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingIsInMedicalOrLivingServices">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseIsInMedicalOrLivingServices" aria-expanded="true"
+                                aria-controls="collapseIsInMedicalOrLivingServices" [disabled]="isDisabled">
+                                {{'diqsit7'| translate}}
+                            </button>
+                        </h2>
+                        <div id="collapseIsInMedicalOrLivingServices" class="accordion-collapse collapse"
+                            aria-labelledby="headingIsInMedicalOrLivingServices"
+                            data-bs-parent="#accordionIsInMedicalOrLivingServices">
+                            <div class="accordion-body">
+                                <p>{{'diqsit7p' | translate }}</p>
+                                <!-- <ul>
+                    <li>{{'diqsit7li' | translate}}</li>
+                    <li>{{'diqsit7li1' | translate}}</li>
+                    <li>{{'diqsit7li2' | translate}}</li>
+                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.hasHealthConditionLimitation">
+    <div class="card-body">
+        <legend>{{'diqsit8' | translate}}</legend>
+        <p class="mb-3">{{'diqsi8p' | translate}}</p>
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="hasHealthConditionLimitation"
+                        (click)="onRadioChecked('hasHealthConditionLimitation',true,$event)"
+                        id="radhasHealthConditionLimitationYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.hasHealthConditionLimitation==null)?false:householdSituations?.hasHealthConditionLimitation,'unselected':(householdSituations?.hasHealthConditionLimitation==null)?false:!householdSituations?.hasHealthConditionLimitation}"
+                        for="radhasHealthConditionLimitationYes">Yes</label>
+                    <input type="radio" class="btn-check" name="hasHealthConditionLimitation"
+                        id="radhasHealthConditionLimitationNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('hasHealthConditionLimitation',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radhasHealthConditionLimitationNo"
+                        [ngClass]="{'selected' : (householdSituations?.hasHealthConditionLimitation==null)?false:(householdSituations?.hasHealthConditionLimitation==null)?false:!householdSituations?.hasHealthConditionLimitation,'unselected':householdSituations?.hasHealthConditionLimitation}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('hasHealthConditionLimitation')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isVictimOfDomesticAbuse">
+    <div class="card-body">
+        <legend>{{'diqsit9' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group mb-3" [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="isVictimOfDomesticAbuse"
+                        (click)="onRadioChecked('isVictimOfDomesticAbuse',true,$event)"
+                        id="radisVictimOfDomesticAbuseYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isVictimOfDomesticAbuse==null)?false:householdSituations?.isVictimOfDomesticAbuse,'unselected':(householdSituations?.isVictimOfDomesticAbuse==null)?false:!householdSituations?.isVictimOfDomesticAbuse}"
+                        for="radisVictimOfDomesticAbuseYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isVictimOfDomesticAbuse"
+                        id="radisVictimOfDomesticAbuseNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isVictimOfDomesticAbuse',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisVictimOfDomesticAbuseNo"
+                        [ngClass]="{'selected' : (householdSituations?.isVictimOfDomesticAbuse==null)?false:(householdSituations?.isVictimOfDomesticAbuse==null)?false:!householdSituations?.isVictimOfDomesticAbuse,'unselected':householdSituations?.isVictimOfDomesticAbuse}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isVictimOfDomesticAbuse')">
+                        Reset
+                    </button>
+                </fieldset>
+                <div class="accordion page-tip mt-3" id="accordionIsVictimOfDomesticAbuse">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingIsVictimOfDomesticAbuse">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                [disabled]="isDisabled" data-bs-target="#collapseIsVictimOfDomesticAbuse"
+                                aria-expanded="true" aria-controls="collapseIsVictimOfDomesticAbuse">
+                                {{'diqsit9b' | translate}}
+                            </button>
+                        </h2>
+                        <div id="collapseIsVictimOfDomesticAbuse" class="accordion-collapse collapse"
+                            aria-labelledby="headingIsVictimOfDomesticAbuse"
+                            data-bs-parent="#accordionIsVictimOfDomesticAbuse">
+                            <div class="accordion-body">
+                                <p>{{'diqsit9p' | translate}}</p>
+                                <ul>
+                                    <li>{{'diqsit9li' | translate}}</li>
+                                    <li>{{'diqsit9li1' | translate}}</li>
+                                    <li>{{'diqsit9li2' | translate}}</li>
+                                    <li>{{'diqsit9li3' | translate}}</li>
+                                    <li>{{'diqsit9li4' | translate}}</li>
+                                    <li>{{'diqsit9li5' | translate}}</li>
+                                    <li>{{'diqsit9li6' | translate}}</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isInTreatmentOfDrugAndAlchoholAbuse">
+    <div class="card-body">
+        <legend>{{'diqsit10' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="isInTreatmentOfDrugAndAlchoholAbuse"
+                        (click)="onRadioChecked('isInTreatmentOfDrugAndAlchoholAbuse',true,$event)"
+                        id="radisInTreatmentOfDrugAndAlchoholAbuseYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse==null)?false:householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse,'unselected':(householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse==null)?false:!householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse}"
+                        for="radisInTreatmentOfDrugAndAlchoholAbuseYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isInTreatmentOfDrugAndAlchoholAbuse"
+                        id="radisInTreatmentOfDrugAndAlchoholAbuseNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isInTreatmentOfDrugAndAlchoholAbuse',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisInTreatmentOfDrugAndAlchoholAbuseNo"
+                        [ngClass]="{'selected' : (householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse==null)?false:(householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse==null)?false:!householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse,'unselected':householdSituations?.isInTreatmentOfDrugAndAlchoholAbuse}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isInTreatmentOfDrugAndAlchoholAbuse')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.hasIncome">
+    <div class="card-body">
+        <legend>{{'diqsit11' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="hasIncome"
+                        (click)="onRadioChecked('hasIncome',true,$event)" id="radhasIncomeYes" autocomplete="off"
+                        value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.hasIncome==null)?false:householdSituations?.hasIncome,'unselected':(householdSituations?.hasIncome==null)?false:!householdSituations?.hasIncome}"
+                        for="radhasIncomeYes">Yes</label>
+                    <input type="radio" class="btn-check" name="hasIncome" id="radhasIncomeNo" autocomplete="off"
+                        value="false" (click)="onRadioChecked('hasIncome',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radhasIncomeNo"
+                        [ngClass]="{'selected' : (householdSituations?.hasIncome==null)?false:(householdSituations?.hasIncome==null)?false:!householdSituations?.hasIncome,'unselected':householdSituations?.hasIncome}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('hasIncome')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.hasOtherIncome">
+    <div class="card-body">
+        <legend>{{'diqsit12' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group mb-3" [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="hasOtherIncome"
+                        (click)="onRadioChecked('hasOtherIncome',true,$event)" id="radhasOtherIncomeYes"
+                        autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.hasOtherIncome==null)?false:householdSituations?.hasOtherIncome,'unselected':(householdSituations?.hasOtherIncome==null)?false:!householdSituations?.hasOtherIncome}"
+                        for="radhasOtherIncomeYes">Yes</label>
+                    <input type="radio" class="btn-check" name="hasOtherIncome" id="radhasOtherIncomeNo"
+                        autocomplete="off" value="false" (click)="onRadioChecked('hasOtherIncome',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radhasOtherIncomeNo"
+                        [ngClass]="{'selected' : (householdSituations?.hasOtherIncome==null)?false:(householdSituations?.hasOtherIncome==null)?false:!householdSituations?.hasOtherIncome,'unselected':householdSituations?.hasOtherIncome}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('hasOtherIncome')">
+                        Reset
+                    </button>
+                </fieldset>
+                <div class="accordion page-tip mt-3" id="accordionhasOtherIncome">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headinghasOtherIncome">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                [disabled]="isDisabled" [disabled]="isDisabled" data-bs-target="#collapsehasOtherIncome"
+                                aria-expanded="true" aria-controls="collapsehasOtherIncome">
+                                {{'diqsit12b' | translate}}
+                            </button>
+                        </h2>
+                        <div id="collapsehasOtherIncome" class="accordion-collapse collapse"
+                            aria-labelledby="headinghasOtherIncome" data-bs-parent="#accordionhasOtherIncome">
+                            <div class="accordion-body">
+                                <p>{{'diqsit12p' | translate}}</p>
+                                <ul>
+                                    <li>{{'diqOtherIncomeSocialSecurityDisabilityLbl' | translate}}</li>
+                                    <li>{{'diqOtherIncomeSocialSecurityRetirement' | translate}}</li>
+
+                                    <li>{{'diqOtherIncomeRSDI' | translate}}</li>
+                                    <li>{{'diqOtherIncomeSSI' | translate}}</li>
+                                    <li>{{'diqOtherIncomePension' | translate}}</li>
+                                    <li>{{'diqOtherIncomeWorkerCompensation' | translate}}</li>
+                                    <li>{{'diqOtherIncomeUnemploymentBenefits' | translate}}</li>
+                                    <li>{{'diqOtherIncomeDividents' | translate}}</li>
+                                    <li>{{'diqOtherIncomeChildSupport' | translate}}</li>
+                                    <li>{{'diqOtherIncomeAlimony' | translate}}</li>
+                                    <li>{{'diqOtherIncomeCashAssistance' | translate}}</li>
+                                    <li>{{'diqOtherIncomeRentalIncome' | translate}}</li>
+                                    <li>{{'diqOtherIncomeVeterans' | translate}}</li>
+                                    <li>{{'diqOtherIncomeVaAid' | translate}}</li>
+
+                                    <li>{{'diqOtherIncomeVA' | translate}}</li>
+                                    <li>{{'annuity' | translate}}</li>
+                                    <li>{{'diqOtherIncomePaymentTrust' | translate}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isCurrentlyEnrolled">
+    <div class="card-body">
+        <legend>{{'diqsit13' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group ">
+
+
+
+                    <input type="radio" class="btn-check" name="isCurrentlyEnrolled"
+                        (click)="onRadioChecked('isCurrentlyEnrolled',true,$event)" id="radisCurrentlyEnrolledYes"
+                        autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isCurrentlyEnrolled==null)?false:householdSituations?.isCurrentlyEnrolled,'unselected':(householdSituations?.isCurrentlyEnrolled==null)?false:!householdSituations?.isCurrentlyEnrolled}"
+                        for="radisCurrentlyEnrolledYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isCurrentlyEnrolled" id="radisCurrentlyEnrolledNo"
+                        autocomplete="off" value="false" (click)="onRadioChecked('isCurrentlyEnrolled',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisCurrentlyEnrolledNo"
+                        [ngClass]="{'selected' : (householdSituations?.isCurrentlyEnrolled==null)?false:(householdSituations?.isCurrentlyEnrolled==null)?false:!householdSituations?.isCurrentlyEnrolled,'unselected':householdSituations?.isCurrentlyEnrolled}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isCurrentlyEnrolled')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.onGoingMedication">
+    <div class="card-body">
+        <legend>{{'diqsit14' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group ">
+
+
+
+                    <input type="radio" class="btn-check" name="onGoingMedication"
+                        (click)="onRadioChecked('onGoingMedication',true,$event)" id="radonGoingMedicationYes"
+                        autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.onGoingMedication==null)?false:householdSituations?.onGoingMedication,'unselected':(householdSituations?.onGoingMedication==null)?false:!householdSituations?.onGoingMedication}"
+                        for="radonGoingMedicationYes">Yes</label>
+                    <input type="radio" class="btn-check" name="onGoingMedication" id="radonGoingMedicationNo"
+                        autocomplete="off" value="false" (click)="onRadioChecked('onGoingMedication',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radonGoingMedicationNo"
+                        [ngClass]="{'selected' : (householdSituations?.onGoingMedication==null)?false:(householdSituations?.onGoingMedication==null)?false:!householdSituations?.onGoingMedication,'unselected':householdSituations?.onGoingMedication}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('onGoingMedication')">
+                        Reset
+                    </button>
+                </fieldset>
+
+                <div class="accordion page-tip mt-3" id="accordionOnGoingMedication">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOnGoingMedication">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                [disabled]="isDisabled" data-bs-target="#collapseOnGoingMedication" aria-expanded="true"
+                                aria-controls="collapseOnGoingMedication">
+                                {{'diqsit14b' | translate}}
+                            </button>
+                        </h2>
+                        <div id="collapseOnGoingMedication" class="accordion-collapse collapse"
+                            aria-labelledby="headingOnGoingMedication" data-bs-parent="#accordionOnGoingMedication">
+                            <div class="accordion-body">
+                                <p>{{'diqsit14p' | translate}}</p>
+                                <p>{{'diqAutism1p' | translate}}</p>
+                                <p>{{'diqAutism2p' | translate}}</p>
+                                <p>{{'diqAutism3p' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isPregnant">
+    <div class="card-body">
+        <legend>{{'diqsit15' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group ">
+
+
+
+                    <input type="radio" class="btn-check" name="isPregnant"
+                        (click)="onRadioChecked('isPregnant',true,$event)" id="radisPregnantYes" autocomplete="off"
+                        value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isPregnant==null)?false:householdSituations?.isPregnant,'unselected':(householdSituations?.isPregnant==null)?false:!householdSituations?.isPregnant}"
+                        for="radisPregnantYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isPregnant" id="radisPregnantNo" autocomplete="off"
+                        value="false" (click)="onRadioChecked('isPregnant',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisPregnantNo"
+                        [ngClass]="{'selected' : (householdSituations?.isPregnant==null)?false:(householdSituations?.isPregnant==null)?false:!householdSituations?.isPregnant,'unselected':householdSituations?.isPregnant}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isPregnant')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.childOfUnitedStatesVeteran">
+    <div class="card-body">
+        <legend>{{'diqsit17' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group " [disabled]="isDisabled">
+
+
+
+                    <input type="radio" class="btn-check" name="childOfUnitedStatesVeteran"
+                        (click)="onRadioChecked('childOfUnitedStatesVeteran',true,$event)"
+                        id="radchildOfUnitedStatesVeteranYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.childOfUnitedStatesVeteran==null)?false:householdSituations?.childOfUnitedStatesVeteran,'unselected':(householdSituations?.childOfUnitedStatesVeteran==null)?false:!householdSituations?.childOfUnitedStatesVeteran}"
+                        for="radchildOfUnitedStatesVeteranYes">Yes</label>
+                    <input type="radio" class="btn-check" name="childOfUnitedStatesVeteran"
+                        id="radchildOfUnitedStatesVeteranNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('childOfUnitedStatesVeteran',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radchildOfUnitedStatesVeteranNo"
+                        [ngClass]="{'selected' : (householdSituations?.childOfUnitedStatesVeteran==null)?false:(householdSituations?.childOfUnitedStatesVeteran==null)?false:!householdSituations?.childOfUnitedStatesVeteran,'unselected':householdSituations?.childOfUnitedStatesVeteran}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('childOfUnitedStatesVeteran')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard mb-3" *ngIf="visibleHouseHoldOption.isInFosterCare">
+    <div class="card-body">
+        <legend>{{'diqFosterCareHouseholdOptiontext' | translate}}</legend>
+
+
+        <div class="row">
+            <div class="col">
+
+
+                <fieldset class="button-group ">
+
+
+
+                    <input type="radio" class="btn-check" name="isInFosterCare"
+                        (click)="onRadioChecked('isInFosterCare',true,$event)" id="radisInFosterCareYes"
+                        autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdSituations?.isInFosterCare==null)?false:householdSituations?.isInFosterCare,'unselected':(householdSituations?.isInFosterCare==null)?false:!householdSituations?.isInFosterCare}"
+                        for="radisInFosterCareYes">Yes</label>
+                    <input type="radio" class="btn-check" name="isInFosterCare" id="radisInFosterCareNo"
+                        autocomplete="off" value="false" (click)="onRadioChecked('isInFosterCare',false,$event)">
+                    <label class="btn btn-sm btn-toggle right mr-2" for="radisInFosterCareNo"
+                        [ngClass]="{'selected' : (householdSituations?.isInFosterCare==null)?false:(householdSituations?.isInFosterCare==null)?false:!householdSituations?.isInFosterCare,'unselected':householdSituations?.isInFosterCare}">No</label>
+
+
+
+                    <button type="button" class="btn btn-link float-end" 
+                        (click)="resetRadioButton('isInFosterCare')">
+                        Reset
+                    </button>
+                </fieldset>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

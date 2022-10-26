@@ -1,0 +1,42 @@
+<h1>
+  {{ 'afsSitGateTitle' | translate }}
+  <span class="required-span">{{ 'lblrequired' | translate }}</span>
+</h1>
+<label class="form-label">
+  {{ 'afsSitGateLbl1' | translate }}
+</label>
+<cw-field-error-display [displayError]="isFieldValid()" errorMsg="This is required.">
+</cw-field-error-display> 
+<div [formGroup]="situationGatepostGroup">
+  <div *ngFor="let situation of votersituations;let i=index">
+    <compass-ui-cw-checkbox (inputModelChange)="onCheckboxChange(situation.id,$event.checked)"
+      [disabled]="map[situation.id]" id="situationSelected{{i}}" label="{{situation.displayValue}}"
+      [isChecked]="situationSelectedData && situationSelectedData?.indexOf(situation.id)>-1 ? true : false" [requiredText]="'Select atleast one option'" [textStyle]="'custom'">
+    </compass-ui-cw-checkbox>
+    <!-- link="[{{program.program_link}},{{program.program_link_desc}}]" -->
+  </div>
+
+</div>
+
+<!-- <div class="mb-3">
+  
+    <cw-field-error-display [displayError]="displayError" [errorMsg]="errorMessage"></cw-field-error-display>
+    <div class="card standard mb-2" *ngFor="let situation of situations">
+      <div class="card-body">
+          <compass-ui-cw-checkbox   (inputModelChange)="onCheckboxChange('isNewApplication',$event.checked)" id="newApplication"
+            label="{{situation.displayValue}}"></compass-ui-cw-checkbox>
+        </div>
+    </div>  
+</div> -->
+<nav class="action-bar d-flex justify-content-between">
+  <div>
+    <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+      Back
+    </button>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" (click)="next()">
+      Next
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,16 @@
+<h1 class="mb-3">Let's upload your {{selectedDocType}} document</h1>
+<div class="alert alert-info mt-3">
+    <p>Do not upload password-protected documents, we cannot open them.
+    If you need more help, <a href="http://www.google.com">visit the Help Center</a>.
+
+    </p>
+</div>
+
+<compass-ui-cw-upload fieldId="upload" [displayError] = "errorText ? true : false" [errorText] = "errorText"
+    [buttonLabel]="'afsUploadSignatureLbl1' | translate" (getFile)="getFile($event)"
+    uploadText = "Attach documents in JPEG, BMP, or PDF formats only. Documents must be 10 MB or smaller in size">
+</compass-ui-cw-upload>
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,24 @@
+
+<compass-ui-header></compass-ui-header>
+<div class="container page-content">
+  <div class="row">
+    <div class="col-md-3 col-lg-4 col-xl-4 col-xxl-3 col-xxxl-3" *ngIf="showMenu">
+      <div class="wayfinder">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <compass-ui-non-stepper-menu [menuData]="state.menu ?? null" ></compass-ui-non-stepper-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 mt-lg-5 col-12 col-md-9 offset-lg-1 col-lg-7 col-xl-6 col-xxl-6 col-xxxl-5 mb-5">
+
+        <router-outlet></router-outlet>
+
+      <!-- <compass-ui-button-navigation></compass-ui-button-navigation> -->
+    </div>
+  </div>
+</div>
+<!-- <compass-ui-app-posts-list></compass-ui-app-posts-list>-->
+<compass-ui-footer></compass-ui-footer>
+<h5>Environment - {{currentEnv}}</h5>

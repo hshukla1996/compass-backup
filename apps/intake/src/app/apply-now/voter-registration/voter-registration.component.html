@@ -1,0 +1,38 @@
+<h1>{{ 'afsVoterRegGetStartedReady' | translate }}</h1>
+<p class="fw-bold">{{ 'afsVoterRegHelpfulInfo' | translate }}</p>
+
+<div class="alert alert-info">
+  <p class="fw-bold">{{ 'afsVoterRegDeadline' | translate }}</p>
+  <p>
+    {{ ovrDeadline[0]?.displayValue + ' ' + ('afsVoterRegDead1' | translate) + ' ' + electionDate[0]?.displayValue + ' ' + ('afsVoterRegDead2'
+    | translate) + ' ' + ovrDeadline[0]?.displayValue}}
+  </p>
+</div>
+
+<p>{{ 'afsVoterRegReqs' | translate }}</p>
+<ul>
+  <li>{{ 'afsVoterRegReq1' | translate }}</li>
+  <li>{{ 'afsVoterRegReq2' | translate }}</li>
+  <li>{{ 'afsVoterRegReq3' | translate }}</li>
+</ul>
+
+<p class="fw-bold">{{ 'afsVoterRegProcessed' | translate }}</p>
+<p>{{ 'afsVoterRegNextStep1' | translate }}</p>
+<p>{{ 'afsVoterRegNextStep2' | translate }}</p>
+<p>{{ 'afsVoterRegNextStep3' | translate }}</p>
+
+<!-- <compass-ui-cw-dpq-button [backButtonLabel]="'afsVoterRegCancel' | translate"
+  [nextButtonLabel]="'afsVoterRegGetStarted' | translate" (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button> -->
+<nav class="action-bar d-flex justify-content-between">
+  <div>
+    <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+      Cancel
+    </button>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" (click)="next()">
+     Get Started
+    </button>
+  </div>
+</nav>

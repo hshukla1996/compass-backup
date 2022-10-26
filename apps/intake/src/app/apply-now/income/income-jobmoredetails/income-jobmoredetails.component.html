@@ -1,0 +1,110 @@
+<form [formGroup]="incomeJobMoreDetailsForm">
+    <h1 class="standard-mb">Tell us a little more about this job.</h1>
+    
+    <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomeJobMoreDetailsForm" [formControlName]="'startDate'"
+      [fieldId]="'startDate'" label="When did {{currentUser.firstName}} start working at this job?"
+      requiredText="{{'lblrequired' | translate}}" [required]="true" [displayError]="isFieldValid('startDate')" [showFieldHelpText]="'If you do not know this date you can estimate. (MM/DD/YYYY)'"
+      [showError]="isFieldValid('startDate')" [errorMsg]="errorMap('startDate')">
+    </compass-ui-cw-datepicker>
+
+    <fieldset class="button-group standard-mb">
+      <legend>Is {{currentUser.firstName}} on strike for this job?</legend>
+      <div >
+        <div class="accordion page-tip mb-3" id="accordionMoreInfo">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                More Infomration
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionMoreInfo">
+              <div class="accordion-body">
+                <p>This information may be used to determine eligibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'onStrike'" [required]="true"
+        [radioButtonGroupName]="'onStrike'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="Yes"></compass-ui-cw-radiobutton>
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'onStrike'" [required]="true"
+        [radioButtonGroupName]="'onStrike'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="No">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+    <div class="card arrow-card standard-mb" *ngIf="incomeJobMoreDetailsForm.value.onStrike === 'Yes'">
+      <div class="card-body">
+              <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomeJobMoreDetailsForm" [formControlName]="'onStrikeStartDate'" [fieldId]="'onStrikeStartDate'"
+          label="What date did the strike begin?" requiredText="{{'lblrequired' | translate}}"
+          [required]="incomeJobMoreDetailsForm.value.onStrike === 'Yes'" [displayError]="isFieldValid('onStrikeStartDate')" [showFieldHelpText]="'MM/DD/YYYY'"
+      [showError]="isFieldValid('onStrikeStartDate')" [errorMsg]="errorMap('onStrikeStartDate')">
+        </compass-ui-cw-datepicker>
+      </div>
+
+    </div>
+
+    <div class="alert alert-info d-flex align-items-center standard-mb">
+      <p>LIHEAP/LIHWAP Applicants: After you enter income for the past month, the amount will be changed to a yearly figure. If
+      you've had significant changes in income over the past 12 months, you can give us 12 months of income. If you choose to
+      do this, you will have to provide proof of income for all 12 months.</p>
+    </div>
+
+    <compass-ui-text [fieldId]="'numberOfHoursWorkedPerWeek'" [FormGroup]="incomeJobMoreDetailsForm"
+      [fieldLabel]="'afsincomemorejobdetailsworkperweek' | translate: { name: currentUser.firstName}"
+      requiredText="{{'lblrequired' | translate}}" [maxLength]="2"
+      [requiredIndicator]="true" [displayError]="isFieldValid('numberOfHoursWorkedPerWeek')" 
+      [errorMsg]="errorMap('numberOfHoursWorkedPerWeek')" [errorText]="errorMap('numberOfHoursWorkedPerWeek')"
+      (keypress)="OnlyNumberAllowed($event)">
+    </compass-ui-text>
+
+    <compass-ui-cw-select [fieldId]="'frequency'" [FormGroup]="incomeJobMoreDetailsForm"
+      [fieldLabel]="'afsincomemorejobdetailsfrequency' | translate: { name: currentUser.firstName}"
+      requiredText="{{'lblrequired' | translate}}" [displayError]="isFieldValid('frequency')" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let pay of payList" value="{{pay.id}}">{{pay?.displayValue}}
+    </compass-ui-cw-select>
+
+    <compass-ui-text [fieldId]="'grossIncome'" [FormGroup]="incomeJobMoreDetailsForm" [type]="'currency'"
+      [fieldLabel]="'afsincomemorejobdetailsgrossincome' | translate: { name: currentUser.firstName}"
+      requiredText="{{'lblrequired' | translate}}" [maxLength]="10"
+      [requiredIndicator]="true" [displayError]="isFieldValid('grossIncome')" 
+      [errorMsg]="errorMap('grossIncome')" [errorText]="errorMap('grossIncome')" (keypress)="OnlyNumberAllowed($event)"
+      [fieldHelpText]="'This is the money {{currentUser.firstName}} gets before paying taxes and other deductions.'">
+    </compass-ui-text>
+
+    <div class="alert alert-info d-flex align-items-center standard-mb">
+      <div>
+        <p>
+          If {{currentUser.firstName}} has been working more or less than normal, enter the total income for the past 30 days.
+        </p>
+        <p>
+          For example, if {{currentUser.firstName}} worked 30 hours one week, 0 hours the next week, 25 hours the week after that,
+        and 50 hours last week, give the total income for the last 30 days.
+        </p>
+        <p>
+          If {{currentUser.firstName}} recently earned less or more than normal, pick the monthly pay frequency from the drop down
+        menu. Enter the total paid to {{currentUser.firstName}} for the last 30 days in the available box. (Ex: $50 week 1 + $0
+        week 2 + $100 week 3 = $150 this month.)
+        </p>
+      </div>
+    </div>
+
+    <compass-ui-text [fieldId]="'payRate'" [FormGroup]="incomeJobMoreDetailsForm"
+      [fieldLabel]="'afsincomemorejobdetailshourlypayrate' | translate: { name: currentUser.firstName}" [fieldHelpText]="'0.00-99.99'"  
+      [maxLength]="5" (keypress)="OnlyNumberAllowed($event)">
+    </compass-ui-text>
+
+    <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomeJobMoreDetailsForm" [formControlName]="'mostRecentPayDate'"
+      [fieldId]="'mostRecentPayDate'" label="What date {{currentUser.firstName}} last receive a paycheck for this job?"
+      requiredText="{{'lblrequired' | translate}}" [required]="true" [displayError]="isFieldValid('mostRecentPayDate')" 
+      [showError]="isFieldValid('mostRecentPayDate')" [errorMsg]="errorMap('mostRecentPayDate')" [showFieldHelpText]="'MM/DD/YYYY'">
+    </compass-ui-cw-datepicker>
+    
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+      (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+
+</form>

@@ -1,0 +1,45 @@
+<form [formGroup]="wasteWaterAddressForm">
+
+    <h1>What is your wastewater provider's mailing address?</h1>
+
+    <div class="form-group pt-3">
+        <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="wasteWaterAddressForm" [fieldLabel]="'Street Address'"
+            [requiredIndicator]="true" [errorText]="'Enter valid Address'" pattern="[#.0-9a-zA-Z\s,-]*"
+            [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'addressLine2'" [FormGroup]="wasteWaterAddressForm"
+            [fieldLabel]="'Street Address (2)'" pattern="[#.0-9a-zA-Z\s,-]*" [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'city'" [FormGroup]="wasteWaterAddressForm" [fieldLabel]="'City'"
+            [displayError]="isFieldValid('city')" [fieldType]="'nameType'" [maxLength]="26"
+            [errorText]="errorMap('city')">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="wasteWaterAddressForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'zip'" 
+            [FormGroup]="wasteWaterAddressForm"
+            [fieldLabel]="'ZIP Code'"
+            [errorText]="'Enter valid Zip'"
+            (keypress)="OnlyNumberAllowed($event)"
+            [maxLength]="5"
+            [displayError]="isFieldValid('zip')"
+            [errorMsg]="errorMap('zip')">
+        </compass-ui-text>
+
+    </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

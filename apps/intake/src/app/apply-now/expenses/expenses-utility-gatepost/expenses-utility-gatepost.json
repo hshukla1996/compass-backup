@@ -1,0 +1,173 @@
+{
+    "questionText": "Tell us more about your household's home and utilities expenses.",
+    "toolTip": "",
+    "subHeading": "Select all that apply for the members of your household.",
+    "requiredText": "",
+    "questionAnswers": [
+        {
+            "legend": "Pays for heating or cooling",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "payForHeatingOrCooling"
+        },
+        {
+            "legend": "Gets a heating or cooling bill separate from the rent or mortgage bill",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForRentOrMortgage"
+        },
+        {
+            "legend": "Meals are included in the household rent",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "mealsIncludedInRent"
+        },
+        {
+            "legend": "Pays for rent or mortgage (including lot rent and condo fees)",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForRentOrMortgage"
+        },
+        {
+            "legend": "Pays for city, county, or school property taxes",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForPropertyTaxes"
+        },
+        {
+            "legend": "Pays for homeowner's property insurance",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForHomeInsurance"
+        },
+        {
+            "legend": "Pays for telephone",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForTelephone"
+        },
+        {
+            "legend": "Pays for electric",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForElectric"
+        },
+        {
+            "legend": "Pays for gas",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForGas"
+        },
+        {
+            "legend": "Pays for oil, coal, or wood for heat",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForOilCoalWood"
+        },
+        {
+            "legend": "Pays for water",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForWater"
+        },
+        {
+            "legend": "Pays for sewage",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForSewerage"
+        },
+        {
+            "legend": "Pays for garbage removal",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForGarbage"
+        },
+        {
+            "legend": "Paid for utility installation this month",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForUtilityInstallationThisMonth"
+        },
+        {
+            "legend": "Pays for any other utilities such as kerosene",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "doesAnyonePayForOtherUtilities"
+        }
+    ]
+}

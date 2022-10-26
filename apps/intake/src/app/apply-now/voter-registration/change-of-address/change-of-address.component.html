@@ -1,0 +1,37 @@
+<form [formGroup]="changeOfAddressGroup">
+  <h1>{{ 'afsAddressChangeTitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="street" ngDefaultControl [FormGroup]="changeOfAddressGroup"  (keypress)="checkChar($event)" [maxLength]="26" formControlName="street"
+      [fieldLabel]="'afsAddressChangeLbl1' | translate" [requiredIndicator]="true"
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('street')">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="city" ngDefaultControl [FormGroup]="changeOfAddressGroup"   (keypress)="checkCityChar($event)" [maxLength]="26" formControlName="city"
+      [fieldLabel]="'afsAddressChangeLbl2' | translate" [requiredIndicator]="true"
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('city')">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="state" fieldId="state"  [requiredIndicator]="true"
+      [fieldLabel]="'afsAddressChangeLbl3' | translate" [requiredText]="'lblrequired' | translate"
+      [FormGroup]="changeOfAddressGroup" [errorMsg]="'This is required.'" [displayError]="isFieldValid('state')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="zip" [maxLength]="5" ngDefaultControl [FormGroup]="changeOfAddressGroup" formControlName="zip"
+      [fieldLabel]="'afsAddressChangeLbl4' | translate" [requiredIndicator]="true"  (keypress)="OnlyNumberAllowed($event)"
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('zip')">
+    </compass-ui-text>
+  </div>
+
+  <compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

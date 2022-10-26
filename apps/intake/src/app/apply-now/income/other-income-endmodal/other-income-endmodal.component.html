@@ -1,0 +1,12 @@
+<form [formGroup]="otherIncomeRemoveForm">
+    <h1 class="standard-mb">To remove this income, we need some more information.</h1>
+
+    <compass-ui-cw-datepicker [formControlName]="'dateOfLastPay'" [fieldId]="'dateOfLastPay'" label="Date of Last Pay"
+    [requiredText]="'lblrequired' | translate" [required]="requiredFields.indexOf('dateOfLastPay')>-1" [displayError]="isFieldValid('dateOfLastPay')" [showError]="isFieldValid('dateOfLastPay')"
+    showFieldHelpText="MM/DD/YYYY" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+    </compass-ui-cw-datepicker>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'cancel'| translate}}" nextButtonLabel="Remove" (next)="remove()"
+        (back)="cancel()">
+    </compass-ui-cw-dpq-button>
+</form>

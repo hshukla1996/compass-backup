@@ -1,0 +1,109 @@
+<form [formGroup]="householdReviewAddressForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="card-body"> -->
+    <h1 class="standard-mb">We have reviewed the address you entered.</h1>
+    <div class="alert alert-info standard-mb">
+        <p class="text-left">
+        We recommend using the USPS Formatted Address if it matches what you entered.<br>
+        <br>
+        An accurate address helps us send your application to the correct office for processing.
+
+        </p>
+    </div>
+    <!-- <p class="form-subtitle standard-mb">Select the closest match from the USPS Formatted Address(es). If none of the suggested choices are correct, select the
+    address you entered.</p> -->
+    <p>Select the closest match from the USPS Formatted Address(es). If none of the suggested choices are correct, select the
+    address you entered.<br>
+   </p>
+  <cw-field-error-display [displayError]="mailingAddError" errorMsg="Please select the Mailing address">
+  </cw-field-error-display>
+  <cw-field-error-display [displayError]="applicantAddError" errorMsg="Please select the applicant address">
+  </cw-field-error-display>
+  <div  *ngIf="validatedAddress.primary">
+    <hr>
+    <h2>Household Address</h2>
+
+    <label for="uspsradio" class="form-label">USPS Address</label>
+
+    <div class="card standard mb-md-4 mb-3">
+        <div class="card-body">
+             <div class="form-check">
+                <input class="form-check-input" type="radio" value="uspsform" name="uspsformat" id="uspsradio"
+                    formControlName="uspsformat">
+                <label class="form-check-label" for="uspsradio">
+
+                     {{validatedAddress.primary.street1}}, {{validatedAddress.primary.street2 ? +validatedAddress.primary.street2 + ',' : null}}
+                  {{ validatedAddress.primary.city}}, {{ validatedAddress.primary.state}}, {{ validatedAddress.primary.zip}}-{{validatedAddress.primary.zipExt}}, {{validatedAddress.primary.county}}
+
+                </label>
+            </div>
+        </div>
+    </div>
+    <label for="householdRadio" class="form-label">
+        Address You Entered
+    </label>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" type="radio" value="enteredAddress" name="uspsformat" id="householdRadio"
+            formControlName="uspsformat">
+        <label class="form-check-label" for="householdRadio">
+            {{houseHoldApplicantAddress.addressLine1 | uppercase}}, {{houseHoldApplicantAddress.addressLine2 ? (houseHoldApplicantAddress.addressLine2 | uppercase)+ ',' : null}}
+            {{houseHoldApplicantAddress.city | uppercase}},
+            {{houseHoldApplicantAddress.state | uppercase}}, {{houseHoldApplicantAddress.zip}}, {{countyValue | uppercase}}
+        </label>
+    </div>
+</div>
+  <div *ngIf="houseHoldMailingAddress.addressLine1 && validatedAddress.mailing">
+    <hr />
+    <h2>Mailing Address</h2>
+    <label for="uspsmailingform" class="form-label">USPS Formatted Address</label>
+
+
+    <div class="card standard mb-md-4 mb-3">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="addr" id="optAdd1" value="uspsmailingform"
+                    formControlName="addr" >
+                <label class="form-check-label" for="optAdd1">
+
+                                     {{validatedAddress.mailing.street1}}, {{validatedAddress.mailing.street2 ? validatedAddress.mailing.street2 + ',' : null}} {{validatedAddress.mailing.city}},
+                                     {{validatedAddress.mailing.state}},
+                                     {{validatedAddress.mailing.zip}}-{{validatedAddress.mailing.zipExt}}, {{validatedAddress.mailing.county}}
+
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+    <label for="enteredMailing" class="form-label">Address You Entered</label>
+    <div class="card standard mb-md-4 mb-3">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="addr" id="optAdd2" value="enteredMailing"
+                    formControlName="addr">
+
+                <label class="form-check-label" for="optAdd2">
+                    {{houseHoldMailingAddress.addressLine1 | uppercase}}, {{houseHoldMailingAddress.addressLine2 ? (houseHoldMailingAddress.addressLine2 | uppercase) + ',' : null}} {{houseHoldMailingAddress.city | uppercase}},
+                    {{houseHoldMailingAddress.state | uppercase}},
+                    {{houseHoldMailingAddress.zip}}
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <p>If none of the addresses are correct, including the address you entered, you can go back to update your address.
+    </p>
+  </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

@@ -1,0 +1,102 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays" [formGroup]='generalDetailsForm'
+  (ngSubmit)="onSubmit()" #generalDetailsFormEle="ngForm">
+      <h1 *ngIf="headOftheHouse"> {{'afsaskques' | translate: { name: currentUser.firstName} }}</h1>
+      <h1 *ngIf="!headOftheHouse"> {{'afsaskNextFillDetails' | translate: { name:
+        currentUser.firstName} }}</h1>
+        <compass-ui-cw-select [fieldId]="'citizenship'"
+          [fieldLabel]="'afscitizenstatus' | translate: { name: currentUser.firstName}" [requiredText]="'(required)'"
+          [isVisible]="fieldDisplays.citizenship" [FormGroup]="generalDetailsForm"
+          [requiredIndicator]="requiredFields.indexOf('citizenship')>-1" [displayError]="isFieldValid('citizenship')"
+          [errorMsg]="errorMap('citizenship')">
+          <option value="" selected>- Select One -</option>
+          <option *ngFor="let citizenship of citizenships" value={{citizenship.id}}>{{citizenship.displayValue}}
+          </option>
+        </compass-ui-cw-select>
+      <div class="alert alert-info">
+        <p>If you are a citizen born outside the U.S. or U.S. territories, or a naturalized citizen, select U.S.
+          Citizen.</p>
+      </div>
+        <compass-ui-cw-select [fieldId]="'maritalStatus'"
+          [fieldLabel]="'afsmartialstatus' | translate: { name: currentUser.firstName}"
+          [isVisible]="fieldDisplays.maritalStatus" [requiredText]="'(required)'" [FormGroup]="generalDetailsForm"
+          [displayError]="isFieldValid('maritalStatus')" [errorMsg]="errorMap('maritalStatus')"
+          [requiredIndicator]="requiredFields.indexOf('maritalStatus')>-1">
+          <option value="" selected>- Select One -</option>
+          <option *ngFor="let maritalstatus of maritalStatusTypes" value="{{maritalstatus.id}}">
+            {{maritalstatus.displayValue}}</option>
+        </compass-ui-cw-select>
+      <div class="card arrow-card" *ngIf="selectedMaritalStatus ==='6'">
+        <div class="card-body">
+            <compass-ui-text [fieldId]="'spouseName'" [FormGroup]="generalDetailsForm"
+              [fieldLabel]="'afsspousename' | translate: { name: currentUser.firstName}" [maxLength]="26"
+              pattern="[a-zA-Z]*"
+              [requiredIndicator]="requiredFields.indexOf('spouseName')>-1 && selectedMaritalStatus ==='6'"
+              [fieldType]="'nameType'">
+            </compass-ui-text>
+              <compass-ui-cw-datepicker [isVisible]="fieldDisplays.spouseDeathDate" ngDefaultControl
+                label="{{'afsspousedeath' | translate: { name: currentUser.firstName} }}" [maxRange]="maxDateRange"
+                [displayError]="isFieldValid('spouseDeathDate')" [errorMsg]="errorMap('spouseDeathDate') | translate"
+                requiredText="{{'(required)'}}" [formControlName]="'spouseDeathDate'"
+                [required]="requiredFields.indexOf('spouseDeathDate')>-1 && selectedMaritalStatus ==='6'">
+              </compass-ui-cw-datepicker>
+        </div>
+      </div>
+      <div class="card arrow-card" *ngIf="['4','5','7'].indexOf(selectedMaritalStatus) > -1">
+        <div class="card-body">
+          <div class="mb-3">
+            <compass-ui-cw-datepicker ngDefaultControl label="What was the date of separation?"
+              [maxRange]="maxDateRange" [displayError]="isFieldValid('dateOfSeperation')"
+              [errorMsg]="errorMap('dateOfSeperation') | translate"
+              [formControlName]="'dateOfSeperation'"
+                                      showFieldHelpText="MM/DD/YYYY"
+              [required]="requiredFields.indexOf('dateOfSeperation')>-1 && ['4','5','7'].indexOf(selectedMaritalStatus) > -1">
+            </compass-ui-cw-datepicker>
+          </div>
+        </div>
+      </div>
+      <compass-ui-cw-select [fieldId]="'qualification'"
+        [fieldLabel]="'afsqualification' | translate: { name: currentUser.firstName}" [requiredText]="'(required)'"
+        [FormGroup]="generalDetailsForm" (currentValueChange)="dropdownValueChanged($event)"
+        [displayError]="isFieldValid('qualification')" [errorMsg]="errorMap('qualification')"
+        [isVisible]="fieldDisplays.qualification"
+                            [requiredIndicator]="requiredFields.indexOf('qualification')>-1">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let education of educations" value="{{education.id}}">{{education.displayValue
+          }}</option>
+
+
+      </compass-ui-cw-select>
+      <fieldset class="button-group" *ngIf="fieldDisplays.runaway">
+        <legend>{{'afsrunaway' | translate: { name: currentUser.firstName} }}<span>(required)</span></legend>
+        <compass-ui-cw-radiobutton [showError]="isFieldValid('runaway')" ngDefaultControl
+          [formControlName]="'runaway'" [required]="true" [radioButtonGroupName]="'runaway'"
+          [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="{{'lblyes'| translate}}">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton [showError]="isFieldValid('runaway')" ngDefaultControl
+          [formControlName]="'runaway'" [required]="true" [radioButtonGroupName]="'runaway'"
+          [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No">
+        </compass-ui-cw-radiobutton>
+        <div>
+          <cw-field-error-display [displayError]="isFieldValid('runaway')" errorMsg="{{errorMap('runaway')}}">
+          </cw-field-error-display>
+        </div>
+      </fieldset>
+      <div class="alert alert-info mt-3">
+        <dl class="text-left">
+          <p>A runaway is a minor (under the age of 18) who is missing by choice from the household without the permission of a
+          parent or legal guardian.</p>
+        </dl>
+      </div>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+</form>

@@ -1,0 +1,125 @@
+<form [formGroup]="addressForm">
+    <h1>Tell us the contact information for
+        {{currentUserName}}'s policy.</h1>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('addressLine1')>-1">
+        <compass-ui-text [FormGroup]="addressForm" [fieldId]="'addressLine1'" [fieldType]="'addressType'"
+            ngDefaultControl [formControlName]="'addressLine1'"
+            fieldLabel="{{currentType==current?('Insurance Street Address'):'Prior Insurance Street Address'}}" 
+            [maxLength]="26" 
+           >
+        </compass-ui-text>
+    </div>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('addressLine2')>-1">
+        <compass-ui-text [FormGroup]="addressForm" [fieldId]="'addressLine2'" [fieldType]="'addressType'"
+            ngDefaultControl [formControlName]="'addressLine2'"
+            fieldLabel="{{currentType==current?('Insurance Street Address (2)'):'Prior Insurance Street Address (2)'}}"
+            [maxLength]="26" 
+           >
+        </compass-ui-text>
+    </div>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('city')>-1">
+        <compass-ui-text [FormGroup]="addressForm" [fieldId]="'city'" [fieldType]="'cityType'"
+             ngDefaultControl [formControlName]="'city'"
+            fieldLabel="{{(currentType==current)?'Insurance City':'Prior Insurance City'}}"  [maxLength]="16" 
+           >
+        </compass-ui-text>
+    </div>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('state')>-1">
+        <compass-ui-cw-select [fieldId]="'state'" fieldLabel="{{currentType==current?'Insurance State':'Prior Insurance State'}}" [FormGroup]="addressForm"
+       errorMsg="{{'basidDetailRequiredMessage' | translate}}" 
+         
+        >
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let x of states" value="{{x.id}}">{{x.displayValue}}</option>
+        </compass-ui-cw-select>
+    </div>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('zip')>-1">
+        <compass-ui-text [FormGroup]="addressForm" [fieldId]="'zip'" [fieldType]="'numberType'"
+             ngDefaultControl [formControlName]="'zip'"
+            fieldLabel="{{currentType==current?'Insurance ZIP Code':'Prior Insurance ZIP Code'}}"  [maxLength]="5"
+           >
+        </compass-ui-text>
+    </div>
+    <div class="mb-3" *ngIf="optionalFields.indexOf('phone')>-1">
+        <compass-ui-text [FormGroup]="addressForm" [fieldId]="'phone'" 
+             ngDefaultControl [formControlName]="'phone'"
+            fieldLabel="{{currentType==current?'Insurance Company Phone Number':'Prior Insurance Company Phone Number'}}" errorText="{{'basidDetailRequiredMessage' | translate}}"
+            [maxLength]="14" type="phone"
+           >
+        </compass-ui-text>
+    </div>
+
+    <fieldset class="button-group mb-3" *ngIf="optionalFields.indexOf('isPolicyAddressSame')>-1">
+        <ng-container *ngIf="currentType=='C'">
+            <legend>Is {{currentUserName}}'s address on this policy the
+                same as the address entered earlier?</legend>
+        </ng-container>
+        <ng-container *ngIf="currentType=='P'">
+            <legend>Was {{currentUserName}}'s address on this policy the
+                same as the address entered earlier?</legend>
+        </ng-container>
+       
+        <compass-ui-cw-radiobutton ngDefaultControl
+           
+            [formControlName]="'isPolicyAddressSame'" [radioButtonGroupName]="'isPolicyAddressSame'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'Yes'"
+            [radioBtnValue]="'Y'" [radioBtnId]="'isPolicyAddressSame_Y'">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton ngDefaultControl
+            
+            [formControlName]="'isPolicyAddressSame'" [radioButtonGroupName]="'isPolicyAddressSame'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'No'"
+            [radioBtnValue]="'N'" [radioBtnId]="'isPolicyAddressSame_N'">
+        </compass-ui-cw-radiobutton>
+    </fieldset> 
+  
+     <div id="otherAddress" *ngIf="visible" class="card arrow-card"> 
+<div class="card-body">
+        <div class="mb-3" *ngIf="optionalFields.indexOf('otheraddressLine1')>-1">
+            <compass-ui-text [FormGroup]="addressForm" [fieldId]="'otheraddressLine1'" [fieldType]="'addressType'"
+                 ngDefaultControl [formControlName]="'otheraddressLine1'"
+                fieldLabel="Street Address" errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="26"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3" *ngIf="optionalFields.indexOf('otheraddressLine2')>-1">
+            <compass-ui-text [FormGroup]="addressForm" [fieldId]="'otheraddressLine2'" [fieldType]="'addressType'"
+                ngDefaultControl [formControlName]="'otheraddressLine2'"
+                fieldLabel="Street Address (2)" errorText="{{'basidDetailRequiredMessage' | translate}}"
+                [maxLength]="26"
+               >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3" *ngIf="optionalFields.indexOf('othercity')>-1">
+            <compass-ui-text [FormGroup]="addressForm" [fieldId]="'othercity'" [fieldType]="'cityType'"
+                 ngDefaultControl [formControlName]="'othercity'"
+                fieldLabel="City" errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="16"
+                >
+            </compass-ui-text>
+        </div>
+      
+            <div class="mb-3" *ngIf="optionalFields.indexOf('otherstate')>-1">
+                <compass-ui-cw-select [fieldId]="'otherstate'" fieldLabel="State" [FormGroup]="addressForm">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let x of states" value="{{x.id}}">{{x.displayValue}}</option>
+                </compass-ui-cw-select>
+            </div>
+       
+        <div class="mb-3" *ngIf="optionalFields.indexOf('otherzip')>-1">
+            <compass-ui-text [FormGroup]="addressForm" [fieldId]="'otherzip'" [fieldType]="'numberType'"
+               ngDefaultControl [formControlName]="'otherzip'"
+                fieldLabel="Zip" errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="5"
+                >
+            </compass-ui-text>
+        </div>
+</div>
+    </div>
+
+
+
+
+
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,38 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays" [formGroup]='adultFosterCareDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Was {{currentUser.firstName}} in foster care at age 18 or older? <span>(required)</span></h1>
+  <div class="form-group">
+    <fieldset class="button-group" *ngIf="fieldDisplays.fosterCareAge">
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'fosterCareAge'" [required]="true"
+        [radioButtonGroupName]="'fosterCareAge'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="Yes" value="Yes">
+      </compass-ui-cw-radiobutton>
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'fosterCareAge'"
+        [radioButtonGroupName]="'fosterCareAge'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+        radioLabel="No" value="No">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+  </div>
+  <div class="card arrow-card mt-4" *ngIf="adultFosterCareDetailsForm.get('fosterCareAge').value==='Yes'">
+    <div class="card-body">
+      <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'In what state did '+currentUser.firstName+' receive foster care?'"
+        [requiredText]="'(required)'" [FormGroup]="adultFosterCareDetailsForm"
+        [isVisible]="fieldDisplays.state"
+        [requiredIndicator]="requiredFields.indexOf('state')>-1">
+        <option value="" selected>- Selection One -</option>
+        <option *ngFor="let state of this.states" value="{{state.id}}">{{state.displayValue}}</option>
+      </compass-ui-cw-select>
+    </div>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

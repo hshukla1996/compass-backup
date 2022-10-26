@@ -1,0 +1,80 @@
+import { createAction, props } from '@ngrx/store';
+
+
+export const getPACounties = createAction('[store] Get PACounties');
+export const getCountries = createAction("[store] Get Countries");
+export const getCitizenship = createAction("[store] Get Citizenship");
+export const getDocumentTypes = createAction("[store] Get DocumentTypes");
+export const getMaritalStatus = createAction("[store] Get MaritalStatus");
+export const getEducations = createAction("[store] Get Educations");
+export const getSchoolDistricts = createAction('[store] Get SchoolDistricts' );
+export const getSchoolGrades = createAction("[store] Get SchoolGrades");
+export const getServiceBranches = createAction("[store] Get Service Branches");
+
+export const getStates = createAction('[store] Get States');
+export const getDrinkingWater = createAction('[store] Get DrinkingWater');
+export const getWasteWater = createAction('[store] Get WasteWater');
+export const getAmountPeriodForTribes = createAction('[store] Get Amount Period for tribes');
+export const getPays = createAction('[store] Get Pays');
+export const getRelationships = createAction('[store] Get Relationships');
+export const getElectricCompany = createAction('[store] Get ElectricCompanies');
+export const getInsuranceNameType = createAction('[store] Get getInsuranceNameType' );
+export const getSuffix = createAction("[store] Get Suffix");
+export const getTypeofFacility = createAction("[store] Get Facilities");
+export const getSchoolTypes = createAction("[store] Get SchoolTypes");
+export const getNSLPSchoolTypes = createAction("[store] Get NSLPSchoolTypes");
+export const getContactRoles = createAction("[store] Get ContactRoles");
+
+export const getImmunizations = createAction("[store] Get Immunizations");
+export const getNumberOfExpectedBabies = createAction("[store] Get Number of Expected Babies");
+export const getBenefitTypes$ = createAction("[store] Get benefit Types");
+export const getRaces = createAction("[store] Get Races");
+export const getTownShip = createAction("[store] Get Town Ship");
+export const getLivSituation = createAction("[store] Get Living Situation");
+export const getHouSituation = createAction("[store] Get Household Situation");
+
+export const getMaleInvRelations = createAction("[store] Get Male InvSituation");
+export const getFemaleInvRelations = createAction("[store] Get Household Situation");
+export const getParentSpouseOrBoth = createAction("[store] Get Absent Relative detail");
+export const getReferralPhonenumbers = createAction("[store] Get Referral Phone Numbers");
+export const getCountyOfPlacement = createAction("[store] Get County of Placement");
+export const getVeteranStatus = createAction("[store] Get Veteran Status");
+export const getDisabilityType = createAction("[store] Get Disability Type");
+export const getDisabilitySsi = createAction("[store] Get Disability SSI");
+export const getChildDisability = createAction("[store] Get Child Disability");
+export const getSecurityQuestions = createAction("[store] Get Security Questions");
+export const getMedicalService = createAction("[store] Get Medical Service");
+export const getYesNoValues = createAction("[store] Get Yes No Values");
+export const getOtherIncomeTypes = createAction("[store] Get Other Income Types");
+export const getHeatingSource = createAction("[store] Get HeatingSource");
+export const getProviderName = createAction("[store] Get ProviderName");
+export const getHeatingSourcesprovider = createAction("[store] Get HeatingSourcesProvider");
+export const getNeedElectricity = createAction("[store] Get NeedElectricity");
+export const getMedicalExpenses = createAction("[store] Get MedicalExpenses");
+export const getDeductableSources = createAction("[store] Get DeductableSources");
+export const getSharedExpenses = createAction("[store] Get SharedExpenses");
+export const getChildCareDays = createAction("[store] Get ChildCareDays")
+export const getMAProviderNumbers = createAction('[store] Get MAProviderNumbers'); 
+export const getNonMAProviderNumbers = createAction('[store] Get NonMAProviderNumbers');
+export const getMaleRelationship = createAction("[store] Get Male Relationships");
+export const getFemaleRelationship = createAction("[store] Get Female Relationships");
+export const getHouseHoldExpensesPaid = createAction("[store] Get House Hold Expenses");
+export const getReasonForEmploymentEnd = createAction("[store] Get County of Placement");
+export const getUnitTypes = createAction("[store] Get Unit Type");
+export const getPoliticalParties = createAction("[store] Get Political Parties");
+export const getElectionDueDates = createAction("[store] Get Election DueDates");
+export const getSituations = createAction("[store] Get Situations");
+export const getResourceTypes = createAction("[store] Get Resource Types ");
+export const getCompanyNames = createAction("[store] Get CompanyNames");
+export const getPolicyTypes = createAction("[store] Get PolicyTypes");
+export const getPolicyCoverage = createAction("[store] Get PolicyCoverage");
+export const getEmployerPolicyCoverage = createAction("[store] Get Employer PolicyCoverage");
+export const getEmployerPaidPremiumPolicy=createAction("[store] Get Employer EmployerPaidPremiumPolicy");
+export const getEmployerChangePolicy=createAction("[store] Get Employer EmployerChangePolicy");
+export const getPolicyEndCoverage = createAction("[store] Get PolicyEndCoverage");
+export const getApplicationLanguage = createAction("[store] Get ApplicationLanguage");
+
+export const getLGBTQQuestions = createAction("[store] Get LGBTQQuestions");
+export const getLGBTQAnswers = createAction("[store] Get LGBTQAnswers");
+export const getBenefits = createAction("[store] Get Benefits");
+export const getProgramServices = createAction("[store] Get ProgramServices");

@@ -1,0 +1,371 @@
+<form class="form-horizontal" [formGroup]="notificationPreferencesForm">
+    <h1>Your Notification Preferences</h1>
+    <div class="accordion page-tip mb-3" id="notificationPrefTip">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="notificationPrefHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#notificationPrefBody" aria-expanded="true" aria-controls="notificationPrefBody">
+                    More About Notification Preferences
+                </button>
+            </h2>
+            <div id="notificationPrefBody" class="accordion-collapse collapse" aria-labelledby="notificationPrefHead"
+                data-bs-parent="#notificationPrefTip">
+                <div class="accordion-body">
+                    <hr>
+                    <p>Notification Preferences is DHS's new initiative to allow recipients to sign-up to receive text notifications related to their account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion mb-3 data-accordion pref">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#langSelCardCollArea" aria-expanded="true" aria-controls="langSelCardCollArea">
+                    <h2 class="card-title text-capitalize">
+                        <span class="d-block">Language Preferences</span>
+                        <span class="sm-label">{{languageSelected}}</span>
+                        <!-- Displays the current selected language preference for the account-->
+                    </h2>
+                </button>
+            </div>
+            <div class="accordion-collapse collapse" id="langSelCardCollArea">
+                <div class="accordion-body">
+                    <hr>
+                    <label for="languageSelect" id="lbl-languageSelect" class="p-style-label">
+                        Please indicate your preferred language for text notifications.
+                    </label>
+                    <select class="form-select" id="languageSelect" formControlName="languagePreference" #selectedLang
+                        (change)="selectedLanguage(selectedLang.value)">
+                        <option value="" selected>--Select one--</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                    </select>
+                </div>
+                <div *ngIf="isFieldValid('languagePreference')" class="error-text"><i
+                        class="fa-regular fa-circle-exclamation"></i>
+                    This is required.</div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion mb-3 data-accordion pref">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#textMsgCardCollArea" aria-expanded="true" aria-controls="textMsgCardCollArea">
+                    <h2 class="card-title text-capitalize">
+                        <span class="d-block">Text Message Notifications</span>
+                        <span class="badge rounded-pill bg-muted text-uppercase">not enrolled</span>
+                        <!-- change bg-muted to bg-success and text in span to enrolled when participant is enrolled-->
+                        <span class="sm-label px-2 d-none">(717) 867-5309</span>
+                        <!-- remove d-none class when participant is enrolled-->
+                    </h2>
+                </button>
+            </div>
+            <div class="accordion-collapse collapse" id="textMsgCardCollArea">
+                <div class="accordion-body">
+                    <hr>
+                    <div class="conditional-section">
+                        <!-- add collapsed class if participant is already enrolled -->
+                        <fieldset class="button-group">
+                            <legend class="p-style-label">Would you like to receive text message notifications?</legend>
+                            <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="isTextNotifUpdate(true)"
+                                [showError]="isFieldValid('receiveTextMessages')"
+                                [formControlName]="'receiveTextMessages'" [required]="true"
+                                [radioButtonGroupName]="'receiveTextMessages'" [labelClass]="'btn btn-outline-tertiary'"
+                                [radioClass]="'btn-check'" radioLabel="Yes"></compass-ui-cw-radiobutton>
+                            <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="isTextNotifUpdate(false)"
+                                [showError]="isFieldValid('receiveTextMessages')"
+                                [formControlName]="'receiveTextMessages'" [required]="true"
+                                [radioButtonGroupName]="'receiveTextMessages'" [labelClass]="'btn btn-outline-tertiary'"
+                                [radioClass]="'btn-check'" radioLabel="No">
+                            </compass-ui-cw-radiobutton>
+                        </fieldset>
+                        <div *ngIf="isFieldValid('receiveTextMessages')" class="error-text"><i
+                                class="fa-regular fa-circle-exclamation"></i>
+                            This is required.</div>
+                    </div>
+                    <div class="conditional-section" *ngIf="isTextUpdate">
+                        <!-- remove collapsed class from this div if yes is selected, hide by default-->
+                        <p class="fw-bold mt-3">Select which type of notification you would like to receive:</p>
+                        <div class="card standard mb-3">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="renewal" id="chkTxtRnwlRem"
+                                        [checked]="renewalReminder" (change)="checkboxChange($event)">
+                                    <label class="form-check-label" for="chkTxtRnwlRem">
+                                        Renewal Reminders
+                                    </label>
+                                </div>
+                                <div class="accordion page-tip mb-3" id="txtRnwlRemTip">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="txtRnwlRemHead">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#txtRnwlRemColl" aria-expanded="true" 
+                                                aria-controls="collapseOne">
+                                                More about Renewal Reminders
+                                            </button>
+                                        </h2>
+                                        <div id="txtRnwlRemColl" class="accordion-collapse collapse"
+                                            aria-labelledby="txtRnwlRemHead" data-bs-parent="#txtRnwlRemTip"
+                                            aria-expanded="false">
+                                            <div class="accordion-body">
+                                                <p>Renewal Reminders will send you text messages about upcoming renewal(s) due related to your Supplemental Nutrition Assistance Program (SNAP - formerly known as Food Stamps), Medical Assistance (MA), and Cash Assistance (CA).</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card standard mb-3">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="verification"
+                                        id="chkTxtVerifRem" [checked]="verifReminder" (change)="checkboxChange($event)">
+                                    <label class="form-check-label" for="chkTxtVerifRem">
+                                        Verification Reminders
+                                    </label>
+                                </div>
+                                <div class="accordion page-tip mb-3" id="txtVerifRemTip">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="txtVerifRemHead">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#txtVerifRemColl" aria-expanded="true" 
+                                                aria-controls="collapseOne">
+                                                More about Verification Reminders
+                                            </button>
+                                        </h2>
+                                        <div id="txtVerifRemColl" class="accordion-collapse collapse"
+                                            aria-labelledby="txtVerifRemHead" data-bs-parent="#txtVerifRemTip"
+                                            aria-expanded="false">
+                                            <div class="accordion-body">
+                                                <p>Verification Reminders will send you text messages about in-progress verification documents that are due to your case worker.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card standard mb-3">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="childcare"
+                                        id="chkChildCareRem" [checked]="childcareReminder"
+                                        (change)="checkboxChange($event)">
+                                    <label class="form-check-label" for="chkChildCareRem">
+                                        Child Care Notifications
+                                    </label>
+                                </div>
+                                <div class="accordion page-tip mb-3" id="txtChildCareTip">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="txtChildCareHead">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#txtChildCareColl" aria-expanded="true" 
+                                                aria-controls="collapseOne">
+                                                More About Child Care Notifications
+                                            </button>
+                                        </h2>
+                                        <div id="txtChildCareColl" class="accordion-collapse collapse"
+                                            aria-labelledby="txtChildCareHead" data-bs-parent="#txtChildCareTip"
+                                            aria-expanded="false">
+                                            <div class="accordion-body">
+                                                <p>Child Care Notifications will send you text messages about your Child Care Works subsidy case. If your Child Care eligibility is not linked to your CASH or SNAP case, you will need to contact your Early Learning Resource Center to sign up for text messages.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isFieldValid('reminderChk')" class="error-text"><i
+                                class="fa-regular fa-circle-exclamation"></i>
+                            This is required.</div>
+                        <div class="mb-3">
+                            <!-- should be compass-ui-text component, but component does not appear to be an option for pushing a class to the label and a different label class is needed to match the wireframe-->
+                            <label for="phone" class="p-style-label">Please provide your mobile number in the field
+                                below.</label>
+                            <input type="tel" id="phone"
+                                class="{{isFieldValid('phone') ? 'form-control error' : 'form-control'}}" maxlength="10"
+                                (keypress)="OnlyNumberAllowed($event)" formControlName="phone">
+                            <div class="form-text">Once you click “Next”, we will validate that your mobile number
+                                accepts text messages</div>
+                            <cw-field-error-display [displayError]="isFieldValid('phone')"
+                                errorMsg="Phone number is required">
+                            </cw-field-error-display>
+                        </div>
+                        <hr>
+                        <div class="accordion page-tip mb-3" id="txtTermsTip">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="txtTermsHead">
+                                    <button class="accordion-button collapsed" type="button" 
+                                        data-bs-toggle="collapse" data-bs-target="#txtTermsColl" aria-expanded="true" 
+                                        aria-controls="collapseOne">
+                                        Text Messaging Terms and Conditions
+                                    </button>
+                                </h2>
+                                <div id="txtTermsColl" class="accordion-collapse collapse"
+                                    aria-labelledby="txtTermsHead" data-bs-parent="#txtTermsTip" 
+                                    aria-expanded="false">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                I understand that the Department of Human Services or its designees may contact me via methods including email and text messaging to help process my application or request feedback on the application process. If I do not want email or text messages, I understand the Department will still process my application.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <compass-ui-cw-checkbox [id]="'txt-terms-brdrlss-ck'" [textStyle]="'borderless-check'"
+                            [isChecked]="termsConditions" (inputModelChange)="onCheckboxChange($event)"
+                            [label]="'I have read and reviewed the Text Messaging Terms and Conditions.'">
+                        </compass-ui-cw-checkbox>
+                        <div *ngIf="isFieldValid('terms')" class="error-text"><i
+                                class="fa-regular fa-circle-exclamation"></i>
+                            Please accept terms</div>
+                    </div>
+                    <div class="conditional-section collapsed">
+                        <!-- remove collapsed class from this div if text is already enrolled -->
+                        <p>Notifications are being sent to the number above.</p>
+                        <div class="row action-btns">
+                            <div class="col-6">
+                                <button class="btn btn-borderless btn-constructive">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-borderless btn-destructive">
+                                    <i class="fa-regular fa-trash-can"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion mb-3 data-accordion pref">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#emailCardCollArea" aria-expanded="true" aria-controls="emailCardCollArea">
+                    <h2 class="card-title text-capitalize">
+                        <span class="d-block">Email Notifications</span>
+                        <span class="badge rounded-pill bg-muted text-uppercase">not enrolled</span>
+                        <!-- change bg-muted to bg-success and text in span to enrolled when participant is enrolled-->
+                        <span class="sm-label px-2 d-none">s-markov@gmail.com</span>
+                        <!-- remove d-none class when participant is enrolled-->
+                    </h2>
+                </button>
+            </div>
+
+            <div class="accordion-collapse collapse" id="emailCardCollArea">
+                <div class="accordion-body">
+                    <hr>
+                    <div class="conditional-section">
+                        <!-- add collapsed class if participant is already enrolled -->
+                        <fieldset class="button-group mb-3">
+                            <legend class="p-style-label">Would you like to receive emails about Child Care?</legend>
+                            <input type="radio" class="btn-check" name="receiveEmails" formControlName="receiveEmails"
+                                id="radEmailYes" autocomplete="off" (click)="isEmailPreferencesSelected(true)">
+                            <label class="btn btn-outline-tertiary" for="radEmailYes">Yes</label>
+                            <input type="radio" class="btn-check" name="receiveEmails" formControlName="receiveEmails"
+                                id="radEmailNo" autocomplete="off" (click)="isEmailPreferencesSelected(false)">
+                            <label class="btn btn-outline-tertiary" for="radEmailNo">No</label>
+                        </fieldset>       
+                        <cw-field-error-display [displayError]="isFieldValid('receiveEmails')"
+                            errorMsg="This is required">
+                        </cw-field-error-display>
+                        <div class="card arrow-card" [ngClass]="showEmailField ? 'd-block' : 'd-none'">
+                            <!--remove d-none if user selects yes above-->
+                            <div class="card-body">
+                                <!-- SSD lists format requirements, but there does not appear to be an option for passing formatting requirements to the compass-ui-text component-->
+                                <compass-ui-text [fieldId]="'email'" [fieldLabel]="'Email'"
+                                    [displayError]="isFieldValid('email')" [FormGroup]="notificationPreferencesForm"
+                                    [errorText]="'email is required'" [maxLength]="70"
+                                    (inputModelChange)="GetEmail($event)"></compass-ui-text>
+                                <compass-ui-text [fieldId]="'confirmEmail'" [fieldLabel]="'Confirm Email'"
+                                    [maxLength]="70" [displayError]="isFieldValid('confirmEmail')"
+                                    [FormGroup]="notificationPreferencesForm" [errorText]="'Emails mismatched'"
+                                    (inputModelChange)="getConfirmEmail($event)"></compass-ui-text>
+                                <p>
+                                    We'll send you a confirmation email if you opt to enroll in online notices.
+                                    To ensure you receive this email, please add donotreply@pa.gov to your safe senders list.
+                                    If your email is undeliverable, you'll automatically be enrolled back into paper notices. Any paper notice we send you through the mail because your email is undeliverable will be a copy of the original notice and will have the same date. You can opt out of online notices at any time by changing your preference or by contacting your caseworker.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="emailMoreTip">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="emailMoreHead">
+                                    <button class="accordion-button collapsed" type="button" 
+                                        data-bs-toggle="collapse" data-bs-target="#emailMoreColl" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        More about Child Care Email Notifications
+                                    </button>
+                                </h2>
+                                <div id="emailMoreColl" class="accordion-collapse collapse"
+                                    aria-labelledby="emailMoreHead" data-bs-parent="#emailMoreTip"
+                                    aria-expanded="false">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                Child Care Notifications will send emails about your Child Care Works subsidy case. If your Child Care eligibility is not linked to your Cash or Supplemental Nutrition Assistance Program (SNAP - formerly known as Food Stamps) case, you will need to contact your Early Learning Resource Center to sign up for emails.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-section collapsed">
+                        <!-- remove collapsed class from this div if text is already enrolled -->
+                        <p>Notifications are being sent to your email.</p>
+                        <div class="row action-btns">
+                            <div class="col-6">
+                                <button class="btn btn-borderless btn-constructive">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-borderless btn-destructive">
+                                    <i class="fa-regular fa-trash-can"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-4 text-center">
+            <compass-ui-cw-button 
+               buttonId="updateButton" 
+               buttonType="submit" 
+               buttonLabel="Update" 
+               (click)="onSubmit()"
+                textStyle="btn btn-primary w-100">
+            </compass-ui-cw-button>
+        </div>
+    </div>
+    <!-- This is the modal for the banner at the top shown on the last wireframe -->
+    <div class="modal fade toast" id="toastModal" tabindex="-1" aria-labelledby="toastModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="toast-icon-div">
+                        <i class="fa-solid fa-circle-check text-success"></i>
+                    </div>
+                    <div class="toast-text">
+                        <h2>You have been successfully enrolled in Text Message notifications.</h2>
+                        <p>
+                            You will now receive text notifications through the number you provided.
+                        </p>
+                    </div>
+                    <button class="toast-dismiss" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

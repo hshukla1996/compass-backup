@@ -1,0 +1,30 @@
+<form class="form-horizontal" [formGroup]='individualForm' (ngSubmit)="onSubmit()" >
+    <div class="text-center">
+        <img src="./assets/images/image.png" class="gatepost-img" />
+        <h1 class="standard-mb">Individuals</h1>
+        <p class="fw-bold standard-mb">Now, let's enter information about the people in your household</p>
+    </div>
+    <div class="alert alert-info standard-mb">
+        <div class="text-left">
+            For the individuals section you might need these documents:
+            <ul>
+                <li>Citizenship information</li>
+                <li>Relationship details</li>
+                <li>Tax paperwork</li>
+            </ul>
+        </div>
+    </div>
+        <p class="text-center standard-mb"><a href="#">Save and exit</a> if you would like to come back later.</p>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

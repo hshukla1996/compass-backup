@@ -1,0 +1,30 @@
+<form [formGroup]="politicalPartyGroup">
+  <h1>{{ 'afsPoliticalPartyTitle' | translate }}</h1>
+  <div class="alert alert-info">
+    <p>{{ 'afsPoliticalPartyTip1' | translate }}</p>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="politicalParty" fieldId="politicalParty"
+      [fieldLabel]="'afsPoliticalPartyLbl1' | translate" [requiredText]="'lblrequired' | translate"
+      [FormGroup]="politicalPartyGroup" [errorMsg]="'This is required.'" [requiredIndicator]="true" [displayError]="isFieldValid('politicalParty')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let party of politicalParty" value="{{party.id}}">{{ party.displayValue }}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <div class="card arrow-card" *ngIf="showtextBox" >
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text fieldId="otherParty" ngDefaultControl [FormGroup]="politicalPartyGroup" [errorText]="'This is required.'" [displayError]="isFieldValid('otherParty')"
+          formControlName="otherParty" [fieldLabel]="'afsPoliticalPartyLbl2' | translate" [requiredIndicator]="true"
+          [requiredText]="'lblrequired' | translate"  >
+        </compass-ui-text>
+      </div>
+    </div>
+  </div>
+
+  <compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

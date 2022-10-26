@@ -1,0 +1,66 @@
+name: $(BuildDefinitionName).${{ parameters.sematicVersion }}-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+
+parameters:
+- name: sematicVersion
+  displayName: Current Semantic Version
+  type: string
+  default: 1.0.0
+- name: environment
+  displayName: Destination Environment
+  type: string
+  default: int
+  values:
+   - int
+   - sat
+   - lod
+- name: pipelineName
+  displayName: Origin Pipeline Name
+  type: string
+  default: compass-ui-nightly
+- name: artifactName
+  displayName: Origin Artifact Name
+  type: string
+  default: compass-ui-nightly
+- name: branch
+  displayName: Origin Branch
+  type: string
+  default: dev  
+- name: runId
+  displayName: Origin Build/Run ID
+  type: string
+  default: 0000
+- name: runVersion
+  displayName: Origin Run Version
+  type: string
+  default: 1
+- name: storageAccountName
+  displayName: Destination Storage Account Name
+  type: string
+  default: sthsincompasswebui001
+- name: azureSubscription
+  displayName: Destination Azure Subscription
+  type: string
+  default: c0a814a5-d291-4555-a2f3-9607e344f69b 
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Deploy
+  displayName: Deploy Compass UI
+  jobs:
+  - job: deploy
+    displayName: Deploy to ${{ parameters.environment }} (template)
+    steps:  
+    - template: deploy-steps.yml
+      parameters:
+        environment: ${{ parameters.environment }}
+        artifactname: ${{ parameters.artifactName }}
+        branch: 'dev'
+        pipeline: ${{ parameters.pipelineName }}
+        runid: ${{ parameters.runId }}
+        runversion: ${{ parameters.runVersion }}
+        storageaccount: ${{ parameters.storageAccountName }}
+        azuresubscription: ${{ parameters.azureSubscription }}

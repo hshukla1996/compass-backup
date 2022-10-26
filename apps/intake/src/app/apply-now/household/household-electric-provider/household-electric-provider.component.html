@@ -1,0 +1,30 @@
+<form class="form-horizontal" [formGroup]='householdElectricProviderForm'>
+    <h1 class="standard-mb">Tell us about where you receive electricity.</h1>
+
+    <compass-ui-cw-select [fieldId]="'electricCompany'" [fieldLabel]="'Name of the Electric Company '"
+        [FormGroup]="householdElectricProviderForm">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let detail of heatingAssistanceData" value="{{detail.id}}">{{detail?.displayValue}}
+        </option>
+    </compass-ui-cw-select>
+<ngx-spinner    size="medium">
+<div class="loader"></div>
+<div class="loadingText">Loading Electric Providers...</div>
+</ngx-spinner>
+    <compass-ui-text [fieldId]="'acconumber'" [FormGroup]="householdElectricProviderForm"
+        [fieldLabel]="'Electric Company Account Number'" [maxLength]="25">
+    </compass-ui-text>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

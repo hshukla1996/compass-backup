@@ -1,0 +1,64 @@
+<h1>{{ '1095startTitle' | translate }}</h1>
+
+<p>{{ '1095startText1' | translate }}</p>
+
+<div class="alert alert-info">
+  <p>{{ '1095startTip1' | translate }}</p>
+</div>
+
+<div class="accordion page-tip mb-3" id="infoTip">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="infoHeading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#infoCollapse"
+        aria-expanded="true" aria-controls="infoCollapse">
+        {{ '1095startAccordionHead' | translate }}
+      </button>
+    </h2>
+    <div id="infoCollapse" class="accordion-collapse collapse" aria-labelledby="infoHeading" data-bs-parent="#infoTip">
+      <div class="accordion-body">
+        <p>{{ '1095startAccordionBody1' | translate}}</p>
+        <p>{{ '1095startAccordionBody2' | translate}}</p>
+        <ul>
+          <li>{{ '1095startAccordionBody2.1' | translate}}</li>
+          <li>{{ '1095startAccordionBody2.2' | translate}}</li>
+          <li>{{ '1095startAccordionBody2.3' | translate}}</li>
+          <li>{{ '1095startAccordionBody2.4' | translate}}</li>
+          <li>{{ '1095startAccordionBody2.5' | translate}}</li>
+        </ul>
+        <p>{{ '1095startAccordionBody3' | translate}}</p>
+        <ul>
+          <li>{{ '1095startAccordionBody3.1' | translate}}</li>
+          <li>{{ '1095startAccordionBody3.2' | translate}}</li>
+          <li>{{ '1095startAccordionBody3.3' | translate}}</li>
+          <li>{{ '1095startAccordionBody3.4' | translate}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="basicDetailsGroup">
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'firstName'" [FormGroup]="basicDetailsGroup" [fieldLabel]="'1095startLbl1' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [displayError]="isFieldInvalid('firstName')"
+      [errorText]="errorMap('firstName') | translate" [fieldType]="'nameParts'" [maxLength]="firstNameMaxL">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'lastName'" [FormGroup]="basicDetailsGroup" [fieldLabel]="'1095startLbl2' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [displayError]="isFieldInvalid('lastName')"
+      [errorText]="errorMap('lastName') | translate" [fieldType]="'nameParts'" [maxLength]="lastNameMaxL">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-cw-datepicker fieldId="dateOfBirth" [label]="'1095startLbl3' | translate" ngDefaultControl
+      formControlName="dateOfBirth" hintClass="form-text" [showFieldHelpText]="'1095startHint3' | translate"
+      [required]="true" [showError]="isFieldInvalid('dateOfBirth')" [requiredText]="'lblrequired' | translate"
+      [errorMsg]="errorMap('dateOfBirth') | translate" [displayError]="isFieldInvalid('dateOfBirth')" [maxRange]="today">
+    </compass-ui-cw-datepicker>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+  </form>

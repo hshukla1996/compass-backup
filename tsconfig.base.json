@@ -1,0 +1,31 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@compass-ui/data": ["libs/data/src/index.ts"],
+            "@compass-ui/shared/auth": ["libs/shared/auth/src/index.ts"],
+            "@compass-ui/shared/common": ["libs/shared/common/src/index.ts"],
+            "@compass-ui/shared/controls": [
+                "libs/shared/controls/src/index.ts"
+            ],
+            "@compass-ui/shared/data-models": [
+                "libs/shared/data-models/src/index.ts"
+            ],
+            "@compass-ui/ui": ["libs/ui/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
+}

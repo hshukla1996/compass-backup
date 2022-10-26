@@ -1,0 +1,91 @@
+schedules:
+- cron: "0 3 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - 'dev'
+  always: true
+
+name: $(BuildDefinitionName).${{ parameters.sematicVersion }}.$(Build.BuildId)-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+
+parameters:
+- name: sematicVersion
+  displayName: Current Semantic Version
+  type: string
+  default: 1.0.0
+- name: environment
+  displayName: Destination Environment
+  type: string
+  default: dev
+  values:
+   - dev
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: 'Build'
+    displayName: 'Build'
+    jobs:
+      - job: 'build'
+        displayName: 'Build artifacts'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js'
+            inputs:
+              versionSpec: '16.10.0'
+
+          - script: |
+              npm install -g @angular/cli nx
+              npm install --force
+              npm install copyfiles -g
+            displayName: 'install dependencies'
+
+          - script: npm run buildAll
+            displayName: 'Build All apps for dev'
+
+#          - script: npm run buildINT
+#            displayName: 'Build app for int'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish artifacts'
+            inputs:
+              PathtoPublish: dist/
+              ArtifactName: $(Build.DefinitionName)
+              publishLocation: 'Container'
+
+          - script: echo BuildID - $(Build.BuildId)
+            displayName: BuildID - $(Build.BuildId)
+
+          - script: echo BuildNumber - $(Build.BuildNumber)
+            displayName: BuildNumber - $(Build.BuildNumber)
+
+          - task: HCLAppScanOnCloud@2
+            displayName: 'AppScan Vulnerability Scan'
+            inputs:
+              AppSecTestService: 'appscanforcompass'
+              applications: 'e07e1354-de45-4412-9f8f-c09b95e067d7'
+              scanname: 'compass ui sast scan'
+              scantype: 'static'
+              suspend: false
+
+
+  - stage: Deploy
+    displayName: Nightly Deploy
+    dependsOn: Build
+    jobs:
+    - job: deploy
+      displayName: Nightly Deploy to ${{ parameters.environment }} (template)
+      steps:  
+      - template: deploy-steps.yml
+        parameters:
+          environment: ${{ parameters.environment }}
+          artifactname: $(Build.DefinitionName)
+          branch: 'dev'
+          pipeline: $(Build.DefinitionName)
+          runid: $(Build.BuildId)
+          runversion: $(Build.BuildNumber)
+          storageaccount: sthsdvcompasswebui001
+          azuresubscription: c0a814a5-d291-4555-a2f3-9607e344f69b

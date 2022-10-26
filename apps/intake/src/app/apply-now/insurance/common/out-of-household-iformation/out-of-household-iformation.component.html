@@ -1,0 +1,42 @@
+
+<form [formGroup]="outofHouseholdOnformationForm">
+    <h1>Tell us more about the person outside of the household who has this health or medical insurance.</h1>
+    <div class="mb-3" *ngIf="requiredFields.indexOf('firstName')>-1">
+        <compass-ui-text [FormGroup]="outofHouseholdOnformationForm" [fieldId]="'firstName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'firstName'"
+            fieldLabel="{{'lblFirstName' | translate}}" [requiredIndicator]="requiredFields.indexOf('firstName')>-1"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="11"
+            [displayError]="outofHouseholdOnformationForm.controls['firstName'].invalid && (outofHouseholdOnformationForm.controls['firstName'].dirty || outofHouseholdOnformationForm.controls['firstName'].touched)">
+            
+        </compass-ui-text>
+    </div>
+
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="outofHouseholdOnformationForm" [fieldId]="'lastName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'lastName'"
+            fieldLabel="{{'lblLastName' | translate}}" [maxLength]="14" [requiredIndicator]="requiredFields.indexOf('lastName')>-1"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [displayError]="outofHouseholdOnformationForm.controls['lastName'].invalid && (outofHouseholdOnformationForm.controls['lastName'].dirty || outofHouseholdOnformationForm.controls['lastName'].touched)"
+            >
+        </compass-ui-text>
+    </div>
+<fieldset class="button-group">
+    <legend>Is this insurance cout-ordered<span>{{'lblrequired' | translate}}</span></legend>
+    <compass-ui-cw-radiobutton ngDefaultControl [showError]="outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].invalid && (outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].dirty || outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].touched)"
+        [formControlName]="'isThisPolicyCourtOrdered'" [required]="requiredFields.indexOf('isThisPolicyCourtOrdered')>-1"
+        [radioButtonGroupName]="'isThisPolicyCourtOrdered'" [labelClass]="'btn btn-outline-tertiary'"
+        [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'" [radioBtnId]="'isCourtOrdered_Y'">
+    </compass-ui-cw-radiobutton>
+    <compass-ui-cw-radiobutton ngDefaultControl [showError]="outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].invalid && (outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].dirty || outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].touched)"
+        [formControlName]="'isThisPolicyCourtOrdered'" [required]="requiredFields.indexOf('isThisPolicyCourtOrdered')>-1"
+        [radioButtonGroupName]="'isThisPolicyCourtOrdered'" [labelClass]="'btn btn-outline-tertiary'"
+        [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'" [radioBtnId]="'isCourtOrdered_N'">
+    </compass-ui-cw-radiobutton>
+</fieldset>
+<div *ngIf="outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].invalid && (outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].dirty || outofHouseholdOnformationForm.controls['isThisPolicyCourtOrdered'].touched)" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+    {{'basidDetailRequiredMessage' | translate}}</div>
+
+ 
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

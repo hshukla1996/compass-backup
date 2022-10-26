@@ -1,0 +1,32 @@
+<form [formGroup]="activeCaseGroup">
+  <h1>{{'sa_registerACtitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <fieldset class="button-group">
+      <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldInvalid('isHeadOnActiveCase')"
+        formControlName="isHeadOnActiveCase" [required]="true" radioBtnValue="Yes" radioBtnId="Yes"
+        radioButtonGroupName="isHeadOnActiveCase" labelClass="btn btn-sm btn-outline-tertiary float-start"
+        radioClass="btn-check" [radioLabel]="'lblyes'| translate">
+      </compass-ui-cw-radiobutton>
+  
+      <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldInvalid('isHeadOnActiveCase')"
+        formControlName="isHeadOnActiveCase" [required]="true" radioBtnValue="No" radioBtnId="No"
+        radioButtonGroupName="isHeadOnActiveCase" labelClass="btn btn-sm btn-outline-tertiary float-start"
+        radioClass="btn-check" [radioLabel]="'lblno'| translate">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+  </div>
+
+  <div class="alert alert-info">
+    <p>{{ 'sa_registerACtext1' | translate }}</p>
+    <p>{{ 'sa_registerACtext2' | translate }}</p>
+    <p>{{ 'sa_registerACtext3' | translate }}</p>
+    <p>{{ 'sa_registerACtext4' | translate }}</p>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'next'| translate}}"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="toLogin()">{{ 'sa_registerToLogin' | translate }}</a></p>
+</form>

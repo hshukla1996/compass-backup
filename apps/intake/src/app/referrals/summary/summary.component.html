@@ -1,0 +1,180 @@
+<h1>{{'referralSummaryhead' | translate}}</h1>
+<div class="card mb-3" *ngFor="let eachIndividual of individuals">
+    <div class="card-body">
+        <!-- <div *ngFor="let int of householdContactStoredData; let i = index"> -->
+        <h2 *ngIf="household">{{eachIndividual.firstName}} {{eachIndividual.lastName}}
+            ({{getAge(eachIndividual.dateOfBirth)}})</h2>
+        <div class="card-section">
+
+            <div class="faux-table">
+                <div class="row heading-row">
+                    <div class="col-6">{{'referralProgram' | translate}}</div>
+                    <div class="col-6">{{'referralOffice' | translate}}</div>
+                </div>
+                <div class="row data-row" *ngIf="(eachIndividual.appliedReferrals || []).indexOf('AS') > -1 ">
+                    <div class="col-6 fw-bold">{{'referralAdult' | translate}}</div>
+                    <div class="col-6 fw-bold">
+                        {{'referralAdulttext' | translate}}
+                    </div>
+                </div>
+
+                <div class="row data-row" *ngIf="(eachIndividual.appliedReferrals || []).indexOf('ID') > -1 ">
+                    <div class="col-6 fw-bold">{{'referralIntellectualDisability' | translate}}</div>
+                    <div class="col-6 fw-bold">{{'referralIntellectualDisabilitytext' | translate}}</div>
+                </div>
+
+                <div class="row data-row" *ngIf="(eachIndividual.appliedReferrals || []).indexOf('EI') > -1 ">
+                    <div class="col-6 fw-bold">{{'referralearlyIntervention' | translate}}</div>
+                    <div class="col-6 fw-bold">{{'referralearlyInterventiontext' | translate}}</div>
+                </div>
+
+                <div class="row data-row fw-bold" *ngIf="!eachIndividual.appliedReferrals?.length">
+                    {{'referralNotInterested' | translate}} 
+                </div>
+            </div>
+        </div>
+        <div class="card-section">
+            <div class="row">
+                <div class="col-6" *ngIf="eachIndividual.county">
+                    <h3>{{'referralCounty' | translate}}</h3>
+                    <p class="fw-bold">{{getCountiesName(eachIndividual.county)}} </p>
+                </div>
+                <div class="col-6" *ngIf="eachIndividual.schoolDistrict">
+                    <h3>{{'referralSchoolDistrict' | translate}}</h3>
+                    <p class="fw-bold">{{getSchoolDistrictsName(eachIndividual.schoolDistrict)}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" *ngIf="eachIndividual.dateOfBirth && eachIndividual.appliedReferrals?.length">
+                    <h3>{{'1095startLbl3' | translate}}</h3>
+                    <p class="fw-bold">{{formatDate(eachIndividual.dateOfBirth)}} </p>
+                </div>
+            </div>
+            <div class="row" *ngIf="eachIndividual.reasonForReferral">
+                <div class="col-12">
+                    <h3>{{'referralReasonForReferral' | translate}}</h3>
+                    <p class="fw-bold">{{eachIndividual.reasonForReferral}} </p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+<div class="card-footer">
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-borderless btn-constructive w-100"
+                (click)="editDetails(eachIndividual.individualNumber)">
+                <i class="fa-regular fa-pen-to-square"></i> {{'referraledit' | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+
+        <!-- </div> -->
+    </div>
+   
+</div>
+<div class="card mb-3">
+    <div class="card-body">
+        <h2>{{'referralContactInfo' | translate}}</h2>
+         
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="contactPerson" class="col-form-label">{{'referralContactperson' | translate}}</label>
+ 
+                    <p class="fw-bold"> {{household.firstName}} {{household.lastName}} <span *ngIf="dobOfMainContactPerson">({{dobOfMainContactPerson}})</span></p>
+                </div>
+            </div>
+            <div class="col">
+                <label for="contactPreference" class="col-form-label">{{'referralContactPreference' | translate}}</label>
+                <p class="fw-bold" *ngIf="household?.contactPreference== 'P'">{{'contactInfoPhone' | translate}}</p>
+                <p class="fw-bold" *ngIf="household?.contactPreference=='E'">{{'contactInfoEmail' | translate}}</p>
+                <p class="fw-bold" *ngIf="household?.contactPreference=='M'">{{'clearValidatorscontactInfoMail' | translate}}</p>
+
+            </div>
+
+        </div>
+        <div class="form-group row"  *ngIf="household?.phoneNumber">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="phoneNumber" class="col-form-label">{{'referralPhoneNumber' | translate}}</label>
+                    <p class="fw-bold">{{household.phoneNumber}} </p>
+                </div>
+            </div>
+            <!-- <div class="col">
+                <label for="emailAddress" class="col-form-label">Email Address</label>
+                <p class="fw-bold">{{household?.emailAddress}}</p>
+            </div> -->
+        </div>
+        <div class="form-group row" *ngIf="household?.emailAddress">
+            <div class="col">
+                <label for="emailAddress" class="col-form-label">{{'referralEmailAddress' | translate}}</label>
+                <p class="fw-bold">{{household.emailAddress}}</p>
+            </div>
+        </div>
+        <div class="form-group row" *ngIf="showAddress">
+            <div class="col">
+                <label for="address" class="col-form-label">{{'referralAddress' | translate}}</label>
+                <p>
+
+                    <span class="fw-bold" *ngIf="household.address?.addressLine1"> {{household.address?.addressLine1
+                        ||household.address?.street1}} </span>
+                    <span class="fw-bold"
+                        *ngIf="household.address?.addressLine2">{{household.address?.addressLine2||household.address?.street2}},
+                    </span>
+                    <span class="fw-bold" *ngIf="household.address?.city">{{household.address?.city}},</span>
+                    <span class="fw-bold" *ngIf="household.address?.state"> {{household.address?.state}}, </span>
+                    <span class="fw-bold" *ngIf="household.address?.zip"> {{household.address?.zip}}<span
+                            *ngIf="household.address?.zipExt">-{{household.address?.zipExt}}</span></span>
+
+                </p>
+
+            </div>
+        </div>
+      
+        <div class="row" *ngIf="map.length >0">
+            <div class="col-12">
+                <h3>{{'referralrelationShip' | translate}}</h3>
+                <div *ngFor="let item of map">
+                    <p class="fw-bold">
+                        <span  >{{household.firstName}}
+                            {{household.lastName}} <span *ngIf="dobOfMainContactPerson">({{dobOfMainContactPerson}})</span> is the 
+                            <!-- {{ relation.rel }} --> {{item.rel}} 
+                             of {{item.name}} ({{item.dateofbirth}})</span>  
+                    </p>
+                    
+                    
+                </div>
+        
+            </div>
+        </div>
+
+        <div class="card-footer"> 
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-borderless btn-constructive w-100" (click)="previous()">
+                    <i class="fa-regular fa-pen-to-square"></i> {{'referraledit' | translate}}
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<p>By selecting Submit, I agree that the information shown will be sent for referral to the program office(s).</p>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            {{'referralBack' | translate}}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+            {{'submitLbl' | translate}}
+        </button>
+    </div>
+</nav>

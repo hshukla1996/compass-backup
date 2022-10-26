@@ -1,0 +1,185 @@
+<form class="form-horizontal" [formGroup]='fderalRecoganizedTribeIncomeForm'>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Do you have any tribal income that includes money from these sources?</h1>
+            Per capita payments from a tribe that come from natural resources, usage rights, leases, or royalties
+        </div>
+        <div class="panel-body">
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.perCapitaPayments" name="perCapitaPayments"
+                            id="Yes" formControlName="perCapitaPayments" value="Yes" autocomplete="off"
+                            [required]="requiredFields.indexOf('perCapitaPayments')>-1">
+                        <label class="btn btn-outline-tertiary" for="Yes">Yes</label>
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.perCapitaPayments" name="perCapitaPayments"
+                            id="no" formControlName="perCapitaPayments" value="no" autocomplete="off"
+                            [required]="requiredFields.indexOf('perCapitaPayments')>-1">
+                        <label class="btn btn-outline-tertiary" for="no">No</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="card arrow-card" *ngIf="fderalRecoganizedTribeIncomeForm.perCapitaPayments ==='Yes'">
+                <div class="card-body">
+                    <div class="form-group mb-4">
+                        <compass-ui-text [type]="'currency'" [fieldId]="'perCapitaPaymentAmount'"
+                            [fieldLabel]="'Amount'" [FormGroup]="fderalRecoganizedTribeIncomeForm"
+                            [displayError]="isFieldValid('perCapitaPaymentAmount')" [requiredText]="'(required)'"
+                            [errorText]="'Please enter the amount'"
+                            [requiredIndicator]="requiredFields.indexOf('perCapitaPaymentAmount')>-1">
+                        </compass-ui-text>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="col-12 control-label pb-2 form-label">How Often ?
+                            <span>(required)</span>
+                        </label>
+                        <div class="col-12">
+                            <select class="form-select" formControlName="perCapitaPaymentFrequency"
+                                name="perCapitaPaymentFrequency"
+                                [ngClass]="{ 'is-invalid': fderalRecoganizedTribeIncomeForm.get('perCapitaPaymentFrequency').errors !== null }"
+                                [required]="requiredFields.indexOf('perCapitaPaymentFrequency')>-1">
+                                <option value="" selected>- Select One -</option>
+                                <option *ngFor="let period of periods" value="{{period.displayValue}}">
+                                    {{period.displayValue}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="fderalRecoganizedTribeIncomeForm.get('perCapitaPayments').errors !== null"
+                            class="error-text" id="err-txt-incomePeriod1">
+                            <i class="fa-regular fa-circle-exclamation"></i>
+                            Please select the period
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Payments from natural resources, farming, ranching, fishing, leases, or royalties from land designated as
+            Indian trust
+            land by the Department of the Interior (including reservations and former reservations)
+        </div>
+        <div class="panel-body">
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.indianTrustLandPayments"
+                            name="indianTrustLandPayments" id="yes1" formControlName="indianTrustLandPayments"
+                            value="Yes" autocomplete="off"
+                            [required]="requiredFields.indexOf('indianTrustLandPayments')>-1">
+                        <label class="btn btn-outline-tertiary" for="yes1">Yes</label>
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.indianTrustLandPayments"
+                            name="indianTrustLandPayments" id="no1" formControlName="indianTrustLandPayments" value="no"
+                            autocomplete="off" [required]="requiredFields.indexOf('indianTrustLandPayments')>-1">
+                        <label class="btn btn-outline-tertiary" for="no1">No</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="card arrow-card" *ngIf="fderalRecoganizedTribeIncomeForm.indianTrustLandPayments ==='Yes'">
+                <div class="card-body">
+                    <div class="form-group mb-4">
+                        <compass-ui-text [type]="'currency'" [fieldId]="'indiantTrustLandPaymentAmount'"
+                            [fieldLabel]="'Amount'" [FormGroup]="fderalRecoganizedTribeIncomeForm"
+                            [displayError]="isFieldValid('indiantTrustLandPaymentAmount')" [requiredText]="'(required)'"
+                            [errorText]="'Please enter the amount'"
+                            [requiredIndicator]="requiredFields.indexOf('indiantTrustLandPaymentAmount')>-1">
+                        </compass-ui-text>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="col-12 control-label pb-2 form-label">How Often ?
+                            <span>(required)</span>
+                        </label>
+                        <div class="col-12">
+                            <select class="form-select" formControlName="indiantTrustLandPaymentFrequency"
+                                name="indiantTrustLandPaymentFrequency"
+                                [ngClass]="{ 'is-invalid': fderalRecoganizedTribeIncomeForm.get('indiantTrustLandPaymentFrequency').errors !== null }"
+                                [required]="requiredFields.indexOf('indiantTrustLandPaymentFrequency')>-1">
+                                <option value="" selected>- Select One -</option>
+                                <option *ngFor="let period of periods" value="{{period.displayValue}}">
+                                    {{period.displayValue}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="fderalRecoganizedTribeIncomeForm.get('indiantTrustLandPaymentFrequency').errors !== null"
+                            class="error-text" id="err-txt-incomePeriod2">
+                            <i class="fa-regular fa-circle-exclamation"></i>
+                            Please select the period
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Money from selling things that have cultural significance
+        </div>
+        <div class="panel-body">
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.culturalSignificance"
+                            name="culturalSignificance" id="yes3" formControlName="culturalSignificance" value="Yes"
+                            autocomplete="off" [required]="requiredFields.indexOf('culturalSignificance')>-1">
+                        <label class="btn btn-outline-tertiary" for="yes3">Yes</label>
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="fderalRecoganizedTribeIncomeForm.culturalSignificance"
+                            name="culturalSignificance" id="no3" formControlName="culturalSignificance" value="no"
+                            autocomplete="off" [required]="requiredFields.indexOf('culturalSignificance')>-1">
+                        <label class="btn btn-outline-tertiary" for="no3">No</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="card arrow-card" *ngIf="fderalRecoganizedTribeIncomeForm.culturalSignificance ==='Yes'">
+                <div class="card-body">
+                    <div class="form-group mb-4">
+                        <compass-ui-text [type]="'currency'" [fieldId]="'culturalSignificanceAmount'"
+                            [fieldLabel]="'Amount'" [FormGroup]="fderalRecoganizedTribeIncomeForm"
+                            [displayError]="isFieldValid('culturalSignificanceAmount')" [requiredText]="'(required)'"
+                            [errorText]="'Please enter the amount'"
+                            [requiredIndicator]="requiredFields.indexOf('culturalSignificanceAmount')>-1">
+                        </compass-ui-text>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="col-12 control-label pb-2 form-label"> How Often ?
+                            <span>(required)</span> </label>
+                        <div class="col-12">
+                            <select class="form-select" formControlName="culturalSignificanceFrequency"
+                                name="culturalSignificanceFrequency"
+                                [ngClass]="{ 'is-invalid': fderalRecoganizedTribeIncomeForm.get('culturalSignificanceFrequency').errors !== null }"
+                                [required]="requiredFields.indexOf('culturalSignificanceFrequency')>-1">
+                                <option value="" selected>- Select One -</option>
+                                <option *ngFor="let period of periods" value="{{period.displayValue}}">
+                                    {{period.displayValue}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="fderalRecoganizedTribeIncomeForm.get('culturalSignificanceFrequency').errors !== null"
+                            class="error-text" id="err-txt-incomePeriod3">
+                            <i class="fa-regular fa-circle-exclamation"></i>
+                            Please select the period
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="showPreviousPage()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="showNextPage()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

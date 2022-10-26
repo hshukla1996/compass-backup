@@ -1,0 +1,10 @@
+  <h1>Your shared expense details.</h1>
+  <p>Look below to make sure all shared expenses are here.</p>
+
+  <cw-simpletile-summary [simpleTileSummaryData]="demographicData" (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addClicked()" (nextPage)="next()"
+    (previousPage)="back()" [updatedJson]="jsonData"
+    (recordNumberToOp) = "recordIndexToOp($event)">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>

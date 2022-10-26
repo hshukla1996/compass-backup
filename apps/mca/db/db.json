@@ -1,0 +1,333 @@
+{
+  "myBenefits": 
+  {
+    "cases": [
+        {
+            "caseNumber": "0056967",
+            "county": "08"
+        },
+        {
+            "caseNumber": "2200310",
+            "county": "51"
+        }
+    ],
+    "casesInformation": [
+        {
+            "county": "08",
+            "caseNumber": "0056967",
+            "caseStatus": "Open",
+            "headOfHouseholdName": "ROSEMARIE GROGAN",
+            "individualsInformation": [
+                {
+                    "firstName": "ROSEMARIE",
+                    "lastName": "GROGAN",
+                    "middleName": null,
+                    "age": 0,
+                    "gender": "F",
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "individualNumber": 840008857
+                },
+                {
+                    "firstName": "ROBERT",
+                    "lastName": "UITZ",
+                    "middleName": "F",
+                    "age": 0,
+                    "gender": "M",
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "individualNumber": 100121764
+                },
+                {
+                    "firstName": "FREDERICK",
+                    "lastName": "UITZ",
+                    "middleName": null,
+                    "age": 0,
+                    "gender": "M",
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "individualNumber": 860138149
+                },
+                {
+                    "firstName": "JASON",
+                    "lastName": "UITZ",
+                    "middleName": "H",
+                    "age": 0,
+                    "gender": "M",
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "individualNumber": 940147391
+                },
+                {
+                    "firstName": "JESSICA",
+                    "lastName": "HALL",
+                    "middleName": "M",
+                    "age": 0,
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "gender": "F",
+                    "individualNumber": 790114420
+                },
+                {
+                    "firstName": "WILLIAM",
+                    "lastName": "MARTIN",
+                    "middleName": "M",
+                    "age": 0,
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "gender": "M",
+                    "individualNumber": 140161987
+                }
+            ],
+            "benefitsInformation": [
+                {
+                    "categoryCode": "MA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "Medical Assistance",
+                    "openDate": "2005-07-22T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": null,
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROBERT F. UITZ"
+                    ],
+                    "individualNumbers": [
+                        100121764
+                    ],
+                    "managedCareProvider": "AmeriHealth Northeast",
+                    "managedCareProviderType": "HC",
+                    "behavioralHealthProvider": "CCBH",
+                    "benefitPackage": "Adult",
+                    "benefitPackagePdfUrl": "/Compass.Web/Custom/PDF//Adult.pdf",
+                    "uci": 0
+                },
+                {
+                    "categoryCode": "MA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "Medical Assistance",
+                    "openDate": "2005-08-10T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": null,
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROSEMARIE GROGAN"
+                    ],
+                    "individualNumbers": [
+                        840008857
+                    ],
+                    "managedCareProvider": "AmeriHealth Northeast",
+                    "managedCareProviderType": "HC",
+                    "behavioralHealthProvider": "CCBH",
+                    "benefitPackage": "Adult",
+                    "benefitPackagePdfUrl": "/Compass.Web/Custom/PDF//Adult.pdf",
+                    "uci": 0
+                },
+                {
+                    "categoryCode": "CA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "SSI",
+                    "openDate": "2005-07-22T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": "2022-07-01T00:00:00",
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROBERT F. UITZ"
+                    ],
+                    "individualNumbers": [
+                        100121764
+                    ],
+                    "managedCareProvider": null,
+                    "managedCareProviderType": null,
+                    "behavioralHealthProvider": null,
+                    "benefitPackage": null,
+                    "benefitPackagePdfUrl": null,
+                    "uci": 0
+                },
+                {
+                    "categoryCode": "CA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "SSI",
+                    "openDate": "2005-08-10T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": "2022-07-01T00:00:00",
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROSEMARIE GROGAN"
+                    ],
+                    "individualNumbers": [
+                        840008857
+                    ],
+                    "managedCareProvider": null,
+                    "managedCareProviderType": null,
+                    "behavioralHealthProvider": null,
+                    "benefitPackage": null,
+                    "benefitPackagePdfUrl": null,
+                    "uci": 0
+                }
+            ],
+            "providerInformation": null,
+            "magiOrPco": false
+        },
+        {
+            "county": "51",
+            "caseNumber": "2200310",
+            "caseStatus": "Open",
+            "headOfHouseholdName": "ROSEMARIE GROGAN",
+            "individualsInformation": [
+                {
+                    "firstName": "ROSEMARIE",
+                    "lastName": "GROGAN",
+                    "middleName": null,
+                    "age": 0,
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "gender": "F",
+                    "individualNumber": 840008857
+                },
+                {
+                    "firstName": "JASON",
+                    "lastName": "UITZ",
+                    "middleName": "H",
+                    "age": 0,
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "gender": "M",
+                    "individualNumber": 940147391
+                },
+                {
+                    "firstName": "WILLIAM",
+                    "lastName": "MARTIN",
+                    "middleName": "M",
+                    "age": 0,
+                    "maritalStatus": "Single/Never Married",
+                    "citizenship": "US Citizen",
+                    "gender": "M",
+                    "individualNumber": 140161987
+                }
+            ],
+            "benefitsInformation": [
+                {
+                    "categoryCode": "MA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "Medical Assistance",
+                    "openDate": "2003-11-10T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": null,
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROSEMARIE GROGAN"
+                    ],
+                    "individualNumbers": [
+                        840008857
+                    ],
+                    "managedCareProvider": " - ",
+                    "managedCareProviderType": " - ",
+                    "behavioralHealthProvider": " - ",
+                    "benefitPackage": " - ",
+                    "benefitPackagePdfUrl": "/Compass.Web/Custom/PDF//Adult.pdf",
+                    "uci": 0
+                },
+                {
+                    "categoryCode": "CA",
+                    "categoryStatus": "Open",
+                    "categoryStatusCode": "O",
+                    "programCode": "J",
+                    "programStatusCode": "",
+                    "programName": "SSI",
+                    "openDate": "2003-11-10T00:00:00",
+                    "closedDate": null,
+                    "statusDate": null,
+                    "nextPaymentDueDate": "2022-07-01T00:00:00",
+                    "renewalDueDate": null,
+                    "sarDueDate": null,
+                    "benefitAmount": 0,
+                    "directPay": null,
+                    "providerName": null,
+                    "energyYear": null,
+                    "fuelType": null,
+                    "waterType": null,
+                    "individuals": [
+                        "ROSEMARIE GROGAN"
+                    ],
+                    "individualNumbers": [
+                        840008857
+                    ],
+                    "managedCareProvider": null,
+                    "managedCareProviderType": null,
+                    "behavioralHealthProvider": null,
+                    "benefitPackage": null,
+                    "benefitPackagePdfUrl": null,
+                    "uci": 0
+                }
+            ],
+            "providerInformation": null,
+            "magiOrPco": false
+        }
+    ]
+},
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

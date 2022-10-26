@@ -1,0 +1,29 @@
+<form [formGroup]="verifyPersonalInfoGroup">
+  <h1> {{ 'sa_loginrbaVPItitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-cw-datepicker (inputModelChange)="dobError = false" [formControlName]="'dob'" [maxRange]="today" ngDefaultControl
+      requiredText="{{'lblrequired' | translate}}" [required]="true" [displayError]="isFieldInvalid('dob')" [showError]="isFieldInvalid('dob')"
+      [errorMsg]="errorMap('dob') | translate" [fieldId]="'dob'" [label]="'sa_loginrbaVPIlbl1' | translate"
+      [showFieldHelpText]="'sa_loginrbaVPIhelp1' | translate">
+    </compass-ui-cw-datepicker>
+  </div>
+  <div class="mb-3">
+    <compass-ui-censored ngDefaultControl (inputModelChange)="ssnError = false" [fieldId]="'last4ssn'" [FormGroup]="verifyPersonalInfoGroup"
+      [fieldLabel]="'sa_loginrbaVPIlbl2' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" formControlName="last4ssn" [displayError]="isFieldInvalid('last4ssn')"
+      [errorText]="errorMap('last4ssn') | translate: { minLength: ssnMinMaxL }" [maxLength]="ssnMinMaxL" fieldType="numbersOnly">
+    </compass-ui-censored>
+  </div>
+
+  <nav class="action-bar d-flex justify-content-between row text-center">
+    <div>
+        <button type="submit" class="btn btn-primary col-6" (click)="next()">
+            {{ 'next' | translate }}
+        </button>
+    </div>
+  </nav>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="tryAnotherVerifyMethod()">{{ 'sa_tryAnotherVerifyMethod' |
+      translate }}</a></p>
+</form>

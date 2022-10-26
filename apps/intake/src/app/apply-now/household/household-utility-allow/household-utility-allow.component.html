@@ -1,0 +1,28 @@
+<form [formGroup]="householdUtilityForm">
+            <h1 class="standard-mb">You told us you are living in subsidized or public housing and receiving a utility allowance check. How
+                much do you
+                receive?</h1>
+        <compass-ui-text 
+            [fieldId]="'allowance'" 
+            [FormGroup]="householdUtilityForm" [fieldLabel]="'You told us you are living in subsidized or public housing and receiving a utility allowance check.  How much do you receive?'" 
+            [requiredText]="'(required)'" 
+            [requiredIndicator]="true" 
+            [displayError]="isFieldValid('allowance')"
+            [errorText]="errorMap('allowance')"  
+            fieldHelpText="{{'formatCurrency' | translate}}"
+            [maxLength]="8"
+            fieldType="payType">
+        </compass-ui-text>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

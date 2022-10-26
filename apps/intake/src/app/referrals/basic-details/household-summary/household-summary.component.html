@@ -1,0 +1,98 @@
+    <h1>{{'referralHouseholdSummary' | translate}}</h1>
+    <p>{{'referralHouseholdSummaryText1' | translate}}</p>
+    <div class="collapsable accordion data-accordion mb-3" *ngFor="let data of individuals; let i=index;"
+        id="indexExpanded === i">
+        <div class="accordion-item">
+            <div class="row">
+                <div class="col-10">
+                    <div class="accordion-header"> 
+                        <h2 class="card-title  text-capitalize">{{data?.firstName}} {{data?.lastName}}
+                            ({{getAge(data?.dateOfBirth)}})</h2>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-center">
+
+                    <i class="fa fa-chevron-down" role="button" *ngIf="indexExpanded === i"
+                        (click)="indexExpanded = indexExpanded===i? -1 : i"></i>
+                    <i class="fa fa-chevron-right" role="button" *ngIf="indexExpanded !== i"
+                        (click)="indexExpanded = indexExpanded===i? -1 : i"></i>
+                </div>
+            </div>
+            <div class="collps-area animate" *ngIf="indexExpanded === i">
+                <div class="accordion-body card-body">
+                    <div class="faux-table border-bottom"> 
+                        <div class="row">
+                            <div class="col-6"> 
+                                <span class="head">
+                                {{'lbldob' | translate}}
+                                </span>
+                            </div>
+                            <div class="col-6">
+                                <div class="data">
+                                    {{formatDate(data?.dateOfBirth)}}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="accordion-footer ">
+                    <div class="row action-btns">
+                        <div class="col text-center">
+                            <button class="btn btn-borderless btn-constructive"
+                                (click)="navigateToEdit(data?.individualNumber)">
+                                <i class="fa-regular fa-pen-to-square"></i> {{'lbledit' | translate}}
+                            </button>
+                        </div>
+                        <div class="col text-center">
+                            <button class="btn btn-borderless btn-destructive" (click)="setdeleteUser(data)"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal"> 
+                                <i class="fa-regular fa-trash-can"></i> {{'lblRemove' | translate}}
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2 mb-2">
+        <button type="button" class="btn btn btn-tertiary w-100" (click)="addPerson()" *ngIf="this.individuals.length <= 20"
+            [disabled]="isUsersCountAboveTwenty()">{{'referralAddAnotherPersonButton' | translate}}</button>
+    </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true"
+    #deleteModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>Delete Member</h2>
+                <p class="mb-3">Are you sure, you want to delete <span class="text-capitalize">
+                        {{userToBeDeleted?.lastName}}, {{userToBeDeleted?.firstName}}?</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-tertiary" #closeModal
+                    data-bs-dismiss="modal">{{'referral_close' | translate}}</button>
+                <button type="button" class="btn btn-primary" (click)="deleteUser()">{{'lbldelete' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-info">
+<p>{{'referral_note' | translate}}</p>
+</div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+            {{'referralBack' | translate}}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+            {{'referralNext' | translate}}
+        </button>
+    </div>
+</nav>

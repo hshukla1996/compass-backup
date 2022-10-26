@@ -1,0 +1,84 @@
+<form [formGroup]="requirementQuestionGroup">
+  <h1>{{ 'afsReqQuestsTitle' | translate}}</h1>
+
+  <div class="mb-3">
+    <!-- <fieldset class="button-group">
+        <legend>{{'afsReqQuestsLbl1' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
+      <compass-ui-cw-radiobutton [showError]="isFieldValid('isUsCitizen')"
+        [formControlName]="'isUsCitizen'" [required]="true" [radioButtonGroupName]="'isUsCitizen'"
+        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" value="'Y'" radioLabel="Yes"></compass-ui-cw-radiobutton>
+      <compass-ui-cw-radiobutton [showError]="isFieldValid('isUsCitizen')"
+        [formControlName]="'isUsCitizen'" [required]="true" [radioButtonGroupName]="'isUsCitizen'"
+        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" value="'N'" radioLabel="No">
+      </compass-ui-cw-radiobutton>
+    </fieldset> -->
+    <fieldset class="button-group">
+      <legend>{{'afsReqQuestsLbl1' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
+      <input type="radio" class="btn-check" formControlName="isUsCitizen" name="isUsCitizen" id="Yes" autocomplete="off"
+        value="Y"  >
+      <label class="{{isFieldValid('isUsCitizen') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="Yes">Yes</label>
+      <input type="radio" class="btn-check" formControlName="isUsCitizen" name="isUsCitizen" id="no" autocomplete="off"
+        value="N" >
+      <label class="{{isFieldValid('isUsCitizen') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="no">No</label>
+    </fieldset>
+    <cw-field-error-display [displayError]="isFieldValid('isUsCitizen')" [errorMsg]="'This is required.'">
+    </cw-field-error-display>
+ 
+    <!-- <cw-field-error-display *ngIf="isFieldValid('gender')"  [errorMsg]="'This is required.'" [displayError]="true">
+    </cw-field-error-display> -->
+  </div>
+  <div class="alert alert-info">
+    <p>
+      {{ 'afsReqQuestsTip1' | translate }}
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <fieldset class="button-group">
+      <legend>{{'afsReqQuestsLbl2' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
+      <input type="radio" class="btn-check" formControlName="willBeEighteenYears" name="willBeEighteenYears" id="adultYes" autocomplete="off" value="Y">
+      <label class="{{isFieldValid('willBeEighteenYears') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="adultYes">Yes</label>
+      <input type="radio" class="btn-check" formControlName="willBeEighteenYears" name="willBeEighteenYears" id="adultNo" autocomplete="off" value="N">
+      <label class="{{isFieldValid('willBeEighteenYears') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="adultNo">No</label>
+    </fieldset>
+    <cw-field-error-display [displayError]="isFieldValid('willBeEighteenYears')" [errorMsg]="'This is required.'">
+    </cw-field-error-display>
+    <!-- <fieldset class="button-group">
+      <legend>{{'afsReqQuestsLbl2' | translate }}<span>{{'lblrequired' |
+          translate}}</span></legend>
+      <compass-ui-cw-radiobutton [showError]="isFieldValid('adult')" [formControlName]="'adult'" [required]="true"
+        radioButtonGroupName="adult" labelClass="btn btn-outline-tertiary float-start" radioClass="btn-check"
+        [radioLabel]="'afsReqQuestsYes'| translate">
+      </compass-ui-cw-radiobutton>
+
+      <compass-ui-cw-radiobutton [showError]="isFieldValid('adult')"  [formControlName]="'adult'" [required]="true"
+        radioButtonGroupName="adult" labelClass="btn btn-outline-tertiary float-start" radioClass="btn-check"
+        [radioLabel]="'afsReqQuestsNo'| translate">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+    <cw-field-error-display  *ngIf="isFieldValid('adult')"  [errorMsg]="'This is required.'" [displayError]="true">
+    </cw-field-error-display> -->
+  </div>
+
+  <div class="alert alert-info">
+    <p>
+      {{ 'afsReqQuestsTip2' | translate }}
+    </p>
+  </div> 
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="next()">
+       Next
+      </button>
+    </div>
+  </nav>
+</form>

@@ -1,0 +1,28 @@
+<div class="text-center">
+    <img src="./assets/images/image.png" alt="Insurance divider image" class="gatepost-img" />
+    <h1>Health or Medical Insurance</h1>
+    <p class="fw-bold">Let's now enter insurance information for your household.</p>
+
+    <div class="alert alert-info d-flex align-items-center">
+        <div class="text-start">For the insurance section you might need the following documents:
+            <ul>
+                <li>Current or past Insurance statements</li>
+            </ul>
+        </div>
+    </div>
+    <div class="px-2">
+        <p><a href="#">Save and exits</a> if you’d like to come back later.</p>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button"  (click)="previous()" class="btn btn-outline-tertiary">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,37 @@
+<nav>
+    <h2 class="d-none d-md-block">
+        <span class="d-md-block">
+            {{ menuData?.header }}
+            <span *ngIf="menuData?.formNumber">e-form {{ formID}}</span>
+        </span>
+    </h2>
+    <button class="btn btn-borderless btn-carat d-md-none" (click)="toggleMenu()" [class.menuCollapsed]="menuCollapsed">
+        <h2>
+            {{ menuData?.header }}
+            <span *ngIf="menuData?.formNumber" [class.menuCollapsed]="menuCollapsed">e-form {{ formID}}</span>    
+        </h2>
+        <i class="fa-regular fa-angle-down"></i>
+    </button>
+    <div class="d-sm-none">
+        <ul class="mobile-wayfinder" [class.menuCollapsed]="menuCollapsed">
+            <ng-container *ngFor="let menuItem of menuData?.menuItems last as isLast">
+                <li class="link-item {{menuItem.class}}">
+                    <a href="{{'/' + menuItem.link}}" title="{{menuItem.text}}" (click)="setStatus(menuItem.id)" *ngIf="menuItem.class"></a>
+                </li>
+                <li class="divider {{menuItem.class}}" aria-hidden="true" *ngIf="!isLast">
+                    <span></span>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+    <div class="toggle-area" [class.menuCollapsed]="menuCollapsed">
+        <h3>Step <span>{{activeItemId}} of {{totalItems}}</span></h3>
+        <hr>
+        <ul>
+            <li class="{{menuItem.class}}" *ngFor="let menuItem of menuData?.menuItems">
+                <a href="Javascript:;" [routerLink]="[menuItem.link]" (click)="setStatus(menuItem.id)">{{ menuItem.text }}</a>
+                <span>{{ menuItem.status }}</span>
+            </li>
+        </ul>
+    </div>
+</nav>

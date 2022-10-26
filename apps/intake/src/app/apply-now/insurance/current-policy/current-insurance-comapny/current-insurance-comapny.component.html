@@ -1,0 +1,108 @@
+<form [formGroup]="inusranceCompanyForm">
+    <h1>We need some information about {{currentUserName}}'s policy.</h1>
+    <div class="mb-3" *ngIf="requiredFields.indexOf('insuranceCompanyName')>-1">
+        <div class="mb-3">
+            <compass-ui-cw-select [fieldId]="'insuranceCompanyName'" [requiredIndicator]="requiredFields.indexOf('insuranceCompanyName')>-1"
+             [fieldLabel]="'Insurance Company Name'" [FormGroup]="inusranceCompanyForm">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let x of companyNames" value="{{x.id}}">{{x.displayValue}}</option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+    <ng-container *ngIf="visible==true && requiredFields.indexOf('otherInsuranceCompanyName')>-1">
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'otherInsuranceCompanyName'" [fieldType]="'nameType'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'otherInsuranceCompanyName'"
+                fieldLabel="Other Insurance Company Name" errorText="This is required"
+                [requiredIndicator]="visible && requiredFields.indexOf('otherInsuranceCompanyName')>-1"
+                [maxLength]="30" [displayError]="inusranceCompanyForm.controls['otherInsuranceCompanyName'].invalid && (inusranceCompanyForm.controls['otherInsuranceCompanyName'].dirty || inusranceCompanyForm.controls['otherInsuranceCompanyName'].touched)"
+                >
+            </compass-ui-text>
+        </div>
+    </ng-container>
+   
+    <ng-container *ngIf="requiredFields.indexOf('policyNumber')>-1 || optionalFields.indexOf('policyNumber')>-1">
+        <div class="mb-3" >
+            <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'policyNumber'" [fieldType]="'alphaNumbOnly'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'policyNumber'"
+                fieldLabel="Policy Number" [maxLength]="20" 
+                [requiredIndicator]="requiredFields.indexOf('policyNumber')>-1"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="accordion page-tip mb-3 mt-4" id="accordionPolicy{{currentIndex}}">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne{{currentIndex}}">
+                    <button class="accordion-button " type="button" data-bs-toggle="collapse" [ngClass]="{'collapsed':!policyTooltip}"
+                         aria-expanded="true" [attr.aria-controls]="'collapseOne'+currentIndex" (click)="policyTooltip=!policyTooltip">
+                        Where can I find my policy Number
+                    </button>
+                </h2>
+                <div id="collapseOne{{currentIndex}}" class="accordion-collapse collapse" [ngClass]="{'show':policyTooltip}" [attr.aria-labelledby]="'headingOne'+currentIndex"
+                    >
+                    <div class="accordion-body">
+                        <p>This number can be found on your insurance identification card or on an explanation of benefits from your insurance company.</p>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+  <ng-container *ngIf="optionalFields.indexOf('groupNumber')>-1">
+    <div class="mb-3" >
+        <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'groupNumber'" [fieldType]="'alphaNumbOnly'"
+            ngDefaultControl [formControlName]="'groupNumber'"
+            fieldLabel="Group Number" [maxLength]="20" 
+            
+            >
+        </compass-ui-text>
+    </div>
+    <div class="accordion page-tip mb-3 mt-4" id="accordionGroup{{currentIndex}}">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo{{currentIndex}}">
+                <button class="accordion-button " type="button" data-bs-toggle="collapse" [ngClass]="{'collapsed':!groupNumberTooltip}"
+                     aria-expanded="true" [attr.aria-controls]="'collapseTwo'+currentIndex" (click)="groupNumberTooltip=!groupNumberTooltip">
+                     Where can I find my group number?
+                </button>
+            </h2>
+            <div id="collapseTwo{{currentIndex}}" class="accordion-collapse collapse" [ngClass]="{'show':groupNumberTooltip}" [attr.aria-labelledby]="'headingOne'+currentIndex"
+                >
+                <div class="accordion-body">
+                    <p>This can be found on most mail from your insurance company.</p>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+  </ng-container>
+   
+<div class="mb-3" *ngIf="optionalFields.indexOf('policyStartDate')>-1">
+
+    <compass-ui-cw-datepicker  [label]="'What date did this policy start?'" requiredText="{{'lblrequired' | translate}}" showFieldHelpText="MM/DD/YYYY" ngDefaultControl
+        [formControlName]="'policyStartDate'" 
+         [showFieldHelpText]="'MM/DD/YYYY'">
+    </compass-ui-cw-datepicker>
+</div>
+<div class="mb-3" *ngIf="optionalFields.indexOf('premiumAmount')>-1">
+    <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'premiumAmount'" type="currencyFormat"
+    fieldHelpText="{{'formatCurrency' | translate}}"
+        requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'premiumAmount'"
+        [fieldLabel]="'How much is '+ currentUserName+' \'s premium for this health insurance?'" [maxLength]="9"  
+        >
+    </compass-ui-text>
+</div>
+<div class="mb-3" *ngIf="optionalFields.indexOf('howOftenThePremiumIsPaid')>-1">
+    <div class="mb-3">
+        <compass-ui-cw-select [fieldId]="'howOftenThePremiumIsPaid'" [fieldLabel]="'How often does '+currentUserName+' pay the premium?'" [FormGroup]="inusranceCompanyForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let x of howOftenPremiumPaid" value="{{x.id}}">{{x.displayValue}}</option>
+        </compass-ui-cw-select>
+    </div>
+</div>
+
+
+
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

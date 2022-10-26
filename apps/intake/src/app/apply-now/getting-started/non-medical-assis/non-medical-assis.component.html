@@ -1,0 +1,75 @@
+<form [formGroup]="nonMedicalForm">
+        <h1>{{ 'afsGSPItitle' | translate}}</h1>
+        <div class="col-12">
+            <compass-ui-cw-select [fieldId]="'medicalServiceType'" [fieldLabel]="'afsGSPIlbl1' | translate" [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+                [FormGroup]="nonMedicalForm" ngDefaultControl formControlName="medicalServiceType" [displayError]="isFieldValid('medicalServiceType')" [errorMsg]="'afsGSerrorRequired1' | translate">
+                <option value="" selected>- {{'selectone' | translate}} -</option>
+                <option *ngFor="let providerType of medicalService"  value="{{providerType.id}}">{{providerType.displayValue}}</option>
+            </compass-ui-cw-select> 
+        </div>
+        <div class="col-12">
+            <fieldset class="button-group">
+                <legend>{{ 'afsGSPIlbl2' | translate}}
+                    <span>{{'lblrequired' | translate}}</span></legend>
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('yesNoRadio')"
+                    [formControlName]="'yesNoRadio'" (click)="addMedicalAssistance()" [required]="true"
+                    [radioButtonGroupName]="'yesNoRadio'" [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                    [radioLabel]="'afsGSPIlbl2' | translate" radioBtnValue="MA" radioBtnId="MA">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('yesNoRadio')"
+                    [formControlName]="'yesNoRadio'" (click)="addNonMedicalAssistance()" [required]="true"
+                    [radioButtonGroupName]="'yesNoRadio'" [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                    [radioLabel]="'afsGSPIlbl3' | translate" radioBtnValue="NonMA" radioBtnId="NonMA">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+
+            <div *ngIf="isFieldValid('yesNoRadio')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                {{ 'afsGSerrorRequired1' | translate}}</div>
+        </div>
+        <div *ngIf="medicalAssis">
+            <div class="card arrow-card standard-mb">
+                <div class="card-body">
+                    <compass-ui-text [fieldId]="'medicalAssistance'" [fieldLabel]="'afsGSPIlbl4' | translate" [requiredIndicator]="true"  [requiredText]="'lblrequired' | translate" [FormGroup]="nonMedicalForm"
+                        [fieldHelpText]="'afsGShelpMA' | translate" [maxLength]="13" [errorText]="'afsGSerrorRequired1' | translate"  [displayError]="isFieldValid('medicalAssistance')"></compass-ui-text>
+
+                        
+                        <compass-ui-cw-datepicker [maxRange]="maxDateRange" [label]="'afsGSPIlbl5' | translate"
+                            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [showFieldHelpText]="'afsGShelpDate' | translate"  [formControlName]="'medicalAssistanceDate'" [required]="true"
+                            [displayError]="isFieldValid('medicalAssistanceDate')" [showError]="isFieldValid('medicalAssistanceDate')"
+                            [errorMsg]="errorMap('medicalAssistanceDate') | translate"></compass-ui-cw-datepicker> 
+                </div>
+            </div>
+        </div>
+        <div *ngIf="nonMedicalAssis">
+            <div class="card arrow-card standard-mb right-arrow-1">
+                <div class="card-body">
+                    <compass-ui-text [requiredIndicator]="true" [fieldId]="'nonMedicalAssistance'" [fieldLabel]="'afsGSPIlbl6' | translate" [requiredText]="'lblrequired' | translate"
+                        [FormGroup]="nonMedicalForm" [fieldHelpText]="'afsGShelpNonMA' | translate" [errorText]="'afsGSerrorRequired1' | translate" [displayError]="isFieldValid('nonMedicalAssistance')" [maxLength]="8"></compass-ui-text>
+
+
+                        <compass-ui-cw-datepicker [maxRange]="maxDateRange" [label]="'afsGSPIlbl7' | translate"
+                            requiredText="{{'lblrequired' | translate}}" ngDefaultControl  [showFieldHelpText]="'afsGShelpDate' | translate" [formControlName]="'nonMedicalAssistanceDate'" [required]="true"
+                            [displayError]="isFieldValid('nonMedicalAssistanceDate')" [showError]="isFieldValid('nonMedicalAssistanceDate')"
+                            [errorMsg]="errorMap('nonMedicalAssistanceDate') | translate"></compass-ui-cw-datepicker>
+
+                        
+                    <!-- <compass-ui-text [fieldId]="'nonMedicalAssistanceDate'" [fieldLabel]="'Date of First Admission or Treatment '" [requiredText]="'(required)'"
+                            [FormGroup]="nonMedicalForm" [fieldHelpText]="'MM/DD/YYYY'"></compass-ui-text> -->
+                   
+                     
+                </div>
+            </div>
+        </div>
+    <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        {{ 'back' | translate}}
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="submit()">
+        {{ 'next' | translate}}
+      </button>
+    </div>
+  </nav>
+</form>

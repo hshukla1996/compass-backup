@@ -1,0 +1,21 @@
+{
+    "questionText": "You told us someone pays legal fees to collect income. Tell us who.",
+    "subHeading": "Select all that apply.",
+    "toolTip": "",
+    "isRequired": true,
+    "requiredText": "Please select at least one",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "John Samples 65 (M)",
+            "isChecked": false,
+            "disabled": false
+        },
+        {
+            "id": 2,
+            "label": "Jane Samples 50 (F)",
+            "isChecked": false,
+            "disabled": false
+        }
+    ]
+}

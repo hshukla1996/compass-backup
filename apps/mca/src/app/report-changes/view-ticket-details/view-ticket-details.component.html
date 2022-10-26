@@ -1,0 +1,147 @@
+<h4 (click)="navigate()">
+    <i class="fa-solid fa-chevron-left mx-2"></i>
+    Back to Dashboard
+</h4>
+<h1>Ticket Number {{ticketInfo.compassTicketNumber}} Details</h1>
+<p>Here is a summary of changes you made for this ticket.</p>
+
+<div class="card">
+    <div class="card-head mx-3 mt-3">
+        <h2 class="m-0"><i class="fa-regular fa-location-dot mx-2"></i> Address</h2>
+    </div>
+    <div class="card-body">
+        <h2>Resindential Address</h2>
+        <ul>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label>Address</label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{ticketInfo?.householdInformation?.residentAddress?.streetAddressLine1}},
+                        {{ticketInfo?.householdInformation?.residentAddress?.streetAddressLine2 ?
+                        ticketInfo?.householdInformation?.residentAddress?.streetAddressLine2 + ',' : ''}}
+                        {{ticketInfo?.householdInformation?.residentAddress?.city}},
+                        {{ticketInfo?.householdInformation?.residentAddress?.state}},
+                        {{ticketInfo?.householdInformation?.residentAddress?.zip}}</label>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label>County</label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{countyObj[ticketInfo.householdInformation?.residentAddress?.county]}} </label>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label>School District</label>
+                </div>
+                <div class="col-6">
+                    <label
+                        class="data">{{districtObj[ticketInfo.householdInformation?.residentAddress?.schoolDistrict]}}
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label>Township/Borough</label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{townshipObj[ticketInfo.householdInformation?.residentAddress?.township] ||
+                        ticketInfo.householdInformation?.residentAddress?.township}}</label>
+                </div>
+            </div>
+        </ul>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <h2>Mailing Address</h2>
+            </div>
+            <div class="col-6">
+                <label class="data">{{ticketInfo.householdInformation?.mailingAddress?.streetAddressLine1}},
+                    {{ticketInfo.householdInformation?.mailingAddress?.streetAddressLine2 ?
+                    ticketInfo.householdInformation?.mailingAddress?.streetAddressLine2 + ',' : ''}}
+                    {{ticketInfo.householdInformation?.mailingAddress?.city}},
+                    {{ticketInfo.householdInformation?.mailingAddress?.state}},
+                    {{ticketInfo.householdInformation?.mailingAddress?.zip}} </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-head mx-3 mt-3">
+        <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i> Phone or Email</h2>
+    </div>
+    <div class="card-body">
+        <h4>Main Phone Number</h4>
+        <ul>
+            <div class="row">
+                <div class="col-6">
+                    <label>{{ticketInfo.householdInformation?.householdContactInformation?.mainContactNumber?.phoneNumber}}</label>
+                </div>
+            </div>
+        </ul>
+        <hr>
+        <h2>Second Phone Number</h2>
+        <ul>
+            <div class="row">
+                <div class="col-6">
+                    <label>{{ticketInfo.householdInformation?.householdContactInformation?.secondContactNumber?.phoneNumber}}</label>
+                </div>
+            </div>
+        </ul>
+        <hr>
+        <h2>Email</h2>
+        <ul>
+            <div class="row">
+                <div class="col-12">
+                    <label>{{ticketInfo.householdInformation?.householdContactInformation?.emailAddress}}</label>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+<p class="mt-3">Your request has been sent to the Allegheny County Assistance Office .</p>
+<p>If you still have questions, you can call the statewide <b>Customer Service Center at 1-877-395-8930</b> if you have
+    any further questions .</p>
+<!-- <div class="card col-12 col-lg-12 mt-3">
+    <div class="card-body"> -->
+<div class="alert alert-info mt-3">
+    <p>The CAO may contact you for more details or to ask for verification documents.
+        By verification documents, we mean documents that prove any changes to:
+    </p>
+    <ul>
+        <li>Income </li>
+        <li>Pregnancy</li>
+        <li>Work-Related Expenses</li>
+        <li>Household Expenses</li>
+        <li>Heating Source</li>
+        <li>Social Security Number</li>
+    </ul>
+</div>
+<!-- </div>
+</div> -->
+
+<div class="row mt-3">
+    <div class="col-12">
+        <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+            Back
+        </button>
+    </div>
+</div>
+<div class="modal fade show" style="display:block" [hidden]="!loading" id="loadingModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingModal>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Loading...</h2>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

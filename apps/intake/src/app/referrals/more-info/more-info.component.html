@@ -1,0 +1,57 @@
+<form [formGroup]="householdDetailsForm">
+    <h1>
+        {{'referralTellUs' | translate}} {{currentUser.firstName}}'s {{'referral' | translate}}.
+
+    </h1>
+    <div class="alert alert-info">
+        {{'questions' | translate}} <span class="fw-bold">{{'number' | translate}}</span>
+        {{'help' | translate}}
+
+    </div>
+    <div class="mb-3">
+
+        <label class="form-label" for="reasonForReferral">{{'reason' | translate}} {{'referralC' | translate}}
+        </label>
+        <textarea id="reasonForReferral" type="text" ngDefaultControl class="form-control"
+            formControlName="reasonForReferral" aria-describedby="reasonForReferral" maxlength="250"
+            rows="3"></textarea>
+
+
+
+    </div>
+
+    <div class="mb-3">
+        <compass-ui-cw-select [fieldId]="'county'" [requiredIndicator]="true" fieldLabel="{{'county' | translate}}"
+            [requiredText]="'(required)'" [FormGroup]="householdDetailsForm" [displayError]="isFieldValid('county')"
+            [errorMsg]="errorMap('county')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let county of counties.tableRows" value={{county.id}}>{{county.displayValue}}</option>
+        </compass-ui-cw-select>
+
+    </div>
+    <div>
+
+        <div class="mb-3" *ngIf="(currentUser.appliedReferrals || []).indexOf('EI') > -1 || (indAge <=6)">
+            <compass-ui-cw-select [fieldId]="'schoolDistrict'" [requiredIndicator]="true"
+                fieldLabel="{{'schoolDistrict' | translate}}" [requiredText]="'(required)'"
+                [FormGroup]="householdDetailsForm" [displayError]="isFieldValid('schoolDistrict')"
+                [errorMsg]="errorMap('schoolDistrict')">
+                <option value="" selected>- {{'selectone' | translate}} -</option>
+                <option *ngFor="let district of schoolDistricts" value={{district.id}}>{{district.displayValue}}
+                </option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{'referralBack' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="next()">
+                {{'referralNext' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

@@ -1,0 +1,4 @@
+<compass-ui-header (newItemEvent)="switchLang($event)"></compass-ui-header>
+<router-outlet></router-outlet>
+<compass-ui-footer [isLang]="langSel"></compass-ui-footer>
+<h5>Environment - {{currentEnv}}</h5>

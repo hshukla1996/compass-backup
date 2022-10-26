@@ -1,0 +1,76 @@
+<form [formGroup]="existingAccount">
+    <h1 class="standard-mb">{{ 'afsGSEAtext1' | translate}}</h1>
+            <!-- <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-9 col-xl-6">
+                        <button type="button" class="btn btn-outline-tertiary" data-bs-toggle="modal"
+                            data-bs-target="#closeLoginHeaderPopupModal">Yes</button>
+                        
+                        <button type="button" class="btn btn-outline-tertiary" (click)="hideUserNameCard()">No</button>
+                        <div *ngIf="isFieldValid('gender')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                            {{ 'afsGSerrorRequired1' | translate}}</div>
+                    </div>
+                    </div>
+            </div> -->
+    <div class="row standard-mb">
+        <div class="col">
+            <fieldset class="button-group">
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('gender')"
+                    [formControlName]="'gender'" (click)="getModal()" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" [radioLabel]="'lblyes' | translate">
+                </compass-ui-cw-radiobutton>
+             
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('gender')"
+                    [formControlName]="'gender'" (click)="hideUserNameCard()" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" [radioLabel]="'afsno' | translate">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <div *ngIf="isFieldValid('gender')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                {{ 'afsGSerrorRequired1' | translate}}</div>
+        </div>
+    </div> 
+    <div *ngIf="showCard">
+        <div class="card arrow-card standard-mb right-arrow">
+            <div class="card-body">
+                <h2>{{ 'afsGSEAtext2' | translate}}</h2>
+                <p>{{ 'afsGSEAtext3' | translate }}</p>
+
+                <ul>
+                    <li>{{ 'afsGSEAbullet1' | translate}}</li>
+                    <li>{{ 'afsGSEAbullet2' | translate}}</li>
+                    <li>{{ 'afsGSEAbullet3' | translate}}</li>
+                    <li>{{ 'afsGSEAbullet4' | translate}}</li>
+                    <li>{{ 'afsGSEAbullet5' | translate}}</li>
+                </ul>
+                <nav class=" d-flex justify-content-center">
+                    <button [routerLink]="['/sharedauth','register']" type="button" class="btn btn-secondary">{{ 'afsGSEAtext4' | translate}}</button>
+                </nav>
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <a [routerLink]="['/',applynow,proceedFurther]">{{ 'afsGSEAtext5' | translate}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info">
+        <p>{{ 'afsGSEAtext6' | translate}}</p>
+    </div>
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previousRoute()">
+                {{ 'back' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="nextRoute()">
+                {{ 'next' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>
+<cw-login-modal></cw-login-modal>

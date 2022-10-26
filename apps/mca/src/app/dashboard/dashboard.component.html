@@ -1,0 +1,72 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-12">
+        <div class="loading-container">
+            <div class="p-5">
+                <p>{{loadingText}}</p>
+            </div>
+            <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="!isLoading">
+
+
+
+<h1>Welcome   </h1>
+  
+<div *ngIf="noBenefits">
+    <p>There are no benefits available for the Head of Household linked to this My COMPASS Account. If benefits become
+        available for any application or case record that you're the Head of Household for, we will show them on this
+        screen. To
+        view benefits for a case record that has a different Head of Household, log out and create a new My COMPASS Account.
+    </p>
+</div> 
+<div *ngIf="showViewBenefitsButton">
+    <button type="button" class="btn  btn-primary w-100" (click)="viewBenefitDetails()">
+       View Benefit Details
+    </button>
+</div>
+<div *ngIf="showLinkCaseButton">
+<p>
+    To view your benefit information, you need to link your My COMPASS Account to a case.
+</p>
+<p>By linking your case, you can:</p>
+<ul>
+    <li>View your benefits</li>
+    <li>Renew your benefits online</li>
+</ul>
+<div class="row mb-3">
+    <div class="col text-center"> 
+        <button type="button" class="btn  btn-primary w-100" (click)="linkYourCase()">
+            Link Your Case
+        </button>
+    </div>
+</div>
+</div>
+
+<!-- ToastModal -->
+<!-- <button type="button" class="btn btn-primary w-100 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#toastModal">
+    <i class="fa-regular fa-champagne-glasses"></i>Toast <i class="fa-regular fa-champagne-glasses"></i>
+</button>
+<div class="modal fade toast" id="toastModal" tabindex="-1" aria-labelledby="toastModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="toast-icon-div">
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                </div>
+                <div class="toast-text">
+                    <h2>You have been successfully enrolled in Text Message notifications.</h2>
+                    <p>
+                        You will now receive text notifications through the number you provided.
+                    </p>
+                </div>
+                <button class="toast-dismiss" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </div>
+</div> -->
+</div>

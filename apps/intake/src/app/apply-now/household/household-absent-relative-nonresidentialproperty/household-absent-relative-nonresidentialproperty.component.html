@@ -1,0 +1,65 @@
+<form [formGroup]="absentRelativeNonResidentialForm">
+        <h1 class="standard-mb">Does {{currentUser.firstName}} {{currentUser.lastName}} own non-residential property like a home or land?</h1>
+        <div class="form-group">
+
+            <fieldset class="button-group standard-mb">
+                <legend></legend>
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'ownproperty'" [required]="true"
+                    [radioButtonGroupName]="'ownproperty'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="Yes"></compass-ui-cw-radiobutton>
+
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'ownproperty'" [required]="true"
+                    [radioButtonGroupName]="'ownproperty'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="No">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <div class="card arrow-card standard-mb" *ngIf="absentRelativeNonResidentialForm.value.ownproperty === 'Yes'">
+                <div class="card-body">
+                <compass-ui-cw-datepicker
+                    ngDefaultControl
+                    id="propertyBrought"
+                    [formControlName]="'propertyBrought'"
+                    [maxRange]="maxDateRange"
+                    label="{{'When was the property bought?' | translate }}"
+                    [displayError]="isFieldValid('propertyBrought')"
+                    [showError]="isFieldValid('propertyBrought')"
+                    [errorMsg]="errorMap('propertyBrought') | translate">
+                </compass-ui-cw-datepicker>
+                <compass-ui-text [fieldId]="'estimatedValue'" [FormGroup]="absentRelativeNonResidentialForm"
+                    [fieldLabel]="'Estimated Market Value' | translate" [maxLength]="8" [fieldType]="'numbersOnly'">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'streetAddress'" [FormGroup]="absentRelativeNonResidentialForm"
+                fieldType="prevStreetType"
+                    [fieldLabel]="'Street Address' | translate" [maxLength]="26">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'streetAddress2'" [FormGroup]="absentRelativeNonResidentialForm"
+                fieldType="prevStreetType"
+                    [fieldLabel]="'Street Address (2)' | translate" [maxLength]="26">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'city'" [FormGroup]="absentRelativeNonResidentialForm"
+                    [fieldLabel]="'City' | translate" [maxLength]="16" fieldType="cityType">
+                </compass-ui-text>
+                <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="absentRelativeNonResidentialForm">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+                </compass-ui-cw-select>
+                <compass-ui-text [fieldId]="'zip'" [FormGroup]="absentRelativeNonResidentialForm" [fieldLabel]="'ZIP Code'"
+                    [fieldType]="'numbersOnly'" [maxLength]="5" [displayError]="isFieldValid('zip')" [errorText]="'Please enter 5 digit zip code'">
+                </compass-ui-text>
+                </div>
+            </div>
+        </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

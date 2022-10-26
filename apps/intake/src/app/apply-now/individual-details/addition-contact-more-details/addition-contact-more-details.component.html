@@ -1,0 +1,129 @@
+<form class="form-horizontal" [formGroup]="additionalContactMoreDetailsForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+  <h1>Tell us more about {{currentUser.firstName}}.</h1>
+  <!-- </div> -->
+  <!-- <div class="panel-body"> -->
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'addressLine1'" [maxLength]="26"
+        [displayError]="isFieldValid('addressLine1')" [errorText]="'This is required.'"
+        [FormGroup]="additionalContactMoreDetailsForm" [fieldLabel]="'Street Address'"
+                       [fieldType]="'streetType'"
+        [requiredIndicator]="showAddressFieldsRequired === '(required)'">
+      </compass-ui-text>
+
+
+    </div>
+
+
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'addressLine2'" [fieldType]="'streetType'" [maxLength]="26"
+        [FormGroup]="additionalContactMoreDetailsForm" [fieldLabel]="'Street Address (2)'">
+      </compass-ui-text>
+
+    </div>
+
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'city'" [maxLength]="16" [fieldType]="'cityType'"
+        [FormGroup]="additionalContactMoreDetailsForm" [fieldLabel]="'City'"
+                       [requiredIndicator]="showAddressFieldsRequired === '(required)'" [displayError]="isFieldValid('city')"
+        [errorText]="'This is required.'">
+      </compass-ui-text>
+
+
+    </div>
+    <div class="mb-3">
+      <compass-ui-cw-select [fieldId]="'state'" fieldLabel="State" [displayError]="isFieldValid('state')"
+        [errorMsg]="'This is required.'" [requiredIndicator]="showAddressFieldsRequired === '(required)'"
+        [FormGroup]="additionalContactMoreDetailsForm">
+        <option value="" selected>- {{'selectone' | translate}} -</option>
+        <option *ngFor="let state of states" value={{state.id}}>{{state.displayValue}}</option>
+      </compass-ui-cw-select>
+
+
+    </div>
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'zip'" 
+      [displayError]="isFieldValid('zip')"
+      (keypress)="OnlyNumberAllowed($event,'zip')"
+      [maxLength]="5"
+      [requiredIndicator]="showAddressFieldsRequired === '(required)'"
+      [FormGroup]="additionalContactMoreDetailsForm"
+      [fieldLabel]="'Zip Code'"
+      [errorMsg]="errorMap('zip')"
+      [errorText]="'Enter valid Zip'">
+      </compass-ui-text>
+
+    </div>
+
+    <div class="form-group mb-3">
+      <compass-ui-text [fieldId]="'phoneNumber'" type="phone" [FormGroup]="additionalContactMoreDetailsForm"
+        ngDefaultControl [formControlName]="'phoneNumber'"
+        fieldLabel="Main Contact Number" [maxLength]="10"
+                       [fieldHelpText]="'(XXX)XXX-XXXX'"
+                       [requiredIndicator]="showPhoneNumrequired === '(required)'"
+        [displayError]="isFieldValid('phoneNumber')" [errorText]="errorMap('phoneNumber')"
+                       (keydown)="OnlyNumberAllowed($event, 'phoneNumber')"
+                       >
+      </compass-ui-text>
+    </div>
+
+    <div class="form-group mb-3">
+      <compass-ui-text [fieldId]="'secondaryContactNumber'" type="phone" [FormGroup]="additionalContactMoreDetailsForm"
+        ngDefaultControl [formControlName]="'secondaryContactNumber'"
+                       [fieldHelpText]="'(XXX)XXX-XXXX'"
+        fieldLabel="Second Contact Number" [maxLength]="10"  [requiredIndicator]="showPhoneNumrequired === '(required)'"
+        [displayError]="isFieldValid('secondaryContactNumber')" [errorText]="'This is required.'"
+        (keydown)="OnlyNumberAllowed($event,'secondaryContactNumber')"
+        >
+      </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+      <compass-ui-text [fieldId]="'otherContactNumber'" type="phone" [FormGroup]="additionalContactMoreDetailsForm"
+        ngDefaultControl [formControlName]="'otherContactNumber'"
+                       [fieldHelpText]="'(XXX)XXX-XXXX'"
+        fieldLabel="Other Contact Number" [maxLength]="10"  [requiredIndicator]="showPhoneNumrequired === '(required)'"
+        [displayError]="isFieldValid('otherContactNumber')" [errorText]="'This is required.'"
+        (keydown)="OnlyNumberAllowed($event,'otherContactNumber')">
+      </compass-ui-text>
+    </div>
+
+    <div class="form-group mb-3">
+      <compass-ui-text [fieldId]="'emailAddress'"
+                       [requiredIndicator]="showEmailRequired === '(required)'"
+        [displayError]="isFieldValid('emailAddress')" [errorText]="'This is required.'" [maxLength]="50"
+        [FormGroup]="additionalContactMoreDetailsForm" [fieldLabel]="'Email'" (inputModelChange)="GetEmail($event)">
+      </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+      <compass-ui-text [fieldId]="'confirmEmailAddress'"
+                       [requiredIndicator]="showEmailRequired === '(required)'"
+        [displayError]="isFieldValid('confirmEmailAddress')" [errorText]="errorMap('confirmEmailAddress')"
+        [maxLength]="50" [FormGroup]="additionalContactMoreDetailsForm" [fieldLabel]="'Confirm Email'"
+        (inputModelChange)="getConfirmEmail($event)">
+      </compass-ui-text>
+    </div>
+    <compass-ui-cw-select [fieldId]="'contactPreference'" [fieldLabel]="'What is the best way to contact this person?'"
+      requiredText="{{'lblrequired' | translate}}" [FormGroup]="additionalContactMoreDetailsForm"
+      [requiredIndicator]="true" [displayError]="isFieldValid('contactPreference')"
+                          (OnSelectedChange)="selectCommunicationMode($event)"
+      [errorMsg]="errorMap('contactPreference')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option value="P"> {{'contactInfoPhone' | translate}}</option>
+      <option value="E"> {{'clearValidatorscontactInfoEmail' | translate}}</option>
+      <option value="M"> {{'clearValidatorscontactInfoMail' | translate}}</option>
+    </compass-ui-cw-select>
+
+  <!-- </div> -->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Next</button>
+    </div>
+  </nav>
+  <!-- </div> -->
+</form>

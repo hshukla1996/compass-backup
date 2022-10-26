@@ -1,0 +1,53 @@
+<form class="form-horizontal" *ngIf="householdMembers.length>0" [formGroup]='areYouWantToApplyLTCForm'
+    #areYouWantToApplyLTCFormEle="ngForm">
+    <h1 class="standard-mb">
+        Do you want to apply for Long-Term Living Services from a nursing home or similar facility?
+        <span class="required-span">(required)</span>
+    </h1>
+
+        <div class="form-group mb-3 mt-3">
+                <fieldset class="button-group">
+                    <compass-ui-cw-radiobutton [showError]="isFieldValid('areYouWantToApplyLTC')" ngDefaultControl
+                        [formControlName]="'areYouWantToApplyLTC'" [required]="true"
+                        [radioButtonGroupName]="'areYouWantToApplyLTC'"
+                        [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                        radioLabel="Yes"></compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton [showError]="isFieldValid('areYouWantToApplyLTC')" ngDefaultControl
+                [formControlName]="'areYouWantToApplyLTC'" [required]="true"
+                [radioButtonGroupName]="'areYouWantToApplyLTC'"
+                [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                radioLabel="No">
+            </compass-ui-cw-radiobutton>
+            <div>
+                <cw-field-error-display [displayError]="isFieldValid('areYouWantToApplyLTC')"
+                    errorMsg="{{errorMap('areYouWantToApplyLTC')}}">
+                </cw-field-error-display>
+            </div>
+        </fieldset>
+    </div>
+    <div class="alert alert-info standard-mb">
+        <p class="text-left">
+            This program offers help in a nursing home or intermediate care facility.
+            If you choose this program, you won't be able to apply for other programs on this application.
+        </p>
+        <a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Long-Term-Care-Services.aspx">
+                More about Long-Term Living Services- Nursing Home or Related Facilitye</a>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" (click)="previous()" class="btn btn-outline-tertiary">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form> 
+<!-- 
+<cw-simpletile-checkbox [simpleTileCheckboxData]="householdLtcNursingJsonData" (nextPage)="showNextPage($event)"
+    (previousPage)="showPreviousPage()">
+</cw-simpletile-checkbox> -->

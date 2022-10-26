@@ -1,0 +1,61 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-12">
+      <div class="loading-container">
+          <div class="p-5">
+              <p>{{loadingText}}</p>
+          </div>
+          <span class="loading">
+              <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+          </span>
+      </div>
+
+  </div>
+</div>
+<div *ngIf="!isLoading">
+  <form [formGroup]="lgbtqGroup">
+    <h1>{{ 'afsRASlgbtqTitle' | translate }}</h1>
+    <p>{{ 'afsRASlgbtqText1' | translate }}</p>
+  
+    <fieldset class="button-group" *ngFor="let question of questions">
+      <legend>{{ question.displayValue }}
+        <!--<span>{{'lblrequired' |
+        translate}}</span>-->
+      </legend>
+  
+      <cw-field-error-display [errorMsg]="'sa_ERRrequired' | translate" [displayError]="isFieldInvalid(question.id)">
+      </cw-field-error-display>
+      <div class="mb-3 row" *ngFor="let answer of getAnswers(question.id)">
+        <compass-ui-cw-radiobutton textStyle="custom p-3 col-12" ngDefaultControl
+          [showError]="isFieldInvalid(question.id)" [formControlName]="question.id" [required]="true"
+          [radioBtnValue]="answer.id" [radioBtnId]="answer.id" [radioButtonGroupName]="question.id"
+          [radioLabel]="answer.displayValue">
+        </compass-ui-cw-radiobutton>
+      </div>
+    </fieldset>
+  
+    <compass-ui-cw-dpq-button [disabledNextButton]="!surveyInitiated" backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'submitLbl'| translate}}"
+      (back)="cancel()" (next)="submit()">
+    </compass-ui-cw-dpq-button>
+  </form>
+
+    <button type="button" [style.visibility]="'hidden'" #modalButton class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#surveyModal">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="surveyModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="surveyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-icon-div">
+                        <i class="fa-regular {{ modalIcon }}"></i>
+                    </div>
+                    <h2>{{ modalTitle }}</h2>
+                    <p>{{ modalText }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-tertiary w-100" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

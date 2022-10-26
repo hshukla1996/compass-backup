@@ -1,0 +1,147 @@
+<div class="standard-mb" *ngIf="type === 'text' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for={{fieldId}} class="form-label" id="lbl-{{fieldId}}">
+            {{fieldLabel}}
+            <span *ngIf="requiredIndicator">{{requiredText}}</span>
+        </label>
+    </ng-container>
+    <input type="text"
+        (input)="textChange($event)"
+        placeholder="{{placeHolderText}}"
+        id={{fieldId}}
+        required="{{requiredIndicator}}"
+        title="{{fieldTitle}}"
+        [attr.maxlength]="restrictInputLength"
+        [attr.minlength]="minInputLength"
+        formControlName="{{fieldId}}"
+        (keypress)="omit_special_char($event)"
+        (paste)="checkPaste($event)"
+        [ngClass]="[displayError ? 'form-control error' : 'form-control']"
+        [readOnly] = "isReadOnly"
+        attr.aria-describedby="lbl-{{fieldId}}" />
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+        <i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}
+    </div>
+</div>
+
+<div class="standard-mb" *ngIf="type === 'currency' && isVisible" [formGroup]="FormGroup" >
+    <ng-container *ngIf="fieldLabel">
+        <label for="{{fieldId}}"
+            class="form-label"
+            id="lbl-{{fieldId}}">
+                {{fieldLabel}}
+                <span *ngIf="requiredIndicator">{{requiredText}}</span>
+            </label>
+    </ng-container>
+    <div class="input-with-icon front">
+        <span class="input-icon"><i class="fa-regular fa-dollar-sign"></i></span>
+        <input type="number"
+            (input)="textChange($event)"
+            placeholder="{{placeHolderText}}"
+            required="{{requiredIndicator}}"
+            formControlName="{{fieldId}}"
+            title="{{fieldTitle}}"
+            [ngClass]="[displayError ? 'form-control error' : 'form-control']"
+            id={{fieldId}}
+            (keypress)="restrictCurrency($event)"
+            (paste)="pasteRestrictCurrency($event)"
+            attr.aria-describedby="lbl-{{fieldId}}"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="{{maxLength}}" />
+    </div>
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}"><i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}</div>
+</div>
+
+<div class="standard-mb" *ngIf="type === 'number' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for="{{fieldId}}" class="form-label" id="lbl-{{fieldId}}">
+            {{fieldLabel}}
+            <span *ngIf="requiredIndicator">{{requiredText}}</span>
+        </label>
+    </ng-container>
+    <input type="number"
+        (input)="textChange($event)"
+        placeholder="{{placeHolderText}}"
+        required="{{requiredIndicator}}"
+        formControlName="{{fieldId}}"
+        title="{{fieldTitle}}"
+        [ngClass]="[displayError ? 'form-control error' : 'form-control']"
+        id={{fieldId}}
+        attr.aria-describedby="lbl-{{fieldId}}" />
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+        <i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}
+    </div>
+</div>
+<div class="standard-mb" *ngIf="type === 'phone' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for={{fieldId}} class="form-label" id="lbl-{{fieldId}}">{{fieldLabel}}<span
+                *ngIf="requiredIndicator">{{requiredText}}</span></label>
+    </ng-container>
+    <input type="text" (input)="textChange($event)" placeholder="{{placeHolderText}}"
+        required="{{requiredIndicator}}" formControlName="{{fieldId}}"
+        [ngClass]="[displayError ? 'form-control error' : 'form-control']" id="{{fieldId}}" title="{{fieldTitle}}"
+        attr.aria-describedby="lbl-{{fieldId}}" appPhoneMask />
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+        <i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}
+    </div>
+</div>
+<div class="standard-mb" *ngIf="type === 'ssn' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for={{fieldId}} class="form-label" id="lbl-{{fieldId}}">{{fieldLabel}}<span
+                *ngIf="requiredIndicator">{{requiredText}}</span></label>
+    </ng-container>
+    <input type="text" (input)="textChange($event)" placeholder="{{placeHolderText}}"
+        required="{{requiredIndicator}}" formControlName="{{fieldId}}" title="{{fieldTitle}}"
+        [ngClass]="[displayError ? 'form-control error' : 'form-control']" id="{{fieldId}}"
+        attr.aria-describedby="lbl-{{fieldId}}" appSSNMask />
+
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+        <i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}
+    </div>
+</div>
+<div class="standard-mb" *ngIf="type === 'zipcode' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for={{fieldId}} class="form-label" id="lbl-{{fieldId}}">{{fieldLabel}}<span
+                *ngIf="requiredIndicator">{{requiredText}}</span></label>
+    </ng-container>
+    <input type="text" (input)="textChange($event)" placeholder="{{placeHolderText}}"
+        required="{{requiredIndicator}}" formControlName="{{fieldId}}" title="{{fieldTitle}}"
+        [ngClass]="[displayError ? 'form-control error' : 'form-control']" id="{{fieldId}}"
+        attr.aria-describedby="lbl-{{fieldId}}" appZIPMask />
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+        <i class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}
+    </div>
+</div>
+<div class="standard-mb" *ngIf="type === 'currencyFormat' && isVisible" [formGroup]="FormGroup">
+    <ng-container *ngIf="fieldLabel">
+        <label for="{{fieldId}}" class="form-label" id="lbl-{{fieldId}}">
+            {{fieldLabel}}
+            <span *ngIf="requiredIndicator">{{requiredText}}</span>
+        </label>
+    </ng-container>
+    <div class="input-with-icon front">
+        <span class="input-icon"><i class="fa-regular fa-dollar-sign"></i></span>
+        <input type="text" (input)="textChange($event)" placeholder="{{placeHolderText}}"
+            required="{{requiredIndicator}}" formControlName="{{fieldId}}" title="{{fieldTitle}}"
+            [ngClass]="[displayError ? 'form-control error' : 'form-control']" id={{fieldId}}
+            (keypress)="restrictCurrencyFormat($event)" (paste)="pasteRestrictCurrencyFormat($event)" attr.aria-describedby="lbl-{{fieldId}}"  (blur)="changeValue($event)"
+
+             />
+    </div>
+    <div *ngIf="fieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{fieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}"><i
+            class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}</div>
+</div>

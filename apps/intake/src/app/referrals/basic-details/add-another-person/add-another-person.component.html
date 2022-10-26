@@ -1,0 +1,41 @@
+<form [formGroup]="householdAnotherPerForm" (ngSubmit)="onSubmit()">
+    <h1>{{'referralAddAnotherPerson' | translate}}</h1>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="householdAnotherPerForm" [fieldId]="'firstName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'firstName'"
+            fieldLabel="{{'lblFirstName' | translate}}" [maxLength]="11" [requiredIndicator]="true"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [displayError]="isFieldValid('firstName')"
+            (inputModelChange)="GetValue($event)">
+        </compass-ui-text>
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="householdAnotherPerForm" [fieldId]="'lastName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'lastName'"
+            fieldLabel="{{'lblLastName' | translate}}" [requiredIndicator]="true"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="14"
+            [displayError]="isFieldValid('lastName')">
+        </compass-ui-text>
+
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-datepicker [maxRange]="maxDateRange" showFieldHelpText="MM/DD/YYYY"
+            label="{{'lbldob' | translate }}" requiredText="{{'lblrequired' | translate}}" ngDefaultControl
+            [formControlName]="'dateOfBirth'" [required]="true" [displayError]="isFieldValid('dateOfBirth')"
+            [showError]="isFieldValid('dateOfBirth')" errorMsg="{{errorMap('dateOfBirth') | translate}}">
+        </compass-ui-cw-datepicker>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{'referralBack' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                {{'referralNext' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

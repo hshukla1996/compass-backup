@@ -1,0 +1,63 @@
+<h1>{{ 'sa_TCStitle' | translate }}</h1>
+<p>{{ 'sa_TCStext1' | translate }}</p>
+<ul>
+  <li>{{ 'sa_TCSbullet1' | translate}}</li>
+  <li>{{ 'sa_TCSbullet2' | translate}}</li>
+  <li>{{ 'sa_TCSbullet3' | translate}}</li>
+  <li>{{ 'sa_TCSbullet4' | translate}}</li>
+  <li>{{ 'sa_TCSbullet5' | translate}}</li>
+</ul>
+
+<div class="accordion page-tip mb-3" id="tcsAcc">
+  <div class="accordion-item">
+      <h2 class="accordion-header" id="tcsAccHead">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#tcsAccBody" aria-expanded="true" aria-controls="tcsAccBody">
+              {{ 'sa_TCStext2' | translate}}
+          </button>
+      </h2>
+      <div id="tcsAccBody" class="accordion-collapse collapse" aria-labelledby="tcsAccHead"
+          data-bs-parent="#tcsAcc">
+          <div class="accordion-body">
+              <p class="fw-bold">{{ 'sa_TCStext3' | translate }}</p>
+              <p>{{ 'sa_TCStext4' | translate }}</p>
+              <ul>
+                <li>{{ 'sa_TCSbullet6' | translate }}</li>
+                <li>{{ 'sa_TCSbullet7' | translate }}</li>
+                <li>{{ 'sa_TCSbullet8' | translate }}</li>
+                <li>{{ 'sa_TCSbullet9' | translate }}</li>
+                <li>{{ 'sa_TCSbullet10' | translate }}</li>
+                <li>{{ 'sa_TCSbullet11' | translate }}</li>
+              </ul>
+
+              <br />
+              <p class="fw-bold">{{ 'sa_TCStext5' | translate }}</p>
+              <p>{{ 'sa_TCStext6' | translate }}</p>
+
+              <br />
+              <p class="fw-bold">{{ 'sa_TCStext7' | translate }}</p>
+              <p>{{ 'sa_TCStext8' | translate }}</p>
+
+              <br />
+              <p class="fw-bold">{{ 'sa_TCStext9' | translate }}</p>
+              <p>{{ 'sa_TCStext10' | translate }}</p>
+              <p>{{ 'sa_TCStext11' | translate }}</p>
+
+              <br />
+              <p class="fw-bold">{{ 'sa_TCStext12' | translate }}</p>
+              <p>{{ 'sa_TCStext13' | translate }}</p>
+
+              <br />
+              <p class="fw-bold">{{ 'sa_TCStext14' | translate }}</p>
+              <p>{{ 'sa_TCStext15' | translate }}</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <compass-ui-cw-checkbox checkboxId="agreeTo" (inputModelChange)="onEventChange($event.checked)"
+    [label]="'sa_TCSlbl1' | translate" [showError]="isFieldInvalid('agreeTo')"
+    [requiredText]="'sa_ERRmustAgree' | translate">
+  </compass-ui-cw-checkbox>
+</div>

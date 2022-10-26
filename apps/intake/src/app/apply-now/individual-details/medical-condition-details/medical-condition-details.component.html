@@ -1,0 +1,133 @@
+<div [formGroup]="medicalConditionDetailsForm">
+    <h1>{{this.individualLabel}}</h1>
+    <p class="alert alert-info">
+        Don't worry, you can add more medical conditions later on if you need to.
+    </p>
+    <div class="mb-3">
+        <label class="form-label" for="medicalCondition">Describe the medical condition.</label>
+        <textarea
+            (keypress)="checkChar($event)"
+            id="medicalCondition"
+            type="text"
+            class="{{isFieldValid('medicalCondition') ? 'form-control error' : 'form-control'}}"
+            formControlName="medicalCondition"
+            aria-describedby="medicalCondition"
+            required="requiredFields.indexOf('medicalCondition')>-1"
+            maxlength="255"
+            rows="3"></textarea>
+        <cw-field-error-display  [displayError]="isFieldValid('medicalCondition')"
+            [errorMsg]="errorMap('medicalCondition')">
+        </cw-field-error-display>
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-datepicker
+            label="When did the condition begin?"
+            ngDefaultControl
+            [maxRange]="maxDateRange"
+            [formControlName]="'beginDate'"
+            [required]="requiredFields.indexOf('beginDate')>-1"
+            [fieldId]="'beginDate'"
+            [displayError]="isFieldValid('beginDate')"
+            [showError]="isFieldValid('beginDate')"
+            [showFieldHelpText]="'MM/DD/YYYY'"
+            [errorMsg]="errorMap('beginDate') | translate">
+        </compass-ui-cw-datepicker>
+    </div>
+    <ng-container *ngIf="!isChild">
+        <div class="mb-3">
+            <compass-ui-cw-select
+                [fieldId]="'disability'"
+                fieldLabel="Is {{userName}}'s disability permanent or temporary?"
+                [displayError]="isFieldValid('disability')"
+                [requiredIndicator]="requiredFields.indexOf('disability')>-1"
+                [errorMsg]="errorMap('disability')"
+                [FormGroup]="medicalConditionDetailsForm">
+                <option value="" selected>- {{'selectone' | translate}} -</option>
+                <option *ngFor="let disability of disabilitys" value={{disability.id}}>{{disability.displayValue}}</option>
+            </compass-ui-cw-select>
+        </div>
+        <div class="mb-3">
+            <fieldset class="button-group">
+                <legend>Is {{userName}} able to work?</legend>
+                <input type="radio" class="btn-check" formControlName="ableToWork" name="ableToWork" id="Yes"
+                    autocomplete="off" value="Yes" required="requiredFields.indexOf('ableToWork')>-1">
+                <label
+                    class="{{isFieldValid('ableToWork') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+                    for="Yes">Yes</label>
+                <input type="radio" class="btn-check" formControlName="ableToWork" name="ableToWork" id="No"
+                    autocomplete="off" value="No" required="requiredFields.indexOf('ableToWork')>-1">
+                <label
+                class="{{isFieldValid('ableToWork') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+                for="No">No</label>
+            </fieldset>
+            <cw-field-error-display
+                [displayError]="isFieldValid('ableToWork')"
+                [errorMsg]="errorMap('ableToWork')">
+            </cw-field-error-display>
+        </div>
+        <div class="mb-3">
+            <fieldset class="button-group">
+                <legend>Is {{userName}} able to care for his or her child(ren)?</legend>
+                <input type="radio" class="btn-check" formControlName="careChildren" name="careChildren" id="yes1"
+                    autocomplete="off" value="Yes" required="requiredFields.indexOf('careChildren')>-1">
+                <label
+                    class="{{isFieldValid('careChildren') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+                    for="yes1">Yes</label>
+                <input type="radio" class="btn-check" formControlName="careChildren" name="careChildren" id="no1"
+                    autocomplete="off" value="No" required="requiredFields.indexOf('careChildren')>-1">
+                <label
+                    class="{{isFieldValid('careChildren') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+                    for="no1">No</label>
+            </fieldset>
+            <cw-field-error-display
+                [displayError]="isFieldValid('careChildren')"
+                [errorMsg]="errorMap('careChildren')">
+            </cw-field-error-display>
+        </div>
+        <div class="mb-3">
+            <compass-ui-cw-select
+                [fieldId]="'ssi'"
+                fieldLabel="Does {{userName}} get disability income (such as SSI)?"
+                [displayError]="isFieldValid('ssi')"
+                [errorMsg]="errorMap('ssi')"
+                [requiredIndicator]="requiredFields.indexOf('ssi')>-1"
+                [FormGroup]="medicalConditionDetailsForm">
+                <option value="" selected>- {{'selectone' | translate}} -</option>
+                <option *ngFor="let ssi of ssis" value={{ssi.id}}>{{ssi.displayValue}}</option>
+            </compass-ui-cw-select>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="isChild">
+        <div class="mb-3">
+            <compass-ui-cw-select
+                [fieldId]="'childDisability'"
+                fieldLabel="What type of disability does {{userName}} have?"
+                [displayError]="isFieldValid('childDisability')"
+                [errorMsg]="errorMap('childDisability')"
+                [requiredIndicator]="requiredFields.indexOf('childDisability')>-1"
+                [FormGroup]="medicalConditionDetailsForm">
+                <option value="" selected>- {{'selectone' | translate}} -</option>
+                <option *ngFor="let childDisability of childDisabilitys" value={{childDisability.id}}>{{childDisability.displayValue}}</option>
+            </compass-ui-cw-select>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text
+                [fieldType]="'numberType'"
+                [fieldId]="'developmentAge'"
+                fieldLabel="What is {{userName}}'s developmental age (in months)?"
+                [requiredIndicator]="requiredFields.indexOf('developmentAge')>-1"
+                [FormGroup]="medicalConditionDetailsForm"
+                [requiredIndicator]="true"
+                [maxLength]="2"
+                [displayError]="isFieldValid('developmentAge')"
+                [errorText]="errorMap('developmentAge')">
+            </compass-ui-text>
+        </div>
+    </ng-container>
+    <compass-ui-cw-dpq-button
+        backButtonLabel="Back"
+        nextButtonLabel="Next"
+        (next)="next()"
+        (back)="back()">
+    </compass-ui-cw-dpq-button>
+</div>

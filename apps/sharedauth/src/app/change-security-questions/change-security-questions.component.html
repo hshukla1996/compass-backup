@@ -1,0 +1,31 @@
+<form [formGroup]="verifyGroup">
+  <h1>{{ 'sa_changesqsVItitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'firstName'" [FormGroup]="verifyGroup" [fieldLabel]="'sa_changesqsVIlbl1' | translate"
+       [isReadOnly]="true">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'lastName'" [FormGroup]="verifyGroup" [fieldLabel]="'sa_changesqsVIlbl2' | translate"
+       [isReadOnly]="true">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'username'" [FormGroup]="verifyGroup" [fieldLabel]="'sa_changesqsVIlbl3' | translate"
+       [isReadOnly]="true">
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-censored (inputModelChange)="passwordError = false" [fieldId]="'password'" [FormGroup]="verifyGroup" [fieldLabel]="'sa_changesqsVIlbl4' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+      [displayError]="isFieldInvalid('password')" [errorText]="errorMap('password') | translate"
+      [maxLength]="passwordMaxL">
+    </compass-ui-censored>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'next'| translate}}"
+  (back)="cancel()" (next)="next()">
+</compass-ui-cw-dpq-button>
+</form>

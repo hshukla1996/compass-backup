@@ -1,0 +1,27 @@
+<form class="form-horizontal" [formGroup]='housingAssistanceReceivedDlsCmpForm' (ngSubmit)="onSubmit()"
+  autocomplete="off">
+  <div class="csrd-body">
+    <h1>You told us someone currently receives housing assistance. What kind of help do they get?</h1>
+    <compass-ui-cw-select [fieldId]="'housingAssistanceReceived'" [FormGroup]="housingAssistanceReceivedDlsCmpForm"
+      [requiredIndicator]="requiredFields.indexOf('housingAssistanceReceived')>-1"
+      [isVisible]="fieldDisplays.housingAssistanceReceived"
+      [displayError]="isFieldValid('housingAssistanceReceived')" [errorMsg]="errorMap('housingAssistanceReceived')">
+      <option value="" selected>- Select One -</option>
+      <option value="public_housing">Public Housing</option>
+      <option value="rent_subsidy">Rent Subsidy, Including HUD</option>
+      <option value="no_subsidy">No Housing Subsidy</option>
+    </compass-ui-cw-select>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+  </div>
+</form>

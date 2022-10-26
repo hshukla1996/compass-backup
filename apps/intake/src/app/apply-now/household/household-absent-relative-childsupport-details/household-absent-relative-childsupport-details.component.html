@@ -1,0 +1,104 @@
+<form [formGroup]="absentRelativeChildSupportDetailsForm" (ngSubmit)="onSubmit()">
+    <!-- <h1>{{'afsaddanotherperson' | translate}}</h1> -->
+    <h1>
+        Is the child support court-ordered or voluntary?
+        <span *ngIf="showRequired" class="required-span">(required)</span>
+    </h1>
+    <div class="form-group">
+        <fieldset class="button-group standard-mb">
+            <legend></legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'courtOrder'" [required]="true"
+                [radioButtonGroupName]="'courtOrder'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="Voluntary" value="voluntry">
+            </compass-ui-cw-radiobutton>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'courtOrder'" [required]="true"
+                [radioButtonGroupName]="'courtOrder'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="Court-Ordered" value="courtordered">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+
+    <div class="card arrow-card" *ngIf="absentRelativeChildSupportDetailsForm.value.courtOrder === 'Voluntary'">
+        <div class="card-body">
+            <compass-ui-text [fieldId]="'voluntryPay'" [FormGroup]="absentRelativeChildSupportDetailsForm"
+                [fieldLabel]="'How much do they pay?'" [maxLength]="7" [fieldType]="'payType'">
+
+
+            </compass-ui-text>
+            <compass-ui-cw-select [fieldId]="'voluntryPayOften'" [fieldLabel]="'How often do they pay this amount?'"
+                [FormGroup]="absentRelativeChildSupportDetailsForm">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let pay of payList" value="{{pay.id}}">{{pay?.displayValue}}
+                </option>
+            </compass-ui-cw-select>
+            <compass-ui-cw-datepicker 
+                ngDefaultControl id="voluntryWhenDidTheyPay"
+                [formControlName]="'voluntryWhenDidTheyPay'" 
+                [maxRange]="maxDateRange"
+                label="When did they last pay this amount?"
+                [displayError]="isFieldValid('voluntryWhenDidTheyPay')"
+                [showError]="isFieldValid('voluntryWhenDidTheyPay')"
+                [errorMsg]="errorMap('voluntryWhenDidTheyPay') | translate">
+            </compass-ui-cw-datepicker>
+            <compass-ui-cw-select [fieldId]="'voluntryWhomToPay'" [fieldLabel]="'Who did they pay this amount to?'"
+                [FormGroup]="absentRelativeChildSupportDetailsForm">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let detail of selectedUsers" value="{{detail.id}}">{{detail?.name}}
+                </option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+    <div class="card arrow-card right-arrow-2"
+        *ngIf="absentRelativeChildSupportDetailsForm.value.courtOrder === 'Court-Ordered'">
+        <div class="card-body">
+            <compass-ui-text [fieldId]="'courtNumber'" [FormGroup]="absentRelativeChildSupportDetailsForm"
+                [fieldLabel]="'Court Order Number'" [maxLength]="9" [fieldType]="'orgType'">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'courtName'" [FormGroup]="absentRelativeChildSupportDetailsForm"
+                [fieldLabel]="'Court Name'" [maxLength]="39" [fieldType]="'nameType'">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'courtOrderedPay'" [FormGroup]="absentRelativeChildSupportDetailsForm"
+                [fieldLabel]="'How much do they pay?'" [maxLength]="7" [fieldType]="'payType'">
+            </compass-ui-text>
+            <compass-ui-cw-select [fieldId]="'courtOrderedPayOften'" [fieldLabel]="'How often do they pay this amount?'"
+                [FormGroup]="absentRelativeChildSupportDetailsForm">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let pay of payList" value="{{pay.id}}">{{pay?.displayValue}}
+                </option>
+            </compass-ui-cw-select>
+            <compass-ui-cw-datepicker ngDefaultControl id="courtOrderedWhenDidTheyPay"
+                [formControlName]="'courtOrderedWhenDidTheyPay'" label="Court Order Date" [maxRange]="maxDateRange"
+                [displayError]="isFieldValid('courtOrderedWhenDidTheyPay')"
+                [showError]="isFieldValid('courtOrderedWhenDidTheyPay')"
+                [errorMsg]="errorMap('courtOrderedWhenDidTheyPay') | translate">
+            </compass-ui-cw-datepicker>
+            <compass-ui-text [fieldId]="'courtOrderedWhomPayTo'" [FormGroup]="absentRelativeChildSupportDetailsForm"
+                [fieldLabel]="'Are there any special items? If so, what are they?'" [maxLength]="63">
+            </compass-ui-text>
+        </div>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>
+<!-- <div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div> -->

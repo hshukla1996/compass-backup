@@ -1,0 +1,111 @@
+<form [formGroup]="absentRelativeDetailsForm" (ngSubmit)="onSubmit()">
+        <h1 class="standard-mb">You told us there is an absent relative. Tell us more about them.</h1>
+            <!-- {{'afsaskques' | translate: { name: householdHead.firstName} }} -->
+            <compass-ui-text [fieldId]="'firstName'" [FormGroup]="absentRelativeDetailsForm"
+                [fieldLabel]="'lblFirstName' | translate" [requiredText]="'lblrequired' | translate"
+                [requiredIndicator]="requiredFields.indexOf('firstName')>-1" [maxLength]="11"
+                [displayError]="isFieldValid('firstName')" [errorMsg]="errorMap('firstName')"
+                [errorText]="errorMap('firstName')"  [fieldType]="'absentNameType'">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'midName'" [FormGroup]="absentRelativeDetailsForm"
+                [fieldLabel]="'afsMiddleName' | translate" [maxLength]="1"
+                [displayError]="isFieldValid('midName')" [errorMsg]="errorMap('midName')" [fieldType]="'nameType'">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'lastName'" [FormGroup]="absentRelativeDetailsForm"
+                [fieldLabel]="'lblLastName' | translate" [requiredText]="'lblrequired' | translate"
+                [requiredIndicator]="requiredFields.indexOf('lastName')>-1" [errorText]="errorMap('lastName')" [maxLength]="14"
+                [displayError]="isFieldValid('lastName')" [errorMsg]="errorMap('lastName')" [fieldType]="'absentNameType'">
+            </compass-ui-text>
+            <div class="form-group standard-mb">
+                <label class="form-label">Suffix</label>
+                <select class="form-control" id="suffix" formControlName="suffix">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let suffixs of suffixls" value="{{suffixs.id}}">{{suffixs.displayValue}}
+                    </option>
+                </select>
+            </div>
+
+
+            <!-- <compass-ui-cw-datepicker ngDefaultControl  id="dtDateOfBirth"  [maxRange]="maxDateRange" [formControlName]="'dateOfBirth'" [label]="'lbldob' | translate"
+          [required]="true" [requiredText]="'lblrequired' | translate" [displayError]="isFieldValid('dateOfBirth')" [showError]="isFieldValid('dateOfBirth')" [errorMsg]="errorMap('dateOfBirth')"></compass-ui-cw-datepicker> -->
+            <div class="standard-mb">
+                <fieldset class="button-group">
+                    <legend>Has this person died?</legend>
+                    <compass-ui-cw-radiobutton (inputModelChange)="changeDeceased($event)"
+                        [showError]="isFieldValid('deceased')" ngDefaultControl [formControlName]="'deceased'"
+                        [radioButtonGroupName]="'deceased'"
+                        [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                        radioLabel="Yes">
+                    </compass-ui-cw-radiobutton>
+                    <compass-ui-cw-radiobutton (inputModelChange)="changeDeceased($event)"
+                        [showError]="isFieldValid('deceased')" ngDefaultControl [formControlName]="'deceased'"
+                        [radioButtonGroupName]="'deceased'"
+                        [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'"
+                        radioLabel="No">
+                    </compass-ui-cw-radiobutton>
+                </fieldset>
+                <cw-field-error-display [displayError]="isFieldValid('deceased')" errorMsg="{{errorMap('deceased')}}">
+                </cw-field-error-display>
+               </div>
+                <!-- <div *ngIf="deceasedError" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+              Gender is Required</div> -->
+                    <compass-ui-cw-datepicker
+                        [maxRange]="maxDateRange"
+                        [minRange]="minDateRange"
+                        label="{{'lbldob' | translate }}"
+                        requiredText="{{'lblrequired' | translate}}"
+                        ngDefaultControl [formControlName]="'dateOfBirth'"
+                        [fieldId]="'dob-datepicker'" 
+                        [required]="requiredFields.indexOf('dateOfBirth')>-1" 
+                        [displayError]="isFieldValid('dateOfBirth')"
+                        [showError]="isFieldValid('dateOfBirth')"
+                        [errorMsg]="errorMap('dateOfBirth') | translate">
+                    </compass-ui-cw-datepicker>
+                    <compass-ui-text [fieldId]="'socialSecurityNumber'" [FormGroup]="absentRelativeDetailsForm"
+                        [fieldLabel]="'Social Security Number (SSN)'" [requiredText]="'lblrequired' | translate"
+                        [requiredIndicator]="requiredFields.indexOf('socialSecurityNumber')>-1" 
+                        [errorText]="errorMap('socialSecurityNumber')" [maxLength]="9"
+                        [displayError]="isFieldValid('socialSecurityNumber')"
+                        (setValidator)="ssnValidator($event)" ngDefaultControl
+                        [formControlName]="'socialSecurityNumber'"
+                        type="ssn" [errorMsg]="errorMap('socialSecurityNumber')" [fieldHelpText]="'###-##-####'">
+                    </compass-ui-text>
+                    <compass-ui-cw-select [fieldId]="'isThisPersonSpouseParentOrBothOfTheHouseholdMember'"
+                        [fieldLabel]="'Is this person a spouse, parent, or both of the household member(s)?'"
+                        [FormGroup]="absentRelativeDetailsForm">
+                        <option value="" selected>- Select One -</option>
+                        <option *ngFor="let relation of parentSpouseOrBoth" value="{{relation.displayValue}}">
+                            {{relation?.displayValue}}</option>
+                    </compass-ui-cw-select>
+                    <fieldset class="button-group" *ngIf="fieldDisplays.deceased">
+                        <legend>{{'lblsex' | translate }}</legend>
+                        <compass-ui-cw-radiobutton (inputModelChange)="changeGender($event)"
+                            [showError]="isFieldValid('gender')" ngDefaultControl [formControlName]="'gender'"
+                             [radioButtonGroupName]="'gender'"
+                            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                            radioLabel="{{'genderlblmale'| translate}}">
+                        </compass-ui-cw-radiobutton>
+                        <compass-ui-cw-radiobutton (inputModelChange)="changeGender($event)"
+                            [showError]="isFieldValid('gender')" ngDefaultControl [formControlName]="'gender'"
+                             [radioButtonGroupName]="'gender'"
+                            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                            radioLabel="{{'genderlblfemale'| translate}}">
+                        </compass-ui-cw-radiobutton>
+                    </fieldset>
+                    <cw-field-error-display [displayError]="isFieldValid('gender')" errorMsg="{{errorMap('gender')}}">
+                    </cw-field-error-display>
+                    <!-- <div *ngIf="genderError" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                              Gender is Required</div> -->
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

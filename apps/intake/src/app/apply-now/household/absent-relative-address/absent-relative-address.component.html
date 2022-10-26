@@ -1,0 +1,40 @@
+<form [formGroup]="absentRelativeAddressForm" (ngSubmit)="onSubmit()">
+        <h1>Tell us more about {{this.currentUser.firstName}}.</h1>
+        <compass-ui-text [fieldId]="'AddressLine1'" [FormGroup]="absentRelativeAddressForm"
+            [fieldLabel]="'Street Address'" fieldType="streetType" pattern="[#.0-9a-zA-Z\s,-]*" [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'AddressLine2'" [FormGroup]="absentRelativeAddressForm"
+            [fieldLabel]="'Street Address (2)'" fieldType="streetType" pattern="[#.0-9a-zA-Z\s,-]*" [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'City'" [FormGroup]="absentRelativeAddressForm" [fieldLabel]="'City'"
+             [maxLength]="16" fieldType="cityType">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'State'" [fieldLabel]="'State'" [FormGroup]="absentRelativeAddressForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'Zip'" [FormGroup]="absentRelativeAddressForm" [fieldLabel]="'ZIP Code'"
+            [errorMsg]="errorMap('Zip')" fieldType="numberType" [maxLength]="5"
+            [displayError]="isFieldValid('Zip')" [errorText]="'Please enter 5 digit zip code'">
+        </compass-ui-text>
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'PhoneNumber'" [FormGroup]="absentRelativeAddressForm" ngDefaultControl
+                [formControlName]="'PhoneNumber'" fieldLabel="Phone Number" [type]="'phone'"
+                [displayError]="showError ? isFieldValid('PhoneNumber') : showError" [errorText]="'Please enter 10 digit phone number'"
+                (keydown)="OnlyNumberAllowed($event, 'PhoneNumber')">
+            </compass-ui-text>
+            <small class="text-muted">(XXX)XXX-XXXX</small>
+        </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

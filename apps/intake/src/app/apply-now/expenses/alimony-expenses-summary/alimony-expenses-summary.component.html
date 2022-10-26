@@ -1,0 +1,16 @@
+  <h1>Your alimony expenses.</h1>
+  <p>Look below to make sure all alimony expenses are here.</p>
+
+  <cw-simpletile-summary
+    [simpleTileSummaryData]="alimoneyExpensesData"
+    (deleteButtonClicked)="deleteClicked($event)"
+    (recordNumberToOp) = "recordIndexToOp($event)"
+    (editButtonClicked)="editClicked($event)"
+    (addAnotherPerson)="addClicked()"
+    (nextPage)="next()"
+    (previousPage)="back()"
+    [updatedJson]="jsonData">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>
+

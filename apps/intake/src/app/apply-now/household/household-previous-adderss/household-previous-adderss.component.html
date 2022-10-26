@@ -1,0 +1,48 @@
+<form [formGroup]="householdPrevAddressForm">
+    <h1>What was your previous address?</h1>
+    <div class="alert alert-info" *ngIf="isToolTipVisible">
+      <dl class="text-left">
+        If you live in a facility, give us your previous address. If you're married, give us your spouse's address.
+      </dl>
+    </div>
+    <div class="form-group pt-3">
+      <compass-ui-text [fieldId]="'address'" [FormGroup]="householdPrevAddressForm" [fieldLabel]="'Street Address'"
+        [errorText]="'Enter valid Address'" [maxLength]="26" [requiredIndicator]="false"
+        fieldType="prevStreetType"> <!-- pattern="[#.0-9a-zA-Z\s,-]*" -->
+      </compass-ui-text>
+      <compass-ui-text [fieldId]="'address2'" [FormGroup]="householdPrevAddressForm" [fieldLabel]="'Street Address (2)'"
+        [maxLength]="26"
+        fieldType="prevStreetType"> <!-- pattern="[#.0-9a-zA-Z\s,-]*" -->
+      </compass-ui-text>
+      <compass-ui-text [fieldId]="'city'" [FormGroup]="householdPrevAddressForm" [fieldLabel]="'City'" [requiredIndicator]="false"
+        [maxLength]="16" [errorText]="'Enter valid City'"
+        fieldType="cityType"> <!-- pattern="[a-zA-Z]*" -->
+      </compass-ui-text>
+      <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="householdPrevAddressForm">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+      </compass-ui-cw-select>
+      <compass-ui-text [fieldId]="'zip'" [FormGroup]="householdPrevAddressForm" [fieldLabel]="'ZIP Code'"
+        fieldType="numberType" [maxLength]="5"
+        [errorText]="'Please enter 5 digit zip code'"
+        [displayError]="isFieldValid('zip')">
+      </compass-ui-text>
+      <compass-ui-text [fieldId]="'phoneNo'" [FormGroup]="householdPrevAddressForm" [fieldLabel]="'Previous Phone Number'"
+        [maxLength]="10" (keypress)="OnlyNumberAllowed($event)" 
+        [errorText]="'Please enter 10 digit phone number'"
+        [displayError]="isFieldValid('phoneNo')">
+      </compass-ui-text>
+    </div>
+  <div class="row action-bar">
+    <div class="col">
+      <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+        Back
+      </button>
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-primary" (click)="goNext()">
+        Next
+      </button>
+    </div>
+  </div>
+</form>

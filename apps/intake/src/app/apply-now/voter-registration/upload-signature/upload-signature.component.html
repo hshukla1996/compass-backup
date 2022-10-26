@@ -1,0 +1,17 @@
+<h1>{{ 'afsUploadSignatureTitle' | translate }}</h1>
+<div class="alert alert-info">
+  <p>{{ 'afsUploadSignatureTip1' | translate }}</p>
+</div>
+<p>{{ 'afsUploadSignatureReqLbl' | translate }}</p>
+<ul>
+  <li>{{ 'afsUploadSignatureReq1' | translate }}</li>
+  <li>{{ 'afsUploadSignatureReq2' | translate }}</li>
+  <li>{{ 'afsUploadSignatureReq3' | translate }}</li>
+</ul>
+ 
+<compass-ui-cw-upload [displayError]="showError" [errorText]="'Upload valid file type'" (getFile)="checkFile($event)" [fieldId]="'uploadfile'" [fileType]="['png', 'tif', 'tiff', 'jpg', 'bmp']" [buttonLabel]="'Choose a File'"></compass-ui-cw-upload>
+ <p>{{showFileName}}</p>
+<!-- continue to summary -->
+<compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>

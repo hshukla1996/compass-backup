@@ -1,0 +1,121 @@
+<cw-simpletile-gatepostbutton
+  [simpleTileGatepostButtonData]="jsonData"
+  [textBoxData] = "'You can tell us more about your heating situation, if needed.'"
+  (nextPage)="showNextPage($event)"
+  (previousPage)="showPreviousPage()"
+  (otherTextBox)="checkName($event)">
+</cw-simpletile-gatepostbutton>
+
+<!--<h1></h1>
+    <p class="subtitle">Select all that apply.</p>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Electricity is shut off</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" name="electricityShut" class="btn-check" id="electricityShutYes"
+                            autocomplete="off" value="true">
+                        <label class="btn btn-sm btn-toggle left" for="electricityShutYes">Yes</label>
+                        <input type="radio" class="btn-check" name="electricityShut" id="electricityShutNo"
+                            autocomplete="off" value="false" />
+                        <label class="btn btn-sm btn-toggle right " for="electricityShutNo">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);"
+                            class="hyperlink-lg float-end">Reset</a>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Ran out of fuel</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" name="outOfFuel" class="btn-check" id="outOfFuelYes" autocomplete="off"
+                            value="true">
+                        <label class="btn btn-sm btn-toggle left" for="outOfFuelYes">Yes</label>
+                        <input type="radio" class="btn-check" name="outOfFuel" id="outOfFuelNo" autocomplete="off"
+                            value="false" />
+                        <label class="btn btn-sm btn-toggle right " for="outOfFuelNo">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);"
+                            class="hyperlink-lg float-end">Reset</a>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Have a shut-off notice for electricity</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" name="noticeForElectricity" class="btn-check" id="noticeForElectricityYes"
+                            autocomplete="off" value="true">
+                        <label class="btn btn-sm btn-toggle left" for="noticeForElectricityYes">Yes</label>
+                        <input type="radio" class="btn-check" name="noticeForElectricity" id="noticeForElectricityNo"
+                            autocomplete="off" value="false" />
+                        <label class="btn btn-sm btn-toggle right " for="noticeForElectricityNo">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);"
+                            class="hyperlink-lg float-end">Reset</a>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Will run out of fuel within 15 days</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" name="outOfFuelDays" class="btn-check" id="outOfFuelDaysYes" autocomplete="off"
+                            value="true">
+                        <label class="btn btn-sm btn-toggle left" for="outOfFuelDaysYes">Yes</label>
+                        <input type="radio" class="btn-check" name="outOfFuelDays" id="outOfFuelDaysNo" autocomplete="off"
+                            value="false" />
+                        <label class="btn btn-sm btn-toggle right " for="outOfFuelDaysNo">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);"
+                            class="hyperlink-lg float-end">Reset</a>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Main heating source is not working</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" name="heatingSourceWork" class="btn-check" id="heatingSourceWorkYes"
+                            autocomplete="off" value="true">
+                        <label class="btn btn-sm btn-toggle left" for="heatingSourceWorkYes">Yes</label>
+                        <input type="radio" class="btn-check" name="heatingSourceWork" id="heatingSourceWorkNo"
+                            autocomplete="off" value="false" />
+                        <label class="btn btn-sm btn-toggle right " for="heatingSourceWorkNo">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);"
+                            class="hyperlink-lg float-end">Reset</a>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <compass-ui-text [fieldId]="'heatingSituation'" [FormGroup]="heatingGatepostForm"
+        [fieldLabel]="'You can tell us more about your heating situation, if needed.'" [maxLength]="75"
+        [fieldType]="'nameType'">
+    </compass-ui-text>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="showPreviousPage()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+                Next
+            </button>
+        </div>
+    </nav>-->

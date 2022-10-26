@@ -1,0 +1,30 @@
+<form [formGroup]="previousRegistrationGroup">
+  <h1>{{ 'afsPrevRegTitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="registrationNumber" [maxLength]="12" ngDefaultControl [FormGroup]="previousRegistrationGroup"
+      formControlName="registrationNumber" [fieldLabel]="'afsPrevRegLbl1' | translate" [errorText]="'This is required.'"
+     >
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="registrationYear" (keypress)="OnlyNumberAllowed($event)" [maxLength]="4"  ngDefaultControl [FormGroup]="previousRegistrationGroup"
+      formControlName="registrationYear" [fieldLabel]="'afsPrevRegLbl2' | translate" [errorText]="'This is required.'"
+      >
+    </compass-ui-text>
+  </div>
+
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="next()">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

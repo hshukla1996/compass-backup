@@ -1,0 +1,43 @@
+    <h1 class="mb-3">Please tell us about your new job.</h1>
+    <div class="form-group mb-4" *ngFor="let individualInformation of individualInformations;let i = index">
+        <p>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+        {{individualInformation?.age}}
+        </p>
+        <div class="mb-2">
+            <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+        </div>
+        <form [formGroup]="formGroupObj[i]">
+            <textarea class="form-control" rows="3" ngDefaultControl  formControlName="description"
+            maxlength="700">       
+            </textarea>
+        </form>
+    </div>
+    <div class="col-12">
+        <div class="accordion page-tip mb-3" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        What to include
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Include the information below for anyone in your household who has new employment.</p>
+                        <ul>
+                            <li>Name of Employer
+                            </li>
+                            <li>Start Date</li>
+                            <li>Date of First Pay</li>
+                            <li>Expected Hourly Rate</li>
+                            <li>Frequency of Pay</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,411 @@
+
+<compass-ui-cw-loader>
+    </compass-ui-cw-loader>
+<div *ngIf="!isLoading">
+    <div class="d-flex justify-content-center">
+        <i class="fa-regular fa-circle-check fa-3x text-success" *ngIf="hasStatusYes()"></i>
+        <i class="fa-regular fa-circle-minus fa-3x text-danger" *ngIf="hasNoProgramQualified()"></i>
+    </div>
+
+    <h1 class="text-center py-3" *ngIf="hasStatusYes()">{{'diqResultHeadingOne' | translate}}</h1>
+    <h1 class="text-center py-3" *ngIf="hasNoProgramQualified()">{{'diqResultHeadingTwo' | translate}}</h1>
+    <hr />
+    <p class=" mb-3" *ngIf="hasStatusYes()">{{'diqResultHeadingThree' | translate}}</p>
+   
+
+
+    <div *ngIf="hasStatusYes()">
+        <div class="mb-3" *ngFor="let benefit of getApprovedBenefits();let i=index">
+            <div class="">
+                <div class="text-center">
+                    <img src="./assets/img/receipt-comp-img-2.png" class="img-fluid" alt="">
+
+                    <h2 class="text-center fs-5" *ngIf="benefit=='HA'">{{'diqResultBenefitHA' | translate}}</h2>
+                    <h2 class="text-center fs-5" *ngIf="benefit=='FS'">{{'diqResultBenefitFA' | translate}}
+                    </h2>
+                    <h2 class="text-center fs-5" *ngIf="benefit=='CA'">{{'diqResultBenefitCA' | translate}}
+                    </h2>
+                    <h2 class="text-center fs-5" *ngIf="benefit=='BL'">
+                        {{'diqResultBenefitNSLP' | translate}}
+                    </h2>
+                    <h2 class="text-center fs-5" *ngIf="benefit=='LH'">
+                        {{'diqResultBenefitLH' | translate}}</h2>
+                  
+                    <h2 class="text-center fs-5" *ngIf="benefit=='CI'">{{'diqResultBenefitCI' | translate}}
+                    </h2>
+                </div>
+                <p *ngIf="benefit=='HA'">{{'diqResultBenefitHADesc' | translate}}</p>
+                <p *ngIf="benefit=='FS'">{{'diqResultBenefitFADesc' | translate}}</p>
+                <p *ngIf="benefit=='CA'">{{'diqResultBenefitCADesc' | translate}}</p>
+                <p *ngIf="benefit=='BL'">{{'diqResultBenefitNSLPDesc' | translate}}</p>
+                <p *ngIf="benefit=='LH'">{{'diqResultBenefitLHDesc' | translate}}</p>
+                <p *ngIf="benefit=='CI'">{{'diqResultBenefitCIDesc' | translate}}</p>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="hasNoProgramQualified()" class="mb-2">{{'diqResultNotQualifyText' | translate}}</p>
+    
+
+    <div class="mb-3" *ngIf="hasStatusYes()">
+        <div class="">
+            <div class="text-center">
+                <img src="./assets/img/receipt-comp-img1.png" class="img-fluid" alt="">
+                <h2 class="text-center fs-5">{{'diqNeedHelpText' | translate}}</h2>
+            </div>
+            <p>{{'diqMayQualify' | translate}}</p>
+            <div class="card mb-3">
+                <div class="card-body">
+
+               
+            <ul>
+                <li><span class="fw-bold">{{'diqEITC' | translate}}</span>
+                    <p><a href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc"
+                            target="_blank">{{'diqMoreAboutEarnedIncome' | translate}}
+                        </a></p>
+                </li>
+
+                <li><span class="fw-bold">{{'diqChildTaxCredit' | translate}}
+                        </span> <p><a href="https://www.irs.gov/credits-deductions/individuals/child-tax-credit" target="_blank">{{'diqChildTaxCreditMoreAbout' | translate}}</a></p>
+                </li>
+                <li><span class="fw-bold">{{'diqMedicare' | translate}}
+                    </span> <p><a href="https://www.medicare.gov/" target="_blank">{{'diqMoreAboutMedicare' |translate}} </a>
+                    </p>
+                </li>
+                <li><span class="fw-bold">{{'diqChildSupport' | translate}}
+                    </span> <p><a href="https://www.humanservices.state.pa.us/csws/?Preference=Desktop&Owner=Client"
+                            target="_blank">{{'diqChildSupportMoreAbout' | translate}} </a>
+                    </p>
+                </li>
+                <li><span class="fw-bold">{{'diqSocialSecurity' | translate}}
+                    </span> <p><a href="https://www.irs.gov/" target="_blank">{{'diqMoreAboutSS' | translate}}</a>
+                    </p>
+                </li>
+                <li><span class="fw-bold">{{'diqSupplementalIncome' | translate}}
+                    </span> <p><a href="https://www.ssa.gov/" target="_blank">{{'diqMoreAboutSupplementalIncome' | translate}}
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <span class="fw-bold">{{'diqUnemployment' | translate}}
+                    </span> <p><a href="https://www.uc.pa.gov/Pages/default.aspx" target="_blank">{{'diqUnemploymentMoreAbout' | translate}}</a>
+                    </p>
+                </li>
+                <li>
+                    <span class="fw-bold">{{'diqResultBenefitHA' | translate}}Veterans Affairs
+                    </span> <p><a href="https://www.dmva.pa.gov/Pages/default.aspx" target="_blank">{{'diqResultBenefitHA' | translate}}</a>
+                    </p>
+                </li>
+            </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="mb-3" *ngIf="hasStatusNo() ">
+        <div>
+            <h2 class="text-center" *ngIf="!hasNoProgramQualified()">{{'diqMayNotQualify' | translate}}</h2>
+
+            <p *ngIf="!hasNoProgramQualified()">{{'diqNotEligibleForBenefits' | translate}}</p>
+            <div class="card img-card mb-2" *ngIf="programs.HA==false">
+                <div class="card-body">
+                    <h3>{{'diqHA' | translate}}</h3>
+                    <p>{{'diqCHIP' | translate}} </p>
+                    <div class="alert alert-info d-flex align-items-center">
+                        <p>{{'diqStillAppy' | translate}} <a
+                                href="https://pennie.com/" target="_blank">{{'diqPennie' | translate}}</a></p>
+                    </div>
+                    <div class="accordion page-tip" id="inCardAccordionCard2">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header" id="inCardHeading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#inCardCollapse2" aria-expanded="true"
+                                    aria-controls="inCardCollapse2">
+                                    {{'diqMoreAboutHA' | translate}}
+                                </button>
+                            </h4>
+                            <div id="inCardCollapse2" class="accordion-collapse collapse"
+                                aria-labelledby="inCardHeading2" data-bs-parent="#inCardAccordionCard2">
+                                <div class="accordion-body">
+                                    <p class="mb-2 ">{{'diqCommonReasonsHA' | translate}}</p>
+                                    <div >
+<p class="fw-bold mb-1">{{'diqNotUSCitizen' | translate}}</p>
+<p class="mb-2">{{'diqNonCitizenMA' | translate}}</p>
+                                    </div>
+                                 <div>
+                                    <p class="fw-bold mb-1">{{'diqIncomeTooHigh' | translate}}</p>
+                                    <p class="mb-2">{{'diqFewMA' | translate}}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p class="fw-bold mb-1">{{'diqResourceHigh' | translate}}</p>
+                                        <p >{{'diqTypeMA' | translate}}</p>
+                                        <p>{{'diqSomeoneHousehold' | translate}}</p>
+                                        <ul class=" mb-1">
+                                            <li>{{'diqIsPregnant' | translate}}</li>
+                                            <li>{{'diqUnder21' | translate}}</li>
+                                        
+                                            <li> {{'diqDepebdentChild' | translate}}</li>
+                                            <li>{{'diqNotHaveDisability' | translate}}</li>
+                                        </ul>
+                                    </div>
+                                    <p>{{'diqResourceCash' | translate}}</p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card img-card mb-2" *ngIf="programs.FS==false">
+                <div class="card-body">
+                    <h3>{{'diqFA' | translate}}</h3>
+
+                    <div class="accordion page-tip" id="accordionFS">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFS">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFS" aria-expanded="true" aria-controls="collapseFS">
+                                    {{'diqQualifyingFA' | translate}}
+                                </button>
+                            </h2>
+                            <div id="collapseFS" class="accordion-collapse collapse" aria-labelledby="headingFS"
+                                data-bs-parent="#accordionFS">
+                                <div class="accordion-body">
+                                   
+                                    <ul class="mb-1">
+                                        <li>{{'diqIncomeLimit' | translate}</li>
+                                        <li>{{'diqUnpaidBills' | translate}}</li>
+                                        <li>{{'diqOngoingMedical' | translate}}</li>
+                                        <li>{{'diqHousingCost' | translate}}</li>
+                                        <li>{{'diqDependentCare' | translate}}</li>
+                                    </ul>
+
+
+                                    <p class="mb-1">{{'diqCommonReasonsSNAP' | translate}}</p>
+
+                                    <ul>
+                                        <li>{{'diqHouseholdIncomeHigh' | translate}}</li>
+                                        <li>{{'diqIncomeLimitSNAP' | translate}}</li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card img-card mb-2" *ngIf="programs.CA==false">
+                <div class="card-body">
+                    <h3>{{'diqCA' | translate}}</h3>
+
+                    <div class="accordion page-tip" id="accordionCA">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCA">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCA" aria-expanded="true" aria-controls="collapseCA">
+                                {{'diqMoreAboutCA' | translate}} 
+                                </button>
+                            </h2>
+                            <div id="collapseCA" class="accordion-collapse collapse" aria-labelledby="headingCA"
+                                data-bs-parent="#accordionCA">
+                                <div class="accordion-body">
+                                    <p class="mb-2">{{'diqNonParent' | translate}}</p>
+                                    <p class="mb-1">{{'diqCommonReasonCA' | translate}}</p>
+                                    <p class="mb-1">
+                                    {{'diqHouseholdDidNotMeet' | translate}} </p>
+                                    <ul class="mb-1">
+                                        <li>{{'diqPregnancy' | translate}}</li>
+                                        <li>{{'diqIncomeOrResources' | translate}}</li>
+                                        <li>{{'diqNeedyFamily' | translate}}</li>
+                                        <li>{{'diqRelatedToChild' | translate}}</li>
+                                    </ul>
+                                    <p>{{'diqByCash' | translate}}</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card img-card mb-2" *ngIf="programs.BL==false">
+                <div class="card-body">
+                    <h3>{{'diqFreeorReduced' | translate}}</h3>
+
+                    <div class="accordion page-tip" id="accordionBL">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBL">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseBL" aria-expanded="true" aria-controls="collapseBL">
+                                    {{'diqMoreQualifyNSLP' | translate}}
+                                </button>
+                            </h2>
+                            <div id="collapseBL" class="accordion-collapse collapse" aria-labelledby="headingBL"
+                                data-bs-parent="#accordionBL">
+                                <div class="accordion-body">
+                                    <p class="mb-2">{{'diqMoreWaysNSLP' | translate}}</p>
+                                    <p class="mb-1">{{'diqStillGetNSLP' | translate}}</p>
+                                    <ul class="mb-1">
+                                        <li>{{'diqSNAP' | translate}}</li>
+                                        <li>{{'diqStudentMigrant' | translate}}</li>
+                                        <li>{{'diqStudentHomeless' | translate}}</li>
+                                        <li>{{'diqMeetIncome' | translate}}</li>
+                                    </ul>
+                                    <p class="mb-1">{{'diqCommonReasonNotQualifyNSLP' | translate}}</p>
+                                    <ul>
+                                        <li>{{'diqFreeReducedMealNotFullyFilled' | translate}}</li>
+                                        <li>{{'diqStudentSchool' | translate}}
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card img-card mb-2" *ngIf="programs.LH==false">
+                <div class="card-body">
+                    <h3>{{'diqhelpWithLIHEAP' | translate}}</h3>
+
+                    <div class="accordion page-tip" id="accordionLH">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingLH">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseLH" aria-expanded="true" aria-controls="collapseLH">
+                                    {{'diqMoreAboutQualifyingLIHEAP' | translate}}
+                                </button>
+                            </h2>
+                            <div id="collapseLH" class="accordion-collapse collapse" aria-labelledby="headingLH"
+                                data-bs-parent="#accordionLH">
+                                <div class="accordion-body">
+                                    <p class="mb-1">{{'diqAdditionalWays' | translate}}</p>
+                                    
+                                        <p>{{'diqRentRoom' | translate}}</p>
+                                        <p>{{'diqBothUSAndNonUS' | translate}}</p>
+                                        <p>{{'diqEitherTrue' | translate}}</p>
+                                   
+                                    <p class="mb-1">{{'diqReasonForNotQualifyLIHEAP' | translate}}</p>
+                                    <div class="mb-2">
+                                        <p>
+                                            {{'diqIncomeHigh' | translate}}
+                                        </p>
+                                        <p>{{'diqContactYourCounty' | translate}}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>{{'diqNotResponsibleForHeat' | translate}}</p>
+                                        <p>{{'diqSomeoneInHousehold' | translate}}</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card img-card mb-2" *ngIf="programs.CI==false">
+                <div class="card-body">
+                    <h3>{{'diqhelpWithCI' | translate}} </h3>
+
+                    <div class="accordion page-tip" id="accordionCI">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCI">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCI" aria-expanded="true" aria-controls="collapseCI">
+                            {{'diqMoreAboutQualifyingCI' | translate}} 
+                                </button>
+                            </h2>
+                            <div id="collapseCI" class="accordion-collapse collapse" aria-labelledby="headingCI"
+                                data-bs-parent="#accordionCI">
+                                <div class="accordion-body">
+                                    <p class="mb-1">{{'diqWaysToQualifyCI' | translate}}</p>
+                                    <p class="mb-1">{{'diqAbleToGetFollowing' | translate}}
+                                    </p>
+                                    <ul class="mb-3">
+                                        <li>{{'diqMedicalCondition' | translate}}</li>
+                                        <li>{{'diqChronicCondition' | translate}}</li>
+                                        <li>{{'diqSpecialHealthCare' | translate}}</li>
+                                        <li>{{'diqMedicatiobByDoctor' | translate}}</li>
+                                        <li>{{'diqUnpaidMedicalBills' | translate}}</li>
+                                        <li>{{'diqPaidMedicalBills' | translate}}</li>
+                                        <li>{{'diqReceivedTANF' | translate}}</li>
+                                        <li>{{'diqCurrentlyTANF' | translate}}</li>
+                                        <li>{{'diqCurrentlySNAP' | translate}}</li>
+                                    </ul>
+                                    <p class="mb-2">{{'diqCommonReasonsNotQualifyCI' | translate}}</p>
+                                    <div class="mb-2">
+                                        <p>{{'diqLegalNonCitizen' | translate}}</p>
+                                        
+                                       <p> {{'diqNotUSCitizenCI' | translate}}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>{{'diqIncomeTooHigh' | translate}}</p>
+                                    
+                                        <p>{{'diqIncomeLimitCI' | translate}} </p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>{{'diqChildAgeHigh' | translate}}</p>
+                                    
+                                        <p> {{'diqChildrenReceive' | translate}}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>{{'diqDisablility' | translate}}</p>
+                                    
+                                        <p> {{'diqTwoParent' | translate}}</p>
+                                        <ul class="mb-3">
+                                            <li>{{'diqOneParent' | translate}}</li>
+                                            <li>{{'diqTheParentOrCareTaker' | translate}}</li>
+                                            
+                                            </ul>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>{{'diqNotEnough' | translate}}</p>
+                                        
+                                       <p> {{'diqEachAdult' | translate}}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p>
+                                            {{'diqCallLoal' | translate}} <a href="#" target="_blank">{{'diqNumberPAKids' | translate}}</a> {{'diqForMoreAboutCI' | translate}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row justify-content-center mb-3">
+<div class="col-lg-6 col-sm-6 col-xs-12 ">
+    <button type="button" class="btn btn-secondary btn-sm w-100" (click)="gotoPage(2)">{{'diqApplyNow' | translate}}</button>
+</div>
+</div>
+<div class="row justify-content-center mb-3">
+    <div class="col-lg-6 col-sm-6 col-xs-12  ">
+        <button type="button" class="btn btn-sm btn-outline-secondary w-100" (click)="gotoPage(0)">
+        {{'diqGoBack' | translate}} </button>
+    </div>
+</div>
+<div class="row justify-content-center mb-3">
+<div class="col-lg-6 col-sm-6 col-xs-12">
+    <button type="button" class="btn btn-link w-100" (click)="gotoPage(1)">{{'diqStartScreening' | translate}}</button>
+</div>
+</div>
+
+
+
+   
+    
+</div>

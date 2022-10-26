@@ -1,0 +1,12 @@
+<!-- <cw-simpletile-summary [simpleTileSummaryData]="jsonData" (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addTaxReturnDetails()" (nextPage)="next()"
+    (previousPage)="back()" [updatedJson]="jsonData" [isAddButtonDisabled] = "isAddButtonDisabled">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal> -->
+<cw-simpletile-summary [simpleTileSummaryData]="jsonData" (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addTaxReturnDetails()" (nextPage)="next()"
+    (previousPage)="back()" [updatedJson]="jsonData">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>

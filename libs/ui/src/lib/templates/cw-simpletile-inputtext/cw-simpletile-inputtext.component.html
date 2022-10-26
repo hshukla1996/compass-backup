@@ -1,0 +1,39 @@
+<ng-container *ngIf="simpleTileInputtextData['questionTextRequired']">
+    <h1 class="parent_heading_text d-inline">
+        {{ simpleTileInputtextData['questionText'] | translate : simpleTileInputtextData['questionTextTO']}}
+    </h1>
+    <label>
+        <span>{{ simpleTileInputtextData['requiredText'] | translate : simpleTileInputtextData['requiredTextTO'] }}</span>
+    </label>
+</ng-container>
+<ng-container *ngIf="!simpleTileInputtextData['questionTextRequired']">
+    <h1 class="parent_heading_text mb-3">
+        {{ simpleTileInputtextData['questionText'] | translate : simpleTileInputtextData['questionTextTO'] }}
+    </h1>
+</ng-container>
+<compass-ui-text 
+    type="{{simpleTileInputtextData['type']}}"
+    [fieldId]="'input'"
+    [requiredIndicator]="simpleTileInputtextData['labelRequired'] || simpleTileInputtextData['questionTextRequired']"
+    [requiredText]="simpleTileInputtextData['labelRequired'] || simpleTileInputtextData['questionTextRequired'] ? (simpleTileInputtextData['requiredText'] | translate) : ''"
+    [FormGroup]="simpleTileInputtextForm" 
+    [maxLength]="simpleTileInputtextData['maxLength']"
+    [fieldLabel]="simpleTileInputtextData['label'] | translate : simpleTileInputtextData['labelTO']" 
+    (inputModelChange)="GetValue($event)"
+    (keypress)="simpleTileInputtextData['type'] === 'number' ? OnlyNumberAllowed($event) : ''"
+    [displayError]="isFieldValid('input')" 
+    [errorMsg]="errorMap('input') | translate"
+    [fieldHelpText]="simpleTileInputtextData['helpText'] | translate : simpleTileInputtextData['helpTextTO']"
+    attr.pattern="{{simpleTileInputtextData['pattern']}}"
+    [placeHolderText]="simpleTileInputtextData['placeHolder'] | translate : simpleTileInputtextData['placeHolderTO']">
+</compass-ui-text>
+<div class="mb-3" *ngIf="simpleTileInputtextData['toolTip'] !== ''">
+    <p class="alert alert-info">
+        {{ simpleTileInputtextData['toolTip'] | translate : simpleTileInputtextData['toolTipTO']}}
+    </p>
+</div>
+<compass-ui-cw-dpq-button 
+    [backButtonLabel]="'back' | translate" [nextButtonLabel]="'next' | translate" 
+    (next)="inputNext()" 
+    (back)="inputBack()">
+</compass-ui-cw-dpq-button>

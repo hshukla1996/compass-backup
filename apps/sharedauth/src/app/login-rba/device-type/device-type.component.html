@@ -1,0 +1,39 @@
+<form [formGroup]="deviceTypeGroup">
+  <h1>{{ 'sa_loginrbaDTtitle' | translate }}</h1>
+
+  <fieldset>
+    <cw-field-error-display [errorMsg]="errorMap('deviceType') | translate"
+    [displayError]="isFieldInvalid('deviceType')">
+  </cw-field-error-display>
+    <div class="card standard mb-3">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input" [ngClass]="{ 'error': isFieldInvalid('deviceType')}" formControlName="deviceType" name="deviceType" type="radio" value="private" id="private">
+          <label class="form-check-label" for="private">
+            {{ 'sa_loginrbaDTlbl1' | translate}}
+          </label>
+        </div>
+        <p>{{ 'sa_loginrbaDTlbl2' | translate}}</p>
+      </div>
+    </div>
+    <div class="card standard mb-3">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input" [ngClass]="{ 'error': isFieldInvalid('deviceType')}" formControlName="deviceType" name="deviceType" type="radio" value="public" id="public">
+          <label class="form-check-label" for="public">
+            {{ 'sa_loginrbaDTlbl3' | translate }}
+          </label>
+        </div>
+        <p>{{ 'sa_loginrbaDTlbl4' | translate}}</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <nav class="action-bar d-flex justify-content-between row text-center">
+    <div>
+      <button type="submit" class="btn btn-primary col-6" (click)="submit()">
+        {{ 'submitLbl' | translate }}
+      </button>
+    </div>
+  </nav>
+</form>

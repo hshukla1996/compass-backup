@@ -1,0 +1,31 @@
+<form class="form-horizontal" [formGroup]='householdAppliedBeforeForm'>
+    <h1>
+        Tell us the most recent place you have applied for or received benefits.
+        <span class="required-span" *ngIf="showRequired">(required)</span>
+    </h1>
+
+    <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'"
+        [FormGroup]="householdAppliedBeforeForm"  [requiredIndicator]="true" [requiredText]="'(required)'" [displayError]="isFieldValid('state')" 
+        [errorMsg]="errorMap('state')">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let detail of states" value="{{detail.id}}">{{detail?.displayValue}}
+        </option>
+    </compass-ui-cw-select>
+
+    <compass-ui-text [fieldType]="'countyHType'" [fieldId]="'county'" [FormGroup]="householdAppliedBeforeForm"
+        [fieldLabel]="'County'" [maxLength]="16">
+    </compass-ui-text>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

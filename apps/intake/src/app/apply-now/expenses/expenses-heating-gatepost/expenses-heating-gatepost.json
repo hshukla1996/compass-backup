@@ -1,0 +1,63 @@
+{
+    "questionText": "Do any of these heating situations apply to the household?",
+    "toolTip": "",
+    "subHeading": "",
+    "requiredText": "",
+    "questionAnswers": [
+        {
+            "legend": "Electricity is shut off",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "electricityShut"
+        },
+        {
+            "legend": "Ran out of fuel",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "outOfFuel"
+        },
+        {
+            "legend": "Have a shut-off notice for electricity",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "noticeForElectricity"
+        },
+        {
+            "legend": "Will run out of fuel within 15 days",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "withoutHeatingSourceOrWithin15Days"
+        },
+        {
+            "legend": "Main heating source is not working",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "heatingSourceWork"
+        }
+    ]
+}

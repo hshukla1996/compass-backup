@@ -1,0 +1,40 @@
+<form class="form-horizontal" [formGroup]='taxDependentsDetailsForm'>
+            <h1 class="parent_heading_text">
+                Who will claim {{ currentUser.firstName }} as a dependent?
+            </h1>
+            <div>
+                <div class="mb-3">
+                    <div class="d-none d-md-flex">
+                        <compass-ui-cw-select [fieldId]="'selectedPerson'"
+                            [FormGroup]="taxDependentsDetailsForm"
+                            [displayError]="isFieldValid('selectedPerson')"
+                            [errorMsg]="'Please select who will claim Jane as dependent.'"
+                            [requiredIndicator]="requiredFields.indexOf('selectedPerson')>-1">
+                            <option value="" selected>-Select One-</option>
+                            <option *ngFor="let member of householdMembers" [ngValue]="member.id">
+                                {{ member.firstName }}
+                            </option>
+                        </compass-ui-cw-select>                       
+                    </div>                   
+                </div>
+                <div class="alert alert-info">
+                    <dl class="text-left mt-3" class="col">
+                        If you would like to add another tax filer that isn't on this list, you must first add them to
+                        the household.
+                        <a href="javascript:void(0);" class="hyperlink-lg d-block" (click) = "goToHouseHoldScreen()">Add new Household Member</a>
+                    </dl>
+                </div>
+            </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click) = "previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit"  class="btn btn-primary" (click) = "goNext()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

@@ -1,0 +1,58 @@
+<form class="form-horizontal" [formGroup]="childSuptExpDelsCmpForm" autocomplete="off">
+  <h1>What is {{currentUser.firstName}}'s child support expense?</h1>
+  <h2>Tell us about this expense.</h2>
+  <compass-ui-text [fieldId]="'amountOfSupportOrder'" [FormGroup]="childSuptExpDelsCmpForm"
+                   [isVisible]="fieldDisplays.amountOfSupportOrder"
+                   [fieldLabel]="'What is the ordered support payment amount?'" [maxLength]="7" type="currency">
+  </compass-ui-text>
+  <div class="alert alert-info">
+    This is the amount listed on the child support order.
+  </div>
+  <compass-ui-text [fieldId]="'amountActuallyPaid'" [FormGroup]="childSuptExpDelsCmpForm" type="currency"
+    [fieldLabel]="'How much is paid?'" [maxLength]="7" [requiredText]="'lblrequired' | translate"
+    [requiredIndicator]="requiredFields.indexOf('amountActuallyPaid')>-1"
+    [isVisible]="fieldDisplays.amountActuallyPaid"
+    [displayError]="isFieldValid('amountActuallyPaid')" [errorText]="errorMap('amountActuallyPaid')">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'frequency'" [requiredText]="'(required)'" [fieldLabel]="'How often?'"
+    [FormGroup]="childSuptExpDelsCmpForm" [errorMsg]="errorMap('frequency')" [displayError]="isFieldValid('frequency')"
+    [requiredIndicator]="requiredFields.indexOf('frequency')>-1"
+    [isVisible]="fieldDisplays.frequency">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let x of daysData" value="{{x.id}}">{{x.displayValue}}</option>
+  </compass-ui-cw-select>
+  <!--<div class="panel-body">
+
+        <div class="form-group mb-3">
+        <label for="orderedSupPaymentAmt" class="form-label">What is the ordered support payment amount?</label>
+        <input type="text" id="orderedSupPaymentAmt" class="form-control" formControlName="amountOfSupportOrder">
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="howMuchPaid" class="form-label">How much is paid?</label>
+        <input type="text" id="howMuchPaid" class="form-control" formControlName="amountActuallyPaid">
+      </div>
+
+      <div class="form-group pb-4 ">
+        <label class="pb-2 form-label">How often?</label>
+        <select class="form-control" id="howOften" formControlName="frequency">
+          <option value="" selected>- Select One -</option>
+          <option *ngFor="let days of daysData" value="{{days.id}}">{{days.displayValue}}
+          </option>
+        </select>
+      </div>
+    </div>-->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

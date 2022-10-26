@@ -1,0 +1,67 @@
+<form class="form-horizontal" [formGroup]='wasteWaterProviderForm'>
+    <h1>
+        Is your wastewater provider the same as your drinking water provider?
+    </h1>
+  
+    <div class="form-group mb-3">
+        <div class="mb-3">
+            <fieldset class="button-group">
+                <compass-ui-cw-radiobutton  ngDefaultControl [formControlName]="'wasteWaterSameAsDrinkingWaterProvider'"
+                    [required]="true" [radioButtonGroupName]="'wasteWaterSameAsDrinkingWaterProvider'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="Yes" value="Y" (click)="resetForm()" >
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton  ngDefaultControl [formControlName]="'wasteWaterSameAsDrinkingWaterProvider'"
+                    [required]="true" [radioButtonGroupName]="'wasteWaterSameAsDrinkingWaterProvider'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="No" value="N" (click)="resetForm()">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+        </div>
+    </div>
+    <div class="card arrow-card standard-mb right-arrow-1" *ngIf="wasteWaterProviderForm.value.wasteWaterSameAsDrinkingWaterProvider === 'No'">
+        <div class="card-body">
+            <div class="form-group">
+                <h2>What is your wastewater provider's mailing address?</h2>
+                <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="wasteWaterProviderForm" [fieldLabel]="'Street Address'"
+                    [fieldType]="'streetType'" [maxLength]="26">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'addressLine2'" [FormGroup]="wasteWaterProviderForm" [fieldLabel]="'Street Address (2)'"
+                    [fieldType]="'streetType'" [maxLength]="26">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'city'" [FormGroup]="wasteWaterProviderForm" [fieldLabel]="'City'"
+                    [displayError]="isFieldValid('city')" [fieldType]="'cityType'" [maxLength]="26" [errorText]="errorMap('city')">
+                </compass-ui-text>
+                <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="wasteWaterProviderForm">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+                </compass-ui-cw-select>
+                <compass-ui-text 
+                [fieldId]="'zip'"
+                [FormGroup]="wasteWaterProviderForm"
+                [errorText]="'Enter valid Zip'"
+                [fieldLabel]="'ZIP Code'"
+                (keypress)="OnlyNumberAllowed($event)"
+                [maxLength]="5"
+                [displayError]="isFieldValid('zip')"
+                [errorMsg]="errorMap('zip')"
+                >
+                </compass-ui-text>
+            
+            </div>    
+        </div>
+
+    </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+
+</form>

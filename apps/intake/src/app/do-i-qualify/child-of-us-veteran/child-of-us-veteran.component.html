@@ -1,0 +1,15 @@
+<h1 class="standard-mb">{{'diqChildOfVeteran'|translate}}</h1>
+<p class="form-subtitle standard-mb">{{'diqsituationsubheader' | translate}}</p>
+
+<cw-field-error-display [displayError]="isFieldValid()" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+</cw-field-error-display>
+<div [formGroup]="veteranForm">
+<div *ngFor="let basicDetail of basicDetails;let i=index">
+            <compass-ui-cw-checkbox (inputModelChange)="onCheckboxChange(i,$event)" id="basicDetail.id"
+                label="{{basicDetail.firstName}} {{basicDetail.lastName}} {{basicDetail.age}} ({{basicDetail.gender}})"
+                [isChecked]="basicDetail.isRelatedToVeteran" [textStyle]="'custom'"></compass-ui-cw-checkbox>
+</div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

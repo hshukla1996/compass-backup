@@ -1,0 +1,44 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays" [formGroup]='nationalSchoolLunchProgramForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Tell us about {{currentUser.firstName}}'s education details.</h1>
+  <compass-ui-cw-select [fieldId]="'grade'" [requiredIndicator]="true"
+    [fieldLabel]="'afsWhatGrade' | translate: { name: currentUser.firstName}"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="nationalSchoolLunchProgramForm"
+    [displayError]="isFieldValid('grade')" [errorMsg]="errorMap('grade')"
+    [isVisible]="fieldDisplays.grade"
+    [requiredIndicator]="requiredFields.indexOf('grade')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let grade of schoolGrades" value="{{grade.id}}">
+      {{grade.displayValue}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-select [fieldId]="'country'" [requiredIndicator]="true"
+    [fieldLabel]="'afsWhatCountry' | translate: { name: currentUser.firstName}"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="nationalSchoolLunchProgramForm"
+    [displayError]="isFieldValid('country')" [errorMsg]="errorMap('country')"
+    [isVisible]="fieldDisplays.country"
+    [requiredIndicator]="requiredFields.indexOf('country')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let county of counties" value="{{county.id}}">
+      {{county.displayValue}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-select [fieldId]="'schoolType'" [requiredIndicator]="true" [fieldLabel]="'afsSchoolType' | translate"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="nationalSchoolLunchProgramForm"
+    [displayError]="isFieldValid('schoolType')" [errorMsg]="errorMap('schoolType')"
+    [isVisible]="fieldDisplays.schoolType"
+    [requiredIndicator]="requiredFields.indexOf('schoolType')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let schoolType of schoolTypes" value="{{schoolType.id}}">
+      {{schoolType.displayValue}}</option>
+  </compass-ui-cw-select>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

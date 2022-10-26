@@ -1,0 +1,65 @@
+<form class="form-horizontal" [formGroup]='taxDeductibleExpDlsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>What is {{currentUser.firstName}}'s tax deductible expense?</h1>
+  <h2>Tell us about this expense.</h2>
+  <compass-ui-cw-select [fieldId]="'soruceOfDeductibleExpenses'" [fieldLabel]="'soruceOfDeductibleExpenses' | translate"
+    [FormGroup]="taxDeductibleExpDlsForm" [requiredText]="'lblrequired' | translate"
+    [requiredIndicator]="requiredFields.indexOf('soruceOfDeductibleExpenses')>-1"
+    [isVisible]="fieldDisplays.soruceOfDeductibleExpenses"
+    [errorMsg]="errorMap('soruceOfDeductibleExpenses')" [displayError]="isFieldValid('soruceOfDeductibleExpenses')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let source of deducatables" value="{{source.id}}">{{source.displayValue}}
+    </option>
+  </compass-ui-cw-select>
+  <compass-ui-text [fieldId]="'whatIsTheAmount'" [FormGroup]="taxDeductibleExpDlsForm"
+    [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('whatIsTheAmount')>-1"
+    [isVisible]="fieldDisplays.whatIsTheAmount"
+    [fieldLabel]="'whatIsTheAmount' | translate" [maxLength]="8" type="currency"
+    [displayError]="isFieldValid('whatIsTheAmount')" [errorText]="errorMap('whatIsTheAmount')">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'taxHowOftenIsPaid'" [fieldLabel]="'taxHowOftenIsPaid' | translate"
+    [requiredIndicator]="requiredFields.indexOf('taxHowOftenIsPaid')>-1" [FormGroup]="taxDeductibleExpDlsForm"
+    [requiredText]="'lblrequired' | translate" [errorMsg]="errorMap('taxHowOftenIsPaid')"
+    [displayError]="isFieldValid('taxHowOftenIsPaid')"
+    [isVisible]="fieldDisplays.taxHowOftenIsPaid"
+>
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let employer of daysData" value="{{employer.id}}">{{employer.displayValue}}
+    </option>
+  </compass-ui-cw-select>
+  <div class="form-group mb-4">
+    <compass-ui-cw-datepicker [formControlName]="'taxDeductibleExpenceBeginDate'" [maxRange]="maxDateRange"
+      ngDefaultControl requiredText="{{'lblrequired' | translate}}"
+      (inputModelChange)="setStartDate($event)"
+      [required]="requiredFields.indexOf('taxDeductibleExpenceBeginDate')>-1"
+      [displayError]="isFieldValid('taxDeductibleExpenceBeginDate')"
+      [showError]="isFieldValid('taxDeductibleExpenceBeginDate')" 
+      [errorMsg]="errorMap('taxDeductibleExpenceBeginDate') | translate"
+      [fieldId]="'taxDeductibleExpenceBeginDate'" label="Tax Deductible Expense Begin Date"
+      [isVisible]="fieldDisplays.taxDeductibleExpenceBeginDate"
+      showFieldHelpText="MM/DD/YYYY">
+    </compass-ui-cw-datepicker>
+  </div>
+  <div class="form-group mb-4">
+    <compass-ui-cw-datepicker [formControlName]="'taxDeductibleExpenceEndDate'" ngDefaultControl
+      requiredText="{{'lblrequired' | translate}}" [required]="requiredFields.indexOf('taxDeductibleExpenceEndDate')>-1"
+      [displayError]="isFieldValid('taxDeductibleExpenceEndDate')" [minRange]="minDateRange"
+      (inputModelChange)="setEndDate($event)"
+      [showError]="isFieldValid('taxDeductibleExpenceEndDate')" 
+      [errorMsg]="errorMap('taxDeductibleExpenceEndDate') | translate"
+      [fieldId]="'taxDeductibleExpenceEndDate'" label="Tax Deductible Expense End Date" showFieldHelpText="MM/DD/YYYY"
+      [isVisible]="fieldDisplays.taxDeductibleExpenceEndDate">
+    </compass-ui-cw-datepicker>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

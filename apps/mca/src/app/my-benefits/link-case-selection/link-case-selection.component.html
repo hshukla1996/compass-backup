@@ -1,0 +1,136 @@
+<!-- <form [formGroup]="linkCaseSelectionGroup"> -->
+<!-- {{counties| async |json }} -->
+<!-- <a></a> -->
+<div class="row mb-2">
+    <div class="col">
+        <i class="fa-regular fa-angle-left"></i>&nbsp;<a [routerLink]="['/',backTobenefits]">Back to Dashboard</a>
+    </div>
+</div>
+<h1>Want to link your benefits?</h1>
+<p>If you're the Head of Household on a Medical Assistance, Cash, SNAP, or CHIP case, you may be able to view your
+    benefit
+    information, report changes, and receive online notices.</p>
+
+<p>To view this information online, you'll need to confirm your case information.</p>
+<div class="mb-3">
+    <compass-ui-cw-select [fieldId]="'linkCaseSelection'" fieldLabel="How would you like to link your existing case?"
+        [requiredText]="'(required)'" [errorMsg]="'This is required.'" [FormGroup]="linkCaseSelectionGroup"
+        [displayError]="isFieldValid('linkCaseSelection')">
+        <option value="" selected>- Select One -</option>
+        <option value="caseRecord"> Case Record</option>
+        <option value="chipUFI"> CHIP UFI Number</option>
+        <!-- <option value="eFormNum"> e-Form Number</option> -->
+    </compass-ui-cw-select>
+
+</div>
+
+<div *ngIf="showCaseRecordCard == true">
+    <div class="card arrow-card">
+        <div class="card-body">
+            <compass-ui-cw-select [fieldId]="'county'" fieldLabel="County" [requiredText]="'(required)'"
+                [FormGroup]="linkCaseSelectionGroup" [displayError]="isFieldValid('county')"
+                [errorMsg]="'This is required.'">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let county of counties" value={{county.id}}>
+                    {{county.displayValue}}</option>
+
+
+            </compass-ui-cw-select>
+
+            <compass-ui-text [fieldId]="'caseNumber'" [fieldLabel]="'Case Record'"
+                (keypress)="OnlyNumberAllowed($event)" [requiredText]="'(required)'"
+                [FormGroup]="linkCaseSelectionGroup" [maxLength]="7" [errorText]="'This is required.'"
+                [displayError]="isFieldValid('caseNumber')"></compass-ui-text>
+            <div class="row" *ngIf="ssnfield==true">
+                <div class="col">
+                    <compass-ui-text [fieldId]="'socialSecurityNumber'" type="ssn" [fieldLabel]="'SSN'" ngDefaultControl formControlName="'socialSecurityNumber'"
+                        (keypress)="OnlyNumberAllowed($event)" [requiredText]="'(required)'"
+                        [FormGroup]="linkCaseSelectionGroup" [maxLength]="7" [errorText]="'This is required.'"
+                        [displayError]="isFieldValid('socialSecurityNumber')"></compass-ui-text>
+                </div>
+            </div>
+            <div class="row" *ngIf="mcifield==true">
+                <div class="col">
+                    <compass-ui-text [fieldId]="'mciOrMedicaidIdOrEbtNumber'" [fieldLabel]="'MCI / Medical ID / EBT'"
+                        [requiredText]="'(required)'" [FormGroup]="linkCaseSelectionGroup" [minLength]="9"
+                        [maxLength]="10" [errorText]="'This is required.'" (keypress)="OnlyNumberAllowed($event)"
+                        [displayError]="isFieldValid('mciOrMedicaidIdOrEbtNumber')"></compass-ui-text>
+                </div>
+            </div>
+            <div class="row"  *ngIf="ssnfield==true">
+                <div class="col text-center">
+                    <a [routerLink]="['/', linkcase]" (click)="showMCI()">Enter MCI number instead.</a>
+                </div>
+            </div>
+            <div class="row" *ngIf="mcifield==true" >
+                <div class="col text-center">
+                    <a [routerLink]="['/', linkcase]" (click)="showSSN()">Enter SSN instead</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div *ngIf="showchipUFICard== true">
+    <div class="card arrow-card">
+        <div class="card-body">
+            <compass-ui-text [fieldId]="'ufiNumber'" [fieldLabel]="'CHIP UFI Number'" [requiredText]="'(required)'"
+                [FormGroup]="linkCaseSelectionGroup" [minLength]="7" [maxLength]="9" [minLength]="9"
+                (keypress)="OnlyNumberAllowed($event)" [errorText]="'This is required.'"
+                [displayError]="isFieldValid('ufiNumber')"></compass-ui-text>
+            <div class="row" *ngIf="mcifield==true" >
+                <div class="col">
+                    <compass-ui-text [fieldId]="'mciOrMedicaidIdOrEbtNumber'" *ngIf="ssnfield== false"
+                        [fieldLabel]="'MCI / Medical ID / EBT'" [requiredText]="'(required)'"
+                        [FormGroup]="linkCaseSelectionGroup" [minLength]="9" [maxLength]="10"
+                        [errorText]="'This is required.'" (keypress)="OnlyNumberAllowed($event)"
+                        [displayError]="isFieldValid('mciOrMedicaidIdOrEbtNumber')"></compass-ui-text>
+                </div>
+            </div>
+            <div class="row" *ngIf="ssnfield==true" >
+                <div class="col">
+                    <compass-ui-text [fieldId]="'socialSecurityNumber'" type="ssn" [fieldLabel]="'SSN'"
+                        (keypress)="OnlyNumberAllowed($event)" [requiredText]="'(required)'"
+                        [FormGroup]="linkCaseSelectionGroup" [maxLength]="7" [errorText]="'This is required.'"
+                        [displayError]="isFieldValid('socialSecurityNumber')"></compass-ui-text>
+                </div>
+            </div>
+         
+            <div class="row" *ngIf="mcifield==true">
+                <div class="col text-center">
+                    <a [routerLink]="['/', linkcase]" (click)="showSSN()">Enter SSN instead</a>
+                </div>
+            </div>
+           
+            <div class="row" *ngIf="ssnfield==true">
+                <div class="col text-center">
+                    <a [routerLink]="['/', linkcase]" (click)="showMCI()">Enter MCI number instead.</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- <div *ngIf="selectedCase=='eFormNum'">
+    <div class="card arrow-card">
+        <div class="card-body">
+        <compass-ui-text [fieldId]="'eformNumber'" [fieldLabel]="'e-Form Number'" [requiredText]="'(required)'"
+            [FormGroup]="linkCaseSelectionGroup" [maxLength]="9" [errorText]="'This is required.'"
+            [displayError]="isFieldValid('eformNumber')"></compass-ui-text>
+            <compass-ui-text [fieldId]="'password'" [fieldLabel]="'Password'" [requiredText]="'(required)'"
+                [FormGroup]="linkCaseSelectionGroup" [maxLength]="9" [errorText]="'This is required.'"
+                [displayError]="isFieldValid('password')"></compass-ui-text>
+
+
+        </div>
+    </div>
+</div> -->
+<div class="row mb-3">
+    <div class="col text-center">
+        <button type="button" class="btn btn-primary w-100" (click)="next()">
+            Next
+        </button>
+    </div>
+</div>
+<!-- </form> -->

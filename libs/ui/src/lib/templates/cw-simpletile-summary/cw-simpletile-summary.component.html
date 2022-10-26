@@ -1,0 +1,103 @@
+<div *ngIf="simpleTileSummaryData">
+    <h1 class="standard-mb">
+        {{ simpleTileSummaryData['questionText'] | translate : simpleTileSummaryData['questionTextTO']}}
+    </h1>
+    <div class="alert alert-info standard-mb d-flex align-items-center" *ngIf="simpleTileSummaryData['toolTip'] !== ''">
+        <p>
+            {{ simpleTileSummaryData['toolTip'] | translate : simpleTileSummaryData['toolTipTO']}}    
+        </p> 
+    </div> 
+    <p class="form-subtitle standard-mb">{{ simpleTileSummaryData['subHeading'] | translate: simpleTileSummaryData['subHeadingTO']}}</p>
+    <div class="accordion data-accordion q-summary standard-mb" 
+        *ngFor="let question of simpleTileSummaryData['questionAnswers']; let i=index;" id="indexExpanded === i">
+        <ng-container *ngIf="question['accordionHeader'] !== ''">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#coll-area-' + i" aria-expanded="true">
+                        <h2 class="card-title text-capitalize">
+                            <div>
+                                <div class="main-title">
+                                    {{ question['accordionHeader'] | translate : question['accordionHeaderTO']}}
+                                </div>
+                                <div class="sub-title">
+                                    {{ question['accordionSubHeading'] | translate : question['accordionSubHeadingTO']}}
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div>
+                                    {{ question['accordionRightHeading'] | translate : question['accordionRightHeadingTO']}}
+                                </div>
+                                <div class="tiny-text">
+                                    {{ question['accordionRightSubHeading'] | translate : question['accordionRightSubHeadingTO']}}
+                                </div>
+                            </div>
+                        </h2>
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse" id="coll-area-{{i}}">
+                    <hr>
+                    <div class="accordion-body">
+                        <div class="faux-table p-0">
+                            <ng-container *ngFor="let data of question['accordionData']">
+                                <div class="row" *ngIf="data['label'] !== ''">
+                                    <div class="col-9 col-md-3">
+                                        <span class="head">
+                                            {{ data['label'] | translate : data['labelTO'] }}
+                                        </span>
+                                    </div>
+                                    <ng-container *ngIf="data['isHtml']">
+                                        <div class="col-3 col-md-9 text-end fw-bold">
+                                            
+                                            <div [innerHTML]="data['value']"></div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="data['bold'] && !data['isHtml'] ">
+                                        <div class="col-3 col-md-9 text-end fw-bold">
+                                            {{ data['value'] | translate : data['valueTO'] }}
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="!data['bold'] && !data['isHtml']">
+                                        <div class="col-3 col-md-9 text-end">
+                                            {{ data['value'] | translate : data['valueTO'] }}
+                                        </div>
+                                    </ng-container>
+                                </div>     
+                            </ng-container>  
+                        </div>
+                    </div>
+                    <hr class="dark">
+                    <div class="accordion-footer">
+                        <div class="row action-btns">
+                            <div class="{{question['deleteButton'] === '' ? 'col-12 text-center' : 'col-6 text-center'}}">
+                                <button class="btn btn-borderless btn-constructive"
+                                    (click)="navigateToEdit(question['userId'],question['accordionRecord'])"><i
+                                        class="fa-regular fa-pen-to-square"></i>
+                                    {{ question['editButton'] | translate : question['editButtonTO']}}
+                                </button>
+                            </div>
+                            <div *ngIf="question['deleteButton'] !== ''" class="col-6 text-center">
+                                <button class="btn btn-borderless btn-destructive" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" type="button"
+                                    (click)="deleteUser(question['userId'], question['accordionRecord'])"><i
+                                        class="fa-regular fa-trash-can"></i>
+                                    {{ question['deleteButton'] | translate : question['deleteButtonTO'] }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </ng-container>
+
+    </div>
+    <div class="text-center text-md-end standard-mb" *ngIf="simpleTileSummaryData['addtionalButton'] !== ''">
+        <button type="button" class="btn btn-sm btn-secondary" (click)="addPerson()" [disabled]="isAddButtonDisabled">
+            <i class="fa-regular fa-circle-plus"></i> 
+            {{simpleTileSummaryData['addtionalButton'] | translate : simpleTileSummaryData['addtionalButtonTO'] }}
+        </button>
+    </div>
+
+    <compass-ui-cw-dpq-button [backButtonLabel]="'back' | translate" [nextButtonLabel]="'next' | translate" (next)="next()" (back)="back()">
+    </compass-ui-cw-dpq-button>
+</div>

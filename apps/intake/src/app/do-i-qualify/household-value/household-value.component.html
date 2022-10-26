@@ -1,0 +1,36 @@
+<h1>{{'diqhouseholdheader' | translate}}</h1>
+<div class="accordion page-tip mb-3 mt-4" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                {{'diqhouseholdresource' | translate}}
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <p>{{'diqresourcep1' | translate}}</p>
+                <p>{{'diqresourcep2' | translate}}</p>
+                <p>{{'diqresourcep3' | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-3">
+ 
+    
+            <form [formGroup]="totalValue">
+                <compass-ui-text [FormGroup]="totalValue" [fieldId]="'total'" ngDefaultControl
+                    [formControlName]="'total'" [requiredIndicator]="false" [maxLength]="10" type="currencyFormat"
+                    fieldHelpText="{{'formatCurrency' | translate}}"  errorText="{{'basidDetailRequiredMessage' | translate}}"
+                      [displayError]="totalValue.controls['total'].invalid && (totalValue.controls['total'].dirty || totalValue.controls['total'].touched)"></compass-ui-text>
+               
+            </form>
+   
+</div>
+
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

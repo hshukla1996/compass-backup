@@ -1,0 +1,25 @@
+    
+    <h1 class="standard-mb">{{'intellectualDisability' | translate}} </h1>
+    <p class="form-subtitle standard-mb">{{'selectAllThatApply' | translate}}</p>
+    <cw-field-error-display [displayError]="displayError" [errorMsg]="errorMessage"></cw-field-error-display>  
+     <div *ngFor="let data of individuals; let i=index;"> 
+                <div class="form-check custom standard-mb">
+                    <input class="form-check-input" type="checkbox" value={{data.individualNumber}} id="intellectual"  [checked]="data.individualNumber && selectedUsers.indexOf(data.individualNumber.toString())>-1" (change)="onCheckboxChange($event)" >
+                    <label class="form-check-label text-capitalize" for="intellectual">
+                        {{data.firstName}} {{data.lastName}} ({{getAge(data?.dateOfBirth)}})
+                         
+                    </label>
+                </div>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                        {{'referralBack' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="next()">
+            {{'referralNext' | translate}}
+            </button>
+        </div>
+    </nav>

@@ -1,0 +1,130 @@
+/* 
+    COMPASS.Web Bootstrap Overrides
+    * created by Corey O'Brien on 3-28-2022
+*/
+
+/* ++++ Color Theme Overrides ++++ */
+$theme-colors: (
+    "primary":    color.$highlight--500,
+    "secondary":  color.$secondary--600,
+    "tertiary":   color.$primary--500,
+    "success":    color.$utility--success,
+    "info":       color.$accent--500,
+    "warning":    color.$highlight--200,
+    "danger":     color.$utility--error,
+    "light":      color.$utility--light-gray,
+    "dark":       color.$utility--black
+);
+
+/* ++++ Global Overrides ++++ */
+$enable-shadows: true;
+$border-radius: 0.625rem;
+$mark-bg: color.$highlight--100;
+$mark-padding: 0.1rem 0.3rem;
+$hr-height: .125rem;
+
+/* ++++ Body Overrides ++++ */
+$body-bg: color.$utility--light-gray;
+$body-color: color.$utility--black;
+$font-family-sans-serif: text.$san-serif;
+
+/* ++++ Typography ++++ */
+$lead-font-size: 1.125rem;
+$lead-font-weight: 600;
+
+/* ++++ Headings ++++ */
+$headings-color: color.$primary--500;
+$headings-font-family: text.$san-serif;
+$font-weight-bold: 600;
+$h1-font-size: text.$heading--1;
+$h2-font-size: text.$heading--2;
+$h3-font-size: text.$heading--3;
+$h4-font-size: text.$heading--4;
+$h5-font-size: text.$heading--5;
+$h6-font-size: text.$heading--6;
+
+/* ++++ Form Variable Overrides ++++ */
+$input-padding-x: 0.9375rem;
+$input-padding-y: 1.125rem; 
+$input-font-size: text.$body--regular;
+$input-bg: color.$accent--50;
+$input-border-color: color.$primary--400;
+$form-label-margin-bottom: 0.625rem;
+$form-label-font-size: text.$body--regular-bold;
+$form-label-font-weight: 600;
+$form-label-color: color.$primary--700;
+$form-select-indicator-padding: 1.25rem;
+// TODO: Need to fix this value.
+$form-check-input-width: 1.5625em;
+$form-check-input-border: .125rem solid color.$primary--500;
+$form-check-input-checked-color: color.$primary--500;
+$form-check-input-checked-bg-color: color.$utility--white;
+$form-check-input-checked-border-color: color.$primary--500;
+$input-group-addon-bg: $input-bg;
+
+/* ++++ Button Overrides ++++ */
+$input-btn-padding-x: 3.125rem;
+$input-btn-padding-y: 0.75rem;
+$input-btn-font-size: 1.25rem;
+$input-btn-border-width: 0.1875rem;
+$btn-box-shadow: effects.$shadow--button;
+$btn-disabled-opacity: 1;
+$btn-border-radius: .625rem;
+$btn-border-radius-lg: .625rem;
+$btn-border-radius-sm: .625rem;
+$btn-padding-y-sm: .625rem;
+$btn-padding-x-sm: 1.25rem;
+$btn-font-size-sm: text.$button--label;
+$btn-link-color: color.$secondary--700;
+$btn-link-hover-color: color.$secondary--900;
+
+/* ++++ Accordion Overrides ++++ */
+$accordion-icon-transform: rotate(90deg);
+
+/* ++++ Navbar (<header>) Overrides ++++ */
+$navbar-brand-font-size: 2.25rem;
+$navbar-brand-padding-y: 1rem;
+$navbar-dark-color: color.$utility--white;
+
+$badge-font-size:       text.$heading--6;
+// $badge-font-weight:     $font-weight-bold;
+$badge-padding-y:       0.3125rem;
+$badge-padding-x:       0.5rem;
+$badge-border-radius:   0.3125rem;
+
+/* ++++ Pagination Overrides ++++ */
+$pagination-padding-y:              .375rem;
+$pagination-padding-x:              .9375rem;
+$pagination-padding-y-sm:           .375rem;
+$pagination-padding-x-sm:           .9375rem;
+$pagination-padding-y-lg:           .375rem;
+$pagination-padding-x-lg:           .9375rem;
+$pagination-color:                  color.$primary--500;
+$pagination-border-color:           color.$primary--500;
+$pagination-border-width:           .125rem;
+$pagination-border-radius:          .3125rem;
+$pagination-active-color:           color.$utility--white;
+$pagination-active-bg:              color.$primary--500;
+$pagination-active-border-color:    color.$primary--500;
+$pagination-disabled-color:         color.$utility--dark-gray;
+$pagination-disabled-bg:            color.$utility--white;
+$pagination-disabled-border-color:  color.$utility--dark-gray;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+    xxxl: 1920px
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+    xxxl: 1800px
+);

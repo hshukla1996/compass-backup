@@ -1,0 +1,42 @@
+        <h1 class="mb-0">Here are your current household wages.</h1>
+        <p>Look below to make sure all wage changes are here.</p>
+        
+        <p *ngIf = "!employeeInfoCount; else indInfo">You don't have any wages to change at this time. You can add more wages.</p>
+        <ng-template #indInfo>
+        <div *ngFor="let individualInformation of individualInformations; let i = index" class="mb-3">
+            <h2>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+            {{individualInformation?.age}}</h2>
+            <form [formGroup]="incomeFormIdx[i]">
+                <compass-ui-text [fieldId]="'name'" [FormGroup]="incomeFormIdx[i]" [fieldLabel]="'Employer Name'"
+                    [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('name', i)"
+                    [errorMsg]="errorMap('name', i)" [errorText]="errorMap('name', i)" pattern="[#.0-9a-zA-Z\s,-]*" [maxLength]="26"
+                    [fieldType]="'nameType'" [isReadOnly] = "true">
+                </compass-ui-text>
+                <compass-ui-cw-select [fieldId]="'changeDuration'" fieldLabel="How often does {{individualInformation?.firstName}} get paid?"
+                    [requiredText]="'(required)'" [FormGroup]="incomeFormIdx[i]" [errorMsg]="errorMap('changeDuration', i)"
+                    [displayError]="isFieldValid('changeDuration', i)" [requiredIndicator]="true">
+                    <option value="" selected>- {{'selectone' | translate}} -</option>
+                    <option *ngFor="let option of pays" [value]="option.id">{{option.displayValue}}</option>                    
+                </compass-ui-cw-select>
+                <compass-ui-text [fieldId]="'income'" [FormGroup]="incomeFormIdx[i]"
+                    fieldLabel="What is {{individualInformation?.firstName}}'s gross income on each paycheck?" [requiredText]="'(required)'"
+                    [requiredIndicator]="true" [displayError]="isFieldValid('income', i)" [errorMsg]="errorMap('income', i)"
+                    [errorText]="errorMap('income', i)" [maxLength]="10" (keypress)="restrictCurrency($event)">
+                </compass-ui-text>
+                <small class="text-muted">This is the money {{individualInformation?.firstName}} gets before paying for taxes and other deductions.</small>
+                <compass-ui-text [fieldId]="'hours'" [FormGroup]="incomeFormIdx[i]"
+                    fieldLabel="How many hours does {{individualInformation?.firstName}} work per week?" [requiredText]="'(required)'"
+                    [requiredIndicator]="true" [displayError]="isFieldValid('hours', i)" [errorMsg]="errorMap('hours', i)"
+                    [errorText]="errorMap('hours', i)" [maxLength]="5" (keypress)="restrictCurrency($event)">
+                </compass-ui-text>
+                <compass-ui-cw-datepicker ngDefaultControl label="When did this wage change?"
+                    [displayError]="isFieldValid('changeDate', i)" [errorMsg]="errorMap('changeDate', i) | translate" [requiredText]="'(required)'"
+                    [formControlName]="'changeDate'" [required]="true" [maxRange]="today">
+                </compass-ui-cw-datepicker>
+                <small class="text-muted">MM/DD/YYYY</small>
+            </form>
+        </div>
+        </ng-template>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

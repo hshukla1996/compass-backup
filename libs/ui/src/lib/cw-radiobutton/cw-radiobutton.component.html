@@ -1,0 +1,30 @@
+<div class="form-check {{textStyle}}" *ngIf="radioBtnValue==''">
+    <input
+            type="radio"
+            class="form-check-input {{radioClass}}"
+            id="{{radioLabel}}"
+            [checked]="isChecked"
+            name="{{radioButtonGroupName}}"
+            [formControl]="control"
+            value="{{radioLabel}}"
+            [required]="required"
+            [attr.aria-describedby]="radioLabel"
+            (input)="onChange($event.target)"
+            [disabled]="disabled"
+            [ngClass]="{ 'error': showError }"
+    />
+    <label class="form-check-label {{labelClass}}"  [ngClass]="{ 'error': showError }" for="{{radioLabel}}">{{radioLabel}}</label>
+    <span *ngIf="required">{{requiredText}}</span>
+    <div *ngIf="showFieldHelpText" id={{radioLabel}} class={{hintClass}}>{{helpText}}</div>
+</div>
+<div class="form-check {{textStyle}}" *ngIf="radioBtnValue!='' && radioBtnId!=''">
+    <input type="radio" class="form-check-input {{radioClass}}" id="{{radioBtnId}}" [checked]="isChecked"
+        name="{{radioButtonGroupName}}" [formControl]="control" value="{{radioBtnValue}}" [required]="required"
+        [attr.aria-describedby]="radioLabel" (input)="onChange($event.target)" [attr.disabled]="disabled ? 'true' : null"
+        [ngClass]="{ 'error': showError }" />
+    <label class="form-check-label {{labelClass}}" [ngClass]="{ 'error': showError }"
+        for="{{radioBtnId}}">{{radioLabel}}</label>
+    <span *ngIf="required">{{requiredText}}</span>
+    <div *ngIf="showFieldHelpText" id={{radioLabel}} class={{hintClass}}>{{helpText}}</div>
+</div>
+

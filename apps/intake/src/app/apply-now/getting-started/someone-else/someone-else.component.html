@@ -1,0 +1,29 @@
+<h1>{{ 'afsGSSEtitle' | translate}}</h1>
+<p>
+    {{ 'afsGSSEtext1' | translate}}
+</p>
+<div>
+    <p>{{ 'afsGSSEtext2' | translate }}</p>
+    <ul>
+        <li>{{ 'afsGSSEbullet1' | translate}}</li>
+        <li>{{ 'afsGSSEbullet2' | translate}}</li>
+        <li>{{ 'afsGSSEbullet3' | translate}}</li>
+    </ul>
+</div>
+<div class="alert alert-info">
+    <dl class="text-left">
+        <p>{{ 'afsGSSEtext3' | translate }}</p>
+    </dl>
+</div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            {{ 'back' | translate}}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="submit()">
+            {{ 'next' | translate}}
+        </button>
+    </div>
+</nav>

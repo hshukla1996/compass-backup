@@ -1,0 +1,28 @@
+{
+  "root": "apps/intake-e2e",
+  "sourceRoot": "apps/intake-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/intake-e2e/cypress.json",
+        "devServerTarget": "intake:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "intake:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/intake-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["intake"]
+}

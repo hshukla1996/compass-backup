@@ -1,0 +1,53 @@
+<form [formGroup]="customerAssistanceProgramForm">
+        <div class="parent_heading_text">
+            <h1>Do you want us to share your income and household application information
+                with your utility to help enroll your household in a Customer Assistance Program (CAP)?
+            </h1>
+        </div>
+        <div class="mt-2">
+            <p>
+                Many Pennsylvania gas and electric utilities operate CAPs to help low-income customers afford
+                the cost of utilities.
+            </p>
+            <p>
+                DHS can share your information with your utility to help you enroll.
+                Your information will be kept confidential.
+            </p>
+            <p>
+                You can get a LIHEAP grant even if you do not want DHS to share
+                your information with your utility for this purpose.
+            </p>
+            <fieldset class="button-group">
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('housingAssistanceCode')" [formControlName]="'housingAssistanceCode'" [required]="true"
+                    [radioButtonGroupName]="'housingAssistanceCode'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                     radioLabel="Yes"></compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton  [showError]="isFieldValid('housingAssistanceCode')" [formControlName]="'housingAssistanceCode'" [required]="true"
+                    [radioButtonGroupName]="'housingAssistanceCode'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                     radioLabel="No">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <div>
+                <cw-field-error-display [displayError]="isFieldValid('housingAssistanceCode')"
+                    errorMsg="{{errorMap('housingAssistanceCode')}}">
+                </cw-field-error-display>
+            </div>
+        </div>
+        <div class="alert alert-info mt-3">
+            <dl class="text-left">
+                <p>Your utility may need to contact you for more information before enrolling your household in a CAP.</p>
+            </dl>
+        </div>
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previousRoute()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

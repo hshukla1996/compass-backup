@@ -1,0 +1,36 @@
+<div class="p-4">
+    <h1>Edit the details for this person.</h1>
+    <form >
+        <div class="mb-3">
+            <compass-ui-text ngDefaultControl [fieldId]="'FirstName'" [formControlName]="'firstName'"
+                [fieldLabel]="'First Name'" [requiredIndicator]="true" [errorText]="'This is required.'">
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text ngDefaultControl [fieldId]="'lastName'" [formControlName]="'lastName'"
+                [fieldLabel]="'Last Name'" [requiredIndicator]="true" [errorText]="'This is required.'">
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-cw-datepicker ngDefaultControl [formControlName]="'dob'" [required]="true">
+            </compass-ui-cw-datepicker>
+
+        </div>
+        <div class="mb-3">
+            <fieldset class="button-group">
+                <legend>Sex<span>(required)</span></legend>
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'gender'" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" [radioLabel]="'Male'">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'gender'" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" [radioLabel]="'Female'">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+        </div>
+    </form>
+    <div class="alert alert-info d-flex align-items-center">
+        <p>Please select your sex as assigned on your state-issued ID.</p>
+    </div>
+</div>

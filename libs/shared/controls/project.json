@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/shared/controls/src",
+    "prefix": "compass-ui",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/shared/controls"],
+            "options": {
+                "jestConfig": "libs/shared/controls/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/shared/controls/src/**/*.ts",
+                    "libs/shared/controls/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

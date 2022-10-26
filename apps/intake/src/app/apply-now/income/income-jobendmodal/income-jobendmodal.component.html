@@ -1,0 +1,23 @@
+<form [formGroup]="incomeJobRemoveForm">
+    <h3>To remove this job, we need some more information.</h3>
+
+    <div class="alert alert-info d-flex align-items-center standard-mb">
+        <p>If you decide to remove this job, you do not need to add it as a past job.</p>
+    </div>
+
+    <compass-ui-cw-datepicker ngDefaultControl [formControlName]="'dateOfLastPay'" [fieldId]="'dateOfLastPay'" label="Date of Last Pay"
+        [required]="true" [displayError]="isFieldValid('dateOfLastPay')" [showError]="isFieldValid('dateOfLastPay')"
+        [errorMsg]="errorMap('dateOfLastPay')" [showFieldHelpText]="'MM/DD/YYYY'"
+        [maxRange]="maxDateRange">
+    </compass-ui-cw-datepicker>
+
+    <compass-ui-cw-select [fieldId]="'reasonForEmploymentEnd'" fieldLabel="Tell us why this employment ended."
+        [FormGroup]="incomeJobRemoveForm">
+        <option value="" selected>- {{'selectone' | translate}} -</option>
+        <option *ngFor="let type of reasonForEmploymentEnd" value={{type.id}}>{{type.displayValue}}</option>
+    </compass-ui-cw-select>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'cancel'| translate}}" nextButtonLabel="Remove" (next)="remove()"
+        (back)="cancel()">
+    </compass-ui-cw-dpq-button>
+</form>

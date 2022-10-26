@@ -1,0 +1,56 @@
+<div class="card-body">
+    <h1 class="standard-mb">Tell us about the changes to your electric heating source.</h1>
+    <p class="form-subtitle standard-mb">Select all that apply. <small class="text-muted">(required)</small></p>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <div class="form-check" [formGroup]="heatingSourceForm">
+                <input class="form-check-input" type="checkbox" formControlName="electricity"
+                    (change)="onCheckboxChange('electricity')"
+                    [checked]="heatingSourceChanges.indexOf('electricity') !== -1">
+                <label class="form-check-label" for="chkHealthCareCoverage">
+                    Electricity is shut off
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <div class="form-check" [formGroup]="heatingSourceForm">
+                <input class="form-check-input" type="checkbox" formControlName="notWorking"
+                    (change)="onCheckboxChange('not-working')"
+                    [checked]="heatingSourceChanges.indexOf('not-working') !== -1">
+                <label class="form-check-label" for="chkHealthCareCoverage">
+                    Main heating source is not working
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <div class="form-check" [formGroup]="heatingSourceForm">
+                <input class="form-check-input" type="checkbox" formControlName="notice" value=""
+                    (change)="onCheckboxChange('notice')" [checked]="heatingSourceChanges.indexOf('notice') !== -1">
+                <label class="form-check-label" for="chkHealthCareCoverage">
+                    Have a shut-off notice for electricity
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="card arrow-card" *ngIf="heatingSourceChanges.indexOf('notice') !== -1">
+        <div class="card-body">
+            <div class="mb-3" [formGroup]="heatingSourceForm">
+                <label for="firstAdmission" class="form-label">What is the date of the shut-off notice?
+                    (required)<span>(required)</span></label>
+                <input type="date" id="firstAdmission" formControlName="noticeDate" class="form-control">
+                <small class="text-muted">MM/DD/YYYY</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mb-4" [formGroup]="heatingSourceForm">
+        <p>Tell us more about this, if needed.</p>
+        <textarea class="form-control" rows="3" formName="tellUsMore"></textarea>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

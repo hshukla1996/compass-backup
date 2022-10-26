@@ -1,0 +1,42 @@
+    <h1>Which of these household member changes apply to your household?</h1>
+    <h3>Please select the type of household member update you would like to report.</h3>
+    <div class="mb-2">
+        <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Pregnancy</h2>
+            <p>Select this option if you'd like to report a pregancy for a woman in your household.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : selectedOptions.indexOf('PREGNANCY_DETAILS') > -1}"
+                        (click)="onRadioSelect('PREGNANCY_DETAILS', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : selectedOptions.indexOf('PREGNANCY_DETAILS') > -1}"
+                        (click)="onRadioSelect('PREGNANCY_DETAILS', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('PREGNANCY_DETAILS', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Other Household Changes</h2>
+            <p>Select this option if you have any other household changes to report.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : selectedOptions.indexOf('OTHER_HOUSEHOLD_CHANGES') > -1}"
+                        (click)="onRadioSelect('OTHER_HOUSEHOLD_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : selectedOptions.indexOf('OTHER_HOUSEHOLD_CHANGES') > -1}"
+                        (click)="onRadioSelect('OTHER_HOUSEHOLD_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('OTHER_HOUSEHOLD_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

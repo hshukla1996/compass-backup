@@ -1,0 +1,21 @@
+{
+    "questionText": "Which of these benefits does {replace} receive?",
+    "subHeading": "Select all that apply.",
+    "toolTip": "",
+    "isRequired": false,
+    "requiredText": "Please select at least one",
+    "questionAnswers": [
+        {
+            "id": "snap",
+            "label": "SNAP (formerly known as Food Stamps)",
+            "isChecked": false,
+            "disabled": false
+        },
+        {
+            "id": "cash",
+            "label": "Cash Assistance (for example TANF)",
+            "isChecked": false,
+            "disabled": false
+        }
+    ]
+}

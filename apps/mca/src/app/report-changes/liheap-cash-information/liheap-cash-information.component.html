@@ -1,0 +1,113 @@
+<form [formGroup]="form">
+<div class="card-head mx-3 mt-3">
+    <h1 class="mb-0">Here is the information that was used when your LIHEAP Cash was processed.</h1>
+    <div class="col-12">
+        <div class="alert alert-info">
+            <p>
+                <span class="fw-bold">If your address or household composition has changed since your LIHEAP Cash was processed, more
+                    information is required
+                    and you must submit a new application.</span> You can start a new application by selecting Next.
+            </p>
+        </div>
+        <h3 class="mb-3">Review the information to make sure everything shown is correct.</h3>
+        <div class="card">
+            <div class="card-head mx-3 mt-3">
+                <h2 class="m-0"><i class="fa-regular fa-house-chimney-user mx-2"></i> Household</h2>
+            </div>
+            <div class="card-body">
+                <div class="row mb-1">
+                    <div class="col-6">
+                        <label class="form-label">Address</label>
+                    </div>
+                    <div class="col-6">
+                        <label class="data">{{householdInformation?.residentAddress?.streetAddressLine1}},
+                        {{householdInformation?.residentAddress?.streetAddressLine2 ?
+                        householdInformation?.residentAddress?.streetAddressLine2 + ',' : ''}}
+                        {{householdInformation?.residentAddress?.city}},
+                        {{householdInformation?.residentAddress?.state}},
+                        {{householdInformation?.residentAddress?.zip}} </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <label class="form-label">Is this your current household address? <span>(required)</span></label>
+                    <div class="row">
+                        <fieldset class="button-group">
+                            <compass-ui-cw-radiobutton [showError]="isFieldValid('household')" ngDefaultControl
+                                [formControlName]="'household'" [required]="true" [radioButtonGroupName]="'household'"
+                                [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes" value="Y">
+                            </compass-ui-cw-radiobutton>
+                            <compass-ui-cw-radiobutton [showError]="isFieldValid('household')" ngDefaultControl
+                                [formControlName]="'household'" [required]="true" [radioButtonGroupName]="'household'"
+                                [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No" value="N">
+                            </compass-ui-cw-radiobutton>
+                            <cw-field-error-display [displayError]="isFieldValid('household')" errorMsg="{{errorMap('household')}}">
+                            </cw-field-error-display>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-head mx-3 mt-3">
+                <h2 class="m-0"><i class="fa-regular fa-user-group mx-2"></i> Individual Details</h2>
+            </div>
+            <div class="card-body">
+                <div *ngFor="let item of individualInformation">
+                    <h2>{{item?.firstName}} {{item?.lastName}}
+                        {{item?.age}} ({{item?.gender}})</h2>
+                    <ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Marital Status</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="data">Married </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Citizenship Status</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="data">US Citizen </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Date of Birth</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="data">1/21/1976</label>
+                            </div>
+                        </div>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="row">
+                    <label class="form-label">Has anyone new (not including newborn children) moved into the household? <span
+                            >(required)</span></label>
+                    <div class="row">
+                        <fieldset class="button-group">
+                            <compass-ui-cw-radiobutton [showError]="isFieldValid('child')" ngDefaultControl [formControlName]="'child'"
+                                [required]="true" [radioButtonGroupName]="'child'" [labelClass]="'btn btn-outline-tertiary'" value="Yes"
+                                [radioClass]="'btn-check'" radioLabel="Yes" radioBtnId="child">
+                            </compass-ui-cw-radiobutton>
+                            <compass-ui-cw-radiobutton [showError]="isFieldValid('child')" ngDefaultControl [formControlName]="'child'"
+                                [required]="true" [radioButtonGroupName]="'child'" [labelClass]="'btn btn-outline-tertiary'" value="No"
+                                [radioClass]="'btn-check'" radioLabel="No" radioBtnId="child">
+                            </compass-ui-cw-radiobutton>
+                            <cw-field-error-display [displayError]="isFieldValid('child')" errorMsg="{{errorMap('child')}}">
+                            </cw-field-error-display>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

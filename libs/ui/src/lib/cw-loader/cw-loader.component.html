@@ -1,0 +1,8 @@
+<div class="p-3" *ngIf="loading$ | async">
+
+
+<p>
+    <ng-lottie width="11.25rem" height="11.25rem" [options]="options" (animationCreated)="animationCreated($event)">
+    </ng-lottie>{{ loadingText }}
+</p>
+</div>

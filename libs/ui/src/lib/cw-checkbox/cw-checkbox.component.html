@@ -1,0 +1,41 @@
+<div class="form-check {{textStyle}} standard-mb" [ngClass]="{ 'checked' : isChecked, 'error' : showError }" *ngIf="!isSingle">
+    <input
+            class="form-check-input {{checkboxClass}}"
+            type="checkbox"
+            [required]="required"
+            [attr.aria-describedby]="label"
+            id="{{id}}"
+            name="{{label}}"
+            [hidden]="isHidden"
+            (input)="onEventChange($event.target)"
+            [checked]="isChecked"
+            [disabled]="disabled"
+            [ngClass]="{ 'error' : showError }"
+    />
+    <label for="{{id}}" class="form-check-label {{labelClass}}" id="lbl-{{id}}">
+        <div class="label-text">{{label}} <span *ngIf="required">{{'lblrequired' | translate}}</span></div>
+        <div class="description-text" *ngIf="(helpText !== null && helpText !=='') || (link.href !== null && link.href !=='')">
+            <p *ngIf="helpText !== null && helpText !==''" class="standard-mb">{{helpText}}</p>
+            <a href={{link.href}} target="_blank" *ngIf="link.href">{{link.label}}</a>
+        </div>
+    </label>
+</div>
+<span *ngIf="showError && !isSingle" id="req-txt-{{id}}" class="error-text"><i class="fa-regular fa-circle-exclamation"></i> {{requiredText}}</span>
+
+<div class="form-check {{textStyle}} standard-mb" [ngClass]="{ 'checked' : isChecked, 'error' : showError }" *ngIf="isSingle" [formGroup]="formGroup">
+    <input class="form-check-input {{checkboxClass}}" type="checkbox" [required]="required" 
+        [attr.aria-describedby]="label" id="{{id}}" name="{{label}}" [hidden]="isHidden"
+        (input)="onEventChange($event.target)" [checked]="isChecked" [disabled]="disabled" [formControlName]="id" 
+        [ngClass]="{ 'error' : showError }" />
+    <label for="{{id}}" class="form-check-label {{labelClass}}" id="lbl-{{id}}">
+        <div class="label-text">{{label}} <span *ngIf="required">{{'lblrequired' | translate}}</span></div>
+        <div class="description-text"
+            *ngIf="(helpText !== null && helpText !=='') || (link.href !== null && link.href !=='')">
+            <p *ngIf="helpText !== null && helpText !==''" class="standard-mb">{{helpText}}</p>
+            <a href={{link.href}} target="_blank" *ngIf="link.href">{{link.label}}</a>
+        </div>
+    </label>
+</div>
+<span *ngIf="showError && isSingle" id="req-txt-{{id}}" class="error-text"><i class="fa-regular fa-circle-exclamation"  ></i>
+    {{requiredText}}</span>
+

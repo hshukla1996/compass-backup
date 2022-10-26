@@ -1,0 +1,70 @@
+<h1>Here's a summary of the insurance for your
+household.</h1>
+<p class="subtitle">Review the entries to make sure all insurance
+information is here.
+</p>
+
+<div class="card section-summary mb-3 mt-3" border-dark>
+    <div class="card-heading">
+        <h3><span>Insurance Situations</span><span class="count"></span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToInsuranceSituation()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item">
+            <div class="description">
+                Current Health or Medical Insurance
+            </div>
+            <div class="data">
+                <span class="count">{{this.currentInsuranceCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToPriorInsurance()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+      
+        <div class="line-item">
+            <div class="description">
+                Prior Health or Medical Insurance
+            </div>
+            <div class="data">
+                <span class="count">{{this.priorInsuranceCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToPriorInsurance()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+       
+       
+     
+    </div>
+</div>
+<div class="card section-summary mb-3 mt-3" border-dark>
+    <div class="card-heading">
+        <h3><span>Employer Insurance Situations</span><span class="count"></span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEmployerOfferedSituation()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item">
+            <div class="description">
+            Offered Health Insurance Through a Job
+            </div>
+            <div class="data">
+                <span class="count">{{this.employerInsuranceCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToEmployerOfferedIsurance()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+      
+       
+</div>
+<compass-ui-cw-dpq-button backButtonLabel="Back" nextButtonLabel="Next" (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

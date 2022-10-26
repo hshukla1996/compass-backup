@@ -1,0 +1,10 @@
+<nav>
+
+
+    <ul [class.collapsed]="menuCollapsed">
+        <li class="{{menuItem.class}}" *ngFor="let menuItem of menuData?.menuItems">
+            <a href="Javascript:;" [routerLink]="[menuItem.link]" (click)="setStatus(menuItem.id)">{{ menuItem.text }}</a>
+            <span>{{ menuItem.status }}</span>
+        </li>
+    </ul>
+</nav>

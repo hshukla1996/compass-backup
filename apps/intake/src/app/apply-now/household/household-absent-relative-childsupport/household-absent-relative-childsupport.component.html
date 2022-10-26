@@ -1,0 +1,30 @@
+<form class="form-horizontal" [formGroup]='absentRelativeChildSupportForm'>
+        <h1>Does {{currentUser.firstName}} pay child support?</h1>
+        <div class="form-group">
+
+            <fieldset class="button-group">
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'childsupport'"
+                    [required]="true" [radioButtonGroupName]="'absentRelativeChildSupportForm'"
+                    [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes">
+                </compass-ui-cw-radiobutton>
+
+                <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'childsupport'"
+                    [required]="true" [radioButtonGroupName]="'absentRelativeChildSupportForm'"
+                    [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No">
+                </compass-ui-cw-radiobutton>
+
+            </fieldset>
+
+        </div>
+        <div class="row action-bar">
+            <div class="col">
+                <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                    Back
+                </button>
+            </div>
+            <div class="col text-end">
+                <button type="button" class="btn btn-primary" (click)="goNext()">
+                    Next
+                </button>
+            </div>
+        </div>

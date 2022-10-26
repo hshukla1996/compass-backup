@@ -1,0 +1,96 @@
+<h1>Here's a summary of your household's resources.</h1>
+<p>Does all of the information below look correct?</p>
+<form [formGroup]="resourcesSummaryForm">
+<div class="accordion page-tip mb-3" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header card" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <div class="expandable_div_header">
+                    <span>
+                        <div class="expandable_div_header_inner_section" formControlName="resourcesSummary"><small>Progressive $150k</small>
+                        </div>
+                        <p class="collapsable_layout_heading">Sally</p>
+
+                    </span>
+
+                </div>
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <hr>
+                <div class="row">
+                    <div class="col-10 text-left">
+                        Birth Date:
+                    </div>
+                    <div class="col-2 text-right">
+                        12/14/21
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-10 text-left">
+                        Sex
+                    </div>
+                    <div class="col-2 text-right">
+                        Male
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-10 text-left">
+                        Relationship to Jane Sample (57)
+                    </div>
+                    <div class="col-2 text-right">
+                        Spouse
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-10 text-left">
+                        Another Name
+                    </div>
+                    <div class="col-2 text-right">
+                        Johnny Sample
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-10 text-left">
+                        Relationship to Jill Sample (11)
+                    </div>
+                    <div class="col-2 text-right">
+                        Daughter
+                    </div>
+                </div>
+                <hr>
+                <div class="expandable_div_section_footer">
+                    <div class="row">
+                        <div class="col-sm-6 text_align_center"><button class="btn btn-borderless btn-constructive">
+                                <i class="fa-regular fa-pen-to-square"></i> Edit
+                            </button></div>
+                        <div class="col-sm-6 text_align_center"><button class="btn btn-borderless btn-destructive">
+                                <i class="fa-regular fa-trash-can"></i> Delete
+                            </button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3 action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>
+</form>

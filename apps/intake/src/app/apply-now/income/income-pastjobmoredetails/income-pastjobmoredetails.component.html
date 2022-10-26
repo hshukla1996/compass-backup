@@ -1,0 +1,33 @@
+<form [formGroup]="incomePastJobMoreDetailsForm">
+    <h1 class="standard-mb">Tell us a little more about this job.</h1>
+
+    <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomePastJobMoreDetailsForm" [formControlName]="'startDate'" [fieldId]="'startDate'"
+      label="What date did this job start?" [showFieldHelpText]="'MM/DD/YYYY'"
+      [displayError]="isFieldValid('startDate')"
+      [showError]="isFieldValid('startDate')"
+      [errorMsg]="errorMap('startDate') | translate">
+    </compass-ui-cw-datepicker>
+
+    <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomePastJobMoreDetailsForm" [formControlName]="'endDate'" [fieldId]="'endDate'"
+      label="What date did this job end?" [showFieldHelpText]="'MM/DD/YYYY'"
+      [displayError]="isFieldValid('endDate')"
+      [showError]="isFieldValid('endDate')"
+      [errorMsg]="errorMap('endDate') | translate">
+    </compass-ui-cw-datepicker>
+
+    <compass-ui-text [fieldId]="'numberOfHoursWorkedPerWeek'" [FormGroup]="incomePastJobMoreDetailsForm"
+      [fieldLabel]="'afsincomemorejobdetailsworkperweek' | translate: { name: currentUser.firstName}" [maxLength]="2" (keypress)="OnlyNumberAllowed($event)">
+    </compass-ui-text>
+
+    <compass-ui-cw-datepicker ngDefaultControl [formGroup]="incomePastJobMoreDetailsForm" [formControlName]="'mostRecentPayDate'"
+      [fieldId]="'mostRecentPayDate'" label="What date did {{currentUser.firstName}} last receive a paycheck from this job?" [showFieldHelpText]="'MM/DD/YYYY'"
+      [displayError]="isFieldValid('mostRecentPayDate')"
+      [showError]="isFieldValid('mostRecentPayDate')"
+      [errorMsg]="errorMap('mostRecentPayDate') | translate">
+    </compass-ui-cw-datepicker>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+      (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+
+</form>

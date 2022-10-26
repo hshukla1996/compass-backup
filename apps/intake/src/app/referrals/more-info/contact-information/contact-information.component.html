@@ -1,0 +1,304 @@
+<form [formGroup]='contactInformationForm' (ngSubmit)="onSubmit()">
+    <h1>{{'contactInfoheader' | translate}}</h1>
+    <p>{{'contactInfoprovider' | translate}}</p>
+    <div class="mb-3">
+        <compass-ui-cw-select [fieldId]="'usersField'" (OnSelectedChange)="selectPerson($event)"
+            [fieldLabel]="'Main Contact for the Household'" [FormGroup]="contactInformationForm"
+            [displayError]="isFieldValid('usersField')" [errorMsg]="'This is required.'"  [requiredIndicator]="true"
+            requiredText="{{'lblrequired' | translate}}">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let users of individuals" value={{users.individualNumber}}>{{users.firstName}}
+                {{users.lastName}} ({{getAge(users?.dateOfBirth)}}) </option>
+            <option value="outsideHousehold">Someone Outside the Household</option>
+        </compass-ui-cw-select>
+    </div>
+    <div *ngIf="showcard">
+        <div class="card arrow-card">
+            <div class="card-body">
+                <div class="mb-3">
+                    <compass-ui-text [fieldId]="'conditionalFirstName'" [fieldType]="'nameType'" [requiredIndicator]="true"
+                        [FormGroup]="contactInformationForm" [fieldLabel]="' First Name '" [requiredText]="'(required)'"
+                        [errorText]="'This is required.'" [displayError]="isFieldValid('conditionalFirstName')"
+                        [errorMsg]="errorMap('conditionalFirstName')">
+                    </compass-ui-text>
+                </div>
+                <div class="mb-3">
+                    <compass-ui-text [fieldId]="'conditionalLastName'" [fieldType]="'nameType'" [requiredIndicator]="true"
+                        [FormGroup]="contactInformationForm" [fieldLabel]="' Last Name '" [fieldType]="'nameType'"
+                        [requiredText]="'(required)'" [errorText]="'This is required.'"
+                        [displayError]="isFieldValid('conditionalLastName')"
+                        [errorMsg]="errorMap('conditionalLastName')">
+                    </compass-ui-text>
+                </div>
+               
+                <!-- <div formArrayName="memberRelationships">
+                    <div class="col-12" *ngFor="let memberRelationship of memberRelationshipFormGroup.controls; let i = index;">
+                        <div [formGroupName]="i" class="row">
+                            <div class="form-group pt-3">
+                                <label class="form-label">
+                
+                                    {{'Relationship to '+basicDetails_relations[i].firstName +' '+
+                                    basicDetails_relations[i].lastName}}
+                                    <span>(required)</span></label>
+                
+                                <select class="form-control"
+                                    formControlName="{{basicDetails_relations[i].individualNumber}}" type="text">
+                                    <option value="" selected>- Select One -</option>
+                                    <option *ngFor="let relation of getrelationships" value="{{relation.id}}">{{relation.displayValue}}
+                                    </option>
+                                </select>
+                
+                                <span class="text-danger"
+                                    *ngIf="getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].individualNumber].touched && getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].individualNumber].hasError('required')">
+                                    Relationship with {{basicDetails_relations[i].firstName}},
+                                    {{basicDetails_relations[i].lastName}} is required! </span>
+                
+                            </div>
+                
+                        </div>
+                    </div>
+                
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-select [fieldId]="'contactPreference'" [fieldLabel]="'Best way to Contact'"  [requiredIndicator]="true"
+            requiredText="{{'lblrequired' | translate}}" [FormGroup]="contactInformationForm"
+            [displayError]="isFieldValid('contactPreference')" [errorMsg]="errorMap('contactPreference')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option value="P"> {{'contactInfoPhone' | translate}}</option>
+            <option value="E"> {{'clearValidatorscontactInfoEmail' | translate}}</option>
+            <option value="M"> {{'clearValidatorscontactInfoMail' | translate}}</option>
+        </compass-ui-cw-select>
+    </div>
+    <div class="mb-3">
+    
+        <compass-ui-text [fieldId]="'phoneNumber'" type="phone" [FormGroup]="contactInformationForm" ngDefaultControl
+            [formControlName]="'phoneNumber'" requiredText="{{showPhoneNumrequired}}" fieldLabel="Phone Number"
+            [maxLength]="10" [requiredIndicator]=" true" [displayError]="isFieldValid('phoneNumber')"
+            [errorText]="errorMap('phoneNumber')"   (keydown)="OnlyNumberAllowed($event, 'phoneNumber')">
+        </compass-ui-text>
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'emailAddress'" requiredText="" requiredText="{{showEmailRequired}}"  [requiredIndicator]="true"
+            [displayError]="isFieldValid('emailAddress')" [errorText]="'This is required.'" [maxLength]="50"
+            [FormGroup]="contactInformationForm" [fieldLabel]="'Email'" (inputModelChange)="GetEmail($event)">
+        </compass-ui-text>
+
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'confirmEmail'" requiredText="" [FormGroup]="contactInformationForm"  [requiredIndicator]="true"
+            [displayError]="isFieldValid('confirmEmail')" [fieldLabel]="'Confirm Email'"  [maxLength]="50"
+            requiredText="{{showEmailRequired}}" (inputModelChange)="getConfirmEmail($event)"
+            [errorText]="errorMap('confirmEmail')">
+        </compass-ui-text>
+        <!-- <cw-field-error-display [displayError]="this.getEmail !== '' && this.confirm !== '' && this.getEmail !== this.confirm  "
+            errorMsg="Email Should match">
+        </cw-field-error-display> -->
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'addressLine1'" [fieldType]="'referralsaddressType'" [maxLength]="26"  [requiredIndicator]="true"
+            requiredText="" [displayError]="isFieldValid('addressLine1')" [errorText]="'This is required.'"
+            [FormGroup]="contactInformationForm" [fieldLabel]="'Street Address'"
+            requiredText="{{showAddressFieldsRequired}}">
+        </compass-ui-text>
+
+
+    </div>
+
+
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'addressLine2'" [fieldType]="'referralsaddressType'" [maxLength]="26"   
+            requiredText="" [FormGroup]="contactInformationForm" [fieldLabel]="'Street Address (2)'">
+        </compass-ui-text>
+
+    </div>
+
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'city'" [maxLength]="16" [fieldType]="'cityType'"  [requiredIndicator]="true"
+            [FormGroup]="contactInformationForm" [fieldLabel]="'City'" requiredText="{{showAddressFieldsRequired}}"
+            [displayError]="isFieldValid('city')" [errorText]="'This is required.'">
+        </compass-ui-text>
+
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-select [fieldId]="'state'" fieldLabel="State" [displayError]="isFieldValid('state')"
+            [errorMsg]="'This is required.'" requiredText="{{showAddressFieldsRequired}}"  [requiredIndicator]="stateFlag"
+            [FormGroup]="contactInformationForm">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let state of states" value={{state.id}}>{{state.displayValue}}</option>
+        </compass-ui-cw-select> 
+
+
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [fieldId]="'zip'"   [displayError]="isFieldValid('zip')"  [requiredIndicator]="true"
+            [errorText]="errorMap('zip')" (keypress)="OnlyNumberAllowed($event,'')" [maxLength]="5" requiredText=""
+            requiredText="{{showAddressFieldsRequired}}" [FormGroup]="contactInformationForm" [fieldLabel]="'Zip Code'">
+        </compass-ui-text>
+
+    </div>
+    <div class="mb-3" *ngIf="showcard">
+        <div formArrayName="otherRelationships">
+            <div class="col-12" *ngFor="let otherRelationship of otherRelationshipFormGroup.controls; let i = index;">
+                <div [formGroupName]="i" class="row">
+                    <div class="form-group pt-3" *ngIf="individuals[i]">
+                        <label class="form-label">
+    
+                            {{'Relationship to '+individuals[i].firstName +' '+
+                            individuals[i].lastName}}
+                        </label>
+    
+                        <select class="form-control" name="individuals[i].individualNumber"
+                            formControlName="{{individuals[i].individualNumber}}" type="text">
+                            <option value="0" selected>- Select One -</option>
+                            <option *ngFor="let relation of getrelationships" value="{{relation.id}}">
+                                {{relation.displayValue}}
+                            </option>
+                        </select>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+        <!-- <div *ngIf="selectedInd && selectedInd !== 'outsideHousehold'  ">
+            <div class="mb-3" *ngFor="let eachIndividual of internal_relations">
+                <compass-ui-cw-select [fieldId]="'relationships'"
+                    (change)="getRelationvalue($event,eachIndividual.individualNumber )"
+                    [fieldLabel]="'Relationship to '+eachIndividual.firstName + ' ' + eachIndividual.lastName "
+                    [FormGroup]="contactInformationForm">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let relation of getrelationships" value="{{relation.id}}">
+                        {{relation.displayValue}}</option>
+        
+                </compass-ui-cw-select>
+                <cw-field-error-display [displayError]="isFieldValid('relationships')" errorMsg="{{errorMap('relationships')}}">
+                </cw-field-error-display>
+        
+            </div> 
+        </div> -->
+   <!-- <div>outsideHousehold</div> -->
+    <div class="mb-3" *ngIf="selectedInd && selectedInd !== 'outsideHousehold'  ">
+   
+        <div formArrayName="memberRelationships">
+            <div class="col-12" *ngFor="let memberRelationship of memberRelationshipFormGroup.controls; let i = index;">
+                <div [formGroupName]="i" class="row">
+                    <div class="form-group pt-3" *ngIf="internal_relations[i]">
+                        <label class="form-label">
+    
+                            {{'Relationship to '+internal_relations[i].firstName +' '+
+                            internal_relations[i].lastName}}
+                           </label>
+    
+                        <select class="form-control" name="internal_relations[i].individualNumber"
+                            formControlName="{{internal_relations[i].individualNumber}}" type="text">
+                            <option value="0" selected>- Select One -</option>
+                            <option *ngFor="let relation of getrelationships" value="{{relation.id}}">
+                                {{relation.displayValue}}
+                            </option>
+                        </select>
+    
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- {{internal_relations |json}}
+{{!showcard}} -->
+    <!-- {{selectedInd}}
+    <p>test</p> -->
+
+    <!-- <div class="mb-3" *ngIf="selectedInd !== 'outsideHousehold' ">
+        <div formArrayName="otherRelationships">
+            <div class="col-12" *ngFor="let otherRelationship of otherRelationshipFormGroup.controls; let i = index;">
+                <div [formGroupName]="i" class="row">
+                    <div class="form-group pt-3">
+                        <label class="form-label">
+        
+                            {{'Relationship to '+individuals[i].firstName +' '+
+                            individuals[i].lastName}}
+                            </label>
+        
+                        <select class="form-control" formControlName="{{individuals[i].individualNumber}}"
+                            type="text">
+                            <option value="" selected>- Select One -</option>
+                            <option *ngFor="let relation of getrelationships" value="{{relation.id}}">{{relation.displayValue}}
+                            </option>
+                        </select>
+        
+                        <span class="text-danger"
+                            *ngIf="getotherRelationshipsFormGroup(i).controls[individuals[i].individualNumber].touched && getotherRelationshipsFormGroup(i).controls[individuals[i].individualNumber].hasError('required')">
+                            Relationship with {{individuals[i].firstName}},
+                            {{individuals[i].lastName}} is required! </span>
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+        </div>
+    </div> -->
+
+
+</form> 
+<div style="display:block"  class="modal fade show" [hidden]="isAddressGISValidated" id="loadingModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>We could not confirm the address you entered</h2>
+                <p class="mb-3">The address you entered doesn’t match any address that USPS has on record. </p>
+                <p>Without an address, it may take longer to process your application.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-tertiary" #closeModal data-bs-dismiss="modal"
+                    (click)="useAnyway()">Use Anyway</button>
+                <button type="button" class="btn btn-primary" (click)="editAddress()">Edit Address</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" *ngIf="!isAddressGISValidated" aria-labelledby="deleteModalLabel" aria-hidden="true" #deleteModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>We could not confirm the address you entered</h2>
+                <p class="mb-3">The address you entered doesn’t match any address that USPS has on record. </p>
+                <p>Without an address, it may take longer to process your application.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-tertiary" #closeModal
+                    data-bs-dismiss="modal" (click)="useAnyway()">Use Anyway</button>
+                <button type="button" class="btn btn-primary" (click)="editAddress()">Edit Address</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            {{'referralBack' | translate}}
+        </button>
+    </div>
+    <div>
+
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+            {{'referralNext' | translate}}
+        </button>
+    </div>
+</nav>

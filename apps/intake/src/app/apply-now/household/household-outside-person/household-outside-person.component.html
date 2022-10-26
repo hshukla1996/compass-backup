@@ -1,0 +1,67 @@
+<form class="form-horizontal" *ngIf="householdMembers.length>0" [formGroup]='householdOutsidePersonForm'
+    #householdOutsidePersonFormEle="ngForm">
+
+
+                <h1>Is anyone below not living with you right now?</h1>
+
+            <div class="alert alert-info">
+                <div>
+                    <p>
+                        If you are applying for health
+                    care, we need to know about
+                    everyone on your federal
+                    income tax return even if they
+                    don't live in the same household as you.
+                    </p>
+                    <p>
+                                        If you need to add another person to your household, 
+                you can add them using the Add Another Person button and come back
+                to this screen.
+                    </p>
+                </div>
+            </div>
+
+                <p class="fw-bold">Select all that apply.</p>
+
+           
+<div *ngFor="let individual of individualFormArray.controls;let i =index;" formArrayName="id" class="card standard mb-md-4 mb-3">
+    <div class="card-body">
+        <div class="form-check">
+            <input class="form-check-input" id={{householdMembers[i].id}} type="checkbox"
+                value={{householdMembers[i].id.toString()}} (change)="onCheckboxChange($event)"
+                [checked]="selectedUserids.indexOf(householdMembers[i].id.toString()) !== -1 ? true : false">
+
+            <label class="form-check-label text-capitalize" for="{{householdMembers[i].id}}">
+                {{householdMembers[i].firstName}} {{householdMembers[i].lastName}}
+                {{getAge(householdMembers[i]?.dateOfBirth)}} ({{householdMembers[i].gender.charAt(0)}})
+            </label>
+        </div>
+    </div>
+    </div>
+    <div class="text-center text-md-end standard-mb" *ngIf="householdPersons.length <= 20">
+        <button type="button" class="btn btn-sm btn-secondary" (click)="addPerson()">
+            <i class="fa-regular fa-circle-plus"></i> 
+            Add Another Person
+        </button>
+    </div>
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" (click)="previous()" class="btn btn-outline-tertiary">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+    
+</form>
+
+<!-- <cw-simpletile-checkbox [simpleTileCheckboxData]="householdOutsidePersonJsonData"
+ (nextPage)="showNextPage($event)"
+ (previousPage)="showPreviousPage()" (addAnotherPerson)="addPerson()">
+</cw-simpletile-checkbox>
+ -->

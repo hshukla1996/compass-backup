@@ -1,0 +1,57 @@
+<!-- <h1 class="standard-mb"> Who owns a burial or trust agreement with a bank or funeral?</h1>
+<p class="form-subtitle standard-mb">Select all that apply.</p>
+<form [formGroup]="burialOrTrustAgreementForm">
+<div class="standard-mb">
+        <div class="form-check custom">
+            <input class="form-check-input" type="checkbox" id="burialortrustagreement1" formControlName="burialortrustagreement1">
+            <label class="form-check-label" for="burialortrustagreement1">
+                John Sample 65 (M)
+            </label>
+        </div>
+</div>
+<div class="standard-mb">
+        <div class="form-check custom">
+            <input class="form-check-input" type="checkbox" id="burialortrustagreement2" formControlName="burialortrustagreement2">
+            <label class="form-check-label" for="burialortrustagreement2">
+                Jane Sample 57 (F)
+            </label>
+        </div>
+</div>
+<div class="standard-mb">
+        <div class="form-check custom">
+            <input class="form-check-input" type="checkbox" id="outsidehousehold" formControlName="outsidehousehold">
+            <label class="form-check-label" for="outsidehousehold">
+                Someone outside the household
+            </label>
+        </div>
+</div>
+<div class="card arrow-card" *ngIf="burialOrTrustAgreementForm.get('outsidehousehold').value">
+    <div class="card-body">
+        <div class="form-group mb-4">
+            <compass-ui-text [type]="'text'" [fieldId]="'outsidehouseholdName'" [fieldLabel]="'Tell us who outside of the household owns this burial or trust agreement.'"
+                [FormGroup]="burialOrTrustAgreementForm"
+                [displayError]="isFieldValid('outsidehouseholdName')" [requiredText]="'(required)'"
+                [errorText]="'Please enter the amount'"
+                [requiredIndicator]="requiredFields.indexOf('outsidehouseholdName')>-1">
+            </compass-ui-text>
+        </div>       
+    </div>
+</div>
+
+<div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>
+</form> -->
+<cw-simpletile-checkbox-textbox [simpleTileCheckboxData]="burialTrustAgreementJsonData" (nextPage)="goNext($event)"
+    (previousPage)="goBack()" [selectedItems]="selectedUserids" [validators]="textboxValidators"
+    [otherNameText] = "ownerName">
+</cw-simpletile-checkbox-textbox>

@@ -1,0 +1,376 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-12">
+    <div class="loading-container">
+      <div class="p-5">
+        <p>{{loadingText}}</p>
+      </div>
+      <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="!isLoading">
+<h1>Here's a summary of the details for each household member.</h1>
+<p class="subtitle">Look below to make sure everything here is correct.</p>
+<div class="card section-summary mb-3 mt-3" border-dark >
+    <div class="card-heading">
+        <h3><span>Individual Details</span><span class="count">{{this.householdMembers.length}}</span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEdit()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mb-3 mt-3" border-dark>
+    <div class="card-heading">
+        <h3><span>NSLP Details</span><span class="count">{{this.nslpCount}}</span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEditNSLP()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mb-3 mt-3" border-dark >
+    <div class="card-heading">
+        <h3><span>Individual Demographic Situations</span><span class="count"></span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEditDemographicSituations()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item">
+            <div class="description">
+                Current Students
+            </div>
+            <div class="data">
+                <span class="count">{{this.currentStudentCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToEditCurrentStudent()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Training Programs
+            </div>
+            <div class="data">
+                <span class="count">{{this.trainingProgramCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToEditTrainingPrograms()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Military Members
+            </div>
+            <div class="data">
+                <span class="count">{{this.militaryMembersCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToEditMilitaryMembers()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Veteran Relatives
+            </div>
+            <div class="data">
+                <span class="count">{{this.veteranRelativesCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToVeteranRelatives()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Additional Contacts
+            </div>
+            <div class="data">
+                <span class="count">{{this.additionalContactsCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToAdditionalContacts()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Pregnancies
+            </div>
+            <div class="data">
+                <span class="count">{{this.pregnanciesCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToPregnancies()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Federal Income Tax Filers
+            </div>
+            <div class="data">
+                <span class="count">{{this.federalIncomeTaxCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToFederalTax()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Tax Dependents
+            </div>
+            <div class="data">
+                <span class="count">{{this.taxDependentsCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToTaxDependents()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Domestic Violence
+            </div>
+            <div class="data">
+                <span class="count">{{this.domesticViolenceCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToDomesticViolence()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Homeless
+            </div>
+            <div class="data">
+                <span class="count">{{this.homelessCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToHomeless()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Migrant or Seasonal Farm Workers
+            </div>
+            <div class="data">
+                <span class="count">{{this.migrantWorkerCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToMigrantWorker()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Federally Recognized Tribes
+            </div>
+            <div class="data">
+                <span class="count">{{this.federalTribeCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToFederalTribe()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Summons or Warrants
+            </div>
+            <div class="data">
+                <span class="count">{{this.summonCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToSummon()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mb-3 mt-3" border-dark >
+    <div class="card-heading">
+        <h3><span>Individual Benefit and Health Situations</span><span class="count"></span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEditIndividualHealth()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item">
+            <div class="description">
+                Medical Conditions
+            </div>
+            <div class="data">
+                <span class="count">{{this.medicalConditionCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToMedicalConditions()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Health Sustaining Medications
+            </div>
+            <div class="data">
+                <span class="count">{{this.healthMedicationsCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToHealthMedications()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Paid or Unpaid Medical Bills
+            </div>
+            <div class="data">
+                <span class="count">{{this.medicalBillsCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToMedicalBills()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Current SNAP/Cash Assistances
+            </div>
+            <div class="data">
+                <span class="count">{{this.currentSnapCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToCurrentSnap()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Prior TANF or Cash Assistance
+            </div>
+            <div class="data">
+                <span class="count">{{this.priorTanfCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToPriorTanf()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Benefits Not Received
+            </div>
+            <div class="data">
+                <span class="count">{{this.benefitsNotCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToBenefitsNot()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Family Planning Services
+            </div>
+            <div class="data">
+                <span class="count">{{this.familyPlanningCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToFamilyPlanning()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Supplemental Security Income (SSI)
+            </div>
+            <div class="data">
+                <span class="count">{{this.ssiCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToSsi()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Social Security Disability (SSD)
+            </div>
+            <div class="data">
+                <span class="count">{{this.ssdCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToSsd()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mb-3 mt-3" border-dark >
+    <div class="card-heading">
+        <h3><span>Individual Legal Situations</span><span class="count"></span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEditIndividualLegal()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item">
+            <div class="description">
+                Owes Fines
+            </div>
+            <div class="data">
+                <span class="count">{{this.owesFinesCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToOwesFines()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Convicted Welfare Fraud
+            </div>
+            <div class="data">
+                <span class="count">{{this.welfareFraudCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToWelfareFraud()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Current Probation
+            </div>
+            <div class="data">
+                <span class="count">{{this.currentProbationCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToCurrentProbation()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Fleeing From Law
+            </div>
+            <div class="data">
+                <span class="count">{{this.fleeingCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToFleeing()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="line-item">
+            <div class="description">
+                Currently in Prison (Incarcerated)
+            </div>
+            <div class="data">
+                <span class="count">{{this.prisonCount}}</span>
+                <button class="btn btn-borderless" (click)="navigateToPrison()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button
+    backButtonLabel="Back"
+    nextButtonLabel="Next"
+    (next)="next()"
+    (back)="back()">
+</compass-ui-cw-dpq-button>
+</div>

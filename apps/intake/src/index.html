@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HHS</title>
+  <base href="./" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"
+    integrity="sha384-hm7B00mbtnkFvRyz6+PZuG2yfM3JaBdEUPYw7BEPKQWZqu1s3G8KFiyOIqOMEk+v"
+    crossorigin="anonymous">
+  </script>
+</head>
+
+<body>
+  <compass-ui-root></compass-ui-root>
+  <script>
+
+    const isMobile = ('ontouchstart' in document.documentElement && /mobi/i.test(navigator.userAgent));
+    const DEFAULT_LANGUAGE = "en";
+    const SPANISH_LANGUAGE = "es";
+    const LOGIN_KEY = '0-979db954-ad29-4427-a2a3-874160b2434f';
+    const ACCESS_FIELD = 'authnResult';
+    const ACCESS_TOKEN = 'access_token';
+    const USER_INFO_FIELD = 'userData';
+    const LANGUAGE_ID = 'chatbotLang';
+
+    const isLoginSuccess = sessionStorage.getItem(LOGIN_KEY);
+    const hasAuth = isLoginSuccess ? JSON.parse(isLoginSuccess) : '';
+    const hasToken = hasAuth ? hasAuth[ACCESS_FIELD][ACCESS_TOKEN] : '';
+    const hasUserInfo = hasAuth ? hasAuth[USER_INFO_FIELD] : '';
+    const isLanguage = localStorage.getItem(LANGUAGE_ID);
+    const hasLanguage = isLanguage ? isLanguage : DEFAULT_LANGUAGE;
+
+    var BOT_ID = "";
+
+    if (hasLanguage === DEFAULT_LANGUAGE) {
+      BOT_ID = hasToken ? "ad178c2b-fb69-4a9b-bfb5-066c622d1879" : "cb220ce1-203a-463c-80f8-28bfa79c7338";
+    } else if (hasLanguage === SPANISH_LANGUAGE) {
+      BOT_ID = hasToken ? "e4c479b9-1eca-4867-82f3-e298fbb43478" : "d3c005b2-8b17-414f-9bd0-1ccbbbbff033";
+    }
+
+    var theURL = "https://gcc.api.powerva.microsoft.us/api/botmanagement/v1/directline/directlinetoken?botId=" + BOT_ID;
+
+    const store = WebChat.createStore({}, ({ dispatch }) => next => action => {
+      if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+        new Promise((resolve) => {
+          dispatch({
+            type: 'WEB_CHAT/SEND_EVENT',
+            payload: {
+              name: 'pvaSetContext',
+              value: {
+                "v_UserName": hasUserInfo ? hasUserInfo.name : "",
+                "v_GivenName": hasUserInfo ? hasUserInfo.given_name : "",
+                "v_FamilyName": hasUserInfo ? hasUserInfo.family_name : "",
+                "v_Token": hasToken ? hasToken : "",
+                "v_UserNameSpanish": hasUserInfo ? hasUserInfo.name : "",
+                "v_TokenSpanish": hasToken ? hasToken : "",
+              }
+            }
+          })
+          setTimeout(() => resolve(), 1100);
+        }).then(() => {
+          dispatch({
+            meta: {
+              method: "keyboard"
+            },
+            payload: {
+              activity: {
+                channelData: {
+                  postBack: true
+                },
+                name: "startConversation",
+                type: "event"
+              }
+            },
+            type: "DIRECT_LINE/POST_ACTIVITY"
+          });
+        });
+      }
+      return next(action);
+    });
+
+    const styleSetBrowser = {
+      hideUploadButton: true
+    };
+
+    const styleSetMobile = {
+      hideUploadButton: true,
+      suggestedActionLayout: 'stacked'
+    };
+
+    fetch(theURL)
+      .then((response) => response.json())
+      .then((conversationInfo) => {
+        window.WebChat.renderWebChat(
+          {
+            directLine: window.WebChat.createDirectLine({
+              token: conversationInfo.token
+            }),
+            store: store,
+            styleOptions: isMobile ? styleSetMobile : styleSetBrowser
+          },
+          document.getElementById("webchat")
+        );
+      }).catch((err) => console.log(err));
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+{
+    "questionText": "Do any of these criminal history situations apply to anyone in the household?",
+    "toolTip": "Don't worry, you can still get benefits.",
+    "subHeading": "",
+    "requiredText": "Please select required options",
+    "questionAnswers": [
+        {
+            "legend": "Owes fines, costs, or restitution for a felony or misdemeanor offence",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "ownesfines"
+        },
+        {
+            "legend": "Convicted of welfare fraud",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "convictedwelfarefraud"
+        },
+        {
+            "legend": "Currently on probation or parole",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "currentlyonprobation"
+        },
+        {
+            "legend": "Currently fleeing from law enforcement officials",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "currentlyfleeing"
+        },
+        {
+            "legend": "Currently in prison or another correctional facility (Incarcerated)",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "isAnyoneCurrentlyIncarcerated"
+        }
+    ]
+}

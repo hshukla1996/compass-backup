@@ -1,0 +1,10 @@
+<div class="standard-mb">
+    <select class="form-select {{selectStyle}}" type="text" id="{{dropdownlabel}}" [required]="required"
+        [disabled]="disabled" name="selectedItem" (change)="detectChangedSelection($event.target)">
+        <option value="" class="text-hide" id="placeholder" selected disabled>{{placeholder}}</option>
+        <option *ngFor="let data of dropdownData" id="{{data.id}}" [selected]="selectedItem.id === data.id"
+            [value]="data.id">{{data[bindLabel]}}
+        </option>
+    </select>
+</div>
+

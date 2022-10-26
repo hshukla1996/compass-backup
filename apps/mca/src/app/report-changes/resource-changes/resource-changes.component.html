@@ -1,0 +1,42 @@
+    <h1 class="mb-0">Tell us about your resource changes.</h1>
+    <div class="form-group mb-4">
+        <p>Please provide the details of your resource changes.</p>
+        <div class="mb-2">
+            <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+        </div>
+        <form [formGroup]="resourceChangeForm">
+            <textarea class="form-control" rows="3" ngDefaultControl formControlName="description" maxlength="500">
+            </textarea>
+        </form>
+        <label class="mt-3">Example: I would like to report a decrease in the amount of money in my savings account.</label>
+        <div class="col-12 mt-3">
+            <div class="accordion page-tip" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Resource Change Examples
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p> Resource changes includes:</p>
+                            <ul>
+                                <li>Any change in the amount or value of resources such as bank accounts, savings bonds,
+                                retirement accounts, vehicles, non-residential properties, etc.</li>
+                                <li>Any new vehicles in the household (include make, model, year, and mileage).</li>
+                                <li>Any other new resources (include type and amount or value).</li>
+                                <li>Any resources that you already reported but no longer own or are not a part of the household anymore</li>
+        
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>
+

@@ -1,0 +1,35 @@
+<h1 class="standard-mb">
+    {{ simpleTileCheckboxData['questionText'] | translate : simpleTileCheckboxData['questionTextTO']}}
+</h1>
+<div class="standard-mb" *ngIf="simpleTileCheckboxData['toolTip'] !== ''">
+    <p class="alert alert-info">
+        {{ simpleTileCheckboxData['toolTip'] | translate : simpleTileCheckboxData['toolTipTO']}}
+    </p>
+</div>
+<p class="fw-bold standard-mb">{{ simpleTileCheckboxData['subHeading'] | translate : simpleTileCheckboxData['subHeadingTO']}}</p>
+<cw-field-error-display [displayError]="formSubmitAttempt && simpleTileCheckboxData['isRequired']"
+    errorMsg="{{ simpleTileCheckboxData.requiredText | translate}}">
+</cw-field-error-display>
+<div [formGroup]="simpleTileCheckboxTextBoxForm" class="standard-mb">
+    <ng-container *ngFor="let simpleTileCheckbox of simpleTileCheckboxData['questionAnswers']">
+        <compass-ui-cw-checkbox id="{{ simpleTileCheckbox['id'] }}" textStyle="custom small-mb"
+            label="{{ simpleTileCheckbox['label'] | translate : simpleTileCheckbox['labelTO']}}" helpText="{{ simpleTileCheckbox['helpText'] | translate : simpleTileCheckbox['helpTextTO']}}"
+            [link]="simpleTileCheckbox['link'] || {href:'', label:''}" [isChecked]="simpleTileCheckbox['isChecked']"
+            (inputModelChange)="onCheckboxChange(simpleTileCheckbox['id'], $event)"
+            [disabled]="simpleTileCheckbox['disabled']">
+        </compass-ui-cw-checkbox>
+    </ng-container>
+
+    <div class="card arrow-card" *ngIf="displayTextbox">
+        <div class="card-body"> 
+            <div class="form-group mb-4">
+                <p>{{textBoxHeadingText | translate}}</p>
+                <compass-ui-text [type]="'text'" [fieldId]="'otherName'" [FormGroup]="simpleTileCheckboxTextBoxForm"
+                    [displayError]="isFieldValid('otherName')" [errorText]="errorMap('otherName')">
+                </compass-ui-text>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel="{{'backBtnText' | translate}}" nextButtonLabel="{{'nextBtnText' | translate}}" (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

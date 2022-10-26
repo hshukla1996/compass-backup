@@ -1,0 +1,35 @@
+<form class="form-horizontal" [formGroup] = 'charterSchoolDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+      <h1>Tell us more about {{currentUser.firstName}}'s school.</h1>
+    <!-- </div> -->
+    <!-- <div class="panel-body"> -->
+      <div class="form-group mb-3">
+        <label for="school" class="form-label">Select the school from the list.</label>
+        <select class="form-select" formControlName="school" name="school">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let school of data.schoolsLists" value="{{school.key}}">{{school.value}}</option>
+        </select>
+      </div>
+      <div class="alert alert-info d-flex align-items-center">
+        <p>If the school, or school building is not listed, please check that all of the information here is correct.
+          If the information is correct, contact the school to see If it participates in the Free or Reduced Price School Meals Program.
+          If “Not Listed” is selected, this student will not receive free or reduced price school meals. Other students in the house may still receive  free or reduced price school meals.
+        </p>
+      </div>
+
+    <!-- </div> -->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+  <!-- </div> -->
+</form>

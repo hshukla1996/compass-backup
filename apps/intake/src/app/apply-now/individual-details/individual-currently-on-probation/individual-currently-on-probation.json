@@ -1,0 +1,15 @@
+{
+    "questionText": "You told us someone is currently on probation or parole. Tell us who.",
+    "subHeading": "Select all that apply.",
+    "toolTip": "",
+    "isRequired": true,
+    "requiredText": "Please select at least one",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "John Samples 65 (M)",
+            "isChecked": false,
+            "disabled": false
+        }
+    ]
+}

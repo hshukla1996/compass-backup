@@ -1,0 +1,52 @@
+<form [formGroup]="otherIncomeDetailsForm">
+        <h1>Tell us about {{currentUser.firstName}}'s other income.</h1>
+
+        <div class="alert alert-info d-flex align-items-center">
+            <p>Don't worry, you can add more income later if you need to.
+            <br>
+            <br>
+            If you have already added self-employment income, don't add it again.
+            </p>
+
+        </div>
+
+        <compass-ui-cw-select [fieldId]="'incomeType'" [FormGroup]="otherIncomeDetailsForm" [fieldLabel]="'What type of income is this?'"
+         [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('incomeType')>-1" [displayError]="isFieldValid('incomeType')" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let type of otherIncomeTypes" value="{{type.id}}">{{type.displayValue}}</option>
+        </compass-ui-cw-select>
+
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'otherIncomeDescription'" [FormGroup]="otherIncomeDetailsForm"
+                [fieldLabel]="'Please describe the source of other income.'" [maxLength]="26" pattern="[a-zA-Z]*"
+               [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('otherIncomeDescription')>-1"[displayError]="isFieldValid('otherIncomeDescription')"
+        errorText="{{'basidDetailRequiredMessage' | translate}}" [fieldHelpText]="'For example, enter a claim number or a description to help us better understand
+                this income.'">
+            </compass-ui-text>
+        </div>
+
+        <compass-ui-cw-select [fieldId]="'frequency'" [FormGroup]="otherIncomeDetailsForm"
+           [fieldLabel]="'afsotherincomedetails' | translate: { name: currentUser.firstName}"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('frequency')>-1" [displayError]="isFieldValid('frequency')" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+          <option value="" selected>- {{'selectone' | translate}} -</option>
+          <option *ngFor="let pay of payList" value="{{pay.id}}">{{pay?.displayValue}}
+        </compass-ui-cw-select>
+
+        <compass-ui-text [fieldId]="'grossIncome'" [FormGroup]="otherIncomeDetailsForm" [type]="'currency'"
+            [fieldLabel]="'What is the amount of the income before taxes and deduction?'"
+            [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('grossIncome')>-1" [displayError]="isFieldValid('frequency')" [displayError]="isFieldValid('grossIncome')"
+        [errorText]="errorMap('grossIncome')" [maxLength]="8">
+        </compass-ui-text>
+
+        <compass-ui-cw-datepicker ngDefaultControl [formGroup]="otherIncomeDetailsForm" [formControlName]="'mostRecentPayDate'"
+            [fieldId]="'mostRecentPayDate'" 
+            label="When did {{currentUser.firstName}} last receive this income?"
+            requiredText="{{'lblrequired' | translate}}" [required]="requiredFields.indexOf('mostRecentPayDate')>-1" [displayError]="isFieldValid('mostRecentPayDate')" [showError]="isFieldValid('mostRecentPayDate')"
+            [errorMsg]="errorMap('mostRecentPayDate') | translate" [maxRange]="maxDateRange" [showFieldHelpText]="'MM/DD/YYYY'">
+        </compass-ui-cw-datepicker>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+        nextButtonLabel="{{'nextBtnText'| translate}}" (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+
+</form>

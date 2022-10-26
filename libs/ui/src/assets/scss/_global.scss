@@ -1,0 +1,245 @@
+/* 
+    COMPASS.Web Global
+    * created by Corey O'Brien on 4-05-2022
+*/
+
+a {
+    &[href^="http://"], &[href^="https://"] {
+        &::after {
+            font-family: fonts.$icon-font;
+            content: "\f08e";
+            padding-left: 0.3125rem;
+            display: inline-block;
+        }
+    }
+}
+.page-content {
+    min-height: calc(100vh - 32.9375rem);
+    .content-block {
+        padding-top: 1.25rem;
+        padding-bottom: 3rem;
+        @include media-breakpoint-up(md) {
+            padding-top: 3rem;
+        }
+        .page-section {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+}
+
+a {
+    color: color.$secondary--700;
+    font-weight: 600;
+    &.hyperlink-lg {
+        font-size: text.$hyperlink--1;
+    }
+    &.hyperlink-sm {
+        font-size: text.$hyperlink--2;
+    }
+    &:hover, &:focus {
+        color: color.$secondary--900;
+    }
+    &:visited {
+        color: color.$secondary--400;
+    }
+}
+.btn.btn-link {
+    text-transform: none;
+    font-size: text.$hyperlink--1;
+    padding: .3125rem .625rem;
+    font-weight: 600;
+    &:hover, &:active {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+.chatbot {
+    position: fixed;
+    right: 1.25rem;
+    z-index: 1000;
+    bottom: 1.25rem;
+    background-color: color.$utility--light-gray;
+    border-radius: 100%;
+    padding: .5625rem .3125rem .125rem .3125rem;
+}
+
+.loading-container {
+    position: fixed;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-color: effects.$shadow--blur;
+    backdrop-filter: blur(.3125rem);
+    text-align: center;
+    p {
+        display: block;
+        color: color.$primary--500;
+        font-size: text.$heading--2;
+        font-weight: 600;
+    }
+}
+
+.gatepost-img {
+    max-width: 15.625rem;
+    margin-bottom: 1.25rem;
+    @include media-breakpoint-up(lg) {
+        max-width: 17.8125rem;
+        margin-bottom: 1.75rem;
+    }
+    @include media-breakpoint-up(xxl) {
+        max-width: 21.25rem;
+    }
+}
+.sm-img {
+    max-width: 9.375rem;
+    height: auto;
+}
+.sub-text {
+    font-size: text.$body--extra-small;
+}
+
+.badge {
+    font-family: text.$san-serif;
+    text-transform: uppercase;
+    font-size: text.$body--extra-small;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: color.$primary--500;
+}
+
+h1, .h1 {
+    font-size: 2rem;
+    font-family: text.$serif;
+    margin-bottom: 1.875rem;
+    font-weight: 700;
+}
+
+h2, .h2 {
+    font-size: text.$heading--2;
+    margin-bottom: 1.875rem;
+    color: color.$primary--700
+}
+h3, .h3 {
+    font-size: text.$heading--3;
+    margin-bottom: .625rem;
+}
+p {
+    font-size: text.$body--regular;
+    + ul {
+        margin-top: -0.625rem;
+    }
+}
+
+ul {
+    li {
+        font-size: text.$body--regular;
+        margin-bottom: 0.625rem;
+    }
+}
+
+hr {
+    height: .125rem;
+    color: color.$primary--100;
+    opacity: 1;
+    &.skinny {
+        max-width: 60%;
+        margin: 1.875rem auto;
+    }
+}
+
+img {
+    &.page-illustration {
+        margin-bottom: 1.875rem;
+        max-width: 50%;
+    }
+}
+ul {
+    &.icn-list {
+        margin-left: 2.5rem;
+        margin-top: 1.25rem;
+        list-style-type: none;
+        padding-left: 0;
+        li {
+            position: relative;
+            color: color.$primary--500;
+            margin-bottom: 1.25rem;
+            p {
+                margin-bottom: .3125rem;
+            }
+            &:before {
+                font-family: fonts.$icon-font;
+                font-size: text.$icon--alert;
+                font-weight: normal;
+                position: absolute;
+                top: -0.4375rem;
+                left: -2.25rem;
+            }
+            &.icn-apple {
+                &:before {
+                    content: "\f5d1";
+                }
+            }
+            &.icn-cart {
+                &:before {
+                    content: "\f07a";
+                }
+            }
+            &.icn-med {
+                &:before {
+                    content: "\f21e";
+                }
+            }
+            &.icn-med {
+                &:before {
+                    content: "\f21e";
+                }
+            }
+            &.icn-income {
+                &:before {
+                    content: "\f873";
+                }
+            }
+            &.icn-mil {
+                &:before {
+                    content: "\f74d";
+                }
+            }
+        }
+    }
+}
+.icn-ending {
+    font-size: 9.375rem;
+}
+.subtitle {
+    font-size: text.$heading--2;
+    font-weight: 600;
+    color: color.$primary--700;
+}
+.pre-line {
+    white-space: pre-line;
+}
+.standard-mb {
+    margin-bottom: 1.25rem !important;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 1.75rem !important;
+    }
+}
+.small-mb {
+    margin-bottom: .5rem;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 1rem !important;
+    }
+}
+.form-subtitle {
+    color: color.$primary--700;
+    font-size: text.$body--regular;
+    font-weight: 600;
+}

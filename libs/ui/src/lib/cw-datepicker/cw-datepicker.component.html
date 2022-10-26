@@ -1,0 +1,28 @@
+<div class="standard-mb {{textStyle}}" *ngIf="isVisible">
+    <label class="form-label {{labelClass}}" for="{{fieldId}}" id="lbl-{{fieldId}}">{{label}}<span *ngIf="required">{{requiredText}}</span></label>
+    <div [formGroup]="dateFormGroup">
+        <duet-date-picker
+        #duet_date_picker
+            ngDefaultControl
+            first-day-of-week="0"
+            identifier="date"
+            class="datepicker-control {{datepickerClass}}"
+            id="{{fieldId}}"
+            type="date"
+            [hidden]="isHidden"
+            [formControl]="control"
+            [formControlName]="formControlName"
+            [required]="required"
+            title="{{fieldTitle}}"
+            [attr.aria-describedby]="label"
+            [disabled]="disabled"
+            [pattern]="datepickerFormat"
+            [ngClass]="{ 'error': showError }"
+            (keyup)="onSearchChange($event.target)"
+            [load]="setMaxLength()"> 
+        </duet-date-picker>
+        <input type="hidden" #compassTextInput/>
+    </div>
+    <div *ngIf="showFieldHelpText != null" id="hlp-txt-{{fieldId}}" class="form-text">{{showFieldHelpText}}</div>
+    <div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}"><i class="fa-regular fa-circle-exclamation"></i> {{errorMsg}}</div>
+</div>

@@ -1,0 +1,45 @@
+<div [formGroup]='benefitsNotReceviedDetailsForm' >
+    <h1 class="standard-mb">                
+        Tell us about the benefits that {{this.currentUserName}} has not yet recevied.
+    </h1>
+    <div class="alert alert-info d-flex align-items-center">
+        <div class="text-left">
+            Don't worry you can add more benefits not received later on if you need to.
+        </div>
+    </div>
+    <div>
+        <div class="d-none d-md-flex">
+            <compass-ui-cw-select [fieldId]="'benefitType'" [fieldLabel]="'Which benefit is '+ currentUserName +' still waiting to
+            receive?  If they are waiting for more than one benefit, enter one benefit at a time.'" [requiredText]="'(required)'"
+                [FormGroup]="benefitsNotReceviedDetailsForm" [displayError]="isFieldValid('benefitType')"
+                [errorMsg]="'Please select valid benefit Type'" [disabled]="isDropDownDisable()" [requiredIndicator]="requiredFields.indexOf('benefitType')>-1">
+
+                <option value="" selected >-Select One-</option>
+                <option *ngFor="let benefitType of benefitTypes" [ngValue]="benefitType.id">
+                    {{ benefitType.displayValue }}
+                </option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+    <div class="standard-mb">
+        
+        <compass-ui-cw-datepicker [maxRange]="maxDateRange" [label]="'What date did '+ currentUserName +' apply for this
+            benefit?'" requiredText="{{'lblrequired' | translate}}" showFieldHelpText="MM/DD/YYYY" ngDefaultControl
+            [formControlName]="'benefitApplyDate'" [required]="requiredFields.indexOf('benefitApplyDate')>-1" [displayError]="isFieldValid('benefitApplyDate')"
+            [showError]="isFieldValid('benefitApplyDate')" [errorMsg]="errorMap('benefitApplyDate')" [showFieldHelpText]="'MM/DD/YYYY'">
+        </compass-ui-cw-datepicker>
+    </div>
+    <div class="standard-mb">
+        <compass-ui-text [type]="'currencyFormat'" [fieldId]="'applyForBenefits'" [fieldLabel]="'How much money did '+ currentUserName +' apply for '" [FormGroup]="benefitsNotReceviedDetailsForm" [fieldHelpText]="'0.00-999999.99'" 
+            [displayError]="isFieldValid('applyForBenefits')" [maxLength]="7" [requiredIndicator]="requiredFields.indexOf('applyForBenefits')>-1" 
+                errorText="{{'basidDetailRequiredMessage' | translate}}" [isBackSlashAllowed]="true"></compass-ui-text>
+    </div>
+    <div class="standard-mb">
+        <compass-ui-cw-datepicker [maxRange]="maxDateRange" [label]="'When does '+ currentUserName +' expect to receive the
+            money?'" showFieldHelpText="MM/DD/YYYY"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'benefitReceivedDate'" [required]="requiredFields.indexOf('benefitReceivedDate')>-1"
+            [displayError]="isFieldValid('benefitReceivedDate')" [showError]="isFieldValid('benefitReceivedDate')" [showFieldHelpText]="'MM/DD/YYYY'"
+            [errorMsg]="errorMap('benefitReceivedDate')"></compass-ui-cw-datepicker>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}" (next)="next()" (back)="back()"></compass-ui-cw-dpq-button>

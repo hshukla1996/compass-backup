@@ -1,0 +1,11 @@
+  <h1>Your child and adult care expenses.</h1>
+  <p>Look below to make sure all child care and adult care expenses are here.</p>
+
+  <cw-simpletile-summary [simpleTileSummaryData]="demographicData" (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addClicked()" (nextPage)="next()"
+    (previousPage)="back()" [updatedJson]="jsonData"
+    (recordNumberToOp) = "recordIndexToOp($event)">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>
+

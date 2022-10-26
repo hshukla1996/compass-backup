@@ -1,0 +1,25 @@
+<h1 class="standard-mb">
+    <ng-container>
+        What type of policy is this?
+    </ng-container>
+    <ng-container>
+        What type of policy was this?
+    </ng-container>
+
+</h1>
+<p class="fw-bold standard-mb">Select all that apply.</p>
+<span *ngIf="isFieldValid('typeName')" class="error-text">This is reuired field</span>
+<div class="standard-mb" [formGroup]="typesFormGroup">
+ 
+    <div *ngFor="let type of types;let i=index">
+        <div class="form-check custom mb-2" [ngClass]="{ 'error': isFieldValid('typeName') }">
+            <input type="radio" 
+                id="typeName{{i}}" value="{{type.id}}" name="typeName" formControlName="typeName" class="form-check-input" aria-checked=""><label 
+                for="typeName" class="form-check-label" required="isRequired" > {{type.displayValue}} </label>
+        </div>
+    </div>
+  
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

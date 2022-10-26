@@ -1,0 +1,72 @@
+<form [formGroup]="securityGroup">
+  <h1>{{ 'sa_registerSQtitle' | translate }}</h1>
+  <div class="alert alert-info">
+    <ul>
+      <li>{{ 'sa_registerSQbullet1' | translate }}</li>
+      <li>{{ 'sa_registerSQbullet2' | translate }}</li>
+      <li>{{ 'sa_registerSQbullet3' | translate }}</li>
+      <li>{{ 'sa_registerSQbullet4' | translate }}</li>
+      <li>{{ 'sa_registerSQbullet5' | translate }}</li>
+      <li>{{ 'sa_registerSQbullet6' | translate }}</li>
+    </ul>
+  </div>
+  <!-- question 1 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question1" fieldId="question1"
+      [fieldLabel]="'sa_registerSQlbl1' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question1') | translate" [displayError]="isFieldInvalid('question1')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer1'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_registerSQlbl2' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer1')"
+      [errorText]="errorMap('answer1') | translate: { minLength: answer1MinL, maxLength: answer1MaxL}" 
+      [maxLength]="answer1MaxL">
+    </compass-ui-text>
+  </div>
+
+  <!-- question 2 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question2" fieldId="question2"
+      [fieldLabel]="'sa_registerSQlbl3' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question2') | translate" [displayError]="isFieldInvalid('question2')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer2'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_registerSQlbl4' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer2')"
+      [errorText]="errorMap('answer2') | translate: { minLength: answer2MinL, maxLength: answer2MaxL}" 
+      [maxLength]="answer2MaxL">
+    </compass-ui-text>
+  </div>
+
+  <!-- question 1 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question3" fieldId="question3"
+      [fieldLabel]="'sa_registerSQlbl5' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question3') | translate" [displayError]="isFieldInvalid('question3')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer3'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_registerSQlbl6' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer3')"
+      [errorText]="errorMap('answer3') | translate: { minLength: answer3MinL, maxLength: answer3MaxL}" 
+      [maxLength]="answer3MaxL">
+    </compass-ui-text>
+  </div>
+  
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'next'| translate}}"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="toLogin()">{{ 'sa_registerToLogin' | translate }}</a></p>
+</form>

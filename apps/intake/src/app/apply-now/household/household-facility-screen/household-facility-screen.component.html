@@ -1,0 +1,40 @@
+<form class="form-horizontal" [formGroup]='householdFacilityScreenForm'>
+    <h1 class="standard-mb">
+        What type of nursing home or related facility is {{currentUser.firstName}} applying for?
+        <span class="required-span">(required)</span>
+    </h1>
+
+    <compass-ui-cw-select [fieldId]="'typeofnursingHome'" [FormGroup]="householdFacilityScreenForm"
+     [displayError]="isFieldValid('typeofnursingHome')" [errorMsg]="errorMap('typeofnursingHome')">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let facilities of facility" value="{{facilities.id}}">{{facilities?.displayValue}}
+        </option>
+        <!-- <option *ngFor="let relation of relationships" value="{{relation.id}}">{{relation?.displayValue}}</option> -->
+    </compass-ui-cw-select>
+
+    <div class="alert alert-info">
+        <p>
+            Currently, you cannot apply for Long Term Living Services - Nursing Home and Related
+            Facilities in a facility known as
+            an 'Intermediate facility for other Related Conditions'.
+            <br>
+            <br>
+            To learn more about this, call the Office of Developmental Programs (ODP) at <b>1-888-565-9435</b> or
+            visit the ODP
+            website.
+        </p>
+    </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<form [formGroup]="inusranceCompanyForm">
+    <h1>We need some information about {{currentUserName}}'s prior policy.</h1>
+    <div class="mb-3">
+        <div class="mb-3">
+           
+            <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'insuranceCompanyName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'insuranceCompanyName'"
+            fieldLabel="Insurance Company Name" [maxLength]="14" [requiredIndicator]="true"
+            >
+        </compass-ui-text>
+        </div>
+    </div>
+   
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'policyNumber'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'policyNumber'"
+            fieldLabel="Prior Policy Number" [maxLength]="14" [requiredIndicator]="true"
+            >
+        </compass-ui-text>
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="inusranceCompanyForm" [fieldId]="'groupNumber'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'groupNumber'"
+            fieldLabel="Prior Group Number" [maxLength]="14" [requiredIndicator]="true"
+            >
+        </compass-ui-text>
+    </div>
+
+    </form>
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>
+    

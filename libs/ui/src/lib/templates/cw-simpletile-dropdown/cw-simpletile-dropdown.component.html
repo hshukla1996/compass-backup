@@ -1,0 +1,40 @@
+<ng-container *ngIf="simpleTileDropdownData['questionTextRequired']">
+    <h1 class="parent_heading_text d-inline">
+        {{ simpleTileDropdownData['questionText'] | translate: simpleTileDropdownData['questionTextTO'] }}
+    </h1>
+    <label>
+        <span>{{ simpleTileDropdownData['requiredText'] | translate : simpleTileDropdownData['requiredTextTO'] }}</span>
+    </label>
+</ng-container>
+<ng-container *ngIf="!simpleTileDropdownData['questionTextRequired']">
+    <h1 class="parent_heading_text mb-3">
+        {{ simpleTileDropdownData['questionText'] | translate: simpleTileDropdownData['questionTextTO'] }}
+    </h1>
+</ng-container>
+<div class="mb-3">
+    <div class="form-group">
+        <compass-ui-cw-select 
+            [fieldId]="'dropdown'"
+            [fieldLabel]="simpleTileDropdownData['label'] | translate : simpleTileDropdownData['labelTO']"
+            [FormGroup]="simpleTileDropdownForm" 
+            [requiredText]="simpleTileDropdownData['labelRequired'] ? (simpleTileDropdownData['requiredText'] | translate : simpleTileDropdownData['requiredTextTO']) : ''">
+            <option value="" selected>
+                {{ simpleTileDropdownData['selected'] | translate: simpleTileDropdownData['selectedTO'] }}
+            </option>
+            <option value="{{ dropdownArray }}" *ngFor="let dropdownArray of simpleTileDropdownData['dropdownArray']">
+                {{dropdownArray | translate}}
+            </option>
+        </compass-ui-cw-select>
+    </div>
+</div>
+<div class="mb-3" *ngIf="simpleTileDropdownData['toolTip'] !== ''">
+    <p class="alert alert-info">
+        {{ simpleTileDropdownData['toolTip'] | translate : simpleTileDropdownData['toolTipTO'] }}
+    </p>
+</div>
+<compass-ui-cw-dpq-button 
+    [backButtonLabel]="'back' | translate" 
+    [nextButtonLabel]="'next' | translate" 
+    (next)="dropdownNext()" 
+    (back)="dropdownBack()">
+</compass-ui-cw-dpq-button>

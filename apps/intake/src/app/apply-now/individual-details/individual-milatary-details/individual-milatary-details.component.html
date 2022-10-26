@@ -1,0 +1,41 @@
+<form class="form-horizontal" [formGroup]='individaulMilataryDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Tell us about {{currentUser.firstName}}’s veteran status.</h1>
+  <compass-ui-cw-select [fieldId]="'branchOfService'" [fieldLabel]="'Branch of Service'"
+    [FormGroup]="individaulMilataryDetailsForm" [isVisible]="fieldDisplays.branchOfService"
+    [displayError]="isFieldValid('branchOfService')" [errorMsg]="errorMap('branchOfService')"
+    [requiredIndicator]="requiredFields.indexOf('branchOfService')>-1">
+    <option value="" selected>- Selection One -</option>
+    <option *ngFor="let branchOfService of serviceBranches" value="{{branchOfService.id}}">
+      {{branchOfService.displayValue}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-datepicker label="Date Entered" [required]="requiredFields.indexOf('dateEntered')>-1" ngDefaultControl
+    [formControlName]="'dateEntered'" [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+    [isVisible]="fieldDisplays.dateEntered" showFieldHelpText="MM/DD/YYYY" [displayError]="isFieldValid('dateEntered')"
+    [showError]="isFieldValid('dateEntered')" [errorMsg]="errorMap('dateEntered') | translate">
+  </compass-ui-cw-datepicker>
+  <compass-ui-cw-datepicker label="Date Discharged" [required]="requiredFields.indexOf('dateDischarged')>-1"
+    ngDefaultControl [formControlName]="'dateDischarged'" [maxRange]="maxDateRange"
+    requiredText="{{'lblrequired' | translate}}" [isVisible]="fieldDisplays.dateDischarged"
+    showFieldHelpText="MM/DD/YYYY" [displayError]="isFieldValid('dateDischarged')"
+    [showError]="isFieldValid('dateDischarged')" [errorMsg]="errorMap('dateDischarged') | translate">
+  </compass-ui-cw-datepicker>
+
+  <compass-ui-text [fieldId]="'claimNumber'" [FormGroup]="individaulMilataryDetailsForm"
+    [fieldLabel]="'Veteran Claim Number'" [isVisible]="fieldDisplays.claimNumber" [maxLength]="10"
+    [displayError]="isFieldValid('claimNumber')" [requiredIndicator]="requiredFields.indexOf('claimNumber')>-1"
+    [errorText]="errorMap('claimNumber')">
+  </compass-ui-text>
+
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

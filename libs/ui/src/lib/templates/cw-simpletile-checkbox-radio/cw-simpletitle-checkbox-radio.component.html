@@ -1,0 +1,66 @@
+<h1 class="parent_heading_text standard-mb">
+  {{ simpleTileCheckboxData['questionText'] | translate : simpleTileCheckboxData['questionTextTO']}}
+</h1>
+<div class="standard-mb" *ngIf="simpleTileCheckboxData['toolTip'] !== ''">
+  <p class="alert alert-info">
+    {{ simpleTileCheckboxData['toolTip'] | translate : simpleTileCheckboxData['toolTipTO']}}
+  </p>
+</div>
+<h6 class="form-subtitle standard-mb">{{ simpleTileCheckboxData['subHeading'] | translate : simpleTileCheckboxData['subHeadingTO']}} <label *ngIf="isCheckRequired"><span>{{'lblrequired' | translate}}</span></label></h6>
+<cw-field-error-display
+[displayError]="formSubmitAttempt && simpleTileCheckboxData['isRequired']"
+                        errorMsg="{{ simpleTileCheckboxData.requiredText | translate }}">
+</cw-field-error-display>
+<cw-field-error-display [displayError]="raceFormValdation"
+  errorMsg="{{ simpleTileCheckboxData.requiredText | translate }}">
+</cw-field-error-display>
+
+<div [formGroup]="simpleTileCheckboxForm">
+  <ng-container *ngFor="let simpleTileCheckbox of simpleTileCheckboxData['questionAnswers']">
+        <compass-ui-cw-checkbox
+          id="{{ simpleTileCheckbox['id'] }}"
+          label="{{ simpleTileCheckbox['label'] | translate : simpleTileCheckbox['labelTO'] }}"
+          helpText="{{ simpleTileCheckbox['helpText'] | translate : simpleTileCheckbox['helpTextTO']}}"
+          [link]="simpleTileCheckbox['link'] || {href:'', label:''}"
+          [isChecked]="simpleTileCheckbox['isChecked']"
+           (inputModelChange)="onCheckboxChange(simpleTileCheckbox['id'], $event)"
+          [disabled]="simpleTileCheckbox['disabled']"
+          [textStyle]="'custom standard-mb'">
+        </compass-ui-cw-checkbox>
+  </ng-container>
+  <div class="form-group mb-3" *ngIf="simpleTileButtongroupData">
+
+  <fieldset class="button-group">
+
+      <legend>{{ simpleTileButtongroupData['legend'] | translate : simpleTileButtongroupData['legendTO']}}<label *ngIf="isRadioRequired"><span>{{'lblrequired' | translate}}</span></label></legend>
+      <cw-field-error-display [displayError]="raceFormRadioBtnValdation" errorMsg="{{ simpleTileCheckboxData.requiredRadioText | translate }}">
+      </cw-field-error-display>
+      <div class="radioGroup">
+         <fieldset class="button-group" >
+          <span [formGroup]="simpleTileCheckboxForm"
+            *ngFor="let simpleRadio of simpleTileButtongroupData['questionAnswers'];let i = index">
+          <input class="btn-check" id="{{simpleRadio.id}}" type="radio"
+           [checked]="simpleRadio.checked"
+          value="simpleRadio.id" name="buttongroup" formControlName="buttongroup"
+          (change)="GetValue(i)"
+          >
+          <label class="btn btn-outline-tertiary" for="{{simpleRadio.id}}">{{simpleRadio.label | translate}}</label>
+        </span>
+       </fieldset>
+<div *ngIf="f.buttongroup.touched && f.buttongroup.invalid" class="alert alert-danger">
+  <div *ngIf="f.buttongroup.errors.required">{{'selectionRequired' | translate}}</div>
+</div>
+      </div>
+    <div class="radioGroup">
+    </div>
+  </fieldset>
+  </div>
+  <cw-field-error-display [displayError]="booleanShow" errorMsg="{{simpleTileButtongroupData['requiredText'] | translate : simpleTileButtongroupData['requiredTextTO']}}">
+  </cw-field-error-display>
+</div>
+<compass-ui-cw-dpq-button
+  backButtonLabel="{{'backBtnText' | translate}}"
+  nextButtonLabel="{{'nextBtnText' | translate}}"
+  (next)="next()"
+  (back)="back()">
+</compass-ui-cw-dpq-button>

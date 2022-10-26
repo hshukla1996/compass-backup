@@ -1,0 +1,88 @@
+<h1>{{ '1095caseTitle' | translate: { name: firstName } }}</h1>
+<div class="alert alert-info">
+  <p>{{ ('1095caseTip1' | translate) + ' '}}<a class="hyperlink" [href]="'tel:' + phoneNumber">{{ '1095caseTipLink' |
+      translate }}</a>{{ ' ' + ('1095caseTip2' | translate) }}</p>
+</div>
+
+<form [formGroup]="caseRecordGroup">
+  <!-- select option -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="entryOption" fieldId="entryOption"
+      [FormGroup]="caseRecordGroup" [errorMsg]="errorMap('entryOption') | translate" [displayError]="isFieldInvalid('entryOption')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let entryOption of entryOptions" [value]="entryOption">{{entryOption | translate}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <!-- arrow card ssn -->
+  <div class="card arrow-card" *ngIf="entrySSN">
+    <div class="card-body">
+      <div class="mb-3">
+        <div class="mb-3">
+          <label class="form-label">
+            {{ '1095caseLbl1' | translate }}<span>{{ 'lblrequired' | translate }}</span>
+          </label>
+          <compass-ui-cw-select class="form-group" ngDefaultControl formControlName="county" fieldId="county"
+            [requiredText]="'lblrequired' | translate" [FormGroup]="caseRecordGroup" [errorMsg]="errorMap('county') | translate"
+            [displayError]="isFieldInvalid('county')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let county of counties" [value]="county.id">{{county.displayValue}}</option>
+          </compass-ui-cw-select>
+        </div>
+
+        <div class="mb-3">
+          <compass-ui-text [fieldId]="'caseRecord'" [FormGroup]="caseRecordGroup"
+            [fieldLabel]="'1095caseLbl2' | translate" [requiredText]="'lblrequired' | translate"
+            [requiredIndicator]="true" [displayError]="isFieldInvalid('caseRecord')"
+            [errorText]="errorMap('caseRecord') | translate: {minLength: crMinMaxL}" [fieldType]="'numbersOnly'" [maxLength]="7">
+          </compass-ui-text>
+        </div>
+
+        <div class="mb-3">
+          <compass-ui-text [fieldId]="'ssn'" [FormGroup]="caseRecordGroup" ngDefaultControl
+          [formControlName]="'ssn'"
+            [fieldLabel]="'1095caseLbl3' | translate"
+            [fieldHelpText]="'1095caseHelp3' | translate"
+            [requiredIndicator]="true" 
+            [displayError]="isFieldInvalid('ssn')" 
+            [errorText]="errorMap('ssn') | translate: {minLength: ssnMinMaxL, maxLength: ssnMinMaxL}" 
+            type="ssn">
+          </compass-ui-text>
+        </div>
+
+        <div class="text-center">
+          <a class="hyperlink" (click)="switchToMCI()">{{ '1095caseSwitch1' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- arrow card mci -->
+  <div class="card arrow-card" *ngIf="entryMCI">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'chipIdUci'" [FormGroup]="caseRecordGroup" [fieldLabel]="'1095caseLbl4' | translate"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+          [displayError]="isFieldInvalid('chipIdUci')" [errorText]="errorMap('chipIdUci') | translate: {minLength: chipMinMaxL}" fieldType="numbersOnly"
+          [maxLength]="9">
+        </compass-ui-text>
+      </div>
+
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'mciMedEbt'" [FormGroup]="caseRecordGroup" [fieldLabel]="'1095caseLbl5' | translate"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+          [displayError]="isFieldInvalid('mciMedEbt')" [errorText]="errorMap('mciMedEbt') | translate: {minLength: mciMinMaxL}" fieldType="numbersOnly"
+          [maxLength]="9">
+        </compass-ui-text>
+      </div>
+
+      <div class="text-center">
+        <a class="hyperlink" (click)="switchToSSN()">{{ '1095caseSwitch2' | translate }}</a>
+      </div>
+    </div>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+    nextButtonLabel="{{'nextBtnText'| translate}}" (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

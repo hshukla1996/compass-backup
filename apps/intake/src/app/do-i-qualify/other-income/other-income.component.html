@@ -1,0 +1,50 @@
+<h1>{{'diqOtherIncomeHeaderOne' | translate}} {{currentUserName}}{{'diqOtherIncomeHeaderTwo' | translate}}</h1>
+<div class="mb-3" [formGroup]="monthlyOtherIncomeForm">
+
+    <form [formGroup]="monthlyOtherIncomeForm">
+        <compass-ui-text [FormGroup]="monthlyOtherIncomeForm" [fieldId]="'monthlyOtherIncomeAmount'" ngDefaultControl
+            [formControlName]="'monthlyOtherIncomeAmount'" 
+            [requiredIndicator]="false"  [maxLength]="10" type="currencyFormat"
+            fieldHelpText="{{'formatCurrency' | translate}}">
+        </compass-ui-text>
+    </form>
+</div>
+<div class="accordion page-tip mb-3 mt-4" id="accordionOtherIncome{{currentUserIndex}}">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne{{currentUserIndex}}">
+            <button class="accordion-button " type="button" data-bs-toggle="collapse" [ngClass]="{'collapsed':!showTooltip}"
+                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+currentUserIndex" (click)="showAccordianTooltip()">
+                {{'diqOtherIncomeLearnMore' | translate}} 
+            </button>
+        </h2>
+        <div id="collapseOne{{currentUserIndex}}" class="accordion-collapse collapse" [ngClass]="{'show':showTooltip}" [attr.aria-labelledby]="'headingOne'+currentUserIndex"
+            >
+            <div class="accordion-body">
+                <p>Other income examples include:</p>
+                <ul>
+                    <li>{{'diqOtherIncomeSocialSecurityDisabilityLbl' | translate}}</li>
+                    <li>{{'diqOtherIncomeSocialSecurityRetirement' | translate}}</li>
+                    <li>{{'diqOtherIncomePension' | translate}}</li>
+                    <li>{{'diqOtherIncomeRSDI' | translate}}</li>
+                    <li>{{'diqOtherIncomeSSI' | translate}}</li>
+                   
+                    <li>{{'diqOtherIncomeWorkerCompensation' | translate}}</li>
+                    <li>{{'diqOtherIncomeUnemploymentBenefits' | translate}}</li>
+                    <li>{{'diqOtherIncomeDividents' | translate}}</li>
+                    <li>{{'diqOtherIncomeChildSupport' | translate}}</li>
+                    <li>{{'diqOtherIncomeAlimony' | translate}}</li>
+                    <li>{{'diqOtherIncomeCashAssistance' | translate}}</li>
+                    <li>{{'diqOtherIncomeRentalIncome' | translate}}</li>
+                    <li>{{'diqOtherIncomeVeterans' | translate}}</li>
+                    <li>{{'diqOtherIncomeVaAid' | translate}}</li>
+                    <li>{{'diqOtherIncomeVA' | translate}}</li>
+                    <li>{{'diqOtherIncomePaymentTrust' | translate}}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

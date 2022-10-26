@@ -1,0 +1,40 @@
+<button class="btn btn-chatbot" (click)="LaunchChatBot()">
+  <span>Need help?</span>
+  <i class="fa-solid fa-message-bot"></i>
+</button>
+<div class="chatbot-wrapper" [ngClass]="ischatbotvisible ? 'd-block' : 'd-none'">
+  <div id="headerIframe" class="d-flex justify-content-between align-items-center">
+    <div id="title">
+      <i class="fa-solid fa-message-bot"></i>
+      <h1>COMPASS Chatbot - Ben</h1>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button [ngClass]="ischatbotvisible ? 'd-flex' : 'd-none'" class="btn btn-borderless chatbot-mini text-center" (click)="MinimizeChat()">
+         <i class="fa-solid fa-minus"></i>
+      </button> 
+      <button [ngClass]="ischatbotvisible ? 'd-flex' : 'd-none'" class="btn btn-borderless chatbot-close"
+         data-bs-toggle="modal" data-bs-target="#closeChatModal">
+         <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+  <div id="webchat" [ngClass]="ischatbotvisible ? 'd-block' : 'd-none'"></div>
+</div>
+
+
+<div class="modal fade" id="closeChatModal" tabindex="-1" aria-labelledby="closeChatModalLabel" aria-hidden="true"
+  #closeChatModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          <p>
+            Are you sure you want to disconnect from the chat session?
+          </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" #closeModal data-bs-dismiss="modal" (click)="CloseChat()">Yes</button>
+        <button type="button" class="btn btn-outline-tertiary" #closeModal data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

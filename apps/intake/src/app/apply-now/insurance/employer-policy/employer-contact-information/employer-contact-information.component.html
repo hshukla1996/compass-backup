@@ -1,0 +1,39 @@
+ <form [formGroup]="contactForm">
+    <h1>Tell us who from  we can contact about this health insurance.</h1>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="contactForm" [fieldId]="'name'" [fieldType]="'nameType'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'name'"
+                fieldLabel="Employer Contact Name" [maxLength]="32" [requiredIndicator]="true"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="contactForm" [fieldId]="'phone'" [fieldType]="'phone'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'phone'"
+                fieldLabel="Employer Contact Phone Number" [maxLength]="10" [requiredIndicator]="true"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="contactForm" [fieldId]="'phoneExtension'" type="phone"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'phoneExtension'"
+                fieldLabel="Employer Contact Extension" [maxLength]="10" [requiredIndicator]="true"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="contactForm" [fieldId]="'email'" [fieldType]="'nameType'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'email'"
+                fieldLabel="Employer Contact Email" [maxLength]="70" [requiredIndicator]="true"
+                >
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="contactForm" [fieldId]="'confirmEmail'" [fieldType]="'nameType'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'confirmEmail'"
+                fieldLabel="Confirm Employer Contact Email" [maxLength]="70" [requiredIndicator]="true">
+            </compass-ui-text>
+        </div>
+
+
+    </form> 

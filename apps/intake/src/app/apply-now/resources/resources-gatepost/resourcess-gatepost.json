@@ -1,0 +1,154 @@
+{
+    "questionText": "Does anyone in your household have any of these resource situations? ",
+    "toolTip": "Answers to these questions may not have an impact on your eligibility for health care benefits.",
+    "subHeading": "",
+    "requiredText": "Please select required options",
+    "questionAnswers": [
+        {
+            "legend": "Has cash or other financial holdings, such as a checking or savings account",
+            "toolTip": "",
+            "accordionButton": "More Information",
+            "accordionData": "\n•\tBoat, snowmobile, or camper \n•\tCash-on-hand \n•\tPharmaceutical coverage for family planning drugs, birth control supplies and medications, vaccines and antibiotics for family-planning related conditions such as genitourinary infections and Sexually Transmitted Infections (STI) \n•\tLaboratory services \n•\tHIV (the virus that causes AIDS) and STI testing and treatment \n•\tGenetic counseling and testing \n•\tMale and female sterilization \n•\tBreast, reproductive, and testicular cancer screening and education \n•\tSmoking cessation counseling",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "financialholdingsdetails"
+        },
+        {
+            "legend": "Owns a home that the household lives in",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "residentialproperty"
+        },
+        {
+            "legend": "Owns a property that the household does not live in",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "nonresidentialpropertydetails"
+        },
+        {
+            "legend": "Expects to receive any money, such as an inheritance, accident settlement, or trust fund",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "expectedmoneystructure"
+        },
+        {
+            "legend": "Owns a Vehicle",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "vehicledetails"
+        },
+        {
+            "legend": "Owns a burial space",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "burialspacedetails"
+        },
+        
+        {
+            "legend": "Has a burial or trust agreement with a bank or funeral home",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "burialtrustagreement"
+        },
+        {
+            "legend": "Owns a life insurance policy",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "ownsinsurancepolicy"
+        },
+        {
+            "legend": "Has given away, sold, or transferred any resources in the past 5 years",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "givenawayresources"
+        },
+        {
+            "legend": "Has closed or emptied an account to pay for nursing services",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "closedaccount"
+        },
+        {
+            "legend": "Has received Long-Term Living Services in a Nursing Home or Related Facility and/or Home and Community-Based Supports and Services",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "livingservices"
+        },
+        {
+            "legend": "Has assets worth more than $1 million ",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "assets"
+        }        
+    ]
+}
+

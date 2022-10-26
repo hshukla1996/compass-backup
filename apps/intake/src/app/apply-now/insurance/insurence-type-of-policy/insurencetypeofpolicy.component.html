@@ -1,0 +1,27 @@
+<form class="form-horizontal" [formGroup]='InsurenceTypeOfPolicyForm' (ngSubmit)="submit()">
+      <h1 class="standard-mb">What type of policy is this?</h1>
+      <p class="form-subtitle standard-mb">{{'lblselectall' | translate}}</p>
+      <div class="standard-mb" formArrayName="policyTypes"
+        *ngFor="let policy of isnurenceTypeOfPolicyFormArray.controls; let i = index">
+          <div class="form-check custom">
+            <input class="form-check-input" id={{policyData[i].key}} type="checkbox" value={{policyData[i].key}}
+              (change)="onCheckboxChange($event)"
+              [checked]="selectedInsurenceTypeOfPolicies.indexOf(policyData[i].key) !== -1 ? true : false">
+            <label class="form-check-label" for={{policyData[i].key}}>
+              {{policyData[i].value}}
+            </label>
+          </div>
+      </div>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" (click)="previous()" class="btn btn-outline-tertiary">
+          {{'backBtnText' | translate}}
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          {{'nextBtnText' | translate}}
+        </button>
+      </div>
+    </nav>
+</form>

@@ -1,0 +1,36 @@
+<h1>You told us someone owns a vehicle. Tell us about this resource</h1>
+<form [formGroup]="vehicleDetailsForm">
+    <p class="alert alert-info">Don’t worry, you can add more vehicles later if you need to.</p>
+    <compass-ui-text [fieldId]="'year'" [FormGroup]="vehicleDetailsForm" [fieldLabel]="'Model Year'"
+        requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'make'" [FormGroup]="vehicleDetailsForm" [fieldLabel]="'Make'"
+        requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'model'" [FormGroup]="vehicleDetailsForm" [fieldLabel]="'Model'"
+        requiredText="{{'lblrequired' | translate}}">
+    </compass-ui-text>
+    <div class="form-group mb-4">
+        <fieldset class="button-group">
+            <legend>Is the vehicle registered? </legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="' isThisVehiclelicensed'"
+                [radioButtonGroupName]="'isThisVehiclelicensed'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'" [radioBtnId]="'veh1'">
+            </compass-ui-cw-radiobutton>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isThisVehiclelicensed'"
+                [radioButtonGroupName]="' c'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'" [radioBtnId]="'veh2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+    <div class="form-group mb-4">
+        <compass-ui-text [fieldId]="'amountOwed'" [FormGroup]="vehicleDetailsForm"
+            [fieldLabel]="'How much money is owed for this vehicle?'" requiredText="{{'lblrequired' | translate}}" [fieldHelpText]="'0.00-999999.99'">
+        </compass-ui-text>
+       
+    </div>
+
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,85 @@
+/* 
+    COMPASS.Web Alerts
+    * created by Corey O'Brien on 3-29-2022
+*/
+
+.alert {
+    padding: .9375rem;
+    &.alert-info {
+        min-height: 5.3125rem;
+        font-size: text.$body--regular-bold;
+        color: color.$primary--500;
+        background-color: color.$highlight--50;
+        border: .0625rem solid color.$highlight--500;
+        padding-left: 4.6875rem;
+        &> *:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        &::before {
+            font-family: fonts.$icon-font;
+            font-size: 3.125rem;
+            font-weight: 200;
+            content: "\f0eb";
+            padding-left: 0.5rem;
+            position: absolute;
+            color: color.$primary--400;
+            top: .3125rem;
+            left: .9375rem;
+        }
+        &.icn-warning {
+            &:before {
+                content: '\f671';
+            }
+        }
+        ul {
+            li {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+.ringed-icon {
+    position: relative;
+    border: .125rem solid color.$primary--500;
+    border-radius: 3rem;
+    padding-top: .875rem;
+    padding-right: .8125rem;
+    padding-bottom: .5rem;
+    padding-left: .75rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    i {
+        color: color.$primary--500;
+        font-size: text.$icon--alert;
+        line-height: text.$icon--alert;
+    }
+}
+
+.message-banner {
+    border: .125rem solid color.$highlight--500;
+    background-color: color.$highlight--100;
+    .container {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .heading {
+        font-size: text.$heading--4;
+        font-weight: 600;
+        color: color.$primary--500;
+        margin: .625rem 0;
+    }
+    p {
+        font-size: text.$body--small;
+        color: color.$primary--900;
+    }
+    .btn.btn-borderless {
+        i {
+            font-size: text.$icon--card-head;
+            background-color: color.$utility--white;
+            color: color.$primary--500;
+            border-radius: 100%;
+            margin-right: 0;
+        }
+    }
+}

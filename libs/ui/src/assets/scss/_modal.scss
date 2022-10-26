@@ -1,0 +1,119 @@
+.modal {
+    &.show {
+        background-color: effects.$shadow--blur;
+        backdrop-filter: blur(.3125rem);
+    }
+    .modal-body {
+        padding: 1.875rem 1.25rem 0 1.25rem;
+        font-size: text.$body--regular;
+        .modal-icon-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            i {
+                font-size: 5rem;
+                &.danger {
+                    color: color.$utility--error--800;
+                }
+                &.default {
+                    color: color.$secondary--500;
+                }
+                &.success {
+                    color: color.$utility--success;
+                }
+            }
+        }
+        h2 {
+            font-size: text.$heading--2;
+            color: color.$primary--500;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+        ul {
+            padding-left: 1.5625rem;
+            li {
+                padding-bottom: .625rem;
+            }
+        }
+    }
+    .modal-footer {
+        justify-content: space-between;
+        border-top: none;
+        padding: 1rem;
+        padding-top: 0;
+        @include media-breakpoint-down(sm) {
+            flex-wrap: wrap-reverse;
+            button {
+                width: 100%;
+            }
+        }
+    }
+    &.toast {
+        backdrop-filter: none;
+        background-color: transparent;
+        .modal-dialog {
+            max-width: 100%;
+            margin: 0;
+            .modal-content {
+                border: .125rem solid color.$primary--700;
+                border-radius: 0;
+                .modal-body {
+                    padding-top: 3.125rem;
+                    padding-bottom: 1.25rem;
+                    display: flex;
+                    justify-content: space-evenly;
+                    .toast-icon-div {
+                        text-align: center;
+                        i {
+                            font-size: text.$icon--alert;
+                            
+                        }
+                    }
+                    .toast-text {
+                        padding: 0 .625rem;
+                        h2 {
+                            font-size: text.$heading--2;
+                            color: color.$primary--700;
+                            font-weight: 600;
+                            margin-bottom: 0;
+                            text-align: left;
+                        }
+                        p {
+                            font-size: text.$body--regular;
+                            font-weight: 400;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                    .toast-dismiss {
+                        font-size: text.$icon--card-head;
+                        font-weight: 400;
+                        text-align: center;
+                        background: transparent;
+                        border: none;
+                        box-shadow: none;
+                        display: inline-flex;
+                        align-items: flex-start;
+                    }
+                }
+            }
+        }
+    }
+    &.login-modal {
+        .btn-login-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border-radius: 50%;
+            padding: 0 8px;
+            background: color.$utility--gray;
+            i {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}

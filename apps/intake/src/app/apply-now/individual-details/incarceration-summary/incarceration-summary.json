@@ -1,0 +1,29 @@
+{
+    "questionText": "Household members who are currently incarcerated.",
+    "subHeading": "Look below to make sure all household members who are currently incarcerated are here.",
+    "toolTip": "",
+    "questionAnswers": [
+        {
+            "accordionHeader": "{replace}",
+            "accordionSubHeading": "",
+            "accordionRightHeading": "",
+            "accordionRightSubHeading": "",
+            "userId": 1,
+            "accordionData": [
+                {
+                    "label": "",
+                    "value": "",
+                    "bold": false
+                },
+                {
+                    "label": "",
+                    "value": "",
+                    "bold": false
+                }
+            ],
+            "editButton": "Edit",
+            "deleteButton": "Remove"
+        }
+    ],
+    "addtionalButton": "Add Incarcerated Person "
+}

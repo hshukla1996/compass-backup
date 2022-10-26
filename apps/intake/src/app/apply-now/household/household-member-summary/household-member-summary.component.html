@@ -1,0 +1,22 @@
+<cw-simpletile-summary [simpleTileSummaryData]="demographicData" (deleteButtonClicked)="deleteClicked($event)"
+                             (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addClicked()" (nextPage)="next()"
+                             (previousPage)="back()" [updatedJson]="demographicData">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>
+<!--
+ <ng-container *ngIf="i> -1">
+                        <div class="row" *ngFor="let relation of getRelationshipName(data?.memberRelationships)">
+                            <div class="col-9 col-md-5">
+                                <span class="head">
+                                    Relationship to {{relation.name}}
+                                </span>
+                            </div>
+                            <div class="col-3 col-md-7 text-end">
+                                <div class="data">
+                                    {{ relation.rel }}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+-->

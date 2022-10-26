@@ -1,0 +1,157 @@
+    <h1 class="mb-3">Tell us what changed about your address.</h1>
+    <div class="col-12">
+        <div class="alert alert-info d-flex align-items-center">
+            <p>If you're receiving SSI/RSDI benefits, contact the Social Security Administration (SSA) to give them your new address
+            after you finish the address change here
+            </p>
+        </div>
+    </div>
+
+    <form [formGroup]="addressChangeForm">
+        <compass-ui-text [fieldId]="'AddressLine1'" [FormGroup]="addressChangeForm" [fieldLabel]="'Street Address'"
+            [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('AddressLine1')"
+            [errorMsg]="errorMap('AddressLine1')" [errorText]="errorMap('AddressLine1')" (keypress)="checkAddress($event)"
+            [maxLength]="26" [fieldType]="'addressType'">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'AddressLine2'" [FormGroup]="addressChangeForm" [fieldLabel]="'Street Address (2)'"
+            [requiredIndicator]="false" [errorMsg]="errorMap('AddressLine2')" [errorText]="errorMap('AddressLine2')"
+            [maxLength]="26" [fieldType]="'addressType'" (keypress)="checkAddress($event)">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'City'" [FormGroup]="addressChangeForm" [fieldLabel]="'City'"
+            [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('City')"
+            [errorMsg]="errorMap('City')" [errorText]="errorMap('City')" [maxLength]="14" (keypress)="checkCity($event)">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'State'" fieldLabel="State" [requiredText]="'(required)'" [requiredIndicator] = "true"
+            [FormGroup]="addressChangeForm" [errorMsg]="errorMap('State')" [displayError]="isFieldValid('State')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of states" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'Zip'" [FormGroup]="addressChangeForm" [fieldLabel]="'Zip Code'"
+            [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('Zip')"
+            [errorMsg]="errorMap('Zip')" [errorText]="errorMap('Zip')" [maxLength]="5"
+            (keypress)="onlyNumberAllowed($event)">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'County'" fieldLabel="County" [requiredText]="'(required)'" [requiredIndicator] = "true"
+            [FormGroup]="addressChangeForm" [errorMsg]="errorMap('County')" [displayError]="isFieldValid('County')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of counties" [value] = "option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-cw-select [fieldId]="'school'" fieldLabel="School District" [requiredIndicator] = "true"
+            [requiredText]="'(required)'" [FormGroup]="addressChangeForm" [errorMsg]="errorMap('school')"
+            [displayError]="isFieldValid('school')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of schoolDistricts" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <div class="card arrow-card" *ngIf="selectedSchoolDistrictName ==='99999'">
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <compass-ui-text [fieldId]="'school1'" [FormGroup]="addressChangeForm"
+                        [fieldLabel]="'Enter your school district'" [requiredText]="' (required)'" [requiredIndicator]="true"
+                        [displayError]="isFieldValid('school1')" [maxLength]="35" [errorText]="errorMap('school1')">
+                    </compass-ui-text>
+                </div>
+            </div>
+        </div>
+        <compass-ui-cw-select [fieldId]="'township'" fieldLabel="City, Township, or Borough"  [requiredIndicator] = "true"
+            [requiredText]="'(required)'" [FormGroup]="addressChangeForm" [errorMsg]="errorMap('township')"
+            [displayError]="isFieldValid('township')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of townships" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <div class="card arrow-card" *ngIf="selectedTownshipName ==='99999'">
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <compass-ui-text [fieldId]="'township1'" [FormGroup]="addressChangeForm"
+                        [fieldLabel]="'Enter your city/township/borough'" [requiredText]="' (required)'"
+                        [requiredIndicator]="true" [displayError]="isFieldValid('township1')"
+                        [errorText]="errorMap('township1')" [maxLength]="35">
+                    </compass-ui-text>
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3 standard-mb">
+            <fieldset class="button-group">
+                <legend>Is there another address that we should send mail to?<span>(required)</span></legend>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('anotherAdd')" ngDefaultControl
+                    [formControlName]="'anotherAdd'" [required]="true" [radioButtonGroupName]="'anotherAdd'"
+                    [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes"
+                    (click)="showAnotherAddress()"></compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('anotherAdd')" ngDefaultControl
+                    [formControlName]="'anotherAdd'" [required]="true" [radioButtonGroupName]="'anotherAdd'"
+                    [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No"
+                    (click)="removeAnotherAddress()">
+                </compass-ui-cw-radiobutton>
+                <cw-field-error-display [displayError]="isFieldValid('anotherAdd')" errorMsg="{{errorMap('anotherAdd')}}">
+                </cw-field-error-display>
+            </fieldset>
+        </div>
+        <div class="card arrow-card" *ngIf="anotherAddressCon">
+            <div class="card-body">
+                <compass-ui-text [fieldId]="'anotherAddress'" [FormGroup]="addressChangeForm" [fieldLabel]="'Street Address'"
+                    [requiredText]="'(required)'" [requiredIndicator]="true"
+                    [displayError]="isFieldValid('anotherAddress')" [errorMsg]="errorMap('anotherAddress')"
+                    [errorText]="errorMap('anotherAddress')" [maxLength]="26" (keypress)="checkAddress($event)"
+                    [fieldType]="'addressType'">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'anotherAddress2'" [FormGroup]="addressChangeForm" (keypress)="checkAddress($event)"
+                    [fieldLabel]="'Street Address 2'" [requiredIndicator]="false" [errorMsg]="errorMap('anotherAddress2')"
+                    [errorText]="errorMap('anotherAddress2')" [maxLength]="26" [fieldType]="'addressType'">
+                </compass-ui-text>
+                <compass-ui-text [fieldId]="'anotherCity'" [FormGroup]="addressChangeForm" [fieldLabel]="'City'"
+                    [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('anotherCity')"
+                    [errorMsg]="errorMap('anotherCity')" [errorText]="errorMap('anotherCity')" [maxLength]="14" (keypress)="checkCity($event)">
+                </compass-ui-text>
+                <compass-ui-cw-select [fieldId]="'anotherState'" fieldLabel="State" [requiredText]="'(required)'"
+                    [FormGroup]="addressChangeForm" [errorMsg]="errorMap('anotherState')"
+                    [displayError]="isFieldValid('anotherState')">
+                    <option value="" selected>- {{'selectone' | translate}} -</option>
+                    <option *ngFor="let option of states" [value]="option.id">{{option.displayValue}}</option>
+                </compass-ui-cw-select>
+                <compass-ui-text [fieldId]="'anotherZip'" [FormGroup]="addressChangeForm" [fieldLabel]="'Zip Code'"
+                    [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('anotherZip')"
+                    [errorMsg]="errorMap('anotherZip')" [errorText]="errorMap('anotherZip')" [maxLength]="5"
+                    (keypress)="onlyNumberAllowed($event)">
+                </compass-ui-text>
+            </div>
+        </div>
+    </form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>
+
+<div style="display:block" class="modal fade show" [hidden]="!isAddressGISValidated" id="addressModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #addressModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>We could not confirm the address you entered.</h2>
+                <p>
+                    The Address you entered doesn't match any address that USPS has on record.
+                </p>
+                <p>Without an accurate address, it may take longer to process your application.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-tertiary" (click)="useAnyway()">Use Anyway</button>
+                <button class="btn btn-primary" (click) = "editAddress()">Edit Address</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show" style="display:block" [hidden]="!loadingUSPS" id="loadingUSPSModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingUSPSModal>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Validating Address</h2>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

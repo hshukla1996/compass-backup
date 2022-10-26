@@ -1,0 +1,700 @@
+<h1>
+    Your Notification Preferences
+</h1>
+<div class="accordion page-tip standard-mb" id="accordionExample">
+    <div class="accordion-item" >
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                More about Notification Preferences
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <p>
+                    Notification Preferences is our new way to allow COMPASS users to sign-up for text messages about their account.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card standard-mb">
+    <div class="card-body">
+        <h2>
+            Language Preferences
+        </h2>
+        <div class="standard-mb" *ngIf="langPreference === '1'">
+            English
+        </div>
+        <div class="standard-mb" *ngIf="langPreference === '2'">
+            Spanish
+        </div>
+        <compass-ui-cw-select 
+            [fieldId]="'language'" 
+            [fieldLabel]="'Tell us what language you would like to receive text messages in'" 
+            [FormGroup]="notificationPreferencesForm"
+            [requiredIndicator]="true"
+            [displayError]="isFieldValid('language')" 
+            [errorMsg]="errorMap('language')">
+            <option value="" selected>- Select One -</option>
+             <option *ngFor="let language of applicationLanguages" value={{language.id}}>{{language.displayValue}} </option>
+        </compass-ui-cw-select>
+    </div>
+</div>
+<div class="card standard-mb">
+    <div class="card-body">
+        <h2>
+            Text Messaging Notifications
+        </h2>
+        <span class="standard-mb badge rounded-pill bg-primary" *ngIf="textMessage === 'Y'">
+            Enrolled
+        </span>
+        <span class="standard-mb badge rounded-pill bg-muted" *ngIf="textMessage === 'N'">
+            Not Enrolled
+        </span>
+        <div class="form-group standard-mb" [formGroup]="notificationPreferencesForm">
+            <fieldset class="button-group">
+                <legend>
+                    Would you like to receive text messages?
+                    <span>(required)</span>
+                </legend>
+                <compass-ui-cw-radiobutton 
+                    ngDefaultControl 
+                    [required]="true"
+                    [formControlName]="'receiveText'" 
+                    [showError]="isFieldValid('receiveText')" 
+                    [radioButtonGroupName]="'receiveText'"
+                    [labelClass]="'btn btn-outline-tertiary float-start'"
+                    [radioClass]="'btn-check'" 
+                    [radioLabel]="'Yes'"
+                    [radioBtnValue]="'Y'"
+                    [radioBtnId]="'receiveText_Y'">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton 
+                    ngDefaultControl 
+                    [formControlName]="'receiveText'"
+                    [showError]="isFieldValid('receiveText')" [radioButtonGroupName]="'receiveText'"
+                    [labelClass]="'btn btn-outline-tertiary float-start'"
+                    [radioClass]="'btn-check'"
+                    [radioLabel]="'No'"
+                    [radioBtnValue]="'N'"
+                    [radioBtnId]="'receiveText_N'">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+        </div>
+        <h2 class="standard-mb">
+            Select the type of messages you would like to receive:
+            <span class="required-span">(required)</span>
+        </h2>
+        <cw-field-error-display [displayError]="displayError1"
+            errorMsg="Please select at least one">
+        </cw-field-error-display>
+        <div class="form-check custom mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="renewal" 
+                [checked]="afsNotificationPreferences.renewalNoticeOptInIndicator === 'Y' ? true : false"
+                (input)="onEventChange($event.target)">
+            <label class="form-check-label" for="crdlessSelCardInput">
+                <label for="renewal" class="label-text">Renewal Reminders</label>
+                <div class="description-text">
+                    <div class="accordion page-tip standard-mb" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    More about Renewal Reminders
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Renewal Reminders will send you text messages about upcoming renewal(s) due related to your
+                                        Supplemental Nutrition
+                                        Assistance Program (SNAP - formerly known as Food Stamps), Medical Assistance (MA), and Cash
+                                        Assistance (CA).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="form-check custom mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="verification" 
+                [checked]="afsNotificationPreferences.verificationNoticeOptInIndicator === 'Y' ? true : false"
+                (input)="onEventChange($event.target)">
+            <label class="form-check-label" for="crdlessSelCardInput">
+                <label for="verification" class="label-text">Verification Reminders</label>
+                <div class="description-text">
+                    <div class="accordion page-tip standard-mb" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    More about Verification Reminders
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Verification Reminders will send you text messages about in-progress verification documents that are due to your case
+                                        worker.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="form-check custom mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="childcare" 
+                [checked]="afsNotificationPreferences.childCareSmsOptInIndicator === 'Y' ? true : false"
+                (input)="onEventChange($event.target)">
+            <label class="form-check-label" for="crdlessSelCardInput">
+                <label for="childcare" class="label-text">Child Care Notifications</label>
+                <div class="description-text">
+                    <div class="accordion page-tip standard-mb" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    More about Child Care Notifications
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Child Care Notifications will send you text messages about your Child Care Works subsidy case. If your Child Care
+                                        eligibility is not linked to your CASH or SNAP case, you will need to contact your Early Learning Resource Center to
+                                        sign up for text messages.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <compass-ui-text 
+            [fieldId]="'mobileNumber'" 
+            [FormGroup]="notificationPreferencesForm"
+            requiredText="(required)" 
+            (keypress)="OnlyNumberAllowed($event)" 
+            [fieldLabel]="'Mobile Number'" 
+            [displayError]="isFieldValid('mobileNumber')"
+            [requiredIndicator]="true" 
+            [errorText]="errorMap('mobileNumber')"
+            [maxLength]="10"
+            [fieldHelpText]="'Once you update your settings, we will check that your mobile number accepts text messages.'">
+        </compass-ui-text>
+        <h2 class="standard-mb">
+            Review the Text Messaging Terms and Conditions
+        </h2>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        Text Messaging Terms and Conditions
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                By enrolling or opting in to receive text message alerts from DHS, you must read and accept the following terms and
+                                conditions. You do not have to enroll or opt in as a condition of applying for or receiving benefits.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        General Information
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                The Head of Household, or Payment Name, on a DHS case record that may include benefits such as Medical Assistance,
+                                Supplemental Nutrition Assistance Program (SNAP), Temporary Assistance for Needy Families (TANF), Low-Income Home Energy
+                                Assistance Program (LIHEAP), and/or Child Care Works (CCW) has the option to enroll in and receive text message alerts
+                                for important reminders regarding their household's benefits.
+                            </li>
+                            <li>
+                                Entities who provide services for DHS, such as Subsidized Child Care, Keystone STARS, or PA Pre-K Counts, also have
+                                the option to enroll in and receive text message alerts for important reminders.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                        Privacy Policy
+                    </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                Text message alerts from us will follow Commonwealth of Pennsylvania Privacy and Security policies. You can find more
+                                information on these policies at the following links:
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="https://www.compass.state.pa.us/Compass.Web/Menuitems/Confidential.aspx?Language=EN"> https://www.compass.state.pa.us/Compass.Web/Menuitems/Confidential.aspx?Language=EN </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.pa.gov/privacy-policy/">https://www.pa.gov/privacy-policy/</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.pa.gov/security-policy/">https://www.pa.gov/security-policy/</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                        Opting In
+                    </button>
+                </h2>
+                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        By Opting In to getting text message alerts from DHS:
+                        <ul>
+                            <li>
+                                You understand that text message alerts are reminders for your convenience and do not serve as notices. Notices will
+                                continue to be provided to you by e-Notice, eCorrespondence, or mail.
+                            </li>
+                            <li>
+                                You authorize DHS to use auto-dialer or non-auto-dialer technology to send text messages to the cell phone number
+                                associated with your Opt-In.
+                            </li>
+                            <li>
+                                You are digitally signing your Opt-In to the Text Message Service.
+                            </li>
+                            <li>
+                                You confirm that you are the subscriber to the relevant phone number or that you are the customary user of that number
+                                on a family or business plan that you are authorized to Opt-In.
+                            </li>
+                            <li>
+                                You consent to the use of an electronic record to document your Opt-In and alert preferences.
+                            </li>
+                            <li>
+                                After Opting In, you will get a text message confirming that you said “yes” to getting text messages from DHS.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                        Frequency
+                    </button>
+                </h2>
+                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                Text message alerts from DHS may include benefit renewal and verification reminders, Child Care notifications,
+                                provider agreements, grant agreements, as well as other reminders or notifications. Text message alerts can include
+                                multiple, recurring messages. The amount and how often you receive texts from us will depend on the alerts you select to
+                                receive. You can adjust your preferences at any time by logging in to your MyCOMPASS account or Provider Self-Service
+                                account and updating your text message preferences. If you do not have a MyCOMPASS account or Provider Self-Service
+                                account, contact your Early Learning Resource Center to update your text message preferences. You can stop receiving
+                                text message alerts at any time by replying STOP at any time to any text alert you receive from us.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTen">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                        Mobile Carriers
+                    </button>
+                </h2>
+                <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                DHS will use telephone number 1-833-648-1964 to send text message alerts for benefit renewal or verification
+                                reminders. Additionally, DHS will use telephone number 56229 for Child Care and provider notifications. These telephone
+                                numbers are supported on all U.S. mobile carriers (for examples, T-Mobile, Verizon, AT&T, etc.). However, it's possible
+                                that supported mobile carriers may change, and this may happen without notice. If the text messaging service is not
+                                supported by your mobile carrier or the text message service functions are limited in any way, DHS and the mobile
+                                carriers are not responsible for delayed or undelivered messages.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading11">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                        Message Data Rates
+                    </button>
+                </h2>
+                <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                Message and data rates may apply. These include fees your mobile carrier may charge you for data usage and text
+                                messaging. Check with your mobile carrier regarding your mobile plan and charges and rates.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading12">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                        Opting Out
+                    </button>
+                </h2>
+                <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        You can stop receiving text message alerts at any time by doing either of the following:
+                        <ul>
+                            <li>
+                                Log in to your MyCOMPASS account or Provider Self-Service account and update your text message preferences. If you do
+                                not have a MyCOMPASS account or Provider Self-Service account, contact your Early Learning Resource Center to update
+                                your text message preferences, OR
+                            </li>
+                            <li>
+                                Reply STOP at any time to any text alert you receive from us.
+                            </li>
+                            <li>
+                                Note: You will be opted out of receiving text messages only from the phone number you replied to with STOP.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading13">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapse13">
+                        Automatic Opt-Out
+                    </button>
+                </h2>
+                <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Specific information for individuals, families, and Child Care and early learning providers is explained below.
+                        <br>
+                        Guidance for Individuals and Families
+                        <ul>
+                            <li>
+                                You will automatically be opted out of receiving text message alerts if the benefits on your case have been closed for
+                                over 90 days.
+                            </li>
+                            <li>
+                                You will automatically be opted out of receiving text message alerts if you enrolled on your application for benefits
+                                and were not approved for benefits with that application.
+                            </li>
+                            <li>
+                                You will automatically be opted out of receiving text message alerts if the text number is not valid and AT&T
+                                determines that the message cannot be delivered.
+                            </li>
+                            <li>
+                                DHS reserves the right to terminate any text message service or your participation in it at any time with or without
+                                notice. Text message alerts are reminders for your convenience and do not serve as notices. Notices will continue to be
+                                provided to you by e-Notice or mail. You may also log into your MyCOMPASS account at any time to check on the status of
+                                your benefits and review your text message preference. If you do not have a MyCOMPASS account, contact your Early
+                                Learning Resource Center to update your text message preferences.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading14">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse14" aria-expanded="true" aria-controls="collapse14">
+                        Guidance for Child Care and Early Learning Providers
+                    </button>
+                </h2>
+                <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                You will automatically be opted out of receiving text message alerts if the text number is not valid and AT&T
+                                determines that the message cannot be delivered.
+                            </li>
+                            <li>
+                                DHS reserves the right to terminate any text message service or your participation in it at any time with or without
+                                notice. Text message alerts are reminders for your convenience and do not serve as notices. Notices will continue to be
+                                provided to you by eCorrespondence or mail. You may also log into your Provider Self-Service account at any time to
+                                review your text message preference. If you do not have a Provider Self-Service account, contact your Early Learning
+                                Resource Center to update your text message preferences.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading15">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse15" aria-expanded="true" aria-controls="collapse15">
+                        Opting In Again After Opting Out From Your Mobile Device
+                    </button>
+                </h2>
+                <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                If you opted out of text message alerts from your mobile device by replying STOP and would like to opt in to receive
+                                them again, you must take the following steps to enroll in text message alerts.
+                            </li>
+                        </ul>
+                        For benefit renewal and verification reminder notifications:
+                        <ol>
+                            <li>
+                                Text UNSTOP to 1-833-648-1964.
+                            </li>
+                            <li>
+                                Log in to your MyCOMPASS account and update your text message preferences.
+                            </li>
+                        </ol>
+                        For Child Care notifications:
+                        <ol>
+                            <li>
+                                Text UNSTOP to 56229.
+                            </li>
+                            <li>
+                                Log in to your MyCOMPASS account and update your text message preferences. If you do not have a MyCOMPASS account,
+                                contact your Early Learning Resource Center to update your text message preferences.
+                            </li>
+                        </ol>
+                        For provider notifications:
+                        <ol>
+                            <li>
+                                Text UNSTOP to 56229.
+                            </li>
+                            <li>
+                                Log in to your Provider Self-Service account and update your text message preferences. If you do not have a Provider
+                                Self-Service account, contact your Early Learning Resource Center to update your text message preferences.
+                            </li>
+                        </ol>
+                        <br>
+                        Note: If you opted out of text message alerts from your MyCOMPASS account, Provider Self-Service account, or by
+                        contacting your Early Learning Resource Center, you do not need to reply UNSTOP from your mobile device to enroll again.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading16">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse16" aria-expanded="true" aria-controls="collapse16">
+                        Help
+                    </button>
+                </h2>
+                <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                For help, call the DHS Helpline at 1-800-692-7462 between 8:30 a.m. and 4:45 p.m. Monday through Friday. TTY/TTD call
+                                1-800-451-5886.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading17">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapse17">
+                        Terms and Conditions Agreement
+                    </button>
+                </h2>
+                <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                DHS has the right to change or terminate the Text Message Service (or any of its features) or this Agreement at any
+                                time, for any purpose, without notice. You can opt out of receiving text messages from us at any time by replying STOP
+                                at any time to any text alert you receive from us or by logging in to your MyCOMPASS account or Provider Self-Service
+                                account and updating your text message preferences. If you do not have a MyCOMPASS account or Provider Self-Service
+                                account, contact your Early Learning Resource Center to update your text message preferences.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="standard-mb">
+            <compass-ui-cw-checkbox 
+                label="I have read and reviewed the Text Messaging Terms and Conditions."
+                [textStyle]="'borderless-check'"
+                [formGroup]="notificationPreferencesForm"
+                [id]="'haveRead'"
+                [isChecked]="afsNotificationPreferences.consentIndicator ? afsNotificationPreferences.consentIndicator : false"
+                [required]="true"
+                [showError]="isFieldValid('haveRead')"
+                [requiredText]="'(required)'"
+                (inputModelChange)="checkRead($event)">
+            </compass-ui-cw-checkbox>
+            <cw-field-error-display 
+                [displayError]="displayError" 
+                errorMsg="This is required">
+            </cw-field-error-display>
+        </div>
+        <div class="standard-mb">
+            <compass-ui-cw-checkbox 
+                label="Do you want to update your main contact number on your COMPASS application to match the text messaging number?"
+                [textStyle]="'borderless-check'" 
+                [formGroup]="notificationPreferencesForm" 
+                [isChecked]="afsNotificationPreferences.updateMainContact ? afsNotificationPreferences.updateMainContact : false"
+                [id]="'mainContact'"
+                (inputModelChange)="checkContact($event)">
+            </compass-ui-cw-checkbox>
+        </div>
+    </div>
+</div>
+<div class="card standard-mb">
+    <div class="card-body">
+        <h2>
+            Email Notifications
+        </h2>
+        <span class="standard-mb badge rounded-pill bg-primary" *ngIf="emailMessage === 'Y'">
+            Enrolled
+        </span>
+        <span class="standard-mb badge rounded-pill bg-muted" *ngIf="emailMessage === 'N'">
+            Not Enrolled
+        </span>
+        <div class="form-group standard-mb" [formGroup]="notificationPreferencesForm">
+            <fieldset class="button-group">
+                <legend>
+                    Would you like to receive emails about Child Care?
+                    <span>(required)</span>
+                </legend>
+                <compass-ui-cw-radiobutton 
+                    ngDefaultControl 
+                    [required]="true"
+                    [formControlName]="'recieveEmail'"
+                    [showError]="isFieldValid('recieveEmail')" 
+                    [radioButtonGroupName]="'recieveEmail'"
+                    [labelClass]="'btn btn-outline-tertiary float-start'" 
+                    [radioClass]="'btn-check'" 
+                    radioLabel="Yes"
+                    [radioBtnValue]="'Y'"
+                    [radioBtnId]="'recieveEmail_Y'">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton 
+                    ngDefaultControl 
+                    [formControlName]="'recieveEmail'" 
+                    [showError]="isFieldValid('recieveEmail')" 
+                    [radioButtonGroupName]="'recieveEmail'"
+                    [labelClass]="'btn btn-outline-tertiary float-start'" 
+                    [radioClass]="'btn-check'" 
+                    radioLabel="No"
+                    [radioBtnValue]="'N'"
+                    [radioBtnId]="'recieveEmail_N'">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+        </div>
+        <div class="accordion page-tip standard-mb" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading18">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse18" aria-expanded="true" aria-controls="collapse18">
+                        More about Child Care Email Notifications
+                    </button>
+                </h2>
+                <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="heading18"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Child Care Notifications will send emails about your Child Care Works subsidy case. If your Child Care eligibility is
+                        not linked to your Cash or Supplemental Nutrition Assistance Program (SNAP - formerly known as Food Stamps) case, you
+                        will need to contact your Early Learning Resource Center to sign up for emails.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <compass-ui-text 
+            [fieldId]="'email'" 
+            [FormGroup]="notificationPreferencesForm" 
+            requiredText="(required)" 
+            [fieldType]="'emailType'"
+            [fieldLabel]="'Email'" 
+            [displayError]="isFieldValid('email')"
+            [requiredIndicator]="true"
+            [errorText]="'This is required'" 
+            [maxLength]="70">
+        </compass-ui-text>
+        <div class="standard-mb">
+            <compass-ui-cw-checkbox 
+                label="Do you want to update the email on your COMPASS application to match the email above?"
+                [textStyle]="'borderless-check'" 
+                [formGroup]="notificationPreferencesForm" 
+                [isChecked]="afsNotificationPreferences.updateEmail ? afsNotificationPreferences.updateEmail : false"
+                [id]="'updateEmail'"
+                (inputModelChange)="checkEmail($event)">
+            </compass-ui-cw-checkbox>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button 
+    backButtonLabel="Back" 
+    nextButtonLabel="Next"
+    (next)="next()" 
+    (back)="back()">
+</compass-ui-cw-dpq-button>

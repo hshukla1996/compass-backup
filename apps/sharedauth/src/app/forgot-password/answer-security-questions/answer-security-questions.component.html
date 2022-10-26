@@ -1,0 +1,17 @@
+<form [formGroup]="verifySecurityQuestionGroup">
+  <h1> {{ 'sa_forgotpassASQtitle' | translate }}</h1>
+
+  <ng-container *ngFor="let securityQuestion of requiredQuestions; let i = index">
+    <div class="mb-3">
+      <compass-ui-text [fieldId]="'answer' + i" (inputModelChange)="resetCorrectness(i)" [FormGroup]="verifySecurityQuestionGroup" [fieldLabel]="securityQuestion.displayValue"
+        [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+        [displayError]="isFieldInvalid('answer' + i, i)" [errorText]="errorMap('answer' + i, i) | translate"
+        [maxLength]="answerMaxL">
+      </compass-ui-text>
+    </div>
+  </ng-container>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'next'| translate}}"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>
+</form>

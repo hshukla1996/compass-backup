@@ -1,0 +1,184 @@
+<form [formGroup]="myNoticesForm">
+    <button class="btn btn-link" (click)="backToDashboard()">< Back to Dashboard</button>
+    <h1>My Notices</h1>
+   
+<button id="openModalButton" [hidden]="true" data-bs-toggle="modal" data-bs-target="#toastModal">Open Modal</button>
+       
+    <div class="accordion mb-3 data-accordion pref" *ngIf="unEnrolledSection">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#textMsgCardCollArea" aria-expanded="true" aria-controls="textMsgCardCollArea">
+                    <h2 class="card-title text-capitalize">
+                        <span class="d-block">E-Notice Preference</span>
+                        <span class="badge rounded-pill bg-muted text-uppercase">Not Enrolled</span>
+                    </h2>
+                </button>
+            </div>
+            <div class="accordion-collapse collapse" id="textMsgCardCollArea">
+                <div class="accordion-body">
+                    <hr>
+                    <div class="conditional-section">
+                    <p><span class="fw-bold">Go paperless! </span>Would you like to receive your notices online?</p>
+                        <fieldset class="button-group">
+                            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPaperless'" [required]="true"
+                                 [radioBtnValue]="'Y'" [radioBtnId]="'isPaperless_1'" [showError]="isFieldValid('isPaperless')" 
+                                [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                                radioLabel="{{'lblyes'| translate}}" (click)="showGoPaperless()"></compass-ui-cw-radiobutton>
+                            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPaperless'" [required]="true"
+                                [radioBtnValue]="'N'" [radioBtnId]="'isPaperless_2'" [showError]="isFieldValid('isPaperless')" 
+                                 [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                                radioLabel="{{'afsno'| translate}}" (click)="removeGoPaperless()">
+                            </compass-ui-cw-radiobutton>
+                            <cw-field-error-display [displayError]="isFieldValid('isPaperless')" errorMsg="{{errorMap('isPaperless')}}">
+                            </cw-field-error-display>
+                        </fieldset>
+                        <div class="card arrow-card" *ngIf="goPaperlessYes">
+                            <div class="px-3 py-3">
+                                <compass-ui-text [fieldId]="'emailAddress'" requiredText="" [requiredText]="'lblrequired' | translate"
+                                    [displayError]="isFieldValid('emailAddress')" [errorText]="'This is required.'" [maxLength]="60" [requiredIndicator]="true"
+                                    [FormGroup]="myNoticesForm" [fieldLabel]="'Email'" (inputModelChange)="GetEmail($event)">
+                                </compass-ui-text>
+                                <compass-ui-text [fieldId]="'confirmEmailAddress'" requiredText="" [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+                                    [displayError]="isFieldValid('confirmEmailAddress')" [errorText]="errorMap('confirmEmailAddress')" [maxLength]="60"
+                                    [FormGroup]="myNoticesForm" [fieldLabel]="'Confirm Email'" (inputModelChange)="getConfirmEmail($event)">
+                                </compass-ui-text>
+                                <p>
+                                    We will send you a confirmation email if you opt to enroll in online notices. 
+                                    <span class="fw-bold">
+                                        To ensure you receive this email, please add donotreply@pa.gov to your safe senders list. 
+                                    </span>
+                                    If your email is undeliverable, you will automatically be enrolled back into paper notices. Any paper notice we 
+                                    send you through postal mail because your email is undeliverable will be a copy of the original notice and will 
+                                    have the same date. You can opt out of online notices at any time by changing your preference or by contacting your caseworker.
+                                </p>
+                                <ul>
+                                    <li>Get easy access to your notices online</li>
+                                    <li>Improve your record keeping</li>
+                                    <li>Help the environment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-info">
+                            <dl class="text-left">
+                                <p>CHIP notices are not available online at this time.</p>
+                            </dl>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        More About Going Paperless
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>If you choose to go paperless, we will send alerts to your email whenever 
+                                            your notices are available to view online. </p>
+                                        <p>It's your responsibility to view these notices and share the information 
+                                            with other household members. However, you will need to log into your My 
+                                            COMPASS Account to view the actual notices. </p>
+                                        <p>Note: Some notices will not be available online and will be mailed to you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" (click)="sendEmail()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mb-3 data-accordion pref"  *ngIf="confirmEmailSent">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#verifyMsgCard" aria-expanded="true" aria-controls="verifyMsgCard">
+                    <h2 class="card-title text-capitalize">
+                        <span class="d-block">E-Notice Preference</span>
+                        <span class="badge rounded-pill bg-muted text-uppercase">Confirm Email</span>
+                    </h2>
+                </button>
+            </div>
+            <div class="accordion-collapse collapse" id="verifyMsgCard">
+                <div class="accordion-body">
+                    <hr>
+                    <div class="conditional-section">
+                        <div class="alert alert-info icn-warning">
+                            <dl class="text-left">
+                                Your enrollment in online notices is pending confirmation for your email rrr@ggg.com
+                                Check your inbox for an email from donotreply@pa.gov and open the link to confirm. Once 
+                                you confirm, you'll begin receiving your notices online. If you did not receive this 
+                                email, check the spam settings on your email account or enter your email again by 
+                                selecting "Yes" below.
+                            </dl>
+                        </div>
+                    <p><span class="fw-bold">Go paperless! </span>Would you like to receive your notices online?</p>
+                        <fieldset class="button-group">
+                            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPaperless'"
+                                    [radioBtnValue]="'Y'" [radioBtnId]="'isPaperless_1'" 
+                                [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                                radioLabel="{{'lblyes'| translate}}"></compass-ui-cw-radiobutton>
+                            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPaperless'"
+                                [radioBtnValue]="'N'" [radioBtnId]="'isPaperless_2'"
+                                    [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                                radioLabel="{{'afsno'| translate}}"></compass-ui-cw-radiobutton>
+                        </fieldset>
+                        <div class="alert alert-info">
+                            <dl class="text-left">
+                                <p>CHIP notices are not available online at this time.</p>
+                            </dl>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        More About Going Paperless
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>If you choose to go paperless, we will send alerts to your email whenever 
+                                            your notices are available to view online. </p>
+                                        <p>It's your responsibility to view these notices and share the information 
+                                            with other household members. However, you will need to log into your My 
+                                            COMPASS Account to view the actual notices. </p>
+                                        <p>Note: Some notices will not be available online and will be mailed to you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!--<compass-ui-verify-enrollement></compass-ui-verify-enrollement>-->
+<compass-ui-enrolled (onEnroll)="enableUnenroll($event)" *ngIf="!unEnrolledSection"></compass-ui-enrolled>
+<compass-ui-search-notices></compass-ui-search-notices>
+
+<div class="modal fade toast" id="toastModal" tabindex="-1" aria-labelledby="toastModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="toast-icon-div">
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                </div>
+                <div class="toast-text">
+
+                    <p>
+                        You have successfully unenrolled from e-Notices.
+                    </p>
+                </div>
+                <button class="toast-dismiss" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+

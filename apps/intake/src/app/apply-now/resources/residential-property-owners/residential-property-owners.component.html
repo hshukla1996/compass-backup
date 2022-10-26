@@ -1,0 +1,27 @@
+<h1> You told us someone owns the home that the household lives in. Tell us who.</h1>
+<p class="fw-bold">Select all that apply.</p>
+<form [formGroup]="residentialPropertyOwnersForm">
+    <cw-field-error-display [displayError]="displayError" errorMsg="{{'diqSelectOneOption' | translate}}">
+    </cw-field-error-display>
+    <div *ngFor="let person of householdPersons;" class="standard-mb">
+        <compass-ui-cw-checkbox label="{{person?.firstName}} {{person?.midName}} {{person?.lastName}}
+                            {{getAge(person?.dateOfBirth)}} {{person?.suffix}}
+                            ({{person?.gender?.charAt(0)}})" (inputModelChange)="onCheckboxChange(person.id!, $event)"
+            [isChecked]="getResidentialPropertyState(person.id!)" [textStyle]="'custom'">
+        </compass-ui-cw-checkbox>
+    </div>
+    <div class="standard-mb">
+        <compass-ui-cw-checkbox label="Someone outside of the household"
+            (inputModelChange)="outsideOfHousedholdChanged($event)" [textStyle]="'custom'"
+            [formGroup]="residentialPropertyOwnersForm">
+        </compass-ui-cw-checkbox>
+    </div>
+    <div class="card arrow-card p-3" *ngIf="residentialPropertyOwnersForm.value.isSomeoneOutsideHousehold === true">
+        <small class="mb-3 d-block">Tell us who outside of the household owns this property.</small>
+        <compass-ui-text [fieldId]="'ownerName'" [FormGroup]="residentialPropertyOwnersForm" [fieldType]="'text'">
+        </compass-ui-text>
+    </div>
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

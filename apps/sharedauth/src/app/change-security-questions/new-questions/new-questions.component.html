@@ -1,0 +1,84 @@
+<form [formGroup]="securityGroup">
+  <h1>{{ 'sa_changesqsCSQStitle' | translate }}</h1>
+  <div class="accordion page-tip mb-3" id="securityAcc">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="securityAccHead">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#securityAccBody" aria-expanded="true" aria-controls="securityAccBody">
+                {{ 'sa_changesqsCSQStext1' | translate}}
+            </button>
+        </h2>
+        <div id="securityAccBody" class="accordion-collapse collapse" aria-labelledby="securityAccHead"
+            data-bs-parent="#securityAcc">
+            <div class="accordion-body">
+                <ul>
+                  <li>{{ 'sa_changesqsCSQSbullet1' | translate }}</li>
+                  <li>{{ 'sa_changesqsCSQSbullet2' | translate }}</li>
+                  <li>{{ 'sa_changesqsCSQSbullet3' | translate }}</li>
+                  <li>{{ 'sa_changesqsCSQSbullet4' | translate }}</li>
+                  <li>{{ 'sa_changesqsCSQSbullet5' | translate }}</li>
+                  <li>{{ 'sa_changesqsCSQSbullet6' | translate }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- question 1 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question1" fieldId="question1"
+      [fieldLabel]="'sa_changesqsCSQSlbl1' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question1') | translate" [displayError]="isFieldInvalid('question1')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer1'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_changesqsCSQSlbl2' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer1')"
+      [errorText]="errorMap('answer1') | translate: { minLength: answer1MinL, maxLength: answer1MaxL}" 
+      [maxLength]="answer1MaxL">
+    </compass-ui-text>
+  </div>
+
+  <!-- question 2 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question2" fieldId="question2"
+      [fieldLabel]="'sa_changesqsCSQSlbl3' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question2') | translate" [displayError]="isFieldInvalid('question2')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer2'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_changesqsCSQSlbl4' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer2')"
+      [errorText]="errorMap('answer2') | translate: { minLength: answer2MinL, maxLength: answer2MaxL}" 
+      [maxLength]="answer2MaxL">
+    </compass-ui-text>
+  </div>
+
+  <!-- question 1 -->
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="question3" fieldId="question3"
+      [fieldLabel]="'sa_changesqsCSQSlbl5' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="securityGroup"
+      [errorMsg]="errorMap('question3') | translate" [displayError]="isFieldInvalid('question3')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let question of securityQuestions">{{question}}</option>
+    </compass-ui-cw-select>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'answer3'" fieldType="securityQueType" [FormGroup]="securityGroup"
+      [fieldLabel]="'sa_changesqsCSQSlbl6' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [displayError]="isFieldInvalid('answer3')"
+      [errorText]="errorMap('answer3') | translate: { minLength: answer3MinL, maxLength: answer3MaxL}" 
+      [maxLength]="answer3MaxL">
+    </compass-ui-text>
+  </div>
+  
+  <compass-ui-cw-dpq-button backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'submitLbl'| translate}}"
+    (back)="cancel()" (next)="submit()">
+  </compass-ui-cw-dpq-button>
+</form>

@@ -1,0 +1,28 @@
+<h1 class="standard-mb">{{'diqProgramSelectionHeader' | translate}}</h1>
+<p class="form-subtitle standard-mb">{{'diqProgramSelectionSubTitle' | translate}}</p>
+
+<cw-field-error-display [displayError]="programSelectionGroup.controls['program'].invalid && (programSelectionGroup.controls['program'].dirty || programSelectionGroup.controls['program'].touched)"
+    errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+</cw-field-error-display>
+<div [formGroup]="programSelectionGroup">
+
+    <div *ngFor="let program of programList;let i=index">
+            <compass-ui-cw-checkbox 
+                (inputModelChange)="checkboxChange(program.id,$event)"
+                [disabled]="isDisabled(program.id)" 
+                id="programSelection{{i}}" 
+                label="{{program.name}}"
+                [isChecked]="program.selected" 
+                [requiredText]="'Select atleast one option'"
+                [textStyle]="'custom'"
+                helpText="{{program.program_desc}}"
+                 [link]="{href:program.program_link,label:program.program_link_desc}"
+            ></compass-ui-cw-checkbox>
+           
+    </div>
+    
+
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

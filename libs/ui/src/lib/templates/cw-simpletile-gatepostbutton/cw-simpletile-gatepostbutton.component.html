@@ -1,0 +1,88 @@
+<div *ngIf="simpleTileGatepostButtonData">
+<h1 [innerHTML]="simpleTileGatepostButtonData['questionText'] | translate : simpleTileGatepostButtonData['questionTextTO']">
+</h1>
+<div class="alert alert-info d-flex align-items-center standard-mb" *ngIf="simpleTileGatepostButtonData['toolTip'] !== ''">
+    <p>
+        {{ simpleTileGatepostButtonData['toolTip'] | translate : simpleTileGatepostButtonData['toolTipTO']}}
+    </p>
+</div>
+<h6 class="form-subtitle standard-mb">{{ simpleTileGatepostButtonData['subHeading'] | translate : simpleTileGatepostButtonData['subHeadingTO']}}</h6>
+<cw-field-error-display [displayError]="showRequired"
+    errorMsg="{{ simpleTileGatepostButtonData['requiredText'] | translate : simpleTileGatepostButtonData['requiredTextTO']}}">
+</cw-field-error-display>
+<ng-container *ngFor="let question of simpleTileGatepostButtonData['questionAnswers']; let i =index">
+    <div class="card gatepost-card standard-mb" *ngIf="question['show']" [ngClass]="{'yes': question['isYesChecked'] == null ? false : question['isYesChecked']}">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group" [disabled]="question['disable']">
+                        <legend class="standard-mb">
+                            {{ question['legend'] | translate : question['legendTO']}}
+                        </legend>
+                        <p class="standard-mb" *ngIf="question['toolTip'] !== ''">{{ question['toolTip'] | translate : question['toolTipTO'] }}</p>
+                        <div class="standard-mb" *ngIf="question['accordionButton'] !== ''">
+                            <div class="accordion page-tip" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            attr.data-bs-target="{{'#collapseOne' + i}}" aria-expanded="true" aria-controls="collapseOne">
+                                            {{ question['accordionButton'] | translate : question['accordionButtonTO']}}
+                                        </button>
+                                    </h2>
+                                    <div id="{{'collapseOne' + i}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>{{ question['accordionData'] | translate : question['accordionDataTO']}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="radio" name="{{i+ 'button'}}" class="btn-check" (click)="onRadioChecked(question, true)"
+                            id="{{i+ 'button'}}" autocomplete="off" [value]="true">
+                        <label class="{{showRequired && question['isRequired'] && !question['isYesChecked'] && !question['isNoChecked'] ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left'}}"
+                            [ngClass]="{'selected': question['isYesChecked'] == null ? false : question['isYesChecked'] ,'unselected': question['isNoChecked'] == null ? false : question['isNoChecked']}"
+                            for="{{i+ 'button'}}">{{ 'lblyes' | translate}}
+                        </label>
+                        <input type="radio" name="{{i+ 'button'}}" class="btn-check" (click)="onRadioChecked(question, false)"
+                            id="{{'button' +i}}" autocomplete="off" [value]="false">
+                        <label class="{{showRequired && question['isRequired'] && !question['isYesChecked'] && !question['isNoChecked'] ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right'}}"
+                            [ngClass]="{'selected': question['isNoChecked'] == null ? false : question['isNoChecked'],'unselected': question['isYesChecked'] == null ? false : question['isYesChecked']}"
+                            for="{{'button' +i}}">{{'lblno' | translate}}
+                        </label>
+                        <button type="button" class="btn btn-link float-end" (click)="resetRadioButton(question )">
+                            {{ 'resetBtnText' | translate}}
+                        </button>
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</ng-container>
+<fieldset *ngIf="textBoxData">
+    <label class="form-label" for="moreInfo">{{textBoxData | translate : textBoxDataTO}}
+    </label>
+    <textarea id="moreInfo" type="text" ngDefaultControl class="form-control" maxLength="75" [(ngModel)]="moreInfo"
+        aria-describedby="moreInfo" rows="3" (keypress)="checkName($event)"></textarea>
+</fieldset>
+
+  <fieldset *ngIf="othertextBoxData && showOtherTextBox">
+    <label class="form-label" for="otherInfo">{{textBoxData | translate : textBoxDataTO}}
+    </label>
+    <div class="card arrow-card p-3 left-arrow-3" >
+    <textarea id="otherInfo" type="text" ngDefaultControl class="form-control" [(ngModel)]="otherInfo"
+              aria-describedby="moreInfo" maxlength="256" rows="3"></textarea>
+</div>
+  </fieldset>
+<compass-ui-cw-dpq-button
+    [backButtonLabel]="'backBtnText' | translate"
+    [nextButtonLabel]="'nextBtnText' | translate"
+    (next)="next()"
+    (back)="back()">
+</compass-ui-cw-dpq-button>
+</div>

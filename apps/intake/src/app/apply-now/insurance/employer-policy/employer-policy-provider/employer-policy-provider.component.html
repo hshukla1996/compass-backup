@@ -1,0 +1,23 @@
+<form [formGroup]="employerForm">
+    <h1>Tell us more about {{currentUserName}}'s job.</h1>
+    <div class="mb-3">
+        <div class="mb-3">
+            <compass-ui-cw-select [fieldId]="'employerName'" [fieldLabel]="'Employer Name'" [FormGroup]="employerForm"   
+            [displayError]="employerForm.controls['employerName'].invalid && (employerForm.controls['employerName'].dirty || employerForm.controls['employerName'].touched)">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let employer of employments" value="{{employer.name}}">{{employer.name}}</option>
+            </compass-ui-cw-select>
+        </div>
+    </div>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="employerForm" [fieldId]="'employerIdNumber'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'employerIdNumber'"
+            fieldLabel="Employer Identification Number (EIN)" [maxLength]="9" [requiredIndicator]="true"
+            >
+        </compass-ui-text>
+    </div>
+ 
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

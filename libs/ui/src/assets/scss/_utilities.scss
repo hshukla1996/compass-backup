@@ -1,0 +1,46 @@
+
+/* 
+    COMPASS.Web Utilities
+    * created by Corey O'Brien on 3-29-2022
+*/
+
+@use 'color';
+
+/* ++++ Expand Abbreviations on Mobile ++++ */
+abbr[title] {
+    font-weight: 600;
+    color: color.$primary--500;
+}
+
+abbr[title]:after {
+    font-weight: 400;
+    content: " (" attr(title) ")";
+}
+#loginIframe {
+    width: 100%;
+    min-height: 550px;
+}
+
+.bg-muted {
+    background-color: color.$utility--dark-gray;
+}
+@media screen and (min-width: 1025px) {
+    abbr[title] {
+        border-bottom: 0.0625rem dashed color.$primary--600;
+        text-decoration: none !important;
+        cursor: help;
+        &:after {
+            content: "";
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #bdc3c7
+    }
+
+    to {
+        box-shadow: 0 0 0 1.5em rgba(189, 195, 199, 0)
+    }
+}

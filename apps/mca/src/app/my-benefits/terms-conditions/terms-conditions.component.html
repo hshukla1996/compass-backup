@@ -1,0 +1,105 @@
+<h1>Review our Terms and Conditions.</h1>
+<p>This policy addresses the collection, security, access, and use of information that may be collected in your My
+    COMPASS
+    Account. This policy covers the topics below:</p>
+<ul>
+    <li>Information We Collect</li>
+    <li>Access and Disclosure</li>
+    <li> Security</li>
+    <li>Information Disclaimer</li>
+    <li>Penalty for Misuse</li>
+</ul>
+<div class="accordion page-tip mb-3" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Terms & Conditions
+            </button>
+        </h2>
+
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h5>Information Collected</h5>
+                <p>We collect the information below:</p>
+                <ul>
+                    <li>Demographic, financial and medical information</li>
+                    <li>The name of domain; for example, "xcompany.com" if you use a private internet access account, or
+                        "yourschool.edu", if
+                        you are connecting from a university domain</li>
+                    <li>An IP address, a number automatically assigned to your computer when you are using the internet
+                    </li>
+                    <li>The type of browser and operating system used to access our site</li>
+                    <li>The internet address of the website if you linked directly to our site</li>
+                    <li>The links made to other websites through this site</li>
+
+                </ul>
+                <p>This information is collected to allow access to your account, display benefits information, for
+                    statistical analysis,
+                    and quality assurance. This information is not collected or used for commercial marketing purposes.
+                    Information is
+                    retained in accordance with existing laws and other Commonwealth policies.</p>
+                <p>Access and Disclosure</p>
+                <p>Any personally identifiable information (PII) you enter in a user profile will be open and available
+                    to you for review
+                    and updates. Generally, the Department uses information to provide benefits and services. There are
+                    some exceptions. For
+                    more information, see Pennsylvania’s Privacy Policy.</p>
+                <p>Security</p>
+                <p>The Commonwealth has taken steps to safeguard the submission of information by implementing detailed
+                    technology and
+                    security policies. For more information, see Pennsylvania’s Security Policy.</p>
+                <p>You will have the opportunity to enter confidential information to access your current benefit
+                    information. You should
+                    not give your confidential information to anyone. To help protect your information, you should exit
+                    "My COMPASS Account"
+                    when you are finished viewing your account.</p>
+                <p>Information Disclaimer</p>
+                <p>Information provided on "My COMPASS Account" is intended to allow individuals access to their private
+                    and personal
+                    information. While all attempts are made to provide accurate, current and reliable information we
+                    recognize the
+                    possibility of human and/or mechanical error. Therefore, the Department of Human Services denies any
+                    warranty of the
+                    accuracy, reliability or timeliness of any information published by this system and shall not be
+                    held liable for any
+                    losses caused by reliance upon the accuracy, reliability or timeliness of such information. Any
+                    person who relies upon
+                    such information obtained from this system does so at his or her own risk.</p>
+                <p>Penalty for Misuse</p>
+                <p>Misuse of "My COMPASS Account" including inappropriate access to another’s account, knowingly giving
+                    false information,
+                    or any other fraudulent use can result in penalties under Pennsylvania laws.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-checkbox requiredText="This is required."   [isChecked]="termsConditions" id="termsConditions"  (inputModelChange)="onCheckboxChange($event)"  
+    label="I have read, fully understand, and agree to the My COMPASS Account Terms & Conditions.">
+</compass-ui-cw-checkbox>
+<cw-field-error-display [displayError]="displayError" [errorMsg]="errorMessage"></cw-field-error-display>
+
+<!-- <div class="col ">
+   
+    <div class="form-check custom">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        I have read, fully understand, and agree to the My COMPASS Account Terms & Conditions.
+        </label>
+    </div>
+</div> -->
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+            Back
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+           Link Account
+        </button>
+    </div>
+</nav>
+ 

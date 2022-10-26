@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "projects": {
+        "admin": "apps/admin",
+        "admin-e2e": "apps/admin-e2e",
+        "community-partner": "apps/community-partner",
+        "community-partner-e2e": "apps/community-partner-e2e",
+        "data": "libs/data",
+        "home": "apps/home",
+        "home-e2e": "apps/home-e2e",
+        "intake": "apps/intake",
+        "intake-e2e": "apps/intake-e2e",
+        "mca": "apps/mca",
+        "mca-e2e": "apps/mca-e2e",
+        "provider-search": "apps/provider-search",
+        "provider-search-e2e": "apps/provider-search-e2e",
+        "shared-auth": "libs/shared/auth",
+        "shared-common": "libs/shared/common",
+        "shared-controls": "libs/shared/controls",
+        "shared-data-models": "libs/shared/data-models",
+        "sharedauth": "apps/sharedauth",
+        "sharedauth-e2e": "apps/sharedauth-e2e",
+        "ui": "libs/ui"
+    }
+}

@@ -1,0 +1,20 @@
+<div class="text-center">
+        <h1 class="mt-3">Section {{visitCount}} of 8 Visited</h1>
+    </div>
+    <div class="text-center">
+        <i class="fa-light fa-thumbs-up fa-10x icn-ending"></i>
+        <h1 class="mt-3">Great job!</h1>
+    </div>
+    <div class="text-center mt-5">
+        <p>You make this look easy!</p>
+        <p class="fw-bold">
+            Next, we will ask some questions about insurance.
+            </p>
+    </div>
+    <div class="text-center mt-5">
+        <p><a href="#">Save and exit</a> if you’d like to come back later.</p>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="Complete Section"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>
+

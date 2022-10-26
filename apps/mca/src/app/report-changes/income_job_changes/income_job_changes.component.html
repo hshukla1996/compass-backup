@@ -1,0 +1,138 @@
+    <h1>Which of these income changes applies to your household?</h1>
+    <div class="col-12">
+        <div class="alert alert-info d-flex align-items-center">
+            <p>Need more help reporting an income change? 
+            <strong> Call the Statewide Customer Service 
+                Center (CSC) at 1-877-395-8930 or Philadeplhia CSC at 1-215-560-7226</strong>
+            </p>
+        </div>
+    </div>
+    <p class="fw-bold">Select all that apply.</p>
+    <div class="mb-2">
+        <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Change in Wages</h2>
+            <p>The income from your job has changed.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off" >
+                    <label class="btn btn-sm btn-toggle left"
+                    [ngClass] = "{selected : incomeChanges.indexOf('WAGE_CHANGES') > -1}"
+                    (click) = "onRadioSelect('WAGE_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right"
+                    [ngClass] = "{unselected : incomeChanges.indexOf('WAGE_CHANGES') > -1}"
+                    (click) = "onRadioSelect('WAGE_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click) = "onRadioSelect('WAGE_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Loss of Job</h2>
+            <p>You recently lost your job.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('LOSS_OF_JOB') > -1}"
+                        (click)="onRadioSelect('LOSS_OF_JOB', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('LOSS_OF_JOB') > -1}"
+                        (click)="onRadioSelect('LOSS_OF_JOB', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('LOSS_OF_JOB', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Report New Job</h2>
+            <p>You recently started a new job.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('NEW_JOB_CHANGES') > -1}"
+                        (click)="onRadioSelect('NEW_JOB_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('NEW_JOB_CHANGES') > -1}"
+                        (click)="onRadioSelect('NEW_JOB_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('NEW_JOB_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">PA Unemployment</h2>
+            <p>You are reporting new Unemployment Compensation (UC) income or a change to current UC income.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('UNEMPLOYMENT_SCREEN') > -1}"
+                        (click)="onRadioSelect('UNEMPLOYMENT_SCREEN', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('UNEMPLOYMENT_SCREEN') > -1}"
+                        (click)="onRadioSelect('UNEMPLOYMENT_SCREEN', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('UNEMPLOYMENT_SCREEN', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Supplementary Security Income (SSI)</h2>
+            <p>You would like to change or report new Supplementary Security Income (SSI).</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('SSI_CHANGES') > -1}"
+                        (click)="onRadioSelect('SSI_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('SSI_CHANGES') > -1}"
+                        (click)="onRadioSelect('SSI_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('SSI_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Retirement Survivor's and Disability Insurance (RSDI) </h2>
+            <p>You would like to change or report new Retirement Survivor’s and Disability Insurance (RSDI).</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('RSDI_CHANGES') > -1}"
+                        (click)="onRadioSelect('RSDI_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('RSDI_CHANGES') > -1}"
+                        (click)="onRadioSelect('RSDI_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('RSDI_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+    <div class="card col-12 mt-3">
+        <div class="card-body">
+            <h2 class="mb-3">Other Income Changes</h2>
+            <p>You have other income to report. This includes self-employment, new income, income that has changed, income that has
+            ended, or unemployment you receive from another state.</p>
+            <div class="d-flex space-between">
+                <fieldset class="button-group">
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle left" [ngClass]="{selected : incomeChanges.indexOf('OTHER_INCOME_CHANGES') > -1}"
+                        (click)="onRadioSelect('OTHER_INCOME_CHANGES', true)">Yes</label>
+                    <input type="radio" class="btn-check" autocomplete="off">
+                    <label class="btn btn-sm btn-toggle right" [ngClass]="{unselected : incomeChanges.indexOf('OTHER_INCOME_CHANGES') > -1}"
+                        (click)="onRadioSelect('OTHER_INCOME_CHANGES', false)">No</label>
+                </fieldset>
+                <a href="javascript:void(0);" class="hyperlink-lg" (click)="onRadioSelect('OTHER_INCOME_CHANGES', false)">Reset</a>
+            </div>
+        </div>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

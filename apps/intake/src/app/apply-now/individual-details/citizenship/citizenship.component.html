@@ -1,0 +1,183 @@
+<form class="form-horizontal" [formGroup]='citizenshipComponentForm' (ngSubmit)="onSubmit()" autocomplete="off" *ngIf="fieldDisplays">
+      <h1>{{'afscitizenshipInfo' | translate: { name: currentUser.firstName} }}</h1>
+      <div class="alert alert-info">
+        <p>If you answer any of these questions, then all the questions must be answered. You may also go to the next
+          screen instead of answering any questions.</p>
+        <p>Select Next to continue</p>
+      </div>
+      <compass-ui-cw-datepicker
+        [label]="'afswhendidenterthecountry' | translate: { name: currentUser.firstName}"
+        [required]="requiredFields.indexOf('dateEnteredCountry')>-1" ngDefaultControl id="dateEnteredCountry"
+        [formControlName]="'dateEnteredCountry'" [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+        [displayError]="isFieldValid('dateEnteredCountry')" [showError]="isFieldValid('dateEnteredCountry')"
+        [errorMsg]="errorMap('dateEnteredCountry') | translate"
+      showFieldHelpText="MM/DD/YYYY"
+        [isVisible] = "fieldDisplays.dateEnteredCountry">
+      </compass-ui-cw-datepicker>
+      <compass-ui-cw-select [fieldId]="'countryComesFrom'"
+        [fieldLabel]="'afswhatcountrycomefrom' | translate: { name: currentUser.firstName}"
+        requiredText="{{'lblrequired' | translate}}" [FormGroup]="citizenshipComponentForm"
+        [displayError]="isFieldValid('countryComesFrom')" [errorMsg]="errorMap('countryComesFrom')"
+        [requiredIndicator]="requiredFields.indexOf('countryComesFrom')>-1"
+        [isVisible]="fieldDisplays.countryComesFrom">
+        <option value="">- Select One -</option>
+        <option *ngFor="let country of countries" value="{{country.id}}">
+          {{country.displayValue}}</option>
+      </compass-ui-cw-select>
+      <div *ngIf="citizenshipComponentForm.get('countryComesFrom').value === '99'">
+        <compass-ui-text [fieldId]="'countryComesFrom1'" [FormGroup]="citizenshipComponentForm"
+                         [maxLength]="35"
+                         (keypress)="restrictSplCharacters($event)"
+          [isVisible]="fieldDisplays.countryComesFrom"
+          [fieldLabel]="'afswhatcountrycomefrom' | translate: { name: currentUser.firstName}">
+        </compass-ui-text>
+      </div>
+      <compass-ui-text [fieldId]="'regNumber'" [FormGroup]="citizenshipComponentForm"
+        requiredText="{{'lblrequired' | translate}}"
+        [fieldLabel]="'afsRegistrationNumber' | translate: { name: currentUser.firstName}"
+        (keypress)="OnlyAlphaNumbAllowed($event)" [maxLength]="10" [displayError]="isFieldValid('regNumber')"
+        [errorText]="errorMap('regNumber')"
+        [isVisible]="fieldDisplays.regNumber"
+        [requiredIndicator]="requiredFields.indexOf('regNumber')>-1">
+      </compass-ui-text>
+      <compass-ui-cw-select [fieldId]="'docType'" [fieldLabel]="'afsDocType' | translate"
+        requiredText="{{'lblrequired' | translate}}" [FormGroup]="citizenshipComponentForm"
+        [displayError]="isFieldValid('docType')" [errorMsg]="errorMap('docType')"
+        [requiredIndicator]="requiredFields.indexOf('docType')>-1"
+        [isVisible]="fieldDisplays.docType">
+        <option value="">- Select One -</option>
+        <option *ngFor="let docType of docTypes" value="{{docType.id}}">
+          {{docType.displayValue}}</option>
+      </compass-ui-cw-select>
+      <compass-ui-text [fieldId]="'docID'" [FormGroup]="citizenshipComponentForm"
+        requiredText="{{'lblrequired' | translate}}"
+        [fieldLabel]="'afsDocIDNumber' | translate: { name: currentUser.firstName}"
+        [displayError]="isFieldValid('docID')" [errorText]="errorMap('docID')" [maxLength]="docMaxLength"
+        [fieldType]="'documentIdType'"
+                       (keypress)="OnlyAlphaNumbAllowed($event)"
+                       [requiredIndicator]="requiredFields.indexOf('docID')>-1"
+        [isVisible]="fieldDisplays.docID && citizenshipComponentForm.get('docType').value !== '9'">
+      </compass-ui-text>
+
+      <div class="accordion page-tip mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Need help finding your document ID number for your document type?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 15">
+                Other: The Document ID Number is the I-94 Number, if you have one. The I-94 Number must
+                be 11 digits long. If your I-94
+                Number is less than 11 digits, add zeroes to the front of the number so the total is 11 digits.
+                If you do not have an I-94 Number,  leave the Document ID Number field blank.
+              </p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 16">
+                I-20 (Certificate of Eligibility for Non-Immigrant (F-1) Student Status):
+                The Document ID Number is the SEVIS ID. The SEVIS ID must be 10 digits long.
+                <span class="d-block">Note: SEVIS IDs start with the letter N but do not include the N here.</span>
+              </p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 17">
+                DS-2019 (Certificate of Eligibility for Exchange Visitor (J-1) Status):
+                The Document ID Number is the SEVIS ID. The SEVIS ID must be 10 digits long.
+                <span class="d-block">Note: SEVIS IDs start with the letter N but do not include the N here.</span>
+              </p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 18">Machine Readable Immigration Visa (with
+                Temporary I-551) Language: The Document ID Number is the Passport Number.
+                This must be between 6-12 alpha-numeric (letters and numbers) characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 19">
+                Temporary I-551 stamp (on passport or I-94): The Document ID Number is the Passport Number.
+                This must be between 6-12 alpha-numeric (letters and numbers) characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 2">I-551
+                (Permanent Resident Card): The Document ID Number is the Recipient/Card Number.
+                The Recipient/Card Number must be 13 alpha-numeric characters. The first 3 characters are alphabetic
+                (letters).
+                The next 10 characters are numeric (numbers). Example: ABC1234567891
+                Note: Some older cards may not list a card number.
+                If you do not have a card number, enter AAA and 10  zeroes into the Document ID Number field</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 3">I-94: The I-94 Number must be 11 characters
+                long. It will be 9 numbers, followed by a letter in the 10th place, and a
+                number in the 11th place (Example: 123456789A1).
+                If your I-94 Number is less than 11 characters, add zeroes to the front of the number so the total is
+                11. Note: Older
+                I-94s may be 11 characters long and only contain numbers (Example: 12345678911).</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 4">For a Foreign Passport, the Document ID
+                Number is the
+                Passport Number. The Passport Number must be between 6 – 12 alpha number characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 5">
+                I-766: The Document ID Number is the Recipient/ Card Number.
+                The Recipient/Card Number must be 13 alpha-numeric characters. The first 3 characters are alphabetic
+                (letters).
+                The next 10 characters are numeric (numbers). Example: ABC1234567891</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 6">For a Foreign Passport, the Document ID
+                Number is the
+                Passport Number. The Passport Number must be between 6 – 12 alpha number characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 7">For a Foreign Passport, the Document ID
+                Number is the
+                Passport Number. The Passport Number must be between 6 – 12 alpha number characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 8">For a Foreign Passport, the Document ID
+                Number is the
+                Passport Number. The Passport Number must be between 6 – 12 alpha number characters long.</p>
+              <p *ngIf="citizenshipComponentForm.get('docType')?.value == 9">I-571: There is no Document ID Number for
+                this Document Type. Make sure you enter your Alien Registration Number in the
+                Alien Registration Number field and leave the Document ID Number field blank</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <compass-ui-cw-datepicker [required]="requiredFields.indexOf('docExpDate')>-1"
+        [label]="'afsDocExpDate' | translate"
+        ngDefaultControl id="docExpDate" [formControlName]="'docExpDate'" requiredText="{{'lblrequired' | translate}}"
+        [displayError]="isFieldValid('docExpDate')" [showError]="isFieldValid('docExpDate')"
+        [errorMsg]="errorMap('docExpDate') | translate"
+        showFieldHelpText="MM/DD/YYYY"
+        [isHidden] = "!fieldDisplays.docExpDate">
+      </compass-ui-cw-datepicker>
+      <div class="form-group" *ngIf="fieldDisplays.haveASponsor">
+        <fieldset class="button-group standard-mb" >
+          <legend>{{'afsSponsor' | translate: { name: currentUser.firstName} }}</legend>
+          <compass-ui-cw-radiobutton  [showError]="isFieldValid('haveASponsor')"  ngDefaultControl [formControlName]="'haveASponsor'"
+                                      [radioButtonGroupName]="'haveASponsor'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                                      radioLabel="Yes"></compass-ui-cw-radiobutton>
+          <compass-ui-cw-radiobutton
+            [showError]="isFieldValid('haveASponsor')"
+            ngDefaultControl [formControlName]="'haveASponsor'" [required]="true"
+            [radioButtonGroupName]="'haveASponsor'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+            radioLabel="No">
+          </compass-ui-cw-radiobutton>
+
+        </fieldset>
+      </div>
+      <div class="card arrow-card" *ngIf="citizenshipComponentForm.get('haveASponsor').value==='Yes'">
+        <div class="card-body" >
+              <fieldset class="button-group">
+                <input type="radio" class="btn-check" formControlName="sopnsorType" name="sopnsorType" id="individual"
+                  autocomplete="off" value="individual"
+                  required="{{ requiredFields.indexOf('sopnsorType')>-1 || citizenshipComponentForm.get('haveASponsor').value==='Yes' }}">
+                <label class="btn btn-outline-tertiary" for="individual">Individual</label>
+                <input type="radio" class="btn-check" formControlName="sopnsorType" name="sopnsorType" id="organization"
+                  autocomplete="off" value="organization"
+                  required="{{ requiredFields.indexOf('sopnsorType')>-1 || citizenshipComponentForm.get('haveASponsor').value==='Yes' }}">
+                <label class="btn btn-outline-tertiary" for="organization">Organization</label>
+              </fieldset>
+        </div>
+      </div>
+      <nav class="action-bar d-flex justify-content-between">
+        <div>
+          <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            Back
+          </button>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">
+            Next
+          </button>
+        </div>
+      </nav>
+    <!-- </div>
+  </div> -->
+</form>

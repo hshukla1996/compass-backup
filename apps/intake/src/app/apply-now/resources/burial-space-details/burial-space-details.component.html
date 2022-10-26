@@ -1,0 +1,30 @@
+<h1>You told us someone owns a burial space. Tell us about this resource.</h1>
+<p class="alert alert-info">If you own multiple burial spaces at separate cemeteries, only include burial spaces owned
+    from one cemetery at a time.
+
+    Don’t worry, you can add more burial spaces from other cemeteries later if you need to.
+</p>
+<form [formGroup]='burialSpaceDetailsForm'>
+    <compass-ui-text [fieldId]="'numberOfSpaces'" [FormGroup]="burialSpaceDetailsForm"
+        [fieldLabel]="'Burial Spaces Owned'" requiredText="{{'lblrequired' | translate}}">
+    </compass-ui-text>
+
+    <compass-ui-text [fieldId]="'valueofSpaces'" [FormGroup]="burialSpaceDetailsForm"
+        [fieldLabel]="'Burial Space Estimated Value'" requiredText="{{'lblrequired' | translate}}" required="true"
+        [fieldHelpText]="'0.00-999999.99'">
+    </compass-ui-text>
+
+    <p class="alert alert-info">If multiple spaces are owned in this cemetery, enter their combined value.</p>
+
+    <compass-ui-text [fieldId]="'amountOwedOnSpaces'" [FormGroup]="burialSpaceDetailsForm" [fieldLabel]="'Amount Still Owed'"
+        requiredText="{{'lblrequired' | translate}}" required="true" [fieldHelpText]="'0.00-999999.99'">
+    </compass-ui-text>
+
+    <compass-ui-text [fieldId]="'nameofCemetary'" [FormGroup]="burialSpaceDetailsForm" [fieldLabel]="'Cemetery Name'"
+        requiredText="{{'lblrequired' | translate}}">
+    </compass-ui-text>
+
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

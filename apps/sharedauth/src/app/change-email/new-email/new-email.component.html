@@ -1,0 +1,25 @@
+<form [formGroup]="newEmailGroup">
+  <h1>{{ 'sa_changeemailNEtitle' | translate }}</h1>
+<div class="d-flex justify-content-between">
+  <p class="fw-bold">{{ 'sa_changeemailNEtext1' | translate }}</p>
+  <p>{{ email }}</p>
+</div>
+
+<div class="mb-3">
+  <compass-ui-text [fieldId]="'newEmail'" [FormGroup]="newEmailGroup" [fieldLabel]="'sa_changeemailNElbl1' | translate"
+     [displayError]="isFieldInvalid('newEmail')" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+    [errorText]="errorMap('newEmail') | translate" [fieldType]="'emailType'" [maxLength]="newEmailMaxL">
+  </compass-ui-text>
+</div>
+<div class="mb-3">
+  <compass-ui-text [fieldId]="'confirmNewEmail'" [FormGroup]="newEmailGroup" [fieldLabel]="'sa_changeemailNElbl2' | translate"
+     [displayError]="isFieldInvalid('confirmNewEmail')" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+    [errorText]="errorMap('confirmNewEmail') | translate" [fieldType]="'emailType'" [maxLength]="confirmNewEmailMaxL">
+  </compass-ui-text>
+</div>
+
+<compass-ui-cw-dpq-button backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'submitLbl'| translate}}"
+  (back)="cancel()" (next)="submit()">
+</compass-ui-cw-dpq-button>
+
+</form>

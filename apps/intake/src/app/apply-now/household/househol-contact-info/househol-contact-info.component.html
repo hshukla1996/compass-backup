@@ -1,0 +1,126 @@
+<form [formGroup]="householdContInfoForm" (ngSubmit)="onSubmit()">
+        <h1>How can we contact you?</h1>
+
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'mainContact'" [FormGroup]="householdContInfoForm" ngDefaultControl
+                [requiredIndicator]="householdContInfoForm.get('contact').value === 'M' ? true : false"
+                [formControlName]="'mainContact'" fieldHelpText="(XXX)XXX-XXXX" fieldLabel="Main Phone Number" 
+                [errorText]="errorMap('mainContact') ? errorMap('mainContact') : 'Please enter 10 digit phone number'" [maxLength]="14" [type]="'phone'"
+                [displayError]="isFieldValid('mainContact')"
+                (keydown)="OnlyNumberAllowed($event, 'mainContact')">
+            </compass-ui-text>
+        </div>
+        <ng-container *ngIf="MainContactNumberDiv || householdContInfoForm.get('mainContact').value ? householdContInfoForm.get('mainContact').value.length > 0 : ''">
+            <div class="card arrow-card standard-mb">
+                <div class="card-body">
+                    <label class="form-label">Is this a mobile phone?</label>
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check" name="mainContactRad" id="mainContactRadYes" value="Y"
+                            formControlName="mainContactRad" #mainContactRadYes>
+                        <label class="btn btn-sm btn-outline-tertiary" for="mainContactRadYes">Yes</label>
+                        <input type="radio" class="btn-check" name="mainContactRad" id="mainContactRadNo" value="N"
+                            formControlName="mainContactRad" #mainContactRadNo>
+                        <label class="btn btn-sm btn-outline-tertiary" for="mainContactRadNo">No</label>
+                    </fieldset>
+
+                </div>
+            </div>
+        </ng-container>
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'secContact'" [FormGroup]="householdContInfoForm" ngDefaultControl
+                (inputModelChange)="GetVal($event)" [formControlName]="'secContact'"
+                [requiredIndicator]="householdContInfoForm.get('contact').value === 'S' ? true : false"
+                fieldLabel="Second Phone Number" fieldHelpText="(XXX)XXX-XXXX" [maxLength]="14" type="phone"
+                [errorText]="errorMap('secContact') ? errorMap('secContact') : 'Please enter 10 digit phone number'"
+                [displayError]="isFieldValid('secContact')"
+                (keydown)="OnlyNumberAllowed($event, 'secContact')">
+            </compass-ui-text>
+        </div>
+
+
+        <ng-container *ngIf="SecondContactNumberDiv ||  householdContInfoForm.get('secContact').value ? householdContInfoForm.get('secContact').value.length > 0 : ''">
+            <div class="card arrow-card standard-mb">
+                <div class="card-body">
+                    <label>Is this a mobile phone?</label>
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check" name="secContactRad" id="secContactRadYes" value="Y"
+                            formControlName="secContactRad" #mainContactRadYes>
+                        <label class="btn btn-sm btn-outline-tertiary" for="secContactRadYes">Yes</label>
+                        <input type="radio" class="btn-check" name="secContactRad" id="secContactRadNo" value="N"
+                            formControlName="secContactRad" #secContactRadNo>
+                        <label class="btn btn-sm btn-outline-tertiary" for="secContactRadNo">No</label>
+                    </fieldset>
+                </div>
+            </div>
+        </ng-container>
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'othContact'" [FormGroup]="householdContInfoForm" ngDefaultControl
+                [formControlName]="'othContact'"
+                [requiredIndicator]="householdContInfoForm.get('contact').value === 'O' ? true : false"
+                (inputModelChange)="GetValOther($event)" fieldHelpText="(XXX)XXX-XXXX" fieldLabel="Other Phone Number" [maxLength]="14" type="phone"
+                [errorText]="errorMap('othContact') ? errorMap('othContact') : 'Please enter 10 digit phone number'"
+                [displayError]="isFieldValid('othContact')" (keydown)="OnlyNumberAllowed($event, 'othContact')">
+            </compass-ui-text>
+        </div>
+        <ng-container *ngIf="OtherContactNumberDiv || householdContInfoForm.get('othContact').value ? householdContInfoForm.get('othContact').value.length > 0 : ''">
+            <div class="card arrow-card standard-mb">
+                <div class="card-body">
+                    <label>Is this a mobile phone?</label>
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check" name="othContactRad" id="othContactRadYes" value="Y"
+                            formControlName="othContactRad" #mainContactRadYes>
+                        <label class="btn btn-sm btn-outline-tertiary" for="othContactRadYes">Yes</label>
+                        <input type="radio" class="btn-check" name="othContactRad" id="othContactRadNo" value="N"
+                            formControlName="othContactRad" #othContactRadNo>
+                        <label class="btn btn-sm btn-outline-tertiary" for="othContactRadNo">No</label>
+                    </fieldset>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="optionalFields.indexOf('email')>-1">
+            <div class="form-group pt-3">
+                <compass-ui-text [fieldId]="'email'" [FormGroup]="householdContInfoForm" [fieldLabel]="'Email'"
+                    [maxLength]="70" (keypress)="checkEmail($event)"
+                    [requiredIndicator]="householdContInfoForm.get('contact').value === 'E' ? true : false"
+                    [displayError]="isFieldValid('email')"
+                    [errorText]="errorMap('email')">
+                </compass-ui-text>
+            </div>
+            <div class="form-group pt-3">
+    
+                <compass-ui-text 
+                    [displayError]="this.householdContInfoForm.value.email === this.householdContInfoForm.value.confirmEmail ? false : true"
+                    [errorText]="'Confirm email doesn\'t match'"
+                    [fieldId]="'confirmEmail'" [FormGroup]="householdContInfoForm" (keypress)="checkEmail($event)"
+                    [fieldLabel]="'Confirm Email'" [maxLength]="70">
+    
+                </compass-ui-text>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="requiredFields.indexOf('contact')>-1 || optionalFields.indexOf('contact')>-1">
+            <div class="form-group pt-3">
+                <compass-ui-cw-select [fieldId]="'contact'" [requiredIndicator]="requiredFields.indexOf('contact')>-1 ? true : false"
+                    [requiredText]="requiredFields.indexOf('contact')>-1 ? '(required)' : ''"
+                    [fieldLabel]="'What is the best way to contact you if we need to ask more questions?'"
+                    [FormGroup]="householdContInfoForm" 
+                    [displayError]="isFieldValid('contact')"
+                    [errorMsg]="errorMap('contact')">
+                    <option value="" selected>- Select One -</option>
+                    <option *ngFor="let contacts of contact" value="{{contacts.id}}">{{contacts.sf}}</option>
+                </compass-ui-cw-select>
+            </div>
+        </ng-container>
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

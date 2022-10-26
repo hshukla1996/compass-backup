@@ -1,0 +1,51 @@
+<h1>How long have you lived in Pennsylvania?</h1>
+<form [formGroup]="householdLivedForm">
+    <compass-ui-text [fieldId]="'years'" [FormGroup]="householdLivedForm" [fieldLabel]="'Years'"
+        [errorText]="'Enter valid Years'" (inputModelChange)="GetVal()" [maxLength]="3" [fieldType]="'zipCode'">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'months'" [FormGroup]="householdLivedForm" [fieldLabel]="'Months'"
+        [displayError]="householdLivedForm.get('months').value > 11 ? true : false"
+        [errorText]="householdLivedForm.get('months').value > 11 ? 'Please enter only numbers (less than or equal to 11)' : 'Enter valid Months'" (inputModelChange)="GetVal()" (keypress)="OnlyNumberAllowed($event)"
+        (keypress)="OnlyNumberAllowed($event)" [maxLength]="2" [fieldType]="'zipCode'">
+    </compass-ui-text>
+    <ng-container *ngIf="showMonthsMovedIn">
+        <div class="card arrow-card">
+            <div class="px-2 py-2">
+                <div class="form-group pt-3">
+
+                    <compass-ui-cw-datepicker
+                        label="If you have lived here less than two months, what date did you move here?"
+                        ngDefaultControl [formControlName]="'monthsMoved'" [fieldId]="'monthsMoved'" [required]="true"
+                        [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+                        [displayError]="isFieldValid('monthsMoved')"
+                        [showError]="isFieldValid('monthsMoved')"
+                        [errorMsg]="errorMap('monthsMoved') | translate">
+
+                    </compass-ui-cw-datepicker>
+                    <!--
+                            <label class="pb-2 form-label" for="monthsMoved">What date did you move here?</label>
+                        <input type="date" class="form-control"
+                            [ngClass]="{'error': householdLivedForm.get('monthsMoved').invalid && householdLivedForm.get('monthsMoved').touched }"
+                            formControlName="monthsMoved" #monthsMoved [(ngModel)]="householdLived.monthsMoved" [maxRange]="maxDateRange">
+                        <span class="text-danger"
+                            *ngIf="householdLivedForm.get('monthsMoved').invalid && householdLivedForm.get('monthsMoved').touched">
+                            Please enter the date you moved
+                        </span>
+                        -->
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

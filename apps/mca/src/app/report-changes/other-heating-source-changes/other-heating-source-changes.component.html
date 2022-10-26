@@ -1,0 +1,170 @@
+<div class="card-body">
+    <h1 class="mb-3">Tell us about the changes to your other heating source.</h1>
+    <form [formGroup]="otherSourceForm">
+        <compass-ui-cw-select [fieldId]="'heatingSourceType'"
+            fieldLabel="What heating source are you reporting a crisis for?" [requiredText]="'(required)'"
+            [requiredIndicator] = "true"
+            [FormGroup]="otherSourceForm" [errorMsg]="errorMap('heatingSourceType')"
+            [displayError]="isFieldValid('heatingSourceType')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of heatingSources" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <div class="card arrow-card" *ngIf="otherSourceForm.get('heatingSourceType').value === '1'">
+            <div class="card-body">
+                <label class="form-label">Select the changes that apply. <span>(required)</span></label>
+                <div class="mb-2">
+                    <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off')"
+                        [checked]="selectedOptions.indexOf('shut-off') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Electricity is shut off
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('not-working')"
+                        [checked]="selectedOptions.indexOf('not-working') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Main heating source is not working
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off-notice')"
+                        [checked]="selectedOptions.indexOf('shut-off-notice') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Have a shut-off notice for electricity
+                    </label>
+                </div>
+                <compass-ui-cw-datepicker [formControlName]="'shutOffNoticeDate'" ngDefaultControl
+                    requiredText="{{'lblrequired' | translate}}" [required]="true"
+                    [displayError]="isFieldValid('shutOffNoticeDate')" [showError]="isFieldValid('shutOffNoticeDate')"
+                    [errorMsg]="errorMap('shutOffNoticeDate')" [fieldId]="'shutOffNoticeDate'"
+                    label="What is the date of the shut-off notice?" helpText="MM/DD/YYYY">
+                </compass-ui-cw-datepicker>
+                <div class="mb-3" [formGroup]="otherSourceForm">
+                    <label class="form-label" for="othHouSituation">Tell us more about this, if needed.</label>
+                    <textarea id="taothHouSituation" type="text" formControlName="tellUsMore" class="form-control"
+                        aria-describedby="taReasonHelp" required maxlength="255" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card arrow-card" *ngIf="otherSourceForm.get('heatingSourceType').value === '2'">
+            <div class="card-body">
+                <label class="form-label">Select the changes that apply.<span>(required)</span></label>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off')"
+                        [checked]="selectedOptions.indexOf('shut-off') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Ran out of fuel
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('not-working')"
+                        [checked]="selectedOptions.indexOf('not-working') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Main heating source is not working
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off-notice')"
+                        [checked]="selectedOptions.indexOf('shut-off-notice') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Will run out of fuel within 15 days
+                    </label>
+                </div>
+                <compass-ui-text [fieldId]="'daysOfFuelLeft'" [FormGroup]="otherSourceForm" [fieldLabel]="'How many days of fuel are left?'"
+                    [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('daysOfFuelLeft')"
+                    [errorMsg]="errorMap('daysOfFuelLeft')" [errorText]="errorMap('daysOfFuelLeft')" [maxLength]="5" (keypress)="onlyNumberAllowed($event)">
+                </compass-ui-text>
+                <div class="mb-3" [formGroup]="otherSourceForm">
+                    <label class="form-label" for="othHouSituation">Tell us more about this, if needed..</label>
+                    <textarea id="taothHouSituation" type="text" class="form-control" aria-describedby="taReasonHelp"
+                        formControlName="tellUsMore" required maxlength="255" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card arrow-card" *ngIf="otherSourceForm.get('heatingSourceType').value === '4'">
+            <div class="card-body">
+                <label class="form-label">Select the changes that apply. <span>(required)</span></label>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off')"
+                        [checked]="selectedOptions.indexOf('shut-off') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Gas is shut off
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('not-working')"
+                        [checked]="selectedOptions.indexOf('not-working') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Main heating source is not working
+                    </label>
+                </div>
+                <div class="form-check custom mb-3">
+                    <input class="form-check-input" type="checkbox" (change)="onCheckboxChange('shut-off-notice')"
+                        [checked]="selectedOptions.indexOf('shut-off-notice') !== -1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Have a shut-off notice for gas
+                    </label>
+                </div>
+                <compass-ui-cw-datepicker [formControlName]="'shutOffNoticeDate'" ngDefaultControl
+                    requiredText="{{'lblrequired' | translate}}" [required]="true" [displayError]="isFieldValid('shutOffNoticeDate')"
+                    [showError]="isFieldValid('shutOffNoticeDate')" [errorMsg]="errorMap('shutOffNoticeDate') | translate"
+                    [fieldId]="'shutOffNoticeDate'" label="What is the date of the shut-off notice?" helpText="MM/DD/YYYY">
+                </compass-ui-cw-datepicker>
+                <div class="mb-3" [formGroup]="otherSourceForm">
+                    <label class="form-label" for="othHouSituation">Tell us more about this, if needed.</label>
+                    <textarea id="taothHouSituation" type="text" class="form-control" aria-describedby="taReasonHelp"
+                        formControlName="tellUsMore" required maxlength="255" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <compass-ui-cw-select [fieldId]="'providerName'" fieldLabel="Name of the utility company or fuel dealer you are reporting a crisis
+                for" [requiredIndicator] = "true"
+            [requiredText]="'(required)'" [FormGroup]="otherSourceForm" [errorMsg]="errorMap('providerName')"
+            [displayError]="isFieldValid('providerName')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of electricCompanies" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <!-- <div class="card arrow-card" *ngIf="providerName === 'other'">
+            <div class="card-body">
+                <compass-ui-text [fieldId]="'provider'" [FormGroup]="otherSourceForm"
+                    [fieldLabel]="'Other Provider Name'" formControlName="accountNumber" [requiredText]="'(required)'"
+                    [requiredIndicator]="true">
+                </compass-ui-text>
+            </div>
+        </div> -->
+        <compass-ui-text [fieldId]="'accountNumber'" [FormGroup]="otherSourceForm" [fieldLabel]="'What is the account number you have with the provider you selected? for'"
+            [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('accountNumber')"
+            [errorMsg]="errorMap('accountNumber')" [errorText]="errorMap('accountNumber')" [maxLength]="26"
+            [fieldType]="'text'">
+        </compass-ui-text>
+        <div class="col-12 mb-3">
+            <label class="form-label">Whose name is on the account that needs to be paid?<span>(required)</span></label>
+            <select class="form-select" aria-label="select element">
+                <option selected>-Select One-</option>
+                <option value="company-1">Company -1 </option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <!-- <div class="card arrow-card" *ngIf="name === 'other'">
+            <div class="card-body">
+                <compass-ui-text [fieldId]="'provider'" [FormGroup]="otherSourceForm"
+                    [fieldLabel]="'What is the name of account holder?'" [requiredText]="'(required)'"
+                    [requiredIndicator]="true">
+                </compass-ui-text>
+            </div>
+        </div> -->
+        <div class="col-12 mb-3">
+            <compass-ui-text [fieldId]="'provider'" [FormGroup]="otherSourceForm"
+                [fieldLabel]="'What is the account holder\'s name?'" [requiredText]="'(required)'"
+                [requiredIndicator]="true">
+            </compass-ui-text>
+        </div>
+    </form>
+
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

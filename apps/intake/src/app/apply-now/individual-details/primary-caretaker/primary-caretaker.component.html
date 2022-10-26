@@ -1,0 +1,28 @@
+<form class="form-horizontal" [formGroup]='primaryCaretakerForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>We need information about {{currentUser.firstName}}’s primary caretaker.</h1>
+  <compass-ui-cw-select [fieldId]="'primaryCaretaker'"
+    [fieldLabel]="'afsPrimaryCaretaker' | translate: { name: currentUser.firstName}"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="primaryCaretakerForm"
+    [displayError]="isFieldValid('primaryCaretaker')" [errorMsg]="errorMap('primaryCaretaker')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let primaryCaretaker of elders" value="{{primaryCaretaker.id}}">
+      {{primaryCaretaker.firstName}}</option>
+  </compass-ui-cw-select>
+  <div class="alert alert-info d-flex align-items-center">
+    <p>A primary caretaker can be a parent, a grandparent, a guardian, or anyone else in the household who has care and
+      control. In 50/50 custody situations, the parent who applies for health care coverage for the child first is
+      considered the primary caretaker.</p>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

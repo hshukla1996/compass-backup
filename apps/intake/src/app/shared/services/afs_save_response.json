@@ -1,0 +1,813 @@
+{
+    "id": 0,
+    "sectionName": "string",
+    "workFlowType": "string",
+    "household": {
+        "applicantAddress": {
+            "addressLine1": "string",
+            "addressline2": "string",
+            "city": "string",
+            "state": "string",
+            "zip": "string",
+            "zipExtension": "string",
+            "county": "string",
+            "isThisAddressEffectiveImmediately": true,
+            "addressEffectiveDate": "string"
+        },
+        "currentLivingSituation": "string",
+        "currentHousingSituation": "string",
+        "otherCurrentHousingSituation": "string",
+        "electricityProviderInformation": {
+            "electricityProviderName": "string",
+            "accountNumberWithElectricityProvider": "string"
+        },
+        "appliedBenefitsWithDifferentNameOrSSN": "string",
+        "doYouReceiveUtilityAllowanceCheck": "string",
+        "howMuchAllowanceCheck": "string",
+        "disqualifiedForAssistance": "string",
+        "foodStamps": {
+            "shelterLiving": "string",
+            "hasReceivedFoodStamps": "string",
+            "incomeLowEnough": "string",
+            "totalAssets": "string",
+            "householdSchoolDistrict": "string",
+            "cityTownship": "string",
+            "rentExceedsIncome": "string"
+        },
+        "foodStampRepresentativeInformation": {
+            "foodStampsRepresentativeAvailable": "string",
+            "foodStampRepresentativeName": "string",
+            "socialSecurityNumber": "string",
+            "foodStampRepresentativeAddress": {
+                "addressLine1": "string",
+                "addressline2": "string",
+                "city": "string",
+                "state": "string",
+                "zip": "string",
+                "zipExtension": "string",
+                "county": "string",
+                "isThisAddressEffectiveImmediately": true,
+                "addressEffectiveDate": "string"
+            },
+            "phoneNumber": "string"
+        },
+        "additionalInformation": {
+            "doesAnyChildUnder21HaveParentNotLivingInHouseholdOrDeceased": "string",
+            "anyoneHasASpouseNotLivingInHouseholdOrDeceased": "string",
+            "doesAnyoneNeedHelpForChildSupportOrInsuranceFromAbsentRelative": "string"
+        },
+        "additionalDetails": {
+            "doesAnyOneHavePermanentDisability": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "doesAnyoneRequiresHealthSustainingMedication": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasAnyoneReceivedSSIInThePast": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "receivingTANF": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "receivedTANFInPasts6Months": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "receivingFS": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasAnyoneReceivedSSDInThePast": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "anyoneHasPaidMedicalBills": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasAnyoneInHouseholdLostTheirJobORHadWorkHoursReduced": "string",
+            "anyoneDisabledBlindSeriouslyIllOrHasAlcoholOrDrugProblem": "string",
+            "anyoneReceivingTreatmentForAlcoholOrDrugProblem": "string",
+            "anyoneReceivingProtectiveServicesAsVictimOfDomesticViolence": "string",
+            "whoHasBeenIssuedASummons": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            }
+        },
+        "fromHowManyYearsAtThisAddress": "string",
+        "fromHowManyMonthsAtThisAddress": "string",
+        "mainContactNumber": {
+            "phoneNumber": "string",
+            "isMobileNumber": true
+        },
+        "secondContactNumber": {
+            "phoneNumber": "string",
+            "isMobileNumber": true
+        },
+        "otherContactNumber": {
+            "phoneNumber": "string",
+            "isMobileNumber": true
+        },
+        "waterInformation": {
+            "isDrinkingWaterIncludedInRent": true,
+            "isWasteWaterIncludedInRent": true,
+            "whatWaterSourceToBePaid": "string"
+        },
+        "emailAddress": "string",
+        "bestTimeToCall": "string",
+        "howToContact": "string",
+        "previousPhoneNumber": "string",
+        "previousAddress": {
+            "addressLine1": "string",
+            "addressline2": "string",
+            "city": "string",
+            "state": "string",
+            "zip": "string",
+            "zipExtension": "string",
+            "county": "string",
+            "isThisAddressEffectiveImmediately": true,
+            "addressEffectiveDate": "string"
+        },
+        "numberOfYearsInPA": "string",
+        "numberOfMonthsInPA": "string",
+        "haveYouReceivedBenefitsInPA": "string",
+        "previousCaseRecordNumber": "string",
+        "previousBenefitsInformation": {
+            "previousStateBenefitDescription": "string",
+            "previousCountyBenefitDescription": "string"
+        },
+        "mailingAddress": {
+            "addressLine1": "string",
+            "addressline2": "string",
+            "city": "string",
+            "state": "string",
+            "zip": "string",
+            "zipExtension": "string",
+            "county": "string",
+            "isThisAddressEffectiveImmediately": true,
+            "addressEffectiveDate": "string"
+        },
+        "doYouPreferSeperateMailingAddress": "string",
+        "isEveryoneApplyingForLI": "string",
+        "nursingHomeInformation": {
+            "previouslyLivedInNursingFacility": "string",
+            "nursingFacilityName": "string",
+            "address": {
+                "addressLine1": "string",
+                "addressline2": "string",
+                "city": "string",
+                "state": "string",
+                "zip": "string",
+                "zipExtension": "string",
+                "county": "string",
+                "isThisAddressEffectiveImmediately": true,
+                "addressEffectiveDate": "string"
+            },
+            "nursingFacilityStartDate": "string",
+            "nursingFacilityEndDate": "string"
+        },
+        "whoHasBeenConvictedAFelony": {
+            "code": "string",
+            "individualNumbers": ["string"]
+        },
+        "whoWasConvictedForWelfareFraud": {
+            "code": "string",
+            "individualNumbers": ["string"]
+        },
+        "whoIsOnProbationOrParole": {
+            "code": "string",
+            "individualNumbers": ["string"]
+        },
+        "whoIsCurrentlyFleeingFromLawEnforcementOfficials": {
+            "code": "string",
+            "individualNumbers": ["string"]
+        },
+        "isAnyoneCurrentlyIncarcerated": "string",
+        "resources": {
+            "hasMemberReceivedLongTermCare": "string"
+        },
+        "income": {
+            "currentEmployment": {
+                "code": "string",
+                "individualNumbers": ["string"],
+                "endDated": "string"
+            },
+            "pastEmployment": {
+                "code": "string",
+                "individualNumbers": ["string"],
+                "endDated": "string"
+            },
+            "otherIncome": {
+                "code": "string",
+                "individualNumbers": ["string"],
+                "endDated": "string"
+            },
+            "doesAnyoneReceiveFinancialAssistanceForDisability": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "noIncomeExplanation": "string"
+        },
+        "expenses": {
+            "housingAssistanceCode": 0,
+            "isWeatherizationSelected": "string",
+            "canDHSShareInformation": "string",
+            "utilityExpenseInformation": {
+                "primaryHeatingSourceInformation": {
+                    "heatingSourceCode": 0,
+                    "providerNumber": "string",
+                    "providerName": "string",
+                    "otherProviderName": "string",
+                    "accountNumberWithHeatingProvider": "string"
+                },
+                "heatingSourceAccountHolderInformation": {
+                    "individualNumber": "string",
+                    "otherNameOnTheAccount": "string"
+                },
+                "withoutHeatingSourceOrWithin15Days": [0],
+                "withoutHeatingSourceOrWithin15DaysDescription": "string",
+                "anyOtherHeatingSource": 0,
+                "utilityOrFuelCompanyAddress": {
+                    "addressLine1": "string",
+                    "addressline2": "string",
+                    "city": "string",
+                    "state": "string",
+                    "zip": "string",
+                    "zipExtension": "string",
+                    "county": "string",
+                    "isThisAddressEffectiveImmediately": true,
+                    "addressEffectiveDate": "string"
+                },
+                "payForHeatingOrCooling": "string",
+                "billedSeparatelyForHeatingOrCooling": "string",
+                "utilities": {
+                    "doesAnyonePayForRentOrMortgage": {
+                        "code": "string",
+                        "amount": "string",
+                        "frequency": "string",
+                        "condoFeesAmount": "string",
+                        "condoFeesFrequency": "string",
+                        "lotRentForMobileHomeAmount": "string",
+                        "lotRentForMobileHomeFrequency": "string"
+                    },
+                    "doesAnyonePayForPropertyTaxes": {
+                        "code": "string",
+                        "amount": "string",
+                        "frequency": "string"
+                    },
+                    "doesAnyonePayForHomeInsurance": {
+                        "code": "string",
+                        "amount": "string",
+                        "frequency": "string"
+                    },
+                    "doesAnyonePayForElectric": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForGas": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForOilCoalWood": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForWater": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForSewerage": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForGarbage": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForUtilityInstallationThisMonth": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForOtherUtilities": {
+                        "code": "string"
+                    },
+                    "doesAnyonePayForTelephone": {
+                        "code": "string"
+                    }
+                }
+            },
+            "hasMemberPaysShelterOrUtilityExpenses": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasMembersPaysChildSupportToNonMember": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasMembersPaysAlimonyToNonMember": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "hasMembersPaidMedicalLastNintyDays": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "houseHoldShareExpense": "string",
+            "didTheHouseholdGetEnergyAssistanceSinceOctoberFirst": "string",
+            "hasMemberDrivesOrPaysWorkTransportation": {
+                "code": "string",
+                "individualNumbers": ["string"]
+            },
+            "waterSourceInformation": {
+                "shutOffConditionInformation": [0],
+                "otherShutOffCondition": "string"
+            },
+            "mealsIncludedInRent": "string",
+            "nonMember": [
+                {
+                    "withWhomExpensesAreShared": "string",
+                    "sharedExpenseType": "string",
+                    "sharedExpenseAmount": "string",
+                    "contributionFrequency": "string"
+                }
+            ]
+        },
+        "residentialAddressGISValidation": "string",
+        "insurance": {
+            "doesAnyoneHaveHealthInsurance": "string",
+            "didAnyoneApplyingForHaveHealthInsuranceInLast90Days": "string",
+            "insurances": [
+                {
+                    "policyHolderIndividualNumber": "string",
+                    "coverage": ["string"],
+                    "insuranceCompany": {
+                        "insuranceCompanyName": "string",
+                        "address": {
+                            "addressLine1": "string",
+                            "addressline2": "string",
+                            "city": "string",
+                            "state": "string",
+                            "zip": "string",
+                            "zipExtension": "string",
+                            "county": "string",
+                            "isThisAddressEffectiveImmediately": true,
+                            "addressEffectiveDate": "string"
+                        },
+                        "phoneNumber": "string"
+                    },
+                    "benefits": ["string"],
+                    "policyHolderAddress": {
+                        "addressLine1": "string",
+                        "addressline2": "string",
+                        "city": "string",
+                        "state": "string",
+                        "zip": "string",
+                        "zipExtension": "string",
+                        "county": "string",
+                        "isThisAddressEffectiveImmediately": true,
+                        "addressEffectiveDate": "string"
+                    },
+                    "policyTypes": ["string"],
+                    "policyNumber": "string",
+                    "groupNumber": "string",
+                    "premiumAmount": "string",
+                    "howOftenThePremiumIsPaid": "string",
+                    "policyStartDate": "2022-08-25T20:57:31.934Z",
+                    "policyEndDate": "2022-08-25T20:57:31.934Z",
+                    "reasonForFutureLossHealthInsurance": "string",
+                    "employerStoppedCoverageChildrenLostInsurance": "string",
+                    "reasonForLosingHealthInsurance": "string"
+                }
+            ],
+            "hasMemberCanGetInsuranceThroughJob": "string",
+            "employerOfferedInsurances": [
+                {
+                    "individualNumber": "string",
+                    "sequenceNumber": "string",
+                    "otherEmployerName": "string",
+                    "employerIdNumber": "string",
+                    "address": {
+                        "addressLine1": "string",
+                        "addressline2": "string",
+                        "city": "string",
+                        "state": "string",
+                        "zip": "string",
+                        "zipExtension": "string",
+                        "county": "string",
+                        "isThisAddressEffectiveImmediately": true,
+                        "addressEffectiveDate": "string"
+                    },
+                    "employerPhone": "string",
+                    "employerContactInformation": {
+                        "name": "string",
+                        "phone": "string",
+                        "phoneExtension": "string",
+                        "email": "string"
+                    },
+                    "eligibleThreeMonths": "string",
+                    "eligibleDate": "2022-08-25T20:57:31.934Z",
+                    "coveredByEmployerInsuranceIndividuals": ["string"],
+                    "employerPlanMinValueStandard": "string",
+                    "currentEmployeePremiumCostField": "string",
+                    "currentEmployeePremiumFrequency": "string",
+                    "employerPlanChangeSoon": "string",
+                    "whenWillEmployersPlanChange": "2022-08-25T20:57:31.934Z",
+                    "whatWillChangeEmployerPlan": "string"
+                }
+            ],
+            "individualHaveToPayForIt": "string",
+            "employeeCostOfCoverage": "string",
+            "frequencyOfPayForEmployerCoverage": "string"
+        }
+    },
+    "people": {
+        "individuals": [
+            {
+                "firstName": "string",
+                "lastName": "string",
+                "middleInitial": "string",
+                "suffix": "I",
+                "birthDate": "2022-08-25T20:57:31.934Z",
+                "gender": "F",
+                "isThisIndividualOutsideHousehold": "string",
+                "isThisPersonAStudent": "string",
+                "isThisPersonASpouseWidowParentORMinorChildOfAVeteran": "string",
+                "maritalStatus": "string",
+                "spouseName": "string",
+                "spouseDeathDate": "string",
+                "separationDate": "string",
+                "socialSecurityNumber": "string",
+                "filingStatus": "string",
+                "raceInformation": ["BlackOrAfricanAmerican"],
+                "hispanicOrigin": "string",
+                "isVictimOfDomesticViolence": "string",
+                "hasAliasOrMaidenName": "string",
+                "aliasMaidenNameORFormerMarriedName": "string",
+                "highestGradeLevelCompleted": "string",
+                "fsOrTANFCaseNumber": "string",
+                "fstanfIndividualEBTNumber": "string",
+                "reviewedForFamilyPlanningServices": "string",
+                "agreeToFamilyPlanningServiceOnly": "string",
+                "isAfraidOfPhysicalOrEmotionalOrOtherHarm": "string",
+                "isHomeless": "string",
+                "migrantOrSeasonalWorker": "string",
+                "interestedToVote": "string",
+                "veteranRelationInformation": {
+                    "veteranName": "string",
+                    "status": "string",
+                    "branchOfService": "string",
+                    "dateVeteranEntered": "string",
+                    "dateVeteranLeft": "string",
+                    "verteranClaimNumber": "string"
+                },
+                "veteran": {
+                    "status": "string",
+                    "branchOfService": "string",
+                    "dateVeteranEntered": "string",
+                    "dateVeteranLeft": "string",
+                    "verteranClaimNumber": "string"
+                },
+                "education": {
+                    "schoolName": "string",
+                    "typeOfSchool": "string",
+                    "schoolCounty": "string",
+                    "schoolDistrict": "string",
+                    "schoolBuilding": "string",
+                    "partTimeOrFullTime": "string",
+                    "requiresChildCare": "string",
+                    "expectedGraduationDate": "string",
+                    "currentGrade": "string",
+                    "charterOrPrivateSchoolType": "string",
+                    "aunNumber": "string"
+                },
+                "isIndividualBeingClaimedAsTaxDependent": {
+                    "code": "string",
+                    "individualNumber": "string"
+                },
+                "citizenship": {
+                    "birthFirstName": "string",
+                    "birthLastName": "string",
+                    "birthState": "string",
+                    "birthCounty": "string",
+                    "citizenshipCode": "Item0",
+                    "birthCity": "string",
+                    "mothersMaidenFirstName": "string",
+                    "mothersMaidenLastName": "string",
+                    "dateEnteredUS": "string",
+                    "country": "string",
+                    "otherCountry": "string",
+                    "alienRegistrationNumber": "string",
+                    "documentType": "Item2",
+                    "documentIDNumber": "string",
+                    "documentID": "string",
+                    "i94DocumentNumber": "string",
+                    "i551CardNumber": "string",
+                    "passportNumber": "string",
+                    "passportExpirationDate": "string",
+                    "insSection": "string",
+                    "insDocument": "string",
+                    "otherDocument": "string",
+                    "identification": {
+                        "name": "string",
+                        "licensedState": "string",
+                        "driversLicenceNumberOrStateId": "string"
+                    },
+                    "sponsor": {
+                        "typeSpecified": true,
+                        "sponsorOrganizationName": "string",
+                        "firstName": "string",
+                        "middleInitial": "string",
+                        "lastName": "string",
+                        "address": {
+                            "addressLine1": "string",
+                            "addressline2": "string",
+                            "city": "string",
+                            "state": "string",
+                            "zip": "string",
+                            "zipExtension": "string",
+                            "county": "string",
+                            "isThisAddressEffectiveImmediately": true,
+                            "addressEffectiveDate": "string"
+                        },
+                        "haveASponsorSpecified": true
+                    }
+                },
+                "relationships": [
+                    {
+                        "code": "X",
+                        "individualNumber": "string"
+                    }
+                ],
+                "representativeContactInformation": {
+                    "hasRepresentativeAttorneyOrContact": "string",
+                    "isAttendingTraining": "string",
+                    "representativeContactPersons": [
+                        {
+                            "sequenceNumber": "string",
+                            "sequenceNumberSpecified": true,
+                            "partOfHousehold": {
+                                "individualNumber": "string"
+                            },
+                            "roles": ["C"],
+                            "firstName": "string",
+                            "middleInitial": "string",
+                            "lastName": "string",
+                            "suffix": "string",
+                            "relationshipToIndividual": "string",
+                            "dateOfBirthSpecified": true,
+                            "homePhoneNumber": "string",
+                            "workPhone": "string",
+                            "otherPhoneNumber": "string",
+                            "preferredMethodOfContact": "string",
+                            "emailAddress": "string",
+                            "bestTimeToCall": "string",
+                            "contactNotes": "string",
+                            "address": {
+                                "addressLine1": "string",
+                                "addressline2": "string",
+                                "city": "string",
+                                "state": "string",
+                                "zip": "string",
+                                "zipExtension": "string",
+                                "county": "string",
+                                "isThisAddressEffectiveImmediately": true,
+                                "addressEffectiveDate": "string"
+                            }
+                        }
+                    ]
+                },
+                "incarcerated": {
+                    "countyOfPlacement": "string",
+                    "incarceratedAdmissionDate": "string",
+                    "incarceratedDischargeDate": "string"
+                },
+                "medicalConditions": {
+                    "disabilityDescription": "string",
+                    "disabilityOninitDate": "string",
+                    "medicalConditionsDisability": "string",
+                    "childDisability": "string",
+                    "affectsAbilitytoWork": "string",
+                    "affectsAbilitytoCare": "string",
+                    "receivingDisabilityIncome": "string",
+                    "developmentalAge": 0
+                },
+                "individualExistingBenefits": {
+                    "wasSSIStoppedBecauseSocialSecurityStarted": "string",
+                    "wasSSIStoppedBecauseSocialSecurityIncreased": "string"
+                },
+                "benefitsNotReceivedInformation": {
+                    "hasAppliedForBenefitButNotReceived": "string",
+                    "benefits": [
+                        {
+                            "hashKey": "string",
+                            "code": "string",
+                            "dateApplied": "string",
+                            "howMuch": "string",
+                            "expectedDate": "string"
+                        }
+                    ]
+                },
+                "trainingInformation": {
+                    "isAttendingTraining": "string",
+                    "trainings": [
+                        {
+                            "trainingInstitute": "string",
+                            "trainingStartDate": "string",
+                            "trainingEndDate": "string",
+                            "estimatedHoursPerWeekCount": "string"
+                        }
+                    ]
+                },
+                "appliedBenefits": [
+                    {
+                        "benefitName": "HC",
+                        "isThisRenewal": "string",
+                        "isThisProgramSentByTarget": "string",
+                        "renewalDueDate": "2022-08-25T20:57:31.935Z",
+                        "beginDate": "2022-08-25T20:57:31.935Z"
+                    }
+                ],
+                "howManyBabiesExpected": "Item1",
+                "isthePersonLivingIndicator": "string",
+                "individualNumber": "string",
+                "individualIncome": {
+                    "currentEmployment": [
+                        {
+                            "isSelfEmployment": "string",
+                            "name": "string",
+                            "address": {
+                                "addressLine1": "string",
+                                "addressline2": "string",
+                                "city": "string",
+                                "state": "string",
+                                "zip": "string",
+                                "zipExtension": "string",
+                                "county": "string",
+                                "isThisAddressEffectiveImmediately": true,
+                                "addressEffectiveDate": "string"
+                            },
+                            "phoneNumber": "string",
+                            "startDate": "2022-08-25T20:57:31.935Z",
+                            "onStrike": "string",
+                            "numberOfHoursWorkedPerWeek": 0,
+                            "frequency": "Item1",
+                            "grossIncome": "string",
+                            "payRate": "string",
+                            "mostRecentPayDate": "2022-08-25T20:57:31.935Z"
+                        }
+                    ],
+                    "pastEmployment": [
+                        {
+                            "name": "string",
+                            "address": {
+                                "addressLine1": "string",
+                                "addressline2": "string",
+                                "city": "string",
+                                "state": "string",
+                                "zip": "string",
+                                "zipExtension": "string",
+                                "county": "string",
+                                "isThisAddressEffectiveImmediately": true,
+                                "addressEffectiveDate": "string"
+                            },
+                            "phoneNumber": "string",
+                            "startDate": "2022-08-25T20:57:31.935Z",
+                            "endDate": "2022-08-25T20:57:31.935Z",
+                            "numberOfHoursWorkedPerWeek": 0,
+                            "mostRecentPayDate": "2022-08-25T20:57:31.935Z"
+                        }
+                    ],
+                    "otherIncome": [
+                        {
+                            "incomeType": "string",
+                            "otherIncomeDescription": "string",
+                            "frequency": "Item1",
+                            "grossIncome": "string",
+                            "mostRecentPayDate": "2022-08-25T20:57:31.935Z",
+                            "nameOfFinancialInstitution": "string",
+                            "address": {
+                                "addressLine1": "string",
+                                "addressline2": "string",
+                                "city": "string",
+                                "state": "string",
+                                "zip": "string",
+                                "zipExtension": "string",
+                                "county": "string",
+                                "isThisAddressEffectiveImmediately": true,
+                                "addressEffectiveDate": "string"
+                            }
+                        }
+                    ]
+                },
+                "wereYouinFosterCareatAge18orOlder": "string",
+                "isFosterChild": "string",
+                "isHeadOfHousehold": "string",
+                "expense": {
+                    "childSupportExpenses": [
+                        {
+                            "amountOfSupportOrder": "string",
+                            "amountActuallyPaid": "string",
+                            "frequency": "string"
+                        }
+                    ],
+                    "alimonyExpenses": [
+                        {
+                            "amountActuallyPaid": "string",
+                            "frequency": "string"
+                        }
+                    ],
+                    "medicalExpenses": [
+                        {
+                            "willExpensesContinue": "string",
+                            "subExpenseType": "string",
+                            "amountActuallyPaid": "string",
+                            "frequency": "string"
+                        }
+                    ]
+                }
+            }
+        ],
+        "absentRelatives": [
+            {
+                "firstName": "string",
+                "lastName": "string",
+                "middleInitial": "string",
+                "suffix": "string",
+                "deceased": "string",
+                "dateOfBirth": "2022-08-25T20:57:31.935Z",
+                "socialSecurityNumber": "string",
+                "isThisPersonSpouseParentOrBothOfTheHouseholdMember": "string",
+                "gender": "string",
+                "raceInformation": ["BlackOrAfricanAmerican"],
+                "hispanicOrigin": "string",
+                "address": {
+                    "addressLine1": "string",
+                    "addressline2": "string",
+                    "city": "string",
+                    "state": "string",
+                    "zip": "string",
+                    "zipExtension": "string",
+                    "county": "string",
+                    "isThisAddressEffectiveImmediately": true,
+                    "addressEffectiveDate": "string"
+                },
+                "phoneNumber": "string",
+                "employer": {
+                    "employerName": "string",
+                    "address": {
+                        "addressLine1": "string",
+                        "addressline2": "string",
+                        "city": "string",
+                        "state": "string",
+                        "zip": "string",
+                        "zipExtension": "string",
+                        "county": "string",
+                        "isThisAddressEffectiveImmediately": true,
+                        "addressEffectiveDate": "string"
+                    },
+                    "employerPhoneNumber": "string",
+                    "employerPhoneNumberExtension": "string"
+                },
+                "relationships": ["string"],
+                "childSupport": {
+                    "payForChildSupport": "string",
+                    "courtOrderedOrVoluntary": "string",
+                    "voluntaryChildSupportAmount": 0,
+                    "voluntaryChildSupportAmountFrequency": "string",
+                    "lastDatePaidVoluntaryChildSupport": "2022-08-25T20:57:31.935Z",
+                    "voluntaryChildSupportPaidToWhom": "string",
+                    "courtOrder": {
+                        "courtName": "string",
+                        "courtOrderNumber": "string",
+                        "courtOrderChildSupportAmount": "string",
+                        "courtOrderChildSupportAmountFrequency": "string",
+                        "specialTerms": "string"
+                    }
+                },
+                "nonResidentialProperty": {
+                    "ownNonResidentialProperty": "string",
+                    "datePurchased": "2022-08-25T20:57:31.935Z",
+                    "marketValue": "string",
+                    "address": {
+                        "addressLine1": "string",
+                        "addressline2": "string",
+                        "city": "string",
+                        "state": "string",
+                        "zip": "string",
+                        "zipExtension": "string",
+                        "county": "string",
+                        "isThisAddressEffectiveImmediately": true,
+                        "addressEffectiveDate": "string"
+                    }
+                }
+            }
+        ]
+    },
+    "passwordAndHintQuestions": {
+        "password": "string",
+        "reEnterPassword": "string",
+        "hintQuestionAndAnswers": [
+            {
+                "question": "string",
+                "answer": "string"
+            }
+        ]
+    }
+}

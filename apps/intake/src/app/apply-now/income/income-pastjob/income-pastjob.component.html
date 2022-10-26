@@ -1,0 +1,16 @@
+<h1 class="standard-mb"> You told us someone had a job they stopped working in the past 30 days. Tell us who.</h1>
+<p class="form-subtitle standard-mb">Select all that apply.</p>
+<form [formGroup]="incomePastJobForm">
+    <cw-field-error-display [displayError]="displayError" errorMsg="{{'diqSelectOneOption' | translate}}">
+    </cw-field-error-display>
+    <div *ngFor="let person of householdPersons; let i = index" class="standard-mb">
+            <compass-ui-cw-checkbox label="{{person?.firstName}} {{person?.midName}} {{person?.lastName}}
+                                        {{person?.suffix}} {{getAge(person?.dateOfBirth)}} "
+                (inputModelChange)="onCheckboxChange(person.id!, $event)"
+                [isChecked]="isPersonHavingPastEmployment(person.id!)" [textStyle]="'custom'" >
+            </compass-ui-cw-checkbox>
+    </div>
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+        nextButtonLabel="{{'nextBtnText'| translate}}" (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+</form>

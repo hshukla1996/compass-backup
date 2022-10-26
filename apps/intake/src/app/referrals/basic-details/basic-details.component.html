@@ -1,0 +1,43 @@
+<form [formGroup]="basicDetailsForm" (ngSubmit)="onSubmit()">
+    <h1>{{'referralBasicDetails' | translate}}</h1>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="basicDetailsForm" [fieldId]="'firstName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'firstName'"
+            fieldLabel="{{'lblFirstName' | translate}}" [requiredIndicator]="true"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [maxLength]="11"
+            [displayError]="isFieldValid('firstName')" (inputModelChange)="GetFirstNameValue($event)">
+        </compass-ui-text>
+    </div>
+
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="basicDetailsForm" [fieldId]="'lastName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'lastName'"
+            fieldLabel="{{'lblLastName' | translate}}" [maxLength]="14" [requiredIndicator]="true"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" [displayError]="isFieldValid('lastName')"
+            (inputModelChange)="GetFirstNameValue($event)">
+        </compass-ui-text>
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-datepicker [maxRange]="maxDateRange" label="{{'lbldob' | translate }}"
+            showFieldHelpText="MM/DD/YYYY" requiredText="{{'lblrequired' | translate}}" ngDefaultControl
+            [formControlName]="'dateOfBirth'" [required]="true" [displayError]="isFieldValid('dateOfBirth')"
+            [showError]="isFieldValid('dateOfBirth')" errorMsg="{{errorMap('dateOfBirth') | translate}}">
+        </compass-ui-cw-datepicker>
+
+
+    </div>
+
+
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{'referralBack' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                {{'referralNext' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

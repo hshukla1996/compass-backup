@@ -1,0 +1,11 @@
+<form [formGroup]="verifySsnGroup">
+  <h1>{{ 'afsVerifySsnTitle' | translate }}<span class="required-span">(required)</span></h1>
+
+  <compass-ui-text fieldId="ssn4" ngDefaultControl [FormGroup]="verifySsnGroup" formControlName="ssn4" [maxLength]="4" (keypress)="OnlyNumberAllowed($event)"
+    [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"  [errorText]="'This is required.'" [displayError]="isFieldValid('ssn4')">
+  </compass-ui-text>
+
+  <compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+</form>

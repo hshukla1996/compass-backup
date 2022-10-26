@@ -1,0 +1,10 @@
+<div class="dropdown-collection standard-mb">
+    <button class="dropdown-button" aria-haspopup="listbox" aria-labelledby="dropdown-label" (click)="toggleDropdown()"
+        (clickOutside)="dropdownOpen = false">
+        <span id="dropdown-label">{{title}}: </span><span class="dropdown-value">{{currentValue.name}}</span>
+    </button>
+  <ul *ngIf="key" class="dropdown-list" role="listbox" aria-expanded="false" [ngClass]="{'dropdown-open' : dropdownOpen}">
+        <li *ngFor="let o of options" [ngClass]="{'selected' : currentValue === o}" tabindex="0" (click)="select(o)"
+            role="option" [innerHTML]="o[key]"></li>
+    </ul> 
+</div>

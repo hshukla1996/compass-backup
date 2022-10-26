@@ -1,0 +1,5 @@
+<cw-simpletile-checkbox #checkboxComponent [simpleTileCheckboxData]="whoWillTaxClaimJsonData"
+    (nextPage)="showNextPage($event)" (previousPage)="showPreviousPage()" [selectedItems]="selectedUserids"
+    [isAlertApplicableinToolTip] = false
+    [alertTextRequired]="true" [alertText]="'If you need to add another person to your household, you can add them using the Add New Household Member button and come back to this screen. '" (alertTextClicked)="addAnotherHouseHoldPerson()">
+</cw-simpletile-checkbox>

@@ -1,0 +1,21 @@
+<h1>{{'referralGettingStarted' | translate}}</h1>
+
+<p>{{'referralGettingStartedText1' | translate}}</p>
+
+<p>{{'referralGettingStartedText2' | translate}}</p>
+
+<div class="alert alert-info">
+    <p>{{'referralGettingStartedTooltip' | translate}}</p>
+</div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()" >
+            {{'referralCancel' | translate}}
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()" >
+            {{'referralGetStartedButton' | translate}}
+        </button>
+    </div>
+</nav>

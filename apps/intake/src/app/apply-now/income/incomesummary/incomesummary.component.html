@@ -1,0 +1,88 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-12">
+    <div class="loading-container">
+      <div class="p-5">
+        <p>{{loadingText}}</p>
+      </div>
+      <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="!isLoading">
+  <h1>Here's a summary of the income for your household.</h1>
+<p class="subtitle">Review the entries to make sure all income is here.</p>
+<div class="mt-3">
+    <div class="card section-summary">
+        <div class="card-heading">
+            <h3><span>Income Situations</span></h3>
+            <div class="icn-div">
+                <button class="btn btn-borderless" (click)="navigateToGatePost()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="line-item" *ngIf="displayCurrentEmployerCount">
+                <div class="description">
+                    Current and Future Employers
+                </div>
+                <div class="data">
+                    <span class="count">{{currentEmployerCount}}</span>
+                    <button class="btn btn-borderless" (click)="navigateToCurrentandFutureEmployer()">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="line-item" *ngIf="displayPastEmployerCount">
+                <div class="description">
+                    Past Employers
+                </div>
+                <div class="data">
+                    <span class="count">{{pastEmployerCount}}</span>
+                    <button class="btn btn-borderless" (click)="navigateToPastEmployer()">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="line-item" *ngIf="displayOtherIncomeCount">
+                <div class="description">
+                    Other Income
+                </div>
+                <div class="data">
+                    <span class="count">{{otherIncomeCount}}</span>
+                    <button class="btn btn-borderless" (click)="navigateToOtherIncome()">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="line-item" *ngIf="displayDisabilityAssistanceCount">
+                <div class="description">
+                    Financial Assistance for a Disability
+                </div>
+                <div class="data">
+                    <span class="count">{{financialAssistanceCount}}</span>
+                    <button class="btn btn-borderless" (click)="navigateToDisabilityAssistance()">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="line-item" *ngIf="displayNoIncome">
+                <div class="description">
+                    Pay for Living Expenses
+                </div>
+                <div class="data">
+                    <button class="btn btn-borderless" (click)="navigateToLivingExpenses()">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>
+</div>

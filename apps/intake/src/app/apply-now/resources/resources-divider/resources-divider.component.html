@@ -1,0 +1,24 @@
+
+        <div class="text-center">
+            <img src='./assets/images/image.png' class="img-fluid"/>
+            <h1>Resources</h1>
+            <p class="fw-bold">Now, let's enter information about your household's resources.</p>
+        </div>
+        <div class="alert alert-info align-items-center mb-3">
+            <p>For the resources section you might need the following information:</p>
+            <ul>
+                <li> Bank account statements</li>
+                <li>Burial resources</li>
+                <li>Cash sums</li>
+                <li>Life insurance policies</li>
+                <li>Property information</li>
+                <li> Vehicle details</li>
+
+            </ul>
+        </div>
+        <div class="px-2 text-center">
+            <p><a href="#">Save and exits</a> if you’d like to come back later.</p>
+        </div>
+        <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+            (next)="goNext()" (back)="goBack()">
+        </compass-ui-cw-dpq-button>

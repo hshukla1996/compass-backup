@@ -1,0 +1,16 @@
+<form [formGroup]="noIncomeForm">
+
+        <h1>It looks like no one in the household has any income.</h1>
+        <compass-ui-text [fieldId]="'noIncomeExplanation'"
+            (inputModelChange) = "updateCharacterCount($event)"  [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('noIncomeExplanation')>-1" [FormGroup]="noIncomeForm"
+            [fieldLabel]="'How does the household pay for living expenses?' | translate" [maxLength]="750" [displayError]="isFieldValid('noIncomeExplanation')"
+        errorText="{{'basidDetailRequiredMessage' | translate}}">
+        </compass-ui-text>
+        <div class="text-end">
+             {{textLength}}/750
+        </div>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+        (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+</form>

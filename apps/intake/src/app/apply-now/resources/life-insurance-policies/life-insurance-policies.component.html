@@ -1,0 +1,61 @@
+<!-- <h1 class="standard-mb">Please fill in the details for Sally's Life insurance Policy.</h1>
+<div class="alert alert-info d-flex align-items-center standard-mb">
+    <p>
+        Don't worry, you can add more Life Insurance Policies later on if you need to.
+    </p>
+</div>
+
+<form [formGroup]='lifeInsurancePoliciesForm' #lifeInsuranceDetailsFormEle="ngForm">
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" type="checkbox" id="financialholdings" formControlName="financialholdings">
+        <label class="form-check-label" for="financialholdings">
+            John Sample 65 (M)
+        </label>       
+    </div>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" type="checkbox" id="financialholdings" formControlName="financialholdings">
+        <label class="form-check-label" for="financialholdings">
+            Jane Sample 57 (F)
+        </label>
+    </div>
+
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" type="checkbox" id="someoneoutside" formControlName="someoneoutside"
+            (click)="someoneoutsideselected()">
+        <label class="form-check-label" for="someoneoutside">
+            Someone outside the household
+        </label>
+    </div>
+    <div class="card arrow-card standard-mb" *ngIf="showVehicleOutsideDesc">
+        <div class="card-body">
+            <label for="resourcelocation" class="form-label">Who outside of your household owns the vehicle?</label>
+            <input type="text" class="form-control" id="outsideholder" placeholder="" formControlName="outsideholder">
+            <span class="text-danger"
+                *ngIf="lifeInsurancePoliciesForm.get('outsideholder').errors && (lifeInsurancePoliciesForm.get('outsideholder').touched || lifeInsurancePoliciesForm.get('outsideholder').dirty || lifeInsurancePoliciesForm.get('outsideholder').prism)">
+                <div *ngIf="lifeInsurancePoliciesForm.get('outsideholder').errors.maxlength">
+                    Length must be at less than 26 characters long.
+                </div>
+                <div *ngIf="lifeInsurancePoliciesForm.get('outsideholder').errors.pattern">Enter only alphabets.</div>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form> -->
+
+<cw-simpletile-checkbox-textbox [simpleTileCheckboxData]="lifeInsurancePoliciesJsonData" (nextPage)="goNext($event)"
+    (previousPage)="goBack()" [selectedItems]="selectedUserids" [validators]="textboxValidators"
+    [otherNameText]="ownerName" [textBoxHeadingText] = "'Tell us who outside of the household owns this burial or trust agreement.'">
+</cw-simpletile-checkbox-textbox>

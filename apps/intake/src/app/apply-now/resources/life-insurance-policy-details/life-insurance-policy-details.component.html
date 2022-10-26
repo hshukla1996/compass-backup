@@ -1,0 +1,106 @@
+<h1>You told us someone has a life insurance policy. Tell us about this resource.</h1>
+<p class="alert alert-info">Don't worry, you can add more Life Insurance Policies later on if you need to.</p>
+
+<form [formGroup]='lifeInsuranceDetailsForm'>
+
+    <div class="form-group mb-3">
+        <div class="col-12">
+            <!-- lblotherowners: Other Owners? (if applicable)-->
+            <compass-ui-text [fieldId]="'anyotherowners'" [FormGroup]="lifeInsuranceDetailsForm" ngDefaultControl
+                [formControlName]="'anyotherowners'" fieldLabel="Life Insurance Provider" [requiredIndicator]="false">
+            </compass-ui-text>
+            <!-- <div *ngIf="lifeInsuranceDetailsForm.get('anyotherowners').errors?.maxlength">
+                Other owners must be at less than 120 characters long.
+            </div>
+            <div *ngIf="lifeInsuranceDetailsForm.get('anyotherowners').errors?.pattern">
+                Enter only a-zA-Z'\-.
+            </div> -->
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <div class="col-12">
+            <!-- lblpolicynumber:  What is the policy number?-->
+            <compass-ui-text [fieldId]="'policynumber'" [FormGroup]="lifeInsuranceDetailsForm" ngDefaultControl
+                [formControlName]="'policynumber'" fieldLabel="Policy number" [requiredIndicator]="false">
+            </compass-ui-text>
+            <!-- <div *ngIf="lifeInsuranceDetailsForm.get('policynumber').errors?.maxlength">
+                Other owners must be at less than 12 characters long.
+            </div>
+            <div *ngIf="lifeInsuranceDetailsForm.get('policynumber').errors?.pattern">
+                Enter only a-zA-Z'\-.
+            </div> -->
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <div class="col-12">
+            <!-- lblpolicyfacevalue:  What is the face value of the policy?-->
+            <compass-ui-text [type]="'currency'" [fieldId]="'policyfacevalue'" [FormGroup]="lifeInsuranceDetailsForm"
+                ngDefaultControl [formControlName]="'policyfacevalue'" [fieldLabel]="'Policy Face Value'"
+                [requiredIndicator]="false">
+            </compass-ui-text>
+            <!-- <div *ngIf="lifeInsuranceDetailsForm.get('policyfacevalue').errors?.maxlength">
+                Policy Value must be at less than 9 characters long.
+            </div>
+            <div *ngIf="lifeInsuranceDetailsForm.get('policyfacevalue').errors?.pattern">
+                Enter only numbers
+            </div> -->
+        </div>
+    </div>
+    <div class="accordion mb-3 data-accordion pref">
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#langSelCardCollArea" aria-expanded="true" aria-controls="langSelCardCollArea">
+                <h2 class="card-title text-capitalize">
+                    <span class="d-block">More Information</span>                                    
+                </h2>
+            </button>
+        </div>
+        <div class="accordion-collapse collapse" id="langSelCardCollArea">
+            <div class="accordion-body">
+                <hr>
+                <label for="languageSelect" id="lbl-languageSelect" class="p-style-label">
+                    By face value, we mean the amount of money the policy recipients get from your insurance company at the time of your
+                    death (also called death benefit or the face amount of life insurance).
+                    <br/>
+                    <br/>
+                    This does not include dividends, additional amounts payable because of accidental death, or other special provisions.
+
+                </label>                
+            </div>
+        </div></div>
+    </div>
+
+    <div class="form-group mb-3">
+        <div class="col-12">
+            <!-- lblcurrentcashvalue:  What is the current cash value of the policy?-->
+            <compass-ui-text [type]="'currency'" [fieldId]="'currentcashvalue'" [FormGroup]="lifeInsuranceDetailsForm"
+                ngDefaultControl [formControlName]="'currentcashvalue'" fieldLabel="Policy Current Cash value"
+                [requiredIndicator]="false">
+            </compass-ui-text>
+            <!-- <div *ngIf="lifeInsuranceDetailsForm.get('currentcashvalue').errors?.maxlength">
+                Current cash value must be at less than 9 characters long.
+            </div>
+            <div *ngIf="lifeInsuranceDetailsForm.get('currentcashvalue').errors?.pattern">
+                Enter only numbers
+            </div> -->
+        </div>
+    </div>
+
+
+    <div class="row mt-3 action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+
+
+</form>

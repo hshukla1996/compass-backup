@@ -1,0 +1,62 @@
+<h1 class="parent_heading_text mb-3">
+    {{ simpleTileButtongroupData['questionText'] | translate : simpleTileButtongroupData['questionTextTO']}}
+</h1>
+<div class="mb-3" *ngIf="simpleTileButtongroupData['toolTip'] !== ''">
+    <p class="alert alert-info">
+        {{ simpleTileButtongroupData['toolTip'] | translate : simpleTileButtongroupData['toolTipTO']}}
+    </p>
+</div>
+<div *ngIf="simpleTileButtongroupData['accodionButton'] !== ''">
+    <div class="accordion page-tip" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{ simpleTileButtongroupData['accodionButton'] | translate : simpleTileButtongroupData['accodionButtonTO']}}
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>{{ simpleTileButtongroupData['accordionHeading'] | translate : simpleTileButtongroupData['accordionHeadingTO']}}</p>
+                    <ng-container *ngIf="simpleTileButtongroupData['accordion'] !== ''">
+                        <ul *ngFor="let accordionArray of simpleTileButtongroupData['accordion'] | translate : simpleTileButtongroupData['accordionTO']">
+                            <li>{{accordionArray | translate}}</li>
+                        </ul>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group mb-3" [formGroup]="simpleTileButtongroupForm">
+    <fieldset class="button-group">
+        <legend>
+            {{ simpleTileButtongroupData['legend'] | translate : simpleTileButtongroupData['legendTO']}}
+        </legend>
+        <compass-ui-cw-radiobutton
+            [showError]="booleanShow"
+            ngDefaultControl
+            [formControlName]="'buttongroup'" 
+            [radioButtonGroupName]="'simpleTileButtongroupData'"
+            [labelClass]="'btn btn-outline-tertiary'" 
+            [radioClass]="'btn-check'" 
+            radioLabel="{{ simpleTileButtongroupData['questionAnswers']['label1'] | translate : simpleTileButtongroupData['questionAnswers']['label1TO']}}"
+            [required]="true"
+            (click)="showSubQuestion(simpleTileButtongroupData['questionAnswers']['label1'])">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton
+            [showError]="booleanShow"
+            ngDefaultControl
+            [formControlName]="'buttongroup'"
+            [radioButtonGroupName]="'simpleTileButtongroupData'"
+            [labelClass]="'btn btn-outline-tertiary'" 
+            [radioClass]="'btn-check'" 
+            radioLabel="{{ simpleTileButtongroupData['questionAnswers']['label2'] | translate : simpleTileButtongroupData['questionAnswers']['label2TO'] }}"
+            [required]="true"
+            (click)="hideSubQuestion(simpleTileButtongroupData['questionAnswers']['label2'])">
+        </compass-ui-cw-radiobutton>
+    </fieldset>
+    <cw-field-error-display [displayError]="booleanShow" errorMsg="{{simpleTileButtongroupData['requiredText'] | translate : simpleTileButtongroupData['requiredTextTO']}}">
+    </cw-field-error-display>
+</div>

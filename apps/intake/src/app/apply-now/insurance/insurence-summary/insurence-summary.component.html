@@ -1,0 +1,38 @@
+<form class="form-horizontal" (ngSubmit)="onSubmit()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Here's a summary of your household's insurance.</h3>
+      <p>Does all the information below look correct?</p>
+    </div>
+    <div class="panel-body">
+      <div class="accordion page-tip mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="false" aria-controls="collapseOne">
+              Aetna select PPO John Sample 65(M)
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Test</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" (click)="previous()" class="btn btn-outline-tertiary">
+          {{'backBtnText' | translate}}
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          {{'nextBtnText' | translate}}
+        </button>
+      </div>
+    </nav>
+  </div>
+</form>

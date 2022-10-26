@@ -1,0 +1,116 @@
+<form class="form-horizontal" [formGroup]="additionalContactDetailsForm" (ngSubmit)="submit()">
+  <h1 class="standard-mb">Tell us about {{currentUser.firstName}}’s additional contact.</h1>
+  <div class="alert alert-info d-flex align-items-center standard-mb">
+    <p>Don't worry, you can add more contacts later if you need to.</p>
+  </div>
+
+  <div class="form-group standard-mb">
+    <compass-ui-cw-select [fieldId]="'contact'" [fieldLabel]="'afsindwhocontact'| translate"
+      [isVisible]="fieldDisplays.contact"
+                          (OnSelectedChange)="setContact($event)"
+                          [requiredIndicator]="requiredFields.indexOf('contact') > -1"
+      [FormGroup]="additionalContactDetailsForm" [displayError]="isFieldValid('contact')"
+      [errorMsg]="errorMap('contact')">
+
+      <option value="" selected>- Selection One -</option>
+      <option *ngFor="let contact of data.contactsList" value="{{contact.key}}">{{contact.value}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <div class="card arrow-card standard-mb"
+    *ngIf="additionalContactDetailsForm.get('contact').value ==='999'">
+    <div class="card-body">
+      <compass-ui-text [fieldId]="'firstName'" [FormGroup]="additionalContactDetailsForm"
+                       [fieldLabel]="'lblFirstName' | translate"
+                       [maxLength]="11"
+                       [isVisible]="fieldDisplays.firstName"
+                       [displayError]="isFieldValid('firstName')" [errorText]="errorMap('firstName')"
+                       [requiredIndicator]="requiredFields.indexOf('firstName') > -1 && additionalContactDetailsForm.get('contact').value ==='999'"
+                       [fieldType]="'nameParts'" >
+      </compass-ui-text>
+      <compass-ui-text [fieldId]="'middleName'" [FormGroup]="additionalContactDetailsForm"
+                       [fieldLabel]="'afsMiddleName' | translate"
+                       [isVisible]="fieldDisplays.middleName"
+                       [requiredIndicator]="requiredFields.indexOf('middleName') > -1"
+                       [maxLength]="1"
+                       [fieldType]="'alphaOnly'" >
+      </compass-ui-text>
+      <compass-ui-text [fieldId]="'lastName'" [FormGroup]="additionalContactDetailsForm"
+                       [fieldLabel]="'lblLastName' | translate"
+                       [isVisible]="fieldDisplays.lastName"
+                       [maxLength]="14"
+                       [requiredIndicator]="requiredFields.indexOf('lastName') > -1 && additionalContactDetailsForm.get('contact').value ==='999'"
+                       [displayError]="isFieldValid('lastName')" [errorText]="errorMap('lastName')"
+                       [fieldType]="'nameParts'" >
+      </compass-ui-text>
+
+      <div class="form-group standard-mb" *ngIf="fieldDisplays.suffix">
+        <label for="suffix" class="form-label">Suffix</label>
+        <select class="form-select" formControlName="suffix" name="suffix">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let suffix of suffixls" value="{{suffix.displayValue}}">{{suffix.displayValue}}</option>
+        </select>
+      </div>
+
+      <compass-ui-cw-select [fieldId]="'relationship'"
+                            [isVisible]="fieldDisplays.relationship  && additionalContactDetailsForm.get('contact').value ==='999'"
+                            [fieldLabel]="'afsindContactRel' | translate: { name: currentUser.firstName}" [requiredText]="'(required)'"
+                            [FormGroup]="additionalContactDetailsForm" (OnSelectedChange)="setRelationWithOutersider($event)"
+                            [requiredIndicator]="requiredFields.indexOf('relationship') > -1"
+                            [displayError]="isFieldValid('relationship')" [errorMsg]="errorMap('relationship')"
+                          >
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let relation of relationships" value="{{relation.id}}">{{relation.displayValue}}
+          </option>
+
+
+      </compass-ui-cw-select>
+
+    </div>
+  </div>
+  <label class="form-label" [ngClass]="{'required' : requiredFields.indexOf('additionalContact') > -1}">What is this person’s role?</label>
+  <cw-field-error-display [displayError]="showRolesError" [errorMsg]="'Please select the roles'"></cw-field-error-display>
+  <p class="form-subtitle standard-mb">Select all that apply.</p>
+  <div class="standard-mb" formArrayName="additionalContact" *ngFor="
+                    let additionalContact of AdditionalContactFormArray.controls;
+                    let i = index
+                ">
+    <div class="form-check custom">
+      <input class="form-check-input" id="{{ contactRoles[i].id }}" type="checkbox" value="{{contactRoles[i].id}}" (change)="onCheckboxChange($event)"
+      [checked]="selectedData.indexOf(contactRoles[i].id) !== -1? true: false" />
+      <label class="form-check-label" for="{{ contactRoles[i].id }}">
+        {{ contactRoles[i].displayValue }}
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group standard-mb" *ngIf="selectedData.indexOf('C')>-1">
+
+    <compass-ui-cw-datepicker [maxRange]="maxDateRange" label="{{'afscaregiverdob' | translate }}"
+      ngDefaultControl [formControlName]="'dateOfBirth'"
+      [fieldId]="'dob-datepicker'" [required]="requiredFields.indexOf('maxDateRange') > -1" [displayError]="isFieldValid('dateOfBirth')"
+      [showError]="isFieldValid('dateOfBirth')" title="Date Of Birth" [errorMsg]="errorMap('dateOfBirth') | translate">
+    </compass-ui-cw-datepicker>
+
+  </div>
+  <div class="form-group standard-mb">
+    <label class="form-label" for="knowAboutThisContact">Is there anything else we should know about this
+      contact?</label>
+    <textarea class="form-control" rows="3" id="knowAboutThisContact" formControlName="knowaboutthiscontact"
+      name="knowaboutthiscontact">
+
+            </textarea>
+  </div>
+
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Next</button>
+    </div>
+  </nav>
+
+</form>

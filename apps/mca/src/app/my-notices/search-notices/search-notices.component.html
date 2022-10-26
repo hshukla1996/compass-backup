@@ -1,0 +1,119 @@
+<form [formGroup]="searchNoticesForm">
+    <div class="card collapsable mb-3">
+        <div class="card-head">
+            <i class="fa-regular fa-megaphone card-icon"></i>
+            <h2>Notices</h2>
+        </div>
+        <div class="card-body">
+            <p>The notices shown below are your electronic notices from the last 6 months.
+                Notices mailed to your address are not shown here.</p>
+            <div class="alert alert-info">
+                <dl class="text-left">
+                    <p>Notices will open in a new browser window.</p>
+                </dl>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-lg-6">
+                <compass-ui-cw-datepicker [formControlName]="'startDate'" ngDefaultControl
+                    requiredText="{{'lblrequired' | translate}}" [errorMsg]="errorMap('startDate') | translate" [maxRange]="maxDateRange" [minRange]="priorDate"
+                    [required]="true" [fieldId]="'startDate'" label="Start Date" showFieldHelpText="MM/DD/YYYY">
+                </compass-ui-cw-datepicker>
+            </div>
+            <div class="col-12 col-lg-6">
+                <compass-ui-cw-datepicker label="End Date" [required]="true" [maxRange]="maxDateRange"
+                    requiredText="{{'lblrequired' | translate}}" [errorMsg]="errorMap('endDate') | translate" showFieldHelpText="MM/DD/YYYY" [minRange]="priorDate"
+                    ngDefaultControl [formControlName]="'endDate'" [fieldId]="'endDate'">
+                </compass-ui-cw-datepicker>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;" (click)="searchNotice()">
+            Search Notices
+        </button>
+        <div *ngIf="searchResults.length > 0">
+            <hr>
+            <p>You don't have any notices at this time.</p>
+        </div>
+        <hr>
+        <div *ngIf="searchResults.length == 0">
+            <ul>
+                <li style="list-style:none">
+                    <div class="row rec-head">
+                        <div class="col-6">
+                            <!-- <label>Date Created</label> -->
+                            <label class="data">01/19/2022 10:58AM</label><br>
+                            <label><b>Letter</b></label>
+                        </div>
+                        <!-- <div class="col-6">
+                            <label>Status</label>
+                            <label class="badge warn"> Follow-Up Needed</label>
+                        </div> -->
+                        <div class="col-6 text-end">
+                            <button class="btn btn-secondary btn-sm">View</button>
+                        </div>
+                    </div>
+
+                    <div class="row rec-data">
+                        <div class="col-6">
+                            <label>Address to</label><br>
+                            <label class="data"><b>John</b></label>
+                        </div>
+                        <div class="col-6">
+                            <label>County/Case Record</label><br>
+                            <label class="data"><b>56|5565656</b></label>
+                        </div>
+                    </div>
+                    <div class="row rec-data pb-3 ">
+                        <div class=" col-6">
+                            <label>Read</label>
+                            <label class="ml-3">14/8/2022</label>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <hr>
+        </div>
+
+
+        <div class="col-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item prev">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true"><i class="fa-solid fa-angle-left"></i></span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="javascript:void(0);" tabindex="-1" aria-disabled="true">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">9</a></li>
+                    <li class="page-item next">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true"><i class="fa-solid fa-angle-right"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="alert alert-info icn-warning">
+            <dl class="text-left">
+                <p>Are you using a public computer?</p>
+                <p>To make sure any copies of files you use are removed, follow these steps:</p>
+                <ul>
+                    <li>Clear the browser history and cache (in browser settings).</li>
+                    <li>Close the browser.</li>
+                </ul>
+            </dl>
+        </div>
+    </div>
+
+
+</form>
+

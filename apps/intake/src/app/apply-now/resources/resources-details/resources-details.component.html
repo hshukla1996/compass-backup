@@ -1,0 +1,99 @@
+<h1>Please fill in the details for John's resource.</h1>
+<p class="alert alert-info">Don't worry, you can add more cash resources later on if you need to.</p>
+<form [formGroup]="resourceDetailsForm">
+
+
+      <div class="row mb-3">
+         <div class="col">
+            <label for="typeofresource" class="form-label">Type of Resource<span>(required)</span></label>
+            <!-- <p class="mb0">Type of Resource<small>(required)</small></p> -->
+      <select class="form-select" id="typeofresource" formControlName="typeofresource"
+                aria-label="Default select example"> 
+                <option selected value="other">Other</option>
+                <option value="HA">HA</option>
+                <option value="MAR">MAR</option>
+                <option value="CA">CAR</option>
+                <option value="CAR">CAR</option>
+                <option value="FS">FS</option>
+                <option value="FSR">FSR</option>
+                <option value="ES">ES</option>
+                <option value="ESR">ESR</option>
+                <option value="LN">LN</option>
+                <option value="LI">LI</option>
+                <option value="LIR">LIR</option>
+                <option value="LNR">LNR</option>
+                <option value="WN">WN</option>
+                <option value="WNR">WNR</option>
+                <option value="WAR">WAR</option>
+                <option value="ECA">ECA</option>
+            </select>
+        </div>  
+
+    </div> 
+    <!-- <span class="text-danger"
+        *ngIf="resourceDetailsForm.get('typeofresource').errors && (resourceDetailsForm.get('typeofresource').touched || resourceDetailsForm.get('typeofresource').dirty)">
+        <div *ngIf="resourceDetailsForm.get('typeofresource').errors.required">
+            Type of Resource is required.
+        </div>
+    </span> -->
+
+    <div class="mb-3" *ngIf="resourceDetailsForm.value.typeofresource === 'other'">
+        <label for="explanation" class="form-label">Please explain.</label>
+        <div class="card arrow-card p-5">
+            <div class="card-body">
+                <textarea class="form-control" id="explanation" formControlName="explanation" rows="3"></textarea>
+            </div>
+            <!-- <span class="text-danger"
+                *ngIf="resourceDetailsForm.get('explanation').errors && (resourceDetailsForm.get('explanation').touched || resourceDetailsForm.get('explanation').dirty)">
+                <div *ngIf="resourceDetailsForm.get('explanation').errors.required">Explanation is required.</div>
+                <div *ngIf="resourceDetailsForm.get('explanation').errors.maxlength">
+                    Explanation must be at less than 26 characters long.
+                </div>
+            </span> -->
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" formControlName="location" placeholder="">
+        <p><small>Example: the bank name</small></p>
+        <!--   <span class="text-danger"
+            *ngIf="resourceDetailsForm.get('location').errors && (resourceDetailsForm.get('location').touched || resourceDetailsForm.get('location').dirty)">
+            <div *ngIf="resourceDetailsForm.get('location').errors.maxlength">
+                Location must be at less than 60 characters long.
+            </div>
+            <div *ngIf="resourceDetailsForm.get('vehicleowedmoney').errors.pattern">Enter alphabets and numbers.</div>
+        </span> -->
+    </div>
+    <div class="mb-3">
+        <label for="accountnumber" class="form-label">Account Number<span>(if applicable)</span></label>
+        <input type="text" class="form-control" id="accountno" formControlName="accountno" placeholder="">
+        <!--  <span class="text-danger"
+            *ngIf="resourceDetailsForm.get('accountno').errors && (resourceDetailsForm.get('accountno').touched || resourceDetailsForm.get('accountno').dirty)">
+            <div *ngIf="resourceDetailsForm.get('accountno').errors.maxlength">
+                Account Number must be at less than 25 characters long.
+            </div>
+            <div *ngIf="resourceDetailsForm.get('accountno').errors.pattern">Enter only number.</div>
+        </span> -->
+    </div>
+    <div class="mb-3">
+        <label for="basic-url" class="form-label">What's the resource estimate value?<span>(required)</span></label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="resourceestimatevalue" formControlName="resourceestimatevalue"
+                aria-label="Amount">
+        </div>
+        <!--  <span class="text-danger"
+            *ngIf="resourceDetailsForm.get('resourceestimatevalue').errors && (resourceDetailsForm.get('resourceestimatevalue').touched || resourceDetailsForm.get('resourceestimatevalue').dirty)">
+            <div *ngIf="resourceDetailsForm.get('resourceestimatevalue').errors.required">
+                Estimated value is required.</div>
+            <div *ngIf="resourceDetailsForm.get('resourceestimatevalue').errors.maxlength">
+                Estimated value must be at less than 9 characters long.
+            </div>
+            <div *ngIf="resourceDetailsForm.get('resourceestimatevalue').errors.pattern">Enter only number.</div>
+        </span> -->
+    </div>
+    
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+        nextButtonLabel="{{'nextBtnText'| translate}}" (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+
+</form>

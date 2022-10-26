@@ -1,0 +1,31 @@
+<form [formGroup]="changeOfNameGroup">
+  <h1>{{ 'afsNameChangeTitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="previousFirstName" ngDefaultControl [FormGroup]="changeOfNameGroup" [fieldType]="'nameType'"
+      formControlName="previousFirstName" [fieldLabel]="'afsNameChangeLbl1' | translate" [requiredIndicator]="true"
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [maxLength]="30" [displayError]="isFieldValid('previousFirstName')" >
+    </compass-ui-text>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-text fieldId="previousLastName" ngDefaultControl [FormGroup]="changeOfNameGroup" [fieldType]="'nameType'"
+      formControlName="previousLastName" [fieldLabel]="'afsNameChangeLbl2' | translate" [requiredIndicator]="true"
+      [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [maxLength]="30" [displayError]="isFieldValid('previousLastName')" >
+    </compass-ui-text>
+  </div>
+
+<nav class="action-bar d-flex justify-content-between">
+  <div>
+    <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+      {{'referralBack' | translate}}
+    </button>
+  </div>
+  <div>
+
+    <button type="submit" class="btn btn-primary" (click)="next()">
+      {{'referralNext' | translate}}
+    </button>
+  </div>
+</nav>
+</form>

@@ -1,0 +1,386 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-12">
+        <div class="loading-container">
+            <div class="p-5">
+                <p>{{loadingText}}</p>
+            </div>
+            <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="!isLoading">  <h1>Here's a summary of the expenses for your household.</h1>
+    <p class="subtitle">Review the entries to make sure all expenses are here.</p>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Customer Assistance Program Enrollment
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToAssistanceProgram()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;" *ngIf="isLHProgramExist">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Information for Your Heating Assistance Application
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHeatingAssistance()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;" *ngIf="isLHProgramExist">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Heating Situations
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHeatingSistuation()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;" *ngIf="isLWProgramExist">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Information for Your Water Assistance Application
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToWaterAsstApp()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;" *ngIf="isLWProgramExist">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Water Situations
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToWatergatepost()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Expense Situations
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToExpensesGatepost()"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('childSupportExpenses')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Child Support Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToChidSupportExpensesSum()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row"  *ngIf="selectedExpenses.indexOf('alimony')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Alimony Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToAlimonyExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('childoradultcare')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                         Child or Adult Care Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToChildorAdultExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('transportation')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Transportation Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToTransportationExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('medical')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Medical Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4" (click)="navigateToMedicalExpenses()"></div>
+                <button class="btn btn-borderless btn-constructive">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('taxDeductable')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Tax Deductible Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToTaxDeductibleExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('feesOnIncome')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Legal Fee Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToLegalFeeExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('housingAssitance')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Housing Assistance Received
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHousingAsstReceived()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedExpenses.indexOf('shelterExpensesOutside')>-1">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Shared Expenses
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToSharedExpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card section-summary mb-3 mt-3" border-dark style="max-width: 840px;" *ngIf="selectedExpenses.indexOf('shelterExpensesInside')>-1">
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Shelter and Utility Expenses
+                        </div>
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center" (click)="navigateToShelterandUtilityExpenses()">
+                <div class="h-75 border-start border-dark ps-4"></div>
+                <button class="btn btn-borderless btn-constructive"> <i
+                        class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Household Rent or Mortgage Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHouseholdRentandMortgage()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Household Property Tax Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHouseholdPropertyTaxexpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="card-body">
+                    <div class="row data-row">
+                        <div class="col-11">
+                            Household Property Insurance Expense
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="h-75 border-start border-white ps-4"></div>
+                <button class="btn btn-borderless btn-constructive" (click)="navigateToHouseholdPropertyInsuranceexpenses()">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+            Back
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="submit()">
+            Next
+        </button>
+    </div>
+</nav>
+</div>

@@ -1,0 +1,93 @@
+<h1>Tell us more about the home that the household lives in.</h1>
+<form [formGroup]="residentialPropertyDetailsForm">
+    <div class="form-group mb-4">
+        <fieldset class="button-group">
+            <legend>Is the property a mobile home?</legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPropertyMobileHome'" [required]="true"
+                [radioButtonGroupName]="'isPropertyMobileHome'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="Yes" [radioBtnValue]="'Y'" [radioBtnId]="'prop1'">
+            </compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPropertyMobileHome'" [required]="true"
+                [radioButtonGroupName]="'isPropertyMobileHome'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="No" [radioBtnValue]="'N'" [radioBtnId]="'prop2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+
+    <div class="card arrow-card p-3" *ngIf="residentialPropertyDetailsForm.value.isPropertyMobileHome === 'Y'">
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'year'" [FormGroup]="residentialPropertyDetailsForm"
+                [fieldLabel]="'What model year is the mobile home?'">
+            </compass-ui-text>
+        </div>
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'make'" [FormGroup]="residentialPropertyDetailsForm"
+                [fieldLabel]="'What make is the mobile home?'">
+            </compass-ui-text>
+        </div>
+    </div>
+
+    <div class="form-group mb-4">
+        <compass-ui-cw-datepicker [formGroup]="residentialPropertyDetailsForm"
+            [formControlName]="'datePropertyPurchased'" [fieldId]="'datePropertyPurchased'"
+            label="What date was this home purchased?" [showFieldHelpText]="'MM/DD/YYYY'">
+        </compass-ui-cw-datepicker>
+    </div>
+
+
+    <div class="form-group mb-4">
+        <fieldset class="button-group">
+            <legend>Does the property produce any income?</legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'incomeProducing'" [required]="true"
+                [radioButtonGroupName]="'incomeProducing'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Yes'" [radioBtnId]="'property_1'">
+            </compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'incomeProducing'" [required]="true"
+                [radioButtonGroupName]="'incomeProducing'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'No'" [radioBtnId]="'property_2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+    <div class="form-group mb-4">
+        <compass-ui-text [fieldId]="'whoLivesInTheProperty'" [FormGroup]="residentialPropertyDetailsForm"
+            [fieldLabel]="'If someone else lives in the property, tell us who.'">
+        </compass-ui-text>
+    </div>
+
+    <div class="form-group mb-4">
+        <fieldset class="button-group">
+            <legend>Is the property listed as for sale?</legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPropertyListedForSale'" [required]="true"
+                [radioButtonGroupName]="'isPropertyListedForSale'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'" [radioBtnId]="'forsale_1'">
+            </compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isPropertyListedForSale'" [required]="true"
+                [radioButtonGroupName]="'isPropertyListedForSale'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'" [radioBtnId]="'forsale_2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+
+    <div class="card arrow-card p-3" *ngIf="residentialPropertyDetailsForm.value.isPropertyListedForSale=== 'Y'">
+        <div class="form-group mb-4">
+            <compass-ui-cw-datepicker ngDefaultControl [formControlName]="'dateListed'"
+                [fieldId]="'dateListed'" [errorMsg]="errorMap('dateListed') | translate" label="What date was it listed?" [showFieldHelpText]="'MM/DD/YYYY'">
+            </compass-ui-cw-datepicker>
+
+
+            <compass-ui-text [fieldId]="'realtorName'" [FormGroup]="residentialPropertyDetailsForm"
+                [fieldLabel]="'Realtor Name'">
+            </compass-ui-text>
+
+            <compass-ui-text [fieldId]="'realtorPhoneNumber'" type="phone" [FormGroup]="residentialPropertyDetailsForm"
+                [fieldLabel]="'Realtor Phone Number'">
+            </compass-ui-text>
+        </div>
+    </div>
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

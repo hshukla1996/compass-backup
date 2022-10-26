@@ -1,0 +1,48 @@
+
+<div [formGroup]="snapOrTanfBenefitForm">
+    <div>
+        <h1 class="standard-mb">{{this.individualLabel}}</h1>
+        <h6 class="form-subtitle standard-mb">Enter your details for one of the options below.</h6>
+    </div>
+    <div class="standard-mb">
+        <compass-ui-text
+            [fieldType]="'numberType'" [maxLength]="9"
+            [fieldId]="'fsOrTANFCaseNumber'" [fieldLabel]="'SNAP or Cash Assistance Case Number'"
+            [FormGroup]="snapOrTanfBenefitForm" [requiredIndicator]="false"
+            [errorMsg]="'Case Number cannot exceed 9 characters'" [displayError]="isFieldValid('fsOrTANFCaseNumber')"
+            [fieldHelpText]="'Only enter your 9-digit SNAP or Cash Assistance case number. Do not enter your Access card number or case number for Medical Assistance.'">
+        </compass-ui-text>
+    </div>
+    <div class="standard-mb">
+        <compass-ui-text 
+            [fieldType]="'numberType'" [maxLength]="10"
+            [fieldId]="'fstanfIndividualEBTNumber'" [fieldLabel]="'Electronic Benefit Transfer (EBT) Card Number'"
+            [FormGroup]="snapOrTanfBenefitForm" [requiredIndicator]="false"
+            [errorMsg]="'EBT Card Number cannot exceed 10 characters'" [displayError]="isFieldValid('fstanfIndividualEBTNumber')"
+            [fieldHelpText]="'Only enter your 10-digit EBT Card #. Add 0 at the front if you only have a 9-digit number. Select the icons to see sample images.'">
+        </compass-ui-text>               
+    </div>
+    <div class="row">
+        <div class="col text-center standard-mb">
+            <img 
+                (click)="enlargeImage1()" 
+                src="../../../../assets/images/SnapOrTanfImg-1.png"
+                class="{{largeImage1 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 1">
+        </div>
+        <div class="col text-center standard-mb">
+            <img
+                (click)="enlargeImage2()"
+                src="../../../../assets/images/SnapOrTanfImg-2.png" 
+                class="{{largeImage2 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">Select image for larger display.</div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button 
+    backButtonLabel="Back" 
+    nextButtonLabel="Next"
+    (next)="next()" 
+    (back)="back()">
+</compass-ui-cw-dpq-button>

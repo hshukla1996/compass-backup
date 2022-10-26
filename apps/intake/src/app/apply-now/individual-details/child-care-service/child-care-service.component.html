@@ -1,0 +1,70 @@
+<form class="form-horizontal" [formGroup]='childCareServiceForm' (ngSubmit)="onSubmit()" autocomplete="off"
+  *ngIf="fieldDisplays">
+  <h1 class="standard-mb">When applying for Child Care services, we need to know some additional details.</h1>
+  <compass-ui-cw-select [fieldId]="'parentOrGuardian'"
+    [fieldLabel]="'afsParentOrGuardian'  | translate: { name: currentUser.firstName}"
+    [isVisible]="fieldDisplays.parentOrGuardian" [requiredIndicator]="requiredFields.indexOf('parentOrGuardian')>-1"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="childCareServiceForm"
+    [displayError]="isFieldValid('parentOrGuardian')" [errorMsg]="errorMap('parentOrGuardian')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let parent of elders" value="{{parent.id}}">
+      {{parent.firstName}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-select [fieldId]="'firstparentOrGuardian'"
+    [fieldLabel]="'afsFirstParentOrGuardian'  | translate: { name: currentUser.firstName}"
+    [isVisible]="fieldDisplays.firstparentOrGuardian"
+    [requiredIndicator]="requiredFields.indexOf('firstparentOrGuardian')>-1"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="childCareServiceForm"
+    [displayError]="isFieldValid('firstparentOrGuardian')" [errorMsg]="errorMap('firstparentOrGuardian')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let parent of elders" value="{{parent.id}}">
+      {{parent.firstName}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-select [fieldId]="'secondparentOrGuardian'"
+    [fieldLabel]="'afsSecondParentOrGuardian'  | translate: { name: currentUser.firstName}"
+    [isVisible]="fieldDisplays.secondparentOrGuardian"
+    [requiredIndicator]="requiredFields.indexOf('secondparentOrGuardian')>-1"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="childCareServiceForm"
+    [displayError]="isFieldValid('secondparentOrGuardian')" [errorMsg]="errorMap('secondparentOrGuardian')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let parent of elders" value="{{parent.id}}">
+      {{parent.firstName}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-cw-select [fieldId]="'daysNeedChildCare'"
+    [fieldLabel]="'afsDaysNeedChildCare'  | translate: { name: currentUser.firstName}"
+    [isVisible]="fieldDisplays.daysNeedChildCare" [requiredIndicator]="requiredFields.indexOf('daysNeedChildCare')>-1"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="childCareServiceForm"
+    [displayError]="isFieldValid('daysNeedChildCare')" [errorMsg]="errorMap('daysNeedChildCare')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let day of days" value="{{day.id}}">
+      {{day.displayValue}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-text [fieldId]="'hrsNeedChildCare'" [FormGroup]="childCareServiceForm"
+    requiredText="{{'lblrequired' | translate}}"
+    [fieldLabel]="'afsHrsNeedChildCare' | translate: { name: currentUser.firstName}"
+    [displayError]="isFieldValid('hrsNeedChildCare')" [fieldType]="'numberType'"
+    [isVisible]="fieldDisplays.hrsNeedChildCare" [requiredIndicator]="requiredFields.indexOf('hrsNeedChildCare')>-1"
+    [errorText]="errorMap('hrsNeedChildCare')" [maxLength]="3">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'immunizations'" [isVisible]="fieldDisplays.immunizations"
+    [requiredIndicator]="requiredFields.indexOf('immunizations')>-1"
+    [fieldLabel]="'afsImmunizations'  | translate: { name: currentUser.firstName}"
+    requiredText="{{'lblrequired' | translate}}" [FormGroup]="childCareServiceForm"
+    [displayError]="isFieldValid('immunizations')" [errorMsg]="errorMap('immunizations')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let immunizations of immunizations" value="{{immunizations.id}}">
+      {{immunizations.displayValue}}</option>
+  </compass-ui-cw-select>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

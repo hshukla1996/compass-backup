@@ -1,0 +1,78 @@
+<form class="form-horizontal" [formGroup]='childCareAddDetailsServiceForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+      <h1>When applying for Child Care services, we need to know some additional details.</h1>
+    <!-- </div>
+    <div class="panel-body"> -->
+
+      <div class="form-group mb-3">
+
+
+        <compass-ui-cw-select [fieldId]="'parentOrGuardian'"
+          [fieldLabel]="'Please confirm the first parent/guardian of Jame Sample.'"
+          [FormGroup]="childCareAddDetailsServiceForm">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let parent of data.parentOrGuardian" value="{{parent.key}}">{{parent.value}}</option>
+        </compass-ui-cw-select>
+
+      </div>
+
+      <div class="form-group mb-3">
+
+        <compass-ui-cw-select [fieldId]="'secondParent'"
+          [fieldLabel]="'Please confirm the first parent/guardian of Jame Sample.'"
+          [FormGroup]="childCareAddDetailsServiceForm">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let secondParent of data.parentOrGuardian" value="{{secondParent.key}}">{{secondParent.value}}
+          </option>
+        </compass-ui-cw-select>
+      </div>
+
+      <div class="form-group mb-3">
+        <compass-ui-cw-select [fieldId]="'daysNeedChildCare'"
+          [fieldLabel]="'What days does this child need Child Care?'" [FormGroup]="childCareAddDetailsServiceForm">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let day of data.daysNeedChildCare" value="{{day.key}}">{{day.value}}</option>
+        </compass-ui-cw-select>
+      </div>
+      <div class="form-group mb-4">
+        <div class="mb-3">
+          test
+          <!-- <label for="hrsNeedChildCare" class="form-label">How many hours per week does this child need Child Care?  <span>(required)</span></label> -->
+          <!-- <input type="text" class="form-control" formControlName="hrsNeedChildCare" id="hrsNeedChildCare"> -->
+          <compass-ui-text [fieldId]="'hrsNeedChildCare'" [maxLength]="16" [fieldType]="'numberType'"
+            [FormGroup]="childCareAddDetailsServiceForm"
+            [fieldLabel]="'How many hours per week does this child need Child Care?'" requiredText="(required)"
+            [formControlName]="'hrsNeedChildCare'" [requiredIndicator]="true">
+          </compass-ui-text>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <compass-ui-cw-select [fieldId]="'daysNeedChildCare'"
+          [fieldLabel]="'What days does this child need Child Care?'" [FormGroup]="childCareAddDetailsServiceForm">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let day of data.daysNeedChildCare" value="{{day.key}}">{{day.value}}</option>
+        </compass-ui-cw-select>
+        <label class="col-sm-8 control-label" for="immunizations">Has Jane Sample received age appropriate
+          immunizations? <span>(required)</span></label>
+        <select class="form-select" formControlName="immunizations" name="immunizations">
+          <option value="" selected>- Selection One -</option>
+          <option *ngFor="let immunizations of data.immunizations" value="{{immunizations.key}}">{{immunizations.value}}
+          </option>
+        </select>
+      </div>
+    <!-- </div> -->
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+  <!-- </div> -->
+</form>

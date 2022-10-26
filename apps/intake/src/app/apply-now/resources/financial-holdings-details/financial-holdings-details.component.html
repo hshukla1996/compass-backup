@@ -1,0 +1,32 @@
+<form [formGroup]="financialHoldingsDetailsForm">
+    <h1>You told us someone has cash or other financial holdings. Tell us about these resources.</h1>
+    <div class="alert alert-info align-items-center mb-3">
+        <p>
+            Don’t worry, you can add more cash resources later if you need to.
+        </p>
+    </div>
+
+    <compass-ui-cw-select [fieldId]="'resourceType'" [FormGroup]="financialHoldingsDetailsForm"
+        [fieldLabel]="'Type of Resource'" requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+        <option value="" selected>- {{'selectone' | translate}} -</option>
+        <option *ngFor="let type of resourceTypes" value="{{type.id}}">{{type.displayValue}}</option> 
+    </compass-ui-cw-select>
+
+    <div class="form-group mb-4">
+        <compass-ui-text [fieldId]="'location'" [FormGroup]="financialHoldingsDetailsForm" [fieldLabel]="'Location'" [fieldHelpText]="'Example: Name of bank'">
+        </compass-ui-text>
+    </div>
+
+    <compass-ui-text [fieldId]="'accountNumber'" [FormGroup]="financialHoldingsDetailsForm"
+        [fieldLabel]="'Account Number'">
+    </compass-ui-text>
+
+    <div class="form-group mb-4">
+        <compass-ui-text [fieldId]="'value'" [FormGroup]="financialHoldingsDetailsForm"
+            [fieldLabel]="'Estimated Value'" requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true"  [fieldHelpText]="'0.00-999999.99'">
+        </compass-ui-text>
+    </div>
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

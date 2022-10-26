@@ -1,0 +1,21 @@
+<form class="form-horizontal" [formGroup]='expLegalFeeDlsCmpForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>How much are {{currentUser.firstName}}'s legal fees each month?</h1>
+  <compass-ui-text [fieldId]="'legalFee'" [FormGroup]="expLegalFeeDlsCmpForm" type="currency" [maxLength]="9"
+    [requiredIndicator]="requiredFields.indexOf('legalFee')>-1"
+    [isVisible]="fieldDisplays.legalFee"
+    requiredText="{{'lblrequired' | translate}}"
+    [displayError]="isFieldValid('legalFee')" [errorText]="errorMap('legalFee')">
+  </compass-ui-text>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

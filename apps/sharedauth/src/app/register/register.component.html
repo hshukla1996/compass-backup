@@ -1,0 +1,40 @@
+<h1>{{ 'sa_registerBItitle' | translate }}</h1>
+<form [formGroup]="registerBasicInfoGroup">
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'firstName'" [FormGroup]="registerBasicInfoGroup" [fieldLabel]="'sa_registerBIlbl1' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [displayError]="isFieldInvalid('firstName')"
+      [errorText]="errorMap('firstName') | translate" [fieldType]="'nameParts'" [maxLength]="firstNameMaxL">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'lastName'" [FormGroup]="registerBasicInfoGroup" [fieldLabel]="'sa_registerBIlbl2' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [displayError]="isFieldInvalid('lastName')"
+      [errorText]="errorMap('lastName') | translate" [fieldType]="'nameParts'" [maxLength]="lastNameMaxL">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-cw-datepicker fieldId="dateOfBirth" [label]="'sa_registerBIlbl3' | translate" ngDefaultControl
+      formControlName="dateOfBirth" hintClass="form-text" [showFieldHelpText]="'sa_registerBIhint1' | translate"
+      [required]="true" [showError]="isFieldInvalid('dateOfBirth')" [requiredText]="'lblrequired' | translate"
+      [errorMsg]="errorMap('dateOfBirth') | translate" [displayError]="isFieldInvalid('dateOfBirth')" [maxRange]="today">
+    </compass-ui-cw-datepicker>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'email'" [FormGroup]="registerBasicInfoGroup" [fieldLabel]="'sa_registerBIlbl4' | translate"
+       [displayError]="isFieldInvalid('email')"
+      [errorText]="errorMap('email') | translate" [fieldType]="'emailType'" [maxLength]="emailMaxL">
+    </compass-ui-text>
+  </div>
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'confirmEmail'" [FormGroup]="registerBasicInfoGroup" [fieldLabel]="'sa_registerBIlbl5' | translate"
+       [displayError]="isFieldInvalid('confirmEmail')"
+      [errorText]="errorMap('confirmEmail') | translate" [fieldType]="'emailType'" [maxLength]="confirmEmailMaxL">
+    </compass-ui-text>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'cancel'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>
+<br />
+<p class="text-center"><a class="hyperlink" (click)="toLogin()">{{ 'sa_registerToLogin' | translate }}</a></p>
+</form>

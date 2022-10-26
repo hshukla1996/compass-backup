@@ -1,0 +1,29 @@
+ul.pagination {
+    li {
+        &:not(:nth-of-type(1)) {
+            margin-left: 3px;
+        }
+        &:not(:last-of-type) {
+            margin-right: 3px;
+        }
+        a.page-link {
+            border-radius: .3125rem;
+            font-size: text.$body--regular;
+            color: color.$primary--500;
+        }
+        &.prev, &.next {
+            a.page-link {
+                background: color.$primary--500;
+                color: color.$utility--white;
+            }
+        }
+        &.disabled {
+            a.page-link {
+                padding: 0.4rem .75rem;
+                i {
+                    font-size: text.$heading--5;
+                }
+            }
+        }
+    }
+}

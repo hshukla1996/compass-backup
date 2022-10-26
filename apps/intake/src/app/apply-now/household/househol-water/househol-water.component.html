@@ -1,0 +1,81 @@
+<form [formGroup]="householdWaterForm" (ngSubmit)="onSubmit()">
+        <h1 class="standard-mb">Tell us about your water.</h1>
+        <div class="form-group standard-mb" *ngIf = "rentWater">
+            <fieldset class="button-group">
+                <legend>Is drinking water included in rent? <span>(required)</span></legend>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('waterRent')" ngDefaultControl
+                    [formControlName]="'waterRent'"  [radioButtonGroupName]="'waterRent'"
+                    [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes"
+                    [radioBtnId]="'waterRent1'" [radioBtnValue]="'Y'">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('waterRent')" ngDefaultControl
+                    [formControlName]="'waterRent'"  [radioButtonGroupName]="'waterRent'"
+                    [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No"
+                    [radioBtnValue]="'N'" [radioBtnId]="'waterRent2'">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <cw-field-error-display [displayError]="isFieldValid('waterRent')" errorMsg="{{errorMap('waterRent')}}">
+            </cw-field-error-display>
+        </div>
+        <div class="form-group standard-mb" *ngIf = "rentWater">
+            <fieldset class="button-group">
+                <legend>Is wastewater included in rent? <span>(required)</span></legend>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('wasteRent')" ngDefaultControl [formControlName]="'wasteRent'"
+                    [radioButtonGroupName]="'wasteRent'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="Yes" [radioBtnId]="'wasteRent1'" [radioBtnValue]="'Y'">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('wasteRent')" ngDefaultControl
+                    [formControlName]="'wasteRent'"  [radioButtonGroupName]="'wasteRent'"
+                    [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No"
+                    [radioBtnValue]="'N'" [radioBtnId]="'wasteRent2'">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <cw-field-error-display [displayError]="isFieldValid('wasteRent')" errorMsg="{{errorMap('wasteRent')}}">
+            </cw-field-error-display>
+        </div>
+
+        <div class="form-group">
+            <fieldset class="">
+                <legend>
+                    What water source would you like paid?<span>(required)</span>
+                </legend>
+                <div class="form-check standard-mb custom">
+                    <input id="DrinkingWater" class="form-check-input" type="radio" value="DrinkingWater"
+                        name="payingForDrinkingWater" formControlName="payingForDrinkingWater">
+                    <label for="DrinkingWater" class="form-check-label">Drinking Water</label>
+                </div>
+                <div class="form-check standard-mb custom">
+                    <input id="WasteWater" class="form-check-input" type="radio" value="WasteWater"
+                        name="payingForDrinkingWater" formControlName="payingForDrinkingWater">
+                    <label for="WasteWater" class="form-check-label">Wastewater</label>
+                </div>
+                <div class="form-check standard-mb custom">
+                    <input id="both" class="form-check-input" type="radio" value="both"
+                        name="payingForDrinkingWater" formControlName="payingForDrinkingWater">
+                    <label for="both" class="form-check-label">Both</label>
+                </div>
+                <cw-field-error-display [displayError]="isFieldValid('payingForDrinkingWater')"
+                    errorMsg="{{errorMap('payingForDrinkingWater')}}">
+                </cw-field-error-display>
+            </fieldset>
+
+
+        </div>
+
+        <div class="alert alert-info d-flex align-items-center standard-mb">
+            <p>Wastewater may be included under sewage costs on your bill</p>
+        </div>
+
+        <nav class="action-bar d-flex justify-content-between">
+            <div>
+                <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                    Back
+                </button>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">
+                    Next
+                </button>
+            </div>
+        </nav>
+</form>

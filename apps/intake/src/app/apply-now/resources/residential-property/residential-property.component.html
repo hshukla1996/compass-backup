@@ -1,0 +1,47 @@
+<h1>You told us someone owns a home that the household lives in. Tell us about this resource.</h1>
+<div class="alert alert-info align-items-center mb-3">
+    <p>Don’t worry, you can add more properties later if you need to.</p>
+</div>
+<form [formGroup]="residentialPropertyForm">
+    <div class="form-group mb-4">
+        <compass-ui-text [fieldId]="'estimatedMarketValue'" [FormGroup]="residentialPropertyForm"
+            [fieldLabel]="'Estimated Home Value'" requiredText="{{'lblrequired' | translate}}"
+            [requiredIndicator]="true" [fieldHelpText]="'0.00-9999999.99'">
+        </compass-ui-text>
+    </div>
+
+    <div class="form-group mb-4">
+        <fieldset class="button-group" >
+            <legend>Do you own your own home, but currently live elsewhere?</legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'currentlyLiveElsewhere'"  [required]="true" 
+                [radioButtonGroupName]="'currentlyLiveElsewhere'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" value="Yes" radioLabel="Yes">
+            </compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'currentlyLiveElsewhere'" [required]="true"
+                [radioButtonGroupName]="'currentlyLiveElsewhere'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" value="No" radioLabel="No">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+
+    <div class="card arrow-card p-3" *ngIf="residentialPropertyForm.value.currentlyLiveElsewhere === 'Yes'">
+        <fieldset class="button-group">
+            <legend>Do you plan to return to the home to live?</legend>
+            <compass-ui-cw-radiobutton [formControlName]="'intendToReturnHome'" [required]="true"
+                [radioButtonGroupName]="'intendToReturnHome'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="Yes" [radioBtnValue]="'Y'" [radioBtnId]="'elsewhere1'">
+            </compass-ui-cw-radiobutton>
+
+            <compass-ui-cw-radiobutton [formControlName]="'intendToReturnHome'" [required]="true"
+                [radioButtonGroupName]="'intendToReturnHome'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="No" [radioBtnValue]="'N'" [radioBtnId]="'elsewhere2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+    </div>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+        nextButtonLabel="{{'nextBtnText'| translate}}" (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+
+</form>

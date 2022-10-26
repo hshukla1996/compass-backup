@@ -1,0 +1,48 @@
+<div [formGroup]="incarcerationDetailsForm">
+    <h1>{{this.individualLabel}}</h1>
+    <div class="mb-3">
+        <compass-ui-cw-select 
+            [fieldId]="'countyOfPlacement'" 
+            fieldLabel="County of Placement" 
+            [displayError]="isFieldValid('countyOfPlacement')"
+            [requiredIndicator]="requiredFields.indexOf('countyOfPlacement')>-1"
+            [errorMsg]="errorMap('countyOfPlacement')"
+            [FormGroup]="incarcerationDetailsForm">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let county of countys" value={{county.id}}>{{county.displayValue}}</option>
+        </compass-ui-cw-select>
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-datepicker
+            label="Incarceration Begin Date"
+            ngDefaultControl 
+            [maxRange]="maxDateRange"
+            [formControlName]="'incarceratedAdmissionDate'"
+            [fieldId]="'incarceratedAdmissionDate'"
+            [required]="requiredFields.indexOf('incarceratedAdmissionDate')>-1"
+            [displayError]="isFieldValid('incarceratedAdmissionDate')"
+            [showError]="isFieldValid('incarceratedAdmissionDate')"
+            [errorMsg]="errorMap('incarceratedAdmissionDate') | translate"  [showFieldHelpText]="'MM/DD/YYYY'">
+        </compass-ui-cw-datepicker>
+       
+    </div>
+    <div class="mb-3">
+        <compass-ui-cw-datepicker 
+            label="Release Date" 
+            ngDefaultControl 
+            [formControlName]="'incarceratedDischargeDate'"
+            [fieldId]="'incarceratedDischargeDate'"
+            [required]="requiredFields.indexOf('incarceratedDischargeDate')>-1"
+            [displayError]="isFieldValid('incarceratedDischargeDate')"
+            [showError]="isFieldValid('incarceratedDischargeDate')"
+            [errorMsg]="errorMap('incarceratedDischargeDate') | translate"  [showFieldHelpText]="'MM/DD/YYYY'">
+        </compass-ui-cw-datepicker>
+ 
+    </div>
+</div>
+<compass-ui-cw-dpq-button 
+    backButtonLabel="Back" 
+    nextButtonLabel="Next" 
+    (next)="next()" 
+    (back)="back()">
+</compass-ui-cw-dpq-button>

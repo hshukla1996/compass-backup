@@ -1,0 +1,19 @@
+<h1 class="mb-3">Here is a summary of the documents you have uploaded so far.</h1>
+<p>Look below to make sure all the documents you want to upload are here.</p>
+<div class="card section-summary mb-3">
+    <div class="card-heading">
+        <h3><span>Medical Document</span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless">
+                <i class="fa-regular fa-trash-can"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-button [textStyle]="'btn btn-secondary w-100'" [buttonLabel]="'+ Add Another Document'"
+    (click)="addAnotherDoc()">
+</compass-ui-cw-button>
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="Upload"
+    (next)="upload()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

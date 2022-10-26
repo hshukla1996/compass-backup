@@ -1,0 +1,38 @@
+<div class="card-body">
+    <h1 class="mb-3">What type of {{titleObj[selectedDocCategory]}} document is this?</h1>
+    <label class="form-label">Select one sub-category at a time.</label>
+    <div class="standard-mb">
+        <cw-field-error-display [displayError]="selectedOption ? false : displayError" [errorMsg]="error">
+        </cw-field-error-display>
+    </div>
+    <div class="form-check custom mb-3" *ngFor="let type of documentTypes[selectedDocCategory]">
+        <input class="form-check-input" type="radio" (change)="selectedOption = type.id"
+            [checked]="selectedOption === type.id">
+        <label class="form-check-label">
+            <div class="label-text">{{type.title}}</div>
+            <div class="description-text">
+                <div class="accordion page-tip" id="crdlssSelCrd">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="crdlssSelCrdHead">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#' + type.id" aria-expanded="true">
+                                {{type.accordianTitle}}
+                            </button>
+                        </h2>
+                        <div [id]="type.id" class="accordion-collapse collapse" aria-labelledby="crdlssSelCrdHead"
+                            data-bs-parent="#crdlssSelCrd" aria-expanded="false">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li *ngFor="let doc of type.accordianContent">{{doc}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </label>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

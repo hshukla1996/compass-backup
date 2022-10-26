@@ -1,0 +1,116 @@
+<form [formGroup]="connectCaseGroup">
+  <h1>{{ 'sa_registerCCtitle' | translate }}</h1>
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="connectMethod" fieldId="connectMethod"
+      [fieldLabel]="'sa_registerCClbl1' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate" [FormGroup]="connectCaseGroup"
+      [errorMsg]="errorMap('connectMethod') | translate" [displayError]="isFieldInvalid('connectMethod')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let connectMethod of connectMethods" [value]="connectMethod.id">{{connectMethod.displayValue | translate}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <!-- case record -->
+  <div class="card arrow-card" *ngIf="entrySSN" [formGroup]="recordControls">
+    <div class="card-body">
+      <div class="mb-3">
+        <div class="mb-3">
+          <compass-ui-cw-select [fieldLabel]="'sa_registerCClbl1' | translate" ngDefaultControl formControlName="county" fieldId="county"
+            [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [FormGroup]="recordControls" [errorMsg]="errorMap('county') | translate"
+            [displayError]="isFieldInvalid('county')">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let county of counties" [value]="county.id">{{county.displayValue}}</option>
+          </compass-ui-cw-select>
+        </div>
+
+        <div class="mb-3">
+          <compass-ui-text [fieldId]="'caseRecord'" [FormGroup]="recordControls"
+            [fieldLabel]="'sa_registerCClbl2' | translate" [requiredText]="'lblrequired' | translate"
+            [requiredIndicator]="true" [displayError]="isFieldInvalid('caseRecord')"
+            [errorText]="errorMap('caseRecord') | translate: {maxLength: crMaxL}" [fieldType]="'numbersOnly'" [maxLength]="crMaxL">
+          </compass-ui-text>
+        </div>
+
+        <div class="mb-3">
+          <compass-ui-text (setValidator)="ssnError = $event" [fieldId]="'ssn'" [FormGroup]="recordControls" [fieldLabel]="'sa_registerCClbl3' | translate"
+            [requiredText]="'lblrequired' | translate" [fieldHelpText]="'sa_registerCChelp1' | translate"
+            [requiredIndicator]="true" [displayError]="isFieldInvalid('ssn')" [errorText]="errorMap('ssn') | translate: {minLength: ssnMinMaxL, maxLength: ssnMinMaxL}" type="ssn">
+          </compass-ui-text>
+        </div>
+
+        <div class="text-center">
+          <a class="hyperlink" (click)="changeToUFI()">{{ 'sa_registerCCswitch1' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ufi -->
+  <div class="card arrow-card" *ngIf="entryUFI" [formGroup]="ufiControls">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'chipIdUfi'" [FormGroup]="ufiControls" [fieldLabel]="'sa_registerCClbl4' | translate"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+          [displayError]="isFieldInvalid('chipIdUfi')" [errorText]="errorMap('chipIdUfi') | translate: {minLength: chipMinMaxL}" fieldType="numbersOnly"
+          [maxLength]="chipMinMaxL">
+        </compass-ui-text>
+      </div>
+
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'mciMedEbt'" [FormGroup]="ufiControls" [fieldLabel]="'sa_registerCClbl5' | translate"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+          [displayError]="isFieldInvalid('mciMedEbt')" [errorText]="errorMap('mciMedEbt') | translate: {minLength: mciMinL}" fieldType="numbersOnly"
+          [maxLength]="mciMaxL">
+        </compass-ui-text>
+      </div>
+
+      <div class="form-text">
+        <p>{{ 'sa_registerCChelp2' | translate }}</p>
+      </div>
+      <div class="row">
+        <div class="col text-center standard-mb">
+            <img 
+                (click)="enlargeImage1()" 
+                src="../../../../assets/images/SnapOrTanfImg-1.png"
+                class="{{largeImage1 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 1">
+        </div>
+        <div class="col text-center standard-mb">
+            <img
+                (click)="enlargeImage2()"
+                src="../../../../assets/images/SnapOrTanfImg-2.png" 
+                class="{{largeImage2 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 2">
+        </div>
+    </div>
+
+      <div class="text-center">
+        <a class="hyperlink" (click)="changeToSSN()">{{ 'sa_registerCCswitch2' | translate }}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- eform -->
+  <div class="card arrow-card" *ngIf="entryEForm" [formGroup]="eformControls">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'eformNumber'" [FormGroup]="eformControls" [fieldLabel]="'sa_registerCClbl6' | translate"
+          [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" fieldType="eformNumber"
+          [displayError]="isFieldInvalid('eformNumber')" [errorText]="errorMap('eformNumber') | translate: {minLength: eformMinL}"
+          [maxLength]="eformMaxL">
+        </compass-ui-text>
+      </div>
+      <div class="mb-3">
+        <compass-ui-censored [fieldId]="'password'" [FormGroup]="eformControls"
+          [fieldLabel]="'sa_registerCClbl7' | translate" [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+          [displayError]="isFieldInvalid('password')" [errorText]="errorMap('password') | translate:{ minLength: passwordMinL}"
+          [maxLength]="passwordMaxL">
+        </compass-ui-censored>
+      </div>
+    </div>  
+  </div>
+
+  <!-- nav -->
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'next'| translate}}"
+    (back)="back()" (next)="next()">
+  </compass-ui-cw-dpq-button>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="toLogin()">{{ 'sa_registerToLogin' | translate }}</a></p>
+</form>

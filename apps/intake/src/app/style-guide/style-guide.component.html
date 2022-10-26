@@ -1,0 +1,1564 @@
+<div class="container page-content">
+    <div class="content-block">
+        <h1>COMPASS Theme Elements <span class="text-danger">(required)</span></h1>
+        <div class="page-section">
+            <h2>Buttons</h2>
+            <p>Hover and click to see state changes!</p>
+            <div class="row mb-3">
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'primary-btn-sample'"
+                        [textStyle]="'btn btn-primary'"
+                        [buttonLabel]="'Primary'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'dis-primary-btn-sample'"
+                        [textStyle]="'btn btn-primary'"
+                        [buttonLabel]="'Disabled Pri'"
+                        [disabled]="true"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'secondary-btn-sample'"
+                        [textStyle]="'btn btn-secondary'"
+                        [buttonLabel]="'Secondary'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'dis-secondary-btn-sample'"
+                        [textStyle]="'btn btn-secondary'"
+                        [buttonLabel]="'Disabled Sec'"
+                        [disabled]="true"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'tertiary-btn-sample'"
+                        [textStyle]="'btn btn-tertiary'"
+                        [buttonLabel]="'Tertiary'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'dis-tertiary-btn-sample'"
+                        [textStyle]="'btn btn-tertiary'"
+                        [buttonLabel]="'Disabled Tert'"
+                        [disabled]="true"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'outline-btn-sample'"
+                        [textStyle]="'btn btn-outline-tertiary'"
+                        [buttonLabel]="'Outline'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'dis-outline-btn-sample'"
+                        [textStyle]="'btn btn-outline-tertiary'"
+                        [buttonLabel]="'Disabled Out'"
+                        [disabled]="true"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'sm-primary-btn-sample'"
+                        [textStyle]="'btn btn-sm btn-primary'"
+                        [buttonLabel]="'Primary SM'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'sm-secondary-btn-sample'"
+                        [textStyle]="'btn btn-sm btn-secondary'"
+                        [buttonLabel]="'Secondary SM'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'sm-tertiary-btn-sample'"
+                        [textStyle]="'btn btn-sm btn-tertiary'"
+                        [buttonLabel]="'Tertiary SM'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'sm-outline-btn-sample'"
+                        [textStyle]="'btn btn-sm btn-outline-tertiary'"
+                        [buttonLabel]="'Outline SM'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+                <div class="col">
+                    <compass-ui-cw-button
+                        [buttonId]="'sec-outline-btn-sample'"
+                        [textStyle]="'btn btn-sm btn-outline-secondary'"
+                        [buttonLabel]="'Outline Sec'"
+                    >
+                    </compass-ui-cw-button>
+                </div>
+            </div>
+        </div>
+        <div class="page-section">
+            <h2>Icons / Borderless Buttons / Hyperlinks </h2>
+            <h3>Icons</h3>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Ringed Icon</label>
+                    <span class="ringed-icon">
+                        <i class="fa-regular fa-mobile-button"></i>
+                    </span>
+                </div>
+                <!-- <div class="col">
+                    <div class="loading-container">
+                        <div class="sampleContent p-3">
+                        <p>Some sample content for the spinner to sit on top of. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam quam, malesuada pulvinar nulla scelerisque, laoreet consequat ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus vitae sem purus. Etiam maximus tortor vitae nibh rhoncus tempus. Donec sit amet urna pharetra, pulvinar tellus lobortis, pulvinar sem. Duis eu posuere odio, quis aliquam tellus. In posuere, eros ut fringilla viverra, dolor leo faucibus nulla, vitae malesuada purus ex eu dolor. Aenean sagittis lectus et gravida luctus. Nulla ullamcorper, arcu sit amet mollis dictum, purus augue condimentum nisi, eu venenatis tellus ante quis nisi. Fusce tristique nulla lobortis blandit eleifend. Fusce faucibus, justo eget fermentum maximus, neque arcu porttitor sapien, ut hendrerit ipsum tellus vel ex. Etiam libero ipsum, molestie sit amet tortor nec, condimentum tincidunt urna. Quisque placerat est id quam placerat, non vestibulum erat pulvinar. Praesent fringilla diam lectus. Ut vitae nunc non urna vulputate venenatis pellentesque nec tellus. Cras at arcu a erat pharetra tincidunt at vulputate tellus. Quisque malesuada dapibus est, quis aliquam mi eleifend a. Fusce scelerisque scelerisque magna imperdiet bibendum. Donec pulvinar posuere libero id sagittis. Suspendisse in vestibulum leo. Sed rutrum vulputate nunc nec mattis. Ut vitae ultricies dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam condimentum velit et nulla rutrum commodo.</p>
+                    </div>
+                    <span class="loading">
+                        <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+                    </span>
+                    </div>
+                    
+                </div> -->
+            </div>
+            <h3>Borderless Buttons - Hyperlinks</h3>
+            <p>Hover and click to see state changes!</p>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-borderless btn-constructive">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-borderless btn-destructive">
+                        <i class="fa-regular fa-trash-can"></i> Delete
+                    </button>
+                </div>
+                <div class="col">
+                    <a href="javascript:void(0);" class="hyperlink-lg">Large Hyperlink</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:void(0);" class="hyperlink-sm">Small Hyperlink</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-link">Link Button</button>
+                </div>
+            </div>
+        </div>
+        <div class="page-section">
+            <h2>Form Fields</h2>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <compass-ui-text [fieldId]="'requiredFld'" [fieldLabel]="'Required Field'"
+                    [FormGroup]="basicDetailsGroup"
+                        [requiredIndicator]="true"></compass-ui-text>
+                </div>
+                <div class="col-12 col-md-4">
+                    <compass-ui-text [fieldId]="'helpTxtFld'" [fieldLabel]="'Field with Help Text'"
+                     [FormGroup]="basicDetailsGroup"
+                        [fieldHelpText]="'This is field help.'"></compass-ui-text>
+                </div>
+                <div class="col-12 col-md-4">
+                    <compass-ui-text [fieldId]="'errorTxtFld'" [fieldLabel]="'Field with Error'"
+                     [FormGroup]="basicDetailsGroup"
+                        [requiredIndicator]="true" [errorText]="'This is required.'"></compass-ui-text>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-md-4">
+                    <label class="form-label" for="currencyFld">Currency Field</label>
+                    <div class="input-with-icon front">
+                        <span class="input-icon"><i class="fa-regular fa-dollar-sign"></i></span>
+                        <input type="text" class="form-control" id="currencyFld"
+                            aria-label="Amount (to the nearest dollar)">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <label class="form-label">Select</label>
+                    <select class="form-select" aria-label="select element">
+                        <option value="1" selected>Option 1</option>
+                        <option value="2">Option 2</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4">
+                    <!-- Datepicker control does not work in style guide, please see implementation of control in live screens-->
+                    <label for="dateControl" class="form-label">Date<span>(required)</span></label>
+                    <input type="date" id="dateControl" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label class="form-label">
+                        Checkbox Select
+                    </label>
+                    <div class="form-check custom">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Selection Item
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label class="form-label">
+                        Borderless Checkbox
+                    </label>
+                    <compass-ui-cw-checkbox
+                        [id]="'sample-b-less-cb'"
+                        [textStyle]="'borderless-check'"
+                        [label]="'I have read and understand the statement'"
+                    ></compass-ui-cw-checkbox>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label class="form-label">
+                        Radio Select
+                    </label>
+                    <div class="form-check custom">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Selection Item
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <fieldset class="button-group">
+                        <legend>Select Buttons Small</legend>
+                        <input type="radio" class="btn-check" name="radSex" id="radMale" autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="radMale">Opt 1</label>
+                        <input type="radio" class="btn-check" name="radSex" id="radFemale" autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="radFemale">Opt 2</label>
+                    </fieldset>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label class="form-label" for="flexSwitchCheckDefault">Toggle</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <fieldset class="button-group">
+                        <legend>Toggle Buttons No Selection</legend>
+                        <input type="radio" class="btn-check" name="radSex" id="radMale" autocomplete="off">
+                        <label class="btn btn-sm btn-toggle left" for="radMale">Yes</label>
+                        <input type="radio" class="btn-check" name="radSex" id="radFemale" autocomplete="off">
+                        <label class="btn btn-sm btn-toggle right" for="radFemale">No</label>
+                    </fieldset>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <fieldset class="button-group">
+                        <legend>Toggle Buttons With Selection</legend>
+                        <input type="radio" class="btn-check" name="radSex" id="radMale" autocomplete="off">
+                        <label class="btn btn-sm btn-toggle left selected" for="radMale">Yes</label>
+                        <input type="radio" class="btn-check" name="radSex" id="radFemale" autocomplete="off">
+                        <label class="btn btn-sm btn-toggle right unselected" for="radFemale">No</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="page-section">
+            <h2>Cards / Alerts / Panels</h2>
+            <div class="row mb-3">
+                <div class="col-12 col-lg-8 offset-lg-2">
+                    <h2>Question Summary</h2>
+                    <div class="accordion mb-3 data-accordion q-summary">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#langSelCardCollArea" aria-expanded="true" aria-controls="langSelCardCollArea">
+                                    <h2 class="card-title text-capitalize">
+                                        <div>
+                                            <div class="main-title">
+                                                Innistrad
+                                            </div>
+                                            <div class="sub-title">
+                                                Sorin Markov 43 (M)
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            <div>
+                                                $1000
+                                            </div>
+                                            <div class="tiny-text">
+                                                Bi-Weekly
+                                            </div>
+                                        </div>
+                                    </h2>
+                                </button>
+                            </div>
+                            <div class="accordion-collapse collapse" id="langSelCardCollArea">
+                                <hr>
+                                <div class="accordion-body">
+                                    <div class="faux-table p-0">
+                                        <div class="row">
+                                            <div class="col-9 col-md-3">
+                                                <span class="head sm-head">
+                                                    Is this self employment?
+                                                </span>
+                                            </div>
+                                            <div class="col-3 col-md-9 text-end">
+                                                <div class="data">
+                                                    No
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-9 col-md-3">
+                                                <span class="head sm-head">
+                                                    Employer Name
+                                                </span>
+                                            </div>
+                                            <div class="col-3 col-md-9 text-end">
+                                                <div class="data">
+                                                    Innistrad
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-9 col-md-3">
+                                                <span class="head sm-head">
+                                                    Employer Address
+                                                </span>
+                                            </div>
+                                            <div class="col-3 col-md-9 text-end">
+                                                <div class="data">
+                                                    <div>347 Markov Way</div>
+                                                    <div>Harrisburg</div>
+                                                    <div>Pennsylvania</div>
+                                                    <div>17112</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-9 col-md-3">
+                                                <span class="head sm-head">
+                                                    When did John last receive a paycheck from this job?
+                                                </span>
+                                            </div>
+                                            <div class="col-3 col-md-9 text-end">
+                                                <div class="data">
+                                                    07/29/2022
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                <hr class="dark">
+                                <div class="accordion-footer">
+                                    <div class="row action-btns">
+                                        <div class="col-6 text-center">
+                                            <button class="btn btn-borderless btn-constructive">
+                                                <i class="fa-regular fa-pen-to-square"></i>Edit
+                                            </button>
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <button class="btn btn-borderless btn-destructive">
+                                                <i class="fa-regular fa-trash-can"></i>Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-lg-6">
+                    <div class="alert alert-info d-flex align-items-center">
+                        <p>This is an info card with the lightbulb icon. The icon is part of the styling for the
+                            paragraph tag so you do not need to include it. You can control the width of the alert by
+                            putting it in a column. It will take the full width available in its containing parent
+                            element</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="accordion page-tip mb-3" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    This is an accordion panel. Click Me to see more!
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Accordion Panels:</p>
+                                    <ul>
+                                        <li>Will expand and collapse the bottom section when the top button is clicked
+                                        </li>
+                                        <li>Hold extended and more detailed information in the bottom section, this
+                                            allows the user to show what they need and collapse it when they don't</li>
+                                        <li>This panel's width can be controlled with columns</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3>Selection Cards</h3>
+            <div class="row mb-3">
+                <div class="col-12 col-lg-6">
+                    <div class="form-check custom mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="crdlessSelCardInput">
+                        <label class="form-check-label" for="crdlessSelCardInput">
+                            <div class="label-text">Cardless Selection Card</div>
+                            <div class="description-text">
+                                <p>Here is some supplemenetal description text.</p>
+                                <div class="accordion page-tip" id="crdlssSelCrd">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="crdlssSelCrdHead">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true"
+                                                aria-controls="collapseThree">
+                                                Test Accordion
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="crdlssSelCrdHead" data-bs-parent="#crdlssSelCrd"
+                                            aria-expanded="false">
+                                            <div class="accordion-body">
+                                                <p>Does it work?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="card standard mb-3">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="chkHealthCareCoverage">
+                                <label class="form-check-label" for="chkHealthCareCoverage">
+                                    Check the box to select
+                                </label>
+                            </div>
+                            <p>These are very similar to the checkbox lists, but include extra information</p>
+                            <a href="http://www.google.com">Can include links to other resources</a>
+                        </div>
+                    </div>
+                    <div class="card standard mb-3">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="chkHealthCareCoverage1">
+                                <label class="form-check-label" for="chkHealthCareCoverage1">
+                                    Check the box to select
+                                </label>
+                            </div>
+                            <p>These are very similar to the checkbox lists, but include extra information</p>
+                            <a href="http://www.google.com">Can include links to other resources</a>
+                        </div>
+                    </div>
+                    <div class="card standard mb-3">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="chkHealthCareCoverage2">
+                                <label class="form-check-label" for="chkHealthCareCoverage2">
+                                    Check the box to select
+                                </label>
+                            </div>
+                            <p>These are very similar to the checkbox lists, but include extra information</p>
+                            <div class="accordion page-tip mb-3" id="cardAccordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            This is an accordion panel inside a card. Click Me to see more!
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#cardAccordionExample"
+                                        aria-expanded="false">
+                                        <div class="accordion-body">
+                                            <p>Accordion Panels:</p>
+                                            <ul>
+                                                <li>Will expand and collapse the bottom section when the top button is
+                                                    clicked</li>
+                                                <li>Hold extended and more detailed information in the bottom section,
+                                                    this allows the user to show what they need and collapse it when
+                                                    they don't</li>
+                                                <li>This panel's width can be controlled with columns</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card img-card mb-3">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <!-- THIS IS A PLACEHOLDER IMAGE. REPLACE WHEN FINAL IMAGES ARE SHARED-->
+                                <img src="./assets/sg-placeholder.png" alt="Placeholder Image" />
+                                <!-- THIS IS A PLACEHOLDER IMAGE. REPLACE WHEN FINAL IMAGES ARE SHARED-->
+                                <h2>This is an Image Card</h2>
+                            </div>
+                            <p>Some text will go here describing what information is found on this card and why it is
+                                relevant.</p>
+                            <h3>Important Information</h3>
+                            <p>More supplemenetal information goes here, probably pertaining to the information in the
+                                h3 tag above.</p>
+                            <a href="http://www.google.com">Can include links to other resources</a>
+                            <p>Just some more information. The design should show you how many p tags and h3 tags you
+                                need, but there should only be one h2 tag (the one just below the image).</p>
+                            <h3>County</h3>
+                            <p>(555) 555-5555</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-lg-6">
+                    <fieldset class="button-group">
+                        <legend>Select Buttons Small</legend>
+                        <input type="radio" class="btn-check" name="radSex2" id="radMale2" autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="radMale2">Opt 1</label>
+                        <input type="radio" class="btn-check" name="radSex2" id="radFemale2" autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="radFemale2">Opt 2</label>
+                    </fieldset>
+                    <div class="card arrow-card">
+                        <div class="card-body">
+                            <h2>Arrow Card Example</h2>
+                            <small class="mb-3 d-block">If you want the arrow at the top to more align more towards the right, add the "right-arrow" class to the div with the "arrow-card" class.</small>
+                            <compass-ui-text [fieldId]="'userNameTxt'" [fieldLabel]="'Username'"
+                                [requiredIndicator]="true"></compass-ui-text>
+                            <compass-ui-text [fieldId]="'passwordText'" [fieldLabel]="'Password'"
+                                [requiredIndicator]="true"></compass-ui-text>
+                            <div class="text-end mb-3">
+                                <a href="#">Forgot Password</a>
+                            </div>
+                            <ul>
+                                <li>Example of other card content</li>
+                                <li>These cards can have lists</li>
+                                <li>These cards can have inputs (see above)</li>
+                                <li>These cards can have p tags (see below)</li>
+                            </ul>
+                            <p>You can really put anything you want in here. If something you add doesn't look correct, reach out to the UI lead to get it corrected.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <label class="form-label">Collapsable Card Using BS Accordion Layout</label>
+                    <div class="card collapsable accordion mb-3" id="collapseCardExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header card-head" id="headingOne">
+                                <!-- <i class="fa-regular fa-clock card-icon"></i> -->
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#reportingCard" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="collapse-card-btn-text left-icn clock-icn">Reporting History</div>
+                                </button>
+                            </h2>
+                            <div id="reportingCard" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#collapseCardExample">
+                                <div class="accordion-body card-body">
+                                    <p>Below is a list of changes you have reported in the past year.</p>
+                                    <hr />
+                                    <ul>
+                                        <li>
+                                            <div class="row rec-head">
+                                                <div class="col-6">
+                                                    <label>Ticket Number</label>
+                                                    <label class="data">220000071</label>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </div>
+                                            </div>
+                                            <div class="row rec-data">
+                                                <div class="col-6">
+                                                    <label>Date Created</label>
+                                                    <label class="data">01/19/2022 10:58AM</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Status</label>
+                                                    <label class="badge warn"> Follow-Up Needed</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row rec-head">
+                                                <div class="col-6">
+                                                    <label>Ticket Number</label>
+                                                    <label class="data">220000027</label>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </div>
+                                            </div>
+                                            <div class="row rec-data">
+                                                <div class="col-6">
+                                                    <label>Date Created</label>
+                                                    <label class="data">01/19/2022 10:58AM</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Status</label>
+                                                    <label class="badge warn">Follow-Up Needed</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row rec-head">
+                                                <div class="col-6">
+                                                    <label>Ticket Number</label>
+                                                    <label class="data">220000026</label>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </div>
+                                            </div>
+                                            <div class="row rec-data">
+                                                <div class="col-6">
+                                                    <label>Date Created</label>
+                                                    <label class="data">01/19/2022 10:58AM</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Status</label>
+                                                    <label class="badge success">Active</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row rec-head">
+                                                <div class="col-6">
+                                                    <label>Ticket Number</label>
+                                                    <label class="data">220000009</label>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </div>
+                                            </div>
+                                            <div class="row rec-data">
+                                                <div class="col-6">
+                                                    <label>Date Created</label>
+                                                    <label class="data">01/19/2022 10:58AM</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Status</label>
+                                                    <label class="badge disabled">Resolved</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row rec-head">
+                                                <div class="col-6">
+                                                    <label>Ticket Number</label>
+                                                    <label class="data">220000001</label>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </div>
+                                            </div>
+                                            <div class="row rec-data">
+                                                <div class="col-6">
+                                                    <label>Date Created</label>
+                                                    <label class="data">01/19/2022 10:58AM</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Status</label>
+                                                    <label class="badge disabled">Resolved</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row action-btns">
+                                        <div class="col-6 text-center">
+                                            <button class="btn btn-borderless btn-destructive">
+                                                <i class="fa-regular fa-trash-can"></i> Remove
+                                            </button>
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <button class="btn btn-borderless btn-constructive">
+                                                <i class="fa-regular fa-pen-to-square"></i> Edit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="form-label">Collapsable Card Not Using BS Accordion</label>
+                    <div class="card program-card mb-3" [ngClass]="progCardExpand2 === true ? 'expand' : 'cust-collapse'">
+                        <div class="card-head with-rt-brd">
+                            <div class="row heading-content">
+                                <div class="col-9">
+                                    <h2>
+                                        Jace Beleren 25 (M)
+                                    </h2>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <div class="date-data">
+                                        $200
+                                    </div>
+                                    <div class="date-lbl">
+                                        Monthly
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand2 = !progCardExpand2">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="faux-table p-0">
+                                <div class="row no-border pb-3">
+                                    <div class="col-9">
+                                        <span class="head sm-head">
+                                            How much are Jace's legal fees each monthy?
+                                        </span>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="data">
+                                            <div>$200</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row action-btns">
+                                    <div class="col-6 text-center p-0">
+                                        <button class="btn btn-borderless btn-destructive">
+                                            <i class="fa-regular fa-trash-can"></i> Remove
+                                        </button>
+                                    </div>
+                                    <div class="col-6 text-center p-0">
+                                        <button class="btn btn-borderless btn-constructive">
+                                            <i class="fa-regular fa-pen-to-square"></i> Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card collapsable mb-3">
+                        <div class="card-head">
+                            <i class="fa-regular fa-clock card-icon"></i>
+                            <h2>Reporting History</h2>
+                            <button class="btn btn-borderless btn-carat"><i
+                                    class="fa-regular fa-angle-down"></i></button>
+                            <!-- This button should be used to toggle the "collapse" class on the card-body div below. 
+                                    There is no need to write any animation for the toggle as that is all included in the styling.
+                                    This should just toggle the collapse class on (which will cause just the card-head to be shown) or off (which will cause the full card body to show)-->
+                        </div>
+                        <div class="card-body">
+                            <p>Below is a list of changes you have reported in the past year.</p>
+                            <hr />
+                            <ul>
+                                <li>
+                                    <div class="row rec-head">
+                                        <div class="col-6">
+                                            <label>Ticket Number</label>
+                                            <label class="data">220000071</label>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-secondary btn-sm">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row rec-data">
+                                        <div class="col-6">
+                                            <label>Date Created</label>
+                                            <label class="data">01/19/2022 10:58AM</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Status</label>
+                                            <label class="badge warn"> Follow-Up Needed</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row rec-head">
+                                        <div class="col-6">
+                                            <label>Ticket Number</label>
+                                            <label class="data">220000027</label>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-secondary btn-sm">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row rec-data">
+                                        <div class="col-6">
+                                            <label>Date Created</label>
+                                            <label class="data">01/19/2022 10:58AM</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Status</label>
+                                            <label class="badge warn">Follow-Up Needed</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row rec-head">
+                                        <div class="col-6">
+                                            <label>Ticket Number</label>
+                                            <label class="data">220000026</label>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-secondary btn-sm">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row rec-data">
+                                        <div class="col-6">
+                                            <label>Date Created</label>
+                                            <label class="data">01/19/2022 10:58AM</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Status</label>
+                                            <label class="badge success">Active</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row rec-head">
+                                        <div class="col-6">
+                                            <label>Ticket Number</label>
+                                            <label class="data">220000009</label>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-secondary btn-sm">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row rec-data">
+                                        <div class="col-6">
+                                            <label>Date Created</label>
+                                            <label class="data">01/19/2022 10:58AM</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Status</label>
+                                            <label class="badge disabled">Resolved</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row rec-head">
+                                        <div class="col-6">
+                                            <label>Ticket Number</label>
+                                            <label class="data">220000001</label>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-secondary btn-sm">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row rec-data">
+                                        <div class="col-6">
+                                            <label>Date Created</label>
+                                            <label class="data">01/19/2022 10:58AM</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Status</label>
+                                            <label class="badge disabled">Resolved</label>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <h2>Program Cards</h2>
+                    <div class="card program-card mb-3" [ngClass]="progCardExpand === true ? 'expand' : 'cust-collapse'">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-success">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="faux-table">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="head">
+                                            Members
+                                        </span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="data">
+                                            <div>John Sample 65 (M)</div>
+                                            <div>Jane Sample 65 (F)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="head">
+                                            Opened
+                                        </span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="data">
+                                            02/01/2022
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="head">
+                                            Renewal Date
+                                        </span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="data">
+                                            01/31/2022
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card program-card mb-3">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-primary">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card program-card mb-3">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-secondary">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card program-card mb-3">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-muted">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card program-card mb-3">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-warning text-dark">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card program-card mb-3">
+                        <div class="card-head">
+                            <div class="row heading-content">
+                                <div class="col-6">
+                                    <h2>
+                                        SNAP
+                                        <div>$459<span>Monthly</span></div>
+                                    </h2>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="badge rounded-pill bg-info text-dark">Open</span>
+                                    <div class="date-lbl">
+                                        Next Payment Due
+                                    </div>
+                                    <div class="date-data">
+                                        05/01/2022
+                                    </div>
+                                </div>
+                            </div>
+                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="progCardExpand = !progCardExpand">
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h2>Sample Card - found in use on Referrals > Referral Summary</h2>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2>John Sample 65 (M)</h2>
+                        <div class="card-section">
+                            <h3>Reason for Referral</h3>
+                            <p>I need help and want to speak to a county office.</p>
+                        </div>
+                        <div class="card-section">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3>County</h3>
+                                    <p>Dauphin</p>
+                                </div>
+                                <div class="col-6">
+                                    <h3>School District</h3>
+                                    <p>Centra Dauphin</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-section">
+                            <div class="faux-table">
+                                <div class="row heading-row">
+                                    <div class="col-6">
+                                        Program
+                                    </div>
+                                    <div class="col-6">
+                                        Office
+                                    </div>
+                                </div>
+                                <div class="row data-row">
+                                    <div class="col-6">
+                                        Adult Autism Services
+                                    </div>
+                                    <div class="col-6">
+                                        Bureau of Autism Services, Office of Developmental Programs
+                                    </div>
+                                </div>
+                                <div class="row data-row">
+                                    <div class="col-6">
+                                        Intellectual Disability Services
+                                    </div>
+                                    <div class="col-6">
+                                        Office of Developmental Programs
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-section">
+                            <h3>Relationship Information</h3>
+                            <p>John is the <span class="fw-bold">Father</span> of <span class="fw-bold">Jane Sample 10
+                                    (F)</span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col text-center">
+                                <button class="btn btn-borderless btn-constructive">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Sample Card - features Edit and Delete actions in the bottom</h2>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2>John Sample 65 (M)</h2>
+                        <div class="card-section">
+                            <h3>Reason for Referral</h3>
+                            <p>I need help and want to speak to a county office.</p>
+                        </div>
+                        <div class="card-section">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3>County</h3>
+                                    <p>Dauphin</p>
+                                </div>
+                                <div class="col-6">
+                                    <h3>School District</h3>
+                                    <p>Centra Dauphin</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-section">
+                            <div class="faux-table">
+                                <div class="row heading-row">
+                                    <div class="col-6">
+                                        Program
+                                    </div>
+                                    <div class="col-6">
+                                        Office
+                                    </div>
+                                </div>
+                                <div class="row data-row">
+                                    <div class="col-6">
+                                        Adult Autism Services
+                                    </div>
+                                    <div class="col-6">
+                                        Bureau of Autism Services, Office of Developmental Programs
+                                    </div>
+                                </div>
+                                <div class="row data-row">
+                                    <div class="col-6">
+                                        Intellectual Disability Services
+                                    </div>
+                                    <div class="col-6">
+                                        Office of Developmental Programs
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-section">
+                            <h3>Relationship Information</h3>
+                            <p>John is the <span class="fw-bold">Father</span> of <span class="fw-bold">Jane Sample 10
+                                    (F)</span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row action-btns">
+                             <div class="col-6 text-center"> 
+                                <button class="btn btn-borderless btn-destructive">
+                                    <i class="fa-regular fa-trash-can"></i> Remove
+                                </button>
+                             </div>
+                          <div class="col-6 text-center"> 
+                                <button class="btn btn-borderless btn-constructive">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </button>
+                             </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h2>Sample Pull-Down Card</h2>
+                <div class="card pull-down mb-3" [ngClass]="pillExpand === true ? 'expand' : 'cust-collapse'">
+                    <div class="card-head">
+                        <h2>Case 20|0589764<p>Peter Pevensie 17 (M)</p></h2>
+                        <span class="badge rounded-pill bg-success">Open</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="faux-table bg-tp">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Phone:</span>
+                                </div>
+                                <div class="col-6">
+                                   <div class="data">(717) 555-5555 </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Address:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">123 N E Where Ave</div>
+                                    <div class="data">Narnia, PA 17555</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">School District:</span> 
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">Wardrobe Valley</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Language:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">English</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">County Office:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">Azlan County Winter District</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alt-case">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h2>
+                                        Case 02|0589665
+                                        <p>Peter Pevensie 17 (M)</p>
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <button class="btn btn-secondary btn-sm">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="badge rounded-pill pull" (click)="pillExpand = !pillExpand">
+                        <i class="fa-regular fa-angle-down"></i>
+                    </button>
+                    <!-- This button should be used to toggle the "collapse" class on the card-body div above. 
+                                There is no need to write any animation for the toggle as that is all included in the styling.
+                                This should just toggle the collapse class on (which will cause just the card-head to be shown) or off (which will cause the full card body to show)-->
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Pagination</h2>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item prev">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><i class="fa-solid fa-angle-left"></i></span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="javascript:void(0);" tabindex="-1" aria-disabled="true">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">9</a></li>
+                        <li class="page-item next">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true"><i class="fa-solid fa-angle-right"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="modal-icon-div">
+                                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                                </div>
+                                <h2>Modal Title Goes Here</h2>
+                                <p>
+                                    This is where your content goes. All elements and classes established elsewhere (such as form elements, ULs, p's, labels, buttons, etc) should work here without issue.
+                                </p>
+                                <p>The icon at the top of the tile can be altered with the following add on classes</p>
+                                <ul>
+                                    <li>Danger - This will cause the icon's color to be red</li>
+                                    <li>Default - This will cause the icon's color to be a dark teal</li>
+                                    <li>Success - This will cause the icon's color to be the same green we use for other positive/success alerts</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-outline-tertiary">Cancel</button>
+                                <button class="btn btn-primary">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary w-100 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#toastModal">
+                    <i class="fa-regular fa-champagne-glasses"></i>Toast <i class="fa-regular fa-champagne-glasses"></i>
+                </button>
+                <div class="modal fade toast" id="toastModal" tabindex="-1" aria-labelledby="toastModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="toast-icon-div">
+                                    <i class="fa-solid fa-circle-check text-success"></i>
+                                </div>
+                                <div class="toast-text">
+                                    <h2>You have been successfully enrolled in Text Message notifications.</h2>
+                                    <p>
+                                        You will now receive text notifications through the number you provided.
+                                    </p>
+                                </div>
+                                <button class="toast-dismiss" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 mb-3">
+                    <div class="accordion mb-3 data-accordion pref">
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#langSelCardCollArea" aria-expanded="true" aria-controls="langSelCardCollArea">
+                <h2 class="card-title text-capitalize">
+                    <span class="d-block">Language Preferences</span>
+                    <span class="sm-label">English</span><!-- Displays the current selected language preference for the account-->
+                </h2>
+            </button>
+        </div>
+        <div class="accordion-collapse collapse" id="langSelCardCollArea">
+            <div class="accordion-body">
+                <hr>
+                <label for="languageSelect" id="lbl-languageSelect" class="p-style-label">
+                    Please indicate your preferred language for text notifications.
+                </label>
+                <select class="form-select" id="languageSelect">
+                    <option value="en" selected>English</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+                <div class="mt-3">
+                    <h2>Section Summary Cards</h2>
+                    <!-- mt-3 div used only for styleguide purposes, NOT NEEDED FOR IMPLEMENTATION OF CARDS IN SCREENS
+                    
+                        For cards that have no line items, do NOT include a card-body div.
+                    -->
+                    <div class="card section-summary">
+                        <div class="card-heading">
+                            <h3><span>Individual Situations</span><span class="count">3</span></h3>
+                            <div class="icn-div">
+                                <button class="btn btn-borderless">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="line-item">
+                                <div class="description">
+                                    Currently a Student
+                                </div>
+                                <div class="data">
+                                    <span class="count">1</span> <button class="btn btn-borderless"><i class="fa-regular fa-pen-to-square"></i></button>
+                                </div>
+                            </div>
+                            <div class="line-item">
+                                <div class="description">
+                                    Attending a Training or Educational Program Right Now
+                                </div>
+                                <div class="data">
+                                    <span class="count">2</span> <button class="btn btn-borderless"><i class="fa-regular fa-pen-to-square"></i></button>
+                                </div>
+                            </div>
+                            <div class="line-item">
+                                <div class="description">
+                                    Veteran, on Active Military Duty, in the National Guard, or in the Reserves
+                                </div>
+                                <div class="data">
+                                    <span class="count">1</span> <button class="btn btn-borderless"><i class="fa-regular fa-pen-to-square"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Summary Screen Cards</h2>
+                <div class="ref-num-box">
+                    <h2>Your Reference Number</h2>
+                    <label>1326</label>
+                </div>
+                <div class="card img-card summary mb-3">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!-- THIS IS A PLACEHOLDER IMAGE. REPLACE WHEN FINAL IMAGES ARE SHARED-->
+                            <img src="./assets/sg-placeholder.png" alt="Placeholder Image" />
+                            <!-- THIS IS A PLACEHOLDER IMAGE. REPLACE WHEN FINAL IMAGES ARE SHARED-->
+                            <h2>This is an Image Card</h2>
+                        </div>
+                        <p>Some text will go here describing what information is found on this card and why it is
+                            relevant.</p>
+                        <h3>Important Information</h3>
+                        <div class="alert alert-info d-flex align-items-center">
+                            <p>Info alert inside of card. Functions exactly like the alert outside of a card and is used to call attention to instruction or explaination text. This should be used for small bits of information. If more insturction is needed or additional supplementary information, an accordion card might be a better choice (see below).</p>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="inCardAccordionCard">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="inCardHeadingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#inCardCollapse" aria-expanded="true" aria-controls="inCardCollapse">
+                                        This is an accordion panel in an image card!
+                                    </button>
+                                </h3>
+                                <div id="inCardCollapse" class="accordion-collapse collapse" aria-labelledby="inCardHeadingOne"
+                                    data-bs-parent="#inCardAccordionCard">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>The accordion header should be an h3 instead of an h2 for accessibility purposes</li>
+                                            <li>Functions exactly like an accordion outside of a card
+                                            </li>
+                                            <li>Hold extended and more detailed information in the bottom section, this
+                                                allows the user to show what they need and collapse it when they don't</li>
+                                            <li>This panel's width can be controlled with columns</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>
+                            Berks County
+                            <p>(555) 555-5555</p>
+                        </h3>
+                        <ul>
+                            <li>Bullet Point Content 
+                                <a href="http://www.twitter.com">Hyperlink</a>
+                            </li>
+                            <li>Bullet Point Content 
+                                <a href="http://www.google.com">Hyperlink</a>
+                            </li>
+                            <li>Bullet Point Content 
+                                <a href="http://www.google.com">Hyperlink</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card summary-blue-card mb-3">
+                    <div class="card-body">
+                        <h2>Blue Background Card</h2>
+                        <p>These cards will typically contain nested cards with the image card styling</p>
+                        <div class="card img-card">
+                            <div class="card-body">
+                                <h3>Nested Card Title</h3>
+                                <p>Use an h3 tag for the headings of these cards as it is better for accessibility</p>
+                                <div class="alert alert-info d-flex align-items-center">
+                                    <p>Further nested alert div to hold instructional or supplementary information. <a href="http://www.google.com">Hyperlink Example</a></p>
+                                </div>
+                                <div class="accordion page-tip" id="inCardAccordionCard2">
+                                    <div class="accordion-item">
+                                        <h4 class="accordion-header" id="inCardHeading2">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inCardCollapse2" aria-expanded="true" aria-controls="inCardCollapse2">
+                                                This is an accordion panel nested even further!
+                                            </button>
+                                        </h4>
+                                        <div id="inCardCollapse2" class="accordion-collapse collapse" aria-labelledby="inCardHeading2" data-bs-parent="#inCardAccordionCard2">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    <li>The accordion header should be an h4 for accessibility purposes</li>
+                                                    <li>Functions exactly like an accordion outside of a card</li>
+                                                    <li>Hold extended and more detailed information in the bottom section, this allows the user to show what they need and collapse it when they don't</li>
+                                                    <li>This panel's width can be controlled with columns</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 text-center">
+                <button class="tile">
+                    <i class="fa-regular fa-address-book"></i>
+                    <p>Contact Information</p>
+                </button>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 text-center">
+                <button class="tile selected">
+                    <i class="fa-regular fa-address-book"></i>
+                    <p>Contact Information</p>
+                </button>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 text-center">
+                <button disabled="true" class="tile disabled">
+                    <i class="fa-regular fa-address-book"></i>
+                    <p>Contact Information</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

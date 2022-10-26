@@ -1,0 +1,32 @@
+ 
+  <div class="row mb-3">
+    <div class="col text-center">
+<i class="fa-light fa-do-not-enter fa-7x"></i>
+</div>
+</div>
+
+  <h1 class="text-center">{{"afsNotEligibleTitle" | translate }}</h1>
+  <h3 class="text-center">{{"afsNotEligibleFailedRequirements" | translate }}</h3>
+<div class="row ">
+  <div class="col">
+  <p>{{"afsNotEligibleVoteReqs" | translate }}</p>
+
+    <ul  >
+      <li>{{"afsNotEligibleReq1" | translate }}</li>
+      <li>{{"afsNotEligibleReq2" | translate }}</li>
+    </ul>
+  </div>
+</div>
+  
+  <div class="mb-3 row">
+    <div class="col text-center">  
+      <a target="_blank" href="https://www.vote.pa.gov/Pages/default.aspx">{{ "afsNotEligibleVisitPAReg" | translate }}</a>
+    </div>
+  </div>
+<div class="row">
+  <div class="col text-center">
+    <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+      Go Back to COMPASS Home
+    </button>
+</div>
+</div>

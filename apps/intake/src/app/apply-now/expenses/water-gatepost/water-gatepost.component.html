@@ -1,0 +1,230 @@
+<cw-simpletile-gatepostbutton
+  [othertextBoxData] = "'Tell us more about your other water situation.'"
+  [simpleTileGatepostButtonData]="gatePostData" (nextPage)="showNextPage($event)"
+    (previousPage)="showPreviousPage()">
+</cw-simpletile-gatepostbutton>
+
+
+
+
+<!-- <form class="form-horizontal" [formGroup]='waterGatepostForm'>
+    <h1>Do any of the following water situations apply?</h1>
+
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Drinking water is shut off</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="drinkingWaterShutOff"
+                            (click)="onRadioChecked('drinkingWaterShutOff','Y',$event)" id="drinkingWaterShutOffYes"
+                            autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                            [ngClass]="{'selected' :  (waterGatepost?.drinkingWaterShutOff==null)?false:waterGatepost?.drinkingWaterShutOff,'unselected':(waterGatepost?.drinkingWaterShutOff==null)?false:(waterGatepost?.drinkingWaterShutOff=='N')}"
+                            for="drinkingWaterShutOffYes">Yes</label>
+                        <input type="radio" class="btn-check" name="drinkingWaterShutOff" id="drinkingWaterShutOffNo"
+                            autocomplete="off" value="No" (click)="onRadioChecked('drinkingWaterShutOff','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="drinkingWaterShutOffNo"
+                            [ngClass]="{'selected' : (waterGatepost?.drinkingWaterShutOff==null)?false:(waterGatepost?.drinkingWaterShutOff==null)?false:waterGatepost?.drinkingWaterShutOff,'unselected':(waterGatepost?.drinkingWaterShutOff==null)?false:(waterGatepost?.drinkingWaterShutOff=='Y')}">No</label>
+
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('drinkingWaterShutOff')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Wastewater is shut off</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="wasteWaterShutOff"
+                            (click)="onRadioChecked('wasteWaterShutOff','Y',$event)" id="wasteWaterShutOffYes"
+                            autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                            [ngClass]="{'selected' :  (waterGatepost?.wasteWaterShutOff==null)?false:waterGatepost?.wasteWaterShutOff,'unselected':(waterGatepost?.wasteWaterShutOff==null)?false:(waterGatepost?.wasteWaterShutOff=='N')}"
+                            for="wasteWaterShutOffYes">Yes</label>
+                        <input type="radio" class="btn-check" name="wasteWaterShutOff" id="wasteWaterShutOffNo"
+                            autocomplete="off" value="No" (click)="onRadioChecked('wasteWaterShutOff','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="wasteWaterShutOffNo"
+                             [ngClass]="{'selected' : (waterGatepost?.wasteWaterShutOff==null)?false:(waterGatepost?.wasteWaterShutOff==null)?false:waterGatepost?.wasteWaterShutOff,'unselected':(waterGatepost?.wasteWaterShutOff==null)?false:(waterGatepost?.wasteWaterShutOff=='Y')}">No</label>
+
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('wasteWaterShutOff')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Have a shut-off notice for drinking water</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="noticeFordrinkingWaterShutOff"
+                            (click)="onRadioChecked('noticeFordrinkingWaterShutOff','Y',$event)"
+                            id="noticeFordrinkingWaterShutOffYes" autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                         [ngClass]="{'selected' :  (waterGatepost?.noticeFordrinkingWaterShutOff==null)?false:waterGatepost?.noticeFordrinkingWaterShutOff,'unselected':(waterGatepost?.noticeFordrinkingWaterShutOff==null)?false:(waterGatepost?.noticeFordrinkingWaterShutOff=='N')}"
+                            for="noticeFordrinkingWaterShutOffYes">Yes</label>
+                        <input type="radio" class="btn-check" name="noticeFordrinkingWaterShutOff"
+                            id="noticeFordrinkingWaterShutOffNo" autocomplete="off" value="No"
+                            (click)="onRadioChecked('noticeFordrinkingWaterShutOff','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="noticeFordrinkingWaterShutOffNo"
+                            [ngClass]="{'selected' : (waterGatepost?.noticeFordrinkingWaterShutOff==null)?false:(waterGatepost?.noticeFordrinkingWaterShutOff==null)?false:waterGatepost?.noticeFordrinkingWaterShutOff,'unselected':(waterGatepost?.noticeFordrinkingWaterShutOff==null)?false:(waterGatepost?.noticeFordrinkingWaterShutOff=='Y')}">No</label>
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('noticeFordrinkingWaterShutOff')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Have a shut-off notice for wastewater</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="noticeForwasteWaterShutOff"
+                            (click)="onRadioChecked('noticeForwasteWaterShutOff','Y',$event)"
+                            id="noticeForwasteWaterShutOffYes" autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (waterGatepost?.noticeForwasteWaterShutOff==null)?false:waterGatepost?.noticeForwasteWaterShutOff,'unselected':(waterGatepost?.noticeForwasteWaterShutOff==null)?false:(waterGatepost?.noticeForwasteWaterShutOff=='N')}"
+
+                            for="noticeForwasteWaterShutOffYes">Yes</label>
+                        <input type="radio" class="btn-check" name="noticeForwasteWaterShutOff"
+                            id="noticeForwasteWaterShutOffNo" autocomplete="off" value="No"
+                            (click)="onRadioChecked('noticeForwasteWaterShutOff','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="noticeForwasteWaterShutOffNo"
+                         [ngClass]="{'selected' : (waterGatepost?.noticeForwasteWaterShutOff==null)?false:(waterGatepost?.noticeForwasteWaterShutOff==null)?false:waterGatepost?.noticeForwasteWaterShutOff,'unselected':(waterGatepost?.noticeForwasteWaterShutOff==null)?false:(waterGatepost?.noticeForwasteWaterShutOff=='Y')}">No</label>
+
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('noticeForwasteWaterShutOff')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Have overdue bills for drinking water</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="overDueForDrinkingWater"
+                            (click)="onRadioChecked('overDueForDrinkingWater','Y',$event)"
+                            id="overDueForDrinkingWaterYes" autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                           [ngClass]="{'selected' :  (waterGatepost?.overDueForDrinkingWater==null)?false:waterGatepost?.overDueForDrinkingWater,'unselected':(waterGatepost?.overDueForDrinkingWater==null)?false:(waterGatepost?.overDueForDrinkingWater=='N')}"
+                         for="overDueForDrinkingWaterYes">Yes</label>
+                        <input type="radio" class="btn-check" name="overDueForDrinkingWater"
+                            id="overDueForDrinkingWaterNo" autocomplete="off" value="No"
+                            (click)="onRadioChecked('overDueForDrinkingWater','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="overDueForDrinkingWaterNo"
+                            [ngClass]="{'selected' : (waterGatepost?.overDueForDrinkingWater==null)?false:(waterGatepost?.overDueForDrinkingWater==null)?false:waterGatepost?.overDueForDrinkingWater,'unselected':(waterGatepost?.overDueForDrinkingWater==null)?false:(waterGatepost?.overDueForDrinkingWater=='Y')}">No</label>
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('overDueForDrinkingWater')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Have overdue bills for wastewater</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="overDueForWasteWater"
+                            (click)="onRadioChecked('overDueForWasteWater','Y',$event)" id="overDueForWasteWaterYes"
+                            autocomplete="off" value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (waterGatepost?.overDueForWasteWater==null)?false:waterGatepost?.overDueForWasteWater,'unselected':(waterGatepost?.overDueForWasteWater==null)?false:(waterGatepost?.overDueForWasteWater=='N')}"
+
+                            for="overDueForWasteWaterYes">Yes</label>
+                        <input type="radio" class="btn-check" name="overDueForWasteWater" id="overDueForWasteWaterNo"
+                            autocomplete="off" value="No" (click)="onRadioChecked('overDueForWasteWater','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="overDueForWasteWaterNo"
+                        [ngClass]="{'selected' : (waterGatepost?.overDueForWasteWater==null)?false:(waterGatepost?.overDueForWasteWater==null)?false:waterGatepost?.overDueForWasteWater,'unselected':(waterGatepost?.overDueForWasteWater==null)?false:(waterGatepost?.overDueForWasteWater=='Y')}">No</label>
+
+
+                        <button type="button" class="btn btn-link float-end"
+                            (click)="resetRadioButton('overDueForWasteWater')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card standard mb-3">
+        <div class="card-body">
+            <legend>Other</legend>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="button-group ">
+                        <input type="radio" class="btn-check" name="otherwater"
+                            (click)="onRadioChecked('otherwater','Y',$event)" id="otherwaterYes" autocomplete="off"
+                            value="Yes">
+                        <label class="btn btn-sm btn-toggle left"
+                         [ngClass]="{'selected' :  (waterGatepost?.otherwater==null)?false:waterGatepost?.otherwater,'unselected':(waterGatepost?.otherwater==null)?false:(waterGatepost?.otherwater=='N')}"
+
+                            for="otherwaterYes">Yes</label>
+                        <input type="radio" class="btn-check" name="otherwater" id="otherwaterNo" autocomplete="off"
+                            value="No" (click)="onRadioChecked('otherwater','N',$event)">
+                        <label class="btn btn-sm btn-toggle right mr-2" for="otherwaterNo"
+                         [ngClass]="{'selected' : (waterGatepost?.otherwater==null)?false:(waterGatepost?.otherwater==null)?false:waterGatepost?.otherwater,'unselected':(waterGatepost?.otherwater==null)?false:(waterGatepost?.otherwater=='Y')}">No</label>
+
+
+                        <button type="button" class="btn btn-link float-end" (click)="resetRadioButton('otherwater')">
+                            Reset
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card arrow-card p-3" *ngIf="waterGatepost.otherwater ==='Y'">
+        <compass-ui-text [fieldId]="'otherWater'" [FormGroup]="waterGatepostForm"
+            [fieldLabel]="'Tell us more about your other water situation.'">
+        </compass-ui-text>
+    </div>
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+
+
+</form> -->

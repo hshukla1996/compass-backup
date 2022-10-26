@@ -1,0 +1,90 @@
+<div class="card-head mx-3 mt-3">
+    <h1 class="standard-mb">We have reviewed the address you entered.</h1>
+</div>
+<div class="card-body">
+    <!-- <div class="col-12">
+        <div class="alert alert-info d-flex align-items-center">
+            <div>
+                <p>We recommend using the USPS Formatted Address if it matches what you entered.
+                </p>
+                <p>An accurate address helps us send your application to the correct office fro processing.
+                </p>
+            </div>
+        </div>
+    </div> -->
+    <p>Select the closest match from the USPS Formatted Address(es). If none of the suggested choices are correct,
+        select the
+        address you entered.</p>
+    <hr>
+    <div class="standard-mb">
+        <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+    </div>
+    <h2>Residential Address</h2>
+    <p>USPS Formatted Address</p>
+    <div class="card standard standard-mb">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="" id="address-radio"
+                    (click)="onSelectResidential('usps')">
+            </div>
+            <p>{{householdInformation?.residentAddress?.streetAddressLine1}},
+                {{householdInformation?.residentAddress?.streetAddressLine2 ?
+                householdInformation?.residentAddress?.streetAddressLine2 + ',' : ''}}
+                {{householdInformation?.residentAddress?.city}},
+                {{householdInformation?.residentAddress?.state}},
+                {{householdInformation?.residentAddress?.zip}}</p>
+        </div>
+    </div>
+    <p>Address You Entered</p>
+    <div class="card standard standard-mb">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="" id="address-radio"
+                    (click)="onSelectResidential('custom')" [checked] = "householdInformation.residentAddress.isMailingAddress">
+            </div>
+            <p>{{householdInformation?.residentAddress?.streetAddressLine1}},
+                {{householdInformation?.residentAddress?.streetAddressLine2 ?
+                householdInformation?.residentAddress?.streetAddressLine2 + ',' : ''}}
+                {{householdInformation?.residentAddress?.city}},
+                {{householdInformation?.residentAddress?.state}},
+                {{householdInformation?.residentAddress?.zip}}</p>
+        </div>
+    </div>
+    <div *ngIf="householdInformation?.mailingAddress?.streetAddressLine1">
+        <h2>Mailing Address</h2>
+        <p>USPS Formatted Address</p>
+        <div class="card standard standard-mb">
+            <div class="card-body">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="" id="address-radio"
+                        (click)="onSelectMailing('usps')">
+                </div>
+                <p>{{householdInformation?.mailingAddress?.streetAddressLine1}},
+                    {{householdInformation?.mailingAddress?.streetAddressLine2 ?
+                    householdInformation?.mailingAddress?.streetAddressLine2 + ',' : ''}}
+                    {{householdInformation?.mailingAddress?.city}},
+                    {{householdInformation?.mailingAddress?.state}},
+                    {{householdInformation?.mailingAddress?.zip}}</p>
+            </div>
+        </div>
+        <p>Address You Entered</p>
+        <div class="card standard standard-mb">
+            <div class="card-body">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="" id="address-radio"
+                        (click)="onSelectMailing('custom')" [checked] = "householdInformation.mailingAddress.isMailingAddress">
+                </div>
+                <p>{{householdInformation?.mailingAddress?.streetAddressLine1}},
+                    {{householdInformation?.mailingAddress?.streetAddressLine2 ?
+                    householdInformation?.mailingAddress?.streetAddressLine2 + ',' : ''}}
+                    {{householdInformation?.mailingAddress?.city}},
+                    {{householdInformation?.mailingAddress?.state}},
+                    {{householdInformation?.mailingAddress?.zip}}</p>
+            </div>
+        </div>
+    </div>
+    <p>If none of the addresses above are correct, you can go back and update your address.</p>
+
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+        nextButtonLabel="{{'nextBtnText'| translate}}" (next)="onNext()" (back)="onBack()">
+    </compass-ui-cw-dpq-button>

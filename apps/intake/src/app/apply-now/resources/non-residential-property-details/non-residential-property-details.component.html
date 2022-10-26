@@ -1,0 +1,24 @@
+<h1>You told us someone owns property that the household does not live in. Tell us about this resource.</h1>
+<p class="alert alert-info">Don’t worry, you can add more properties later if you need to.</p>
+<form [formGroup]="nonresidentialPropertyDetailsForm">
+    <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="nonresidentialPropertyDetailsForm" [fieldLabel]="'Street Address'" requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'addressline2'" [FormGroup]="nonresidentialPropertyDetailsForm"
+        [fieldLabel]="'Street Address (2)'">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'city'" [FormGroup]="nonresidentialPropertyDetailsForm"
+        [fieldLabel]="'City'" requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+    </compass-ui-text>
+    <compass-ui-cw-select [fieldId]="'state'" [FormGroup]="nonresidentialPropertyDetailsForm"
+        [fieldLabel]="'State'" >
+        <option value="" selected>- {{'selectone'}} -</option>
+      
+    </compass-ui-cw-select>
+    <compass-ui-text [fieldId]="'zip'" [FormGroup]="nonresidentialPropertyDetailsForm" [fieldLabel]="'Zip Code'" requiredText="{{'lblrequired' | translate}}" [requiredIndicator]="true">
+    </compass-ui-text>
+
+    
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="goNext()" (back)="goBack()">
+</compass-ui-cw-dpq-button>

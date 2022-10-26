@@ -1,0 +1,60 @@
+<h1>Tell us more about this burial or trust agreement.</h1>
+<div class="form-group" [formGroup]="burialTrustAgreementAdditionalDetailsForm">
+    <div class="form-group mb-3">
+        <compass-ui-cw-datepicker [formControlName]="'agreementdate'" [maxRange]="maxDateRange" ngDefaultControl
+            requiredText="{{'lblrequired' | translate}}" [displayError]="isFieldValid('agreementdate')"
+            [showError]="isFieldValid('agreementdate')" [errorMsg]="errorMap('agreementdate') | translate"
+            [fieldId]="'agreementdate'" label="What date was the burial agreement set up?"
+            showFieldHelpText="MM/DD/YYYY" [required]="requiredFields.indexOf('agreementdate')>-1">
+        </compass-ui-cw-datepicker>
+
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'accountno'" [fieldLabel]="'Account Number'"
+            [FormGroup]="burialTrustAgreementAdditionalDetailsForm" [displayError]="isFieldValid('accountno')"
+            [requiredText]="'(required)'" [errorText]="errorMap('accountno')"
+            [requiredIndicator]="requiredFields.indexOf('accountno')>-1">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'currency'" [fieldId]="'estimatevalue'"
+            [fieldLabel]="'Estimated Trust or Agreement Value'" [FormGroup]="burialTrustAgreementAdditionalDetailsForm"
+            [displayError]="isFieldValid('estimatevalue')" [requiredText]="'(required)'"
+            [errorText]="errorMap('estimatevalue')" [requiredIndicator]="requiredFields.indexOf('estimatevalue')>-1">
+        </compass-ui-text>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading form-label">
+            Can the household withdraw money from this agreement at any time?
+        </div>
+        <div class="panel-body">
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    <fieldset class="button-group">
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="burialTrustAgreementAdditionalDetailsForm.indianTrustLandPayments"
+                            name="withdrawmoney" id="yes1" formControlName="withdrawmoney" value="Yes"
+                            autocomplete="off">
+                        <label class="btn btn-outline-tertiary" for="yes1">Yes</label>
+                        <input type="radio" class="btn-check"
+                            [(ngModel)]="burialTrustAgreementAdditionalDetailsForm.indianTrustLandPayments"
+                            name="withdrawmoney" id="no1" formControlName="withdrawmoney" value="no" autocomplete="off">
+                        <label class="btn btn-outline-tertiary" for="no1">No</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>

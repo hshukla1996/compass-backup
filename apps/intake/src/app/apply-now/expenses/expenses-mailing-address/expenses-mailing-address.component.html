@@ -1,0 +1,37 @@
+<form [formGroup]="mailingAddressForm">
+        <h1>What is your utility company’s or fuel provider's mailing address?</h1>
+        <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="mailingAddressForm" [fieldLabel]="'Street Address'"
+             [fieldType]="'streetType'"  [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'addressline2'" [FormGroup]="mailingAddressForm" [fieldLabel]="'Street Address (2)'"
+             [fieldType]="'streetType'"  [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'city'" [FormGroup]="mailingAddressForm" [fieldLabel]="'City'"
+             [fieldType]="'nameType'"  [maxLength]="16">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="mailingAddressForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let x of states" value="{{x.id}}">{{x.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'zip'"
+        [FormGroup]="mailingAddressForm"
+        [fieldLabel]="'ZIP Code'"
+        [fieldType]="'numberType'"
+        [errorText]="'Enter valid Zip'"
+        [maxLength]="5"
+        [displayError]="isFieldValid('zip')"
+        [errorMsg]="errorMap('zip')">
+        </compass-ui-text>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="submit()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

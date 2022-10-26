@@ -1,0 +1,128 @@
+<form [formGroup]="wffGroup">
+  <h1>{{ 'afsWFFTitle' | translate }} <span class="required-span">(required)</span></h1>
+  <div class="mb-3">
+<fieldset class="button-group">
+  <compass-ui-cw-radiobutton ngDefaultControl  (click)="showAddressCard()" [showError]="isFieldValid('whoFilledYesNo')" [formControlName]="'whoFilledYesNo'"
+    [required]="true" [radioButtonGroupName]="'whoFilledYesNo'" [labelClass]="'btn btn-outline-tertiary'"
+    [radioClass]="'btn-check'" radioLabel="Yes"></compass-ui-cw-radiobutton>
+  <compass-ui-cw-radiobutton ngDefaultControl  (click)="hideAddressCard()" [showError]="isFieldValid('whoFilledYesNo')" [formControlName]="'whoFilledYesNo'"
+    [required]="true" [radioButtonGroupName]="'whoFilledYesNo'" [labelClass]="'btn btn-outline-tertiary'"
+    [radioClass]="'btn-check'" radioLabel="No">
+  </compass-ui-cw-radiobutton>
+</fieldset>
+
+<div *ngIf="isFieldValid('whoFilledYesNo')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+  {{'basidDetailRequiredMessage' | translate}}</div>
+
+
+    <!-- <fieldset class="button-group">
+      <input type="radio" class="btn-check" (click)="showAddressCard()" formControlName="whoFilledYesNo"
+        name="whoFilledYesNo" id="Yes" autocomplete="off" value="Y">
+      <label class="{{isFieldValid('whoFilledYesNo') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="Yes">Yes</label>
+      <input type="radio" class="btn-check" (click)="hideAddressCard()" formControlName="whoFilledYesNo"
+        name="whoFilledYesNo" id="no" autocomplete="off" value="N">
+      <label class="{{isFieldValid('whoFilledYesNo') ? 'btn btn-outline-tertiary error' : 'btn btn-outline-tertiary'}}"
+        for="no">No</label>
+    </fieldset>
+    <cw-field-error-display [displayError]="isFieldValid('whoFilledYesNo')" [errorMsg]="'This is required.'">
+    </cw-field-error-display> -->
+
+
+
+ 
+  </div>
+
+  <!-- arrow card for someone else -->
+  <div class="card arrow-card" *ngIf="showCard">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text fieldId="firstName"  [fieldType]="'nameType'" ngDefaultControl [FormGroup]="wffGroup" formControlName="firstName"
+          [fieldLabel]="'afsWFFLbl1' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+         [errorText]="'This is required.'" [maxLength]="30" [displayError]="isFieldValid('firstName')" >
+        </compass-ui-text>
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="lastName" [fieldType]="'nameType'" ngDefaultControl [FormGroup]="wffGroup" formControlName="lastName"
+          [fieldLabel]="'afsWFFLbl2' | translate" [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+           [errorText]="'This is required.'" [maxLength]="30" [displayError]="isFieldValid('lastName')">
+        </compass-ui-text>
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="phone" ngDefaultControl [FormGroup]="wffGroup" formControlName="phone"
+         (keypress)="OnlyNumberAllowed($event)" type="phone"
+          [fieldLabel]="'afsWFFLbl3' | translate"  >
+        </compass-ui-text>
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="street" ngDefaultControl [FormGroup]="wffGroup"  (keypress)="checkChar($event)" 
+          [fieldType]="'referralsaddressType'" [maxLength]="26" formControlName="street"
+          [fieldLabel]="'afsAddressChangeLbl1' | translate" [requiredIndicator]="true"
+          [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('street')">
+        </compass-ui-text>
+
+         
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="street2" ngDefaultControl [FormGroup]="wffGroup"  (keypress)="checkChar($event)"  [fieldType]="'referralsaddressType'"
+          [maxLength]="26" formControlName="street" [fieldLabel]="'Street Address (2)'" 
+           >
+        </compass-ui-text> 
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="city" ngDefaultControl [FormGroup]="wffGroup" [fieldType]="'nameType'"
+          [maxLength]="26" formControlName="city" [fieldLabel]="'afsAddressChangeLbl2' | translate" [requiredIndicator]="true"
+          [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('city')">
+        </compass-ui-text>
+
+
+ 
+      </div>
+      <div class="mb-3">
+        <compass-ui-cw-select ngDefaultControl formControlName="state" fieldId="state" [requiredIndicator]="true"
+          [fieldLabel]="'afsAddressChangeLbl3' | translate" [requiredText]="'lblrequired' | translate"
+          [FormGroup]="wffGroup" [errorMsg]="'This is required.'" [displayError]="isFieldValid('state')">
+          <option value="" selected>- {{'selectone' | translate}} -</option>
+          <option *ngFor="let state of states">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+
+
+       
+      </div>
+      <div class="mb-3">
+        <compass-ui-text fieldId="zip" [maxLength]="5" ngDefaultControl [FormGroup]="wffGroup" formControlName="zip"
+          [fieldLabel]="'afsAddressChangeLbl4' | translate" [requiredIndicator]="true" (keypress)="OnlyNumberAllowed($event)"
+          [requiredText]="'lblrequired' | translate" [errorText]="'This is required.'" [displayError]="isFieldValid('zip')">
+        </compass-ui-text>
+
+
+       
+      </div>
+
+      <p class="fw-bold">{{ 'afsWFFSince' | translate }}</p>
+      <p>{{ 'afsWFFSign' | translate }}</p>
+      <ul>
+        <li>{{ 'afsWFFSignReq1' | translate }}</li>
+        <li>{{ 'afsWFFSignReq2' | translate }}</li>
+      </ul>
+
+      <div class="mb-3"  >
+        
+        <compass-ui-cw-checkbox [formGroup]="wffGroup"  (inputModelChange)="confirm($event)" [isSingle]="true" requiredText="This is required." id="termsConditions" [isChecked]="termsConditions"
+          [label]="'afsWFFLbl9' | translate"    >
+        </compass-ui-cw-checkbox>
+      <cw-field-error-display [displayError]="displayError" [errorMsg]="errorMessage"></cw-field-error-display>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <p>{{ 'afsWFFTip1' | translate }}</p>
+</div>
+
+  <!-- nav -->
+  <compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'submitLbl' | translate"
+  (back)="back()" (next)="submit()">
+</compass-ui-cw-dpq-button>
+</form>

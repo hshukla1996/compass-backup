@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col text-center">
+        <i class="fa-regular fa-circle-check fa-2x"></i>
+        <h1>Thank you for submitting your document(s)!</h1>
+    </div>
+</div>
+<div class="col text-center">
+    <label class="form-label">Record ID</label>
+    <h1>1123213 </h1>
+</div>
+<p>You have submitted these document(s):</p>
+<div class="card">
+    <div class="card-head mx-3 mt-3">
+        <h2 class="m-0"><i class="fa-regular fa-file-arrow-up mx-2"></i> Uploaded Documents</h2>
+    </div>
+    <div class="card-body">
+        <label class="form-label">Personal Information</label>
+        <div class="mx-3">
+            <p>ID</p>
+            <p>Medical Documents</p>
+        </div>
+        <hr>
+        <label class="form-label">Expenses</label>
+        <div class="mx-3">
+            <p>ID</p>
+            <p>Medical Bills</p>
+        </div>
+    </div>
+</div>
+<p class="mt-3">The documents you submitted are subject to verification. This means we may contact you for more information, if
+    needed.</p>
+<div class="alert alert-info mt-3">
+    <p>Don't have an account? You can use Check Application Status to submit documents later using your e-Form number
+        and
+        password.
+    </p>
+</div>
+<compass-ui-cw-button [textStyle]="'btn btn-secondary w-100'" [buttonLabel]="'+ Print'">
+</compass-ui-cw-button>
+
+<div class="row mt-3 action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary">
+            Go Back to My MCA Dashboard
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-outline-tertiary" (click)="upload()">
+            Upload Another Document
+        </button>
+    </div>
+</div>

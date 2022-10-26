@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+    <div class="card-head mx-3 mt-3">
+        <h1 class="mb-0">Is your household experiencing one of these emergency situations?</h1> <span>(required)</span>
+    </div>
+    <div class="card-body">
+        <ul>
+            <li>In danger of being without fuel (less than a 15 day supply)</li>
+            <li> In danger of having utility service terminated (you've received a notice that service will be shut off
+                within the next
+                60 days)</li>
+            <li>Out of fuel</li>
+            <li>The main heating source or secondary heating source (a source that is used to operate the main heating
+                source or used
+                if the main heating source is not working) has been completely shut off</li>
+            <li>Broken heating equipment or leaking lines that must be fixed or replaced</li>
+        </ul>
+        <div class="row mt-3 mb-3">
+            <fieldset class="button-group">
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('isEmergencySituation')" ngDefaultControl
+                    [formControlName]="'isEmergencySituation'" [required]="true" [radioButtonGroupName]="'isEmergencySituation'"
+                    [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('isEmergencySituation')" ngDefaultControl
+                    [formControlName]="'isEmergencySituation'" [required]="true" [radioButtonGroupName]="'isEmergencySituation'"
+                    [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No">
+                </compass-ui-cw-radiobutton>
+                <cw-field-error-display [displayError]="isFieldValid('isEmergencySituation')"
+                    errorMsg="{{errorMap('isEmergencySituation')}}">
+                </cw-field-error-display>
+            </fieldset>
+        </div>
+        <div class="col-12">
+            <div class="alert alert-info d-flex align-items-center">
+                <div>
+                    <p>If you're experiencing any of these scenarios and need immediate assistance outside of regular
+                        business hours (8AM-5PM
+                        Monday through Friday) or if it's a holiday, call the after-hours
+                        <strong>Crisis hotline at 1-866-452-6152.</strong>
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <p>If you do not need immediate assistance,please select you can continue your LIHEAP Crisis request.
+            <strong>All LIHEAP Crisis requests are addressed within 48 hours of receipt.</strong>
+        </p>
+    </div>
+</form>
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,50 @@
+<ng-container *ngIf="simpleTileDropdownInputData['questionTextRequired']">
+    <h1 class="parent_heading_text d-inline">
+        {{ simpleTileDropdownInputData['questionText'] | translate : simpleTileDropdownInputData['questionTextTO'] }}
+    </h1>
+    <label>
+        <span>{{ simpleTileDropdownInputData['requiredText'] | translate : simpleTileDropdownInputData['requiredTextTO']}}</span>
+    </label>
+</ng-container>
+<ng-container *ngIf="!simpleTileDropdownInputData['questionTextRequired']">
+    <h1 class="parent_heading_text mb-3">
+        {{ simpleTileDropdownInputData['questionText'] | translate : simpleTileDropdownInputData['questionTextTO']}}
+    </h1>
+</ng-container>
+<div class="mb-3">
+    <div class="form-group">
+        <compass-ui-cw-select 
+            [fieldId]="'dropdown'" 
+            [fieldLabel]="simpleTileDropdownInputData['dropDownLabel'] | translate : simpleTileDropdownInputData['dropDownLabelTO']" 
+            [FormGroup]="simpleTileDropdownInputForm"
+            [requiredText]="simpleTileDropdownInputData['dropDownLabelRequired'] ? (simpleTileDropdownInputData['requiredText'] | translate : simpleTileDropdownInputData['requiredTextTO']) : ''" 
+            [displayError]="simpleTileDropdownInputData['dropDownLabelRequired'] ? isFieldValid('dropdown') : ''" 
+            [errorMsg]="errorMap('dropdown') | translate">
+            <option value="" selected>{{simpleTileDropdownInputData['selected'] | translate : simpleTileDropdownInputData['selectedTO']}}</option>
+            <option *ngFor="let state of simpleTileDropdownInputData['dropdownArray']" value="{{state}}">{{state | translate}}</option>
+        </compass-ui-cw-select>
+    </div>
+</div>
+<compass-ui-text 
+    type="{{simpleTileDropdownInputData['type']}}" 
+    [fieldId]="'input'"
+    [requiredIndicator]="simpleTileDropdownInputData['inputLabelRequired']"
+    [requiredText]="simpleTileDropdownInputData['inputLabelRequired'] ? (simpleTileDropdownInputData['requiredText'] | translate : simpleTileDropdownInputData['requiredTextTO']) : ''"
+    [FormGroup]="simpleTileDropdownInputForm" 
+    [maxLength]="simpleTileDropdownInputData['maxLength']"
+    [fieldLabel]="simpleTileDropdownInputData['inputLabel'] | translate : simpleTileDropdownInputData['inputLabelTO']" 
+    (inputModelChange)="GetValue($event)"
+    (keypress)="simpleTileDropdownInputData['type'] === 'number' ? OnlyNumberAllowed($event) : ''"
+    [displayError]="isFieldValid('input')" 
+    [errorMsg]="errorMap('input') | translate"
+    [fieldHelpText]="simpleTileDropdownInputData['helpText'] | translate : simpleTileDropdownInputData['helpTextTO']" 
+    attr.pattern="{{simpleTileDropdownInputData['pattern']}}"
+    [placeHolderText]="simpleTileDropdownInputData['placeHolder'] | translate : simpleTileDropdownInputData['placeHolderTO']">
+</compass-ui-text>
+
+<compass-ui-cw-dpq-button 
+    [backButtonLabel]="'back' | translate" 
+    [nextButtonLabel]="'next' | translate" 
+    (next)="next()" 
+    (back)="back()">
+</compass-ui-cw-dpq-button>

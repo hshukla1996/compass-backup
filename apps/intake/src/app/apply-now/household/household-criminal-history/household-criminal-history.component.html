@@ -1,0 +1,51 @@
+        <h1 class="standard-mb">Do any of the following criminal history situations apply to anyone in the household?</h1>
+        <div class="alert alert-info d-flex align-items-center standard-mb">
+            <p class="text-left">
+                Don’t worry, you can still get benefits.
+            </p>
+        </div>
+        <p class="form-subtitle standard-mb">Select all that apply.</p>
+        <form [formGroup]="householdCrimHistoryForm">
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkOffense
+                            [(ngModel)]="householdCrimHistory.chkOffense" formControlName="chkOffense">
+                        <label class="form-check-label" for="chkOffense">
+                            Owes fines, costs or restitution for a felony or misdemeanor offense
+                        </label>
+                    </div>
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkFraud
+                            [(ngModel)]="householdCrimHistory.chkFraud" formControlName="chkFraud">
+                        <label class="form-check-label" for="chkFraud">
+                            Convicted of welfare fraud
+                        </label>
+                    </div>
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkParole
+                            [(ngModel)]="householdCrimHistory.chkParole" formControlName="chkParole">
+                        <label class="form-check-label" for="chkParole">
+                            Currently on probation or parole
+                        </label>
+                    </div>
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkLawEnforcement
+                            [(ngModel)]="householdCrimHistory.chkLawEnforcement" formControlName="chkLawEnforcement">
+                        <label class="form-check-label" for="chkLawEnforcement">
+                            Currently fleeing from law enforcement officials
+                        </label>
+                    </div>
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkPrison
+                            [(ngModel)]="householdCrimHistory.chkPrison" formControlName="chkPrison">
+                        <label class="form-check-label" for="chkPrison">
+                            Currently in prison or another correctional facility (Incarcerated)
+                        </label>
+                    </div>
+                    <div class="form-check custom standard-mb">
+                        <input class="form-check-input" type="checkbox" value="" #chkNone
+                            [(ngModel)]="householdCrimHistory.chkNone" formControlName="chkNone">
+                        <label class="form-check-label" for="chkNone">
+                            None of These Apply
+                        </label>
+                    </div>
+        </form>

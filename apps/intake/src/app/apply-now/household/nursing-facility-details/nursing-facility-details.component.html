@@ -1,0 +1,55 @@
+<form [formGroup]="nursingFacilityDetailsForm" (ngSubmit)="onSubmit()">
+        <h1>You told us someone has lived in a nursing home facility. Tell us more about the nursing home.</h1>
+        <compass-ui-text [fieldId]="'FacilityName'" [FormGroup]="nursingFacilityDetailsForm" [fieldLabel]="'Facility Name'"
+            [requiredText]="' (required)'" [requiredIndicator]="true" [displayError]="isFieldValid('FacilityName')"
+            [errorText]="errorMap('FacilityName')"  [maxLength]="26" fieldType="alphaOnly"  (inputModelChange)="GetValue($event)" (inputModelChange)="GetValue($event)">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'AddressLine1'" [FormGroup]="nursingFacilityDetailsForm"
+            [fieldLabel]="'Street Address'" fieldType="prevStreetType" [maxLength]="26">
+        </compass-ui-text> <!-- pattern="[#.0-9a-zA-Z\s,-]*" -->
+        <compass-ui-text [fieldId]="'AddressLine2'" [FormGroup]="nursingFacilityDetailsForm"
+            [fieldLabel]="'Street Address (2)'" fieldType="prevStreetType" [maxLength]="26">
+        </compass-ui-text> <!-- pattern="[#.0-9a-zA-Z\s,-]*" -->
+        <compass-ui-text [fieldId]="'City'" [FormGroup]="nursingFacilityDetailsForm"
+            [fieldLabel]="'City'" fieldType="cityType" [maxLength]="16">
+        </compass-ui-text> <!-- pattern="[#.a-zA-Z\s,-]*" -->
+        <compass-ui-cw-select [fieldId]="'State'" [fieldLabel]="'State'"
+            [FormGroup]="nursingFacilityDetailsForm" [requiredIndicator]="true"  [requiredText]="'(required)'" [displayError]="isFieldValid('State')" [errorMsg]="errorMap('State')">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'Zip'" [FormGroup]="nursingFacilityDetailsForm"
+            [fieldLabel]="' ZIP Code'" [displayError]="isFieldValid('Zip')" [errorText]="'Please enter 5 digit zip code'" fieldType="numberType"
+            [maxLength]="5">
+        </compass-ui-text>
+        <div class="form-group mb-4">
+            <compass-ui-cw-datepicker ngDefaultControl label="When did the household member move in?"
+                [showError]="isFieldValid('nursingFacilityStartDate')"
+                [displayError]="isFieldValid('nursingFacilityStartDate')" [errorMsg]="errorMap('nursingFacilityStartDate') | translate"
+                requiredText="'(required)'" [formControlName]="'nursingFacilityStartDate'" [required]="true"  [maxRange]="today">
+            </compass-ui-cw-datepicker>
+            <small class="text-muted">MM/DD/YYYY</small>
+        </div>
+        <div class="form-group mb-4">
+            <compass-ui-cw-datepicker ngDefaultControl label="When did they move out?"
+                [showError]="isFieldValid('nursingFacilityEndDate')"
+                [displayError]="isFieldValid('nursingFacilityEndDate')" 
+                [errorMsg]="errorMap('nursingFacilityStartDate') | translate"
+                [formControlName]="'nursingFacilityEndDate'"   
+                [maxRange]="today">
+            </compass-ui-cw-datepicker>
+            <small class="text-muted">MM/DD/YYYY</small>
+        </div>        
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

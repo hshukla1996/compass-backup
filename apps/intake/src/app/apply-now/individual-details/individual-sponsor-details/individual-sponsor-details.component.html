@@ -1,0 +1,56 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays" [formGroup]='individualSponsorDetailsForm'
+  (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Tell us more about {{currentUser.firstName}}'s sponsor.</h1>
+  <compass-ui-text [fieldId]="'firstName'" [FormGroup]="individualSponsorDetailsForm"
+    [fieldLabel]="'lblFirstName' | translate" [maxLength]="11" [fieldType]="'nameParts'"
+    [isVisible]="fieldDisplays.firstName" [requiredIndicator]="requiredFields.indexOf('firstName')>-1">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'middleName'" [FormGroup]="individualSponsorDetailsForm"
+    (keypress)="restrictMidCharacters($event)" [fieldLabel]="'afsMiddleName' | translate" [maxLength]="1"
+    pattern="[a-zA-Z]*" [isVisible]="fieldDisplays.middleName"
+    [requiredIndicator]="requiredFields.indexOf('middleName')>-1">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'lastName'" [FormGroup]="individualSponsorDetailsForm"
+    [fieldLabel]="'lblLastName' | translate" [maxLength]="14" [fieldType]="'nameParts'"
+    [isVisible]="fieldDisplays.lastName" [requiredIndicator]="requiredFields.indexOf('lastName')>-1">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'address'" [FormGroup]="individualSponsorDetailsForm" [fieldType]="'streetType'"
+    [fieldLabel]="'Street Address'" [maxLength]="26" [isVisible]="fieldDisplays.address"
+    [requiredIndicator]="requiredFields.indexOf('address')>-1">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'address2'" [FormGroup]="individualSponsorDetailsForm" [fieldType]="'streetType'"
+    [fieldLabel]="'Street Address (2)'" [maxLength]="26" [isVisible]="fieldDisplays.address2"
+    [requiredIndicator]="requiredFields.indexOf('address2')>-1">
+  </compass-ui-text>
+  <compass-ui-text [fieldId]="'city'" [FormGroup]="individualSponsorDetailsForm" [fieldType]="'cityType'"
+    [fieldLabel]="'City'" [maxLength]="16" [isVisible]="fieldDisplays.city"
+    [requiredIndicator]="requiredFields.indexOf('city')>-1">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="individualSponsorDetailsForm"
+    [isVisible]="fieldDisplays.state" [requiredIndicator]="requiredFields.indexOf('state')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+  </compass-ui-cw-select>
+  <compass-ui-text [fieldId]="'zip'" [FormGroup]="individualSponsorDetailsForm" [fieldLabel]="'ZIP Code'"
+    [fieldType]="'zipCode'" 
+    [errorText]="'Enter valid Zip'"
+    [maxLength]="5"
+    [displayError]="isFieldValid('zip')"
+    [errorMsg]="errorMap('zip')"
+    [isVisible]="fieldDisplays.zip"
+    [requiredIndicator]="requiredFields.indexOf('zip')>-1"
+>
+  </compass-ui-text>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

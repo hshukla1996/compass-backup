@@ -1,0 +1,31 @@
+<div class="card-head mx-3 mt-3">
+    <h1 class="mb-3">Tell us about your pregnancy changes.</h1>
+</div>
+<div class="card-body">
+    <p *ngIf="!employeeCount; else indInfo">You don't have any details to change at this time.</p>
+    <ng-template #indInfo>
+    <div class="form-group" *ngFor="let individualInformation of individualInformations;let i = index">
+        <div class = "mb-4" *ngIf = "individualInformation.age > 9 && individualInformation.age < 60 && individualInformation.gender === 'F'">
+            <p>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+                {{individualInformation?.age}}
+                ({{individualInformation?.gender}}) </p>
+            <form [formGroup]="formGroupObj[i]">
+                <compass-ui-cw-select [fieldId]="'numberOfExpectedChildren'" fieldLabel="Number of Expected Children"
+                    [requiredText]="'(required)'" [FormGroup]="formGroupObj[i]" [errorMsg]="errorMap('numberOfExpectedChildren', i)"
+                    [displayError]="isFieldValid('numberOfExpectedChildren', i)">
+                    <option value="" selected>- {{'selectone' | translate}} -</option>
+                    <option value="{{count}}" *ngFor="let count of numbers">{{count}} </option>
+                </compass-ui-cw-select>
+                <compass-ui-cw-datepicker ngDefaultControl label="Pregnancy Due Date"
+                    [displayError]="isFieldValid('pregnancyDueDate', i)" [errorMsg]="errorMap('pregnancyDueDate', i) | translate"
+                    [requiredText]="'(required)'" [formControlName]="'pregnancyDueDate'" [required]="true" [maxRange]="today">
+                </compass-ui-cw-datepicker>
+                <small class="text-muted">MM/DD/YYYY</small>
+            </form>
+        </div>        
+    </div>
+    </ng-template>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

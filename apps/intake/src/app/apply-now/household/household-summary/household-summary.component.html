@@ -1,0 +1,161 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-12">
+    <div class="loading-container">
+      <div class="p-5">
+        <p>{{loadingText}}</p>
+      </div>
+      <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="!isLoading">
+<h1 class="standard-mb">Here’s a summary of your household so far.</h1>
+<p class="subtitle">Look below to make sure everything here is correct.</p>
+<div class="card section-summary mt-4">
+    <div class="card-heading">
+        <h3><span>Household Members</span><span class="count">{{this.memberCount}}</span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToEdit()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4" *ngIf="!showLTC">
+    <div class="card-heading">
+        <h3><span>Benefits Being Applied For</span><span class="count">{{benefitCount}}</span></h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToBenefit()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4" *ngIf="showLTC">
+    <div class="card-heading">
+        <h3>
+            <span>Long Term Living Services from a Nursing Home or Related Facility</span>
+            <!-- <span class="count">{{benefitCount}}</span> -->
+        </h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToLTC()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4">
+    <div class="card-heading">
+        <h3>
+            <span>Address and Contact Information</span>
+            <!-- <span class="count">{{benefitCount}}</span> -->
+        </h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToAddressContact()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4" *ngIf="this.sevicesselected && (this.sevicesselected.indexOf('LW') > -1 || this.sevicesselected.indexOf('LH') > -1)">
+    <div class="card-heading">
+        <h3>
+            <span>Electricity and Water</span>
+            <!-- <span class="count">{{benefitCount}}</span> -->
+        </h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToElectricityWater()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4">
+    <div class="card-heading">
+        <h3>
+            <span>Household Situations</span>
+            <!-- <span class="count">{{benefitCount}}</span> -->
+        </h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToHouseholdSituations()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item" *ngIf="householdGatepost1 && householdGatepost1.includes('otherStatesBenefits') === true">
+            <div class="description">
+                Received Benefits Before
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToReceivedBenefitsBefore()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        <div class="line-item" *ngIf="householdGatepost1 && householdGatepost1.includes('ssnbenefits') === true">
+            <div class="description">
+                County or Record Number
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToCountyorRecordNumber()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        <div class="line-item" *ngIf="householdGatepost1 && householdGatepost1.includes('someoneElseBenefits') === true">
+            <div class="description">
+                Food Assistance or SNAP Representative
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToFoodAssistanceorSNAPRepresentative()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card section-summary mt-4">
+    <div class="card-heading">
+        <h3>
+            <span>Other Household Situations</span>
+            <!-- <span class="count">{{benefitCount}}</span> -->
+        </h3>
+        <div class="icn-div">
+            <button class="btn btn-borderless" (click)="navigateToOtherHouseholdSituations()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="line-item" *ngIf="householdGatepost2 && householdGatepost2.isReceivingUtilityAllowanceCheck">
+            <div class="description">
+                Utility Allowance Check
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToUtilityAllowanceCheck()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        <div class="line-item" *ngIf="householdGatepost2 && householdGatepost2.isParentNotLiveOrDiedFor21OrYounger">
+            <div class="description">
+                Absent Relatives
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToAbsentRelatives()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        <div class="line-item" *ngIf="householdGatepost2 && (householdGatepost2.hasLivedInNursingFacility || householdGatepost2.isNeedChildSupportOrHealthInsurance || householdGatepost2.isSpouseDiedOrNotLivingInTheHouse)">
+            <div class="description">
+                Nursing Home Facility
+            </div>
+            <div class="data">
+                <!-- <span class="count">1</span>  -->
+                <button class="btn btn-borderless" (click)="navigateToNursingHomeFacility()"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}" (next)="next()" (back)="back()"></compass-ui-cw-dpq-button>
+</div>

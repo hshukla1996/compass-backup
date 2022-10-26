@@ -1,0 +1,44 @@
+        <h1 class="standard-mb">{{ 'afsGSPrPtitle' | translate}}</h1>
+        <div class="alert alert-info d-flex align-items-center standard-mb">
+            <p>{{ 'afsGSPrPtext1' | translate}}</p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="form-subtitle">{{ 'afsGSPrPtext2' | translate}}</p>
+                
+                        <div class="form-check custom standard-mb">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="case">
+                            <label class="form-check-label" for="case">
+                                Case 20589764
+                            </label>
+                        </div>
+                        <div class="form-check custom standard-mb">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="case1">
+                            <label class="form-check-label" for="case1">
+                                Case 27954099
+                            </label>
+                        </div>
+                        <div class="form-check custom standard-mb">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="pre-populate">
+                            <label class="form-check-label" for="pre-populate">
+                                {{ 'afsGSPrPnone' | translate}}
+                            </label>
+                        </div>
+            </div>
+        </div>
+        <div class="alert alert-info d-flex align-items-center standard-mb">
+            <p>{{ 'afsGSPrPtext3' | translate}}</p>
+        </div>
+        <nav class="action-bar d-flex justify-content-between">
+            <div>
+                <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                    {{ 'back' | translate}}
+                </button>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="next()">
+                    {{ 'next' | translate}}
+                </button>
+            </div>
+        </nav>
+    

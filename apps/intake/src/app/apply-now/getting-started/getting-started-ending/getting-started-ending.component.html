@@ -1,0 +1,44 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-12">
+        <div class="loading-container">
+            <div class="p-5">
+                <p>{{loadingText}}</p>
+            </div>
+            <span class="loading">
+                <i class="fa-regular fa-spinner fa-spin fa-7x"></i>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="!isLoading">
+    <div class="text-center">
+        <h1 class="mt-3">{{ 'afsGSEtitle' | translate }}</h1>
+    </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <i class="fa-regular fa-face-smile fa-7x"> </i>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col">
+        <h1 class="text-center mt-3">{{ 'afsGSEtext1' | translate}}</h1>
+        </div>
+        </div>
+        <p class="text-center">{{ 'afsGSEtext2' | translate}}</p>
+        <p class="text-center fw-bold">{{ 'afsGSEtext3' | translate}}</p>
+        <p class="text-center"><a (click)="saveAndExit()" class="hyperlink-lg">{{ 'afsGSEtext4' | translate}}</a>{{ ' ' + ('afsGSEtext5' | translate)}}</p>
+        <nav class="action-bar d-flex justify-content-between">
+            <div>
+                <button type="button" class="btn btn-outline-tertiary" (click)="previousRoute()">
+                    {{ 'back' | translate }}
+                </button>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="nextRoute()">
+                   {{ 'nextSection' | translate }}
+                </button>
+            </div>
+        </nav>
+</div>

@@ -1,0 +1,35 @@
+<h1>{{ 'afsVoterRegDeclsTitle' | translate }}</h1>
+<p>{{ 'afsVoterRegDeclsDeclare' | translate }}</p>
+<ul>
+  <li>{{ 'afsVoterRegDeclsDecl1' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsDecl2' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsDecl3' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsDecl4' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsDecl5' | translate }}</li>
+</ul>
+
+<p class="fw-bold">{{ 'afsVoterRegDeclsSign' | translate }}</p>
+<ul>
+  <li>{{ 'afsVoterRegDeclsSignReq1' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsSignReq2' | translate }}</li>
+  <li>{{ 'afsVoterRegDeclsSignReq3' | translate }}</li>
+</ul>
+<div class="alert alert-info">
+  <p class="fw-bold">{{ 'afsVoterRegDeclsTip1' | translate }}</p>
+  <br />
+  <p class="fw-bold">{{ 'afsVoterRegDeclsTip2' | translate }}</p>
+  <p>{{ 'afsVoterRegDeclsTip3' | translate }}</p>
+  <p>{{ 'afsVoterRegDeclsTip4' | translate }}</p>
+  <p>{{ 'afsVoterRegDeclsTip5' | translate }}</p>
+</div>
+<div class="mb-3">
+  <compass-ui-cw-checkbox (inputModelChange)="confirm($event)"  requiredText="This is required."   [isChecked]="voterInfoFromState?.agreedTermsAndConditions"
+    [label]="'afsVoterRegDeclsLbl1' | translate"   > 
+  </compass-ui-cw-checkbox>  
+<cw-field-error-display [displayError]="displayError" [errorMsg]="errorMessage"></cw-field-error-display>
+
+</div>
+
+<compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>

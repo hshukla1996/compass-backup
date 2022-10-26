@@ -1,0 +1,68 @@
+<form class="form-horizontal" [formGroup]='cldOradultExpDlsCmpForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1 class="standard-mb">What is {{currentUser.firstName}}'s child or adult care cost?</h1>
+  <p class="standard-mb">Tell us about this expense.</p>
+  <div>
+    <div class="form-group standard-mb" *ngIf="fieldDisplays.isCareExpensesPaidForWork">
+      <fieldset class="button-group">
+        <legend>Is this care expense paid so {{currentUser.firstName}} can go to work?
+          <span>{{requiredFields.indexOf('isCareExpensesPaidForWork')>-1 ? '(required)':''}}</span></legend>
+        <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isCareExpensesPaidForWork'" value="Yes"
+          [showError]="isFieldValid('isCareExpensesPaidForWork')" [radioButtonGroupName]="'isCareExpensesPaidForWork'"
+          (click)="expensesPaidFor('Y')" [labelClass]="'btn btn-outline-tertiary float-start'"
+          [radioClass]="'btn-check'" radioLabel="Yes">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isCareExpensesPaidForWork'" value="No"
+          [showError]="isFieldValid('isCareExpensesPaidForWork')" [radioButtonGroupName]="'isCareExpensesPaidForWork'"
+          (click)="expensesPaidFor('N')" [labelClass]="'btn btn-outline-tertiary float-start'"
+          [radioClass]="'btn-check'" radioLabel="No">
+        </compass-ui-cw-radiobutton>
+      </fieldset>
+    </div>
+    <div class="card arrow-card standard-mb" *ngIf="paidFor ==='Y'">
+      <div class="card-body">
+        <compass-ui-cw-select [fieldId]="'jobPaidFor'"
+          [fieldLabel]="'expWhichJob' | translate:{name: currentUser.firstName}" [FormGroup]="cldOradultExpDlsCmpForm"
+          [requiredIndicator]="requiredFields.indexOf('jobPaidFor')>-1 && paidFor ==='Y'"
+          [isVisible]="fieldDisplays.jobPaidFor">
+          <option value="" selected>- Select One -</option>
+          <option *ngFor="let employer of currentUser.individualIncome?.currentEmployment" value="{{employer.name}}">
+            {{employer.name}}
+          </option>
+        </compass-ui-cw-select>
+      </div>
+    </div>
+    <compass-ui-cw-select [fieldId]="'careReceivedBy'" [fieldLabel]="'whoRecivesCare' | translate"
+      requiredText="{{'lblrequired' | translate}}" [FormGroup]="cldOradultExpDlsCmpForm"
+      [requiredIndicator]="requiredFields.indexOf('careReceivedBy')>-1" [displayError]="isFieldValid('careReceivedBy')"
+      [isVisible]="fieldDisplays.careReceivedBy"
+      [errorMsg]="errorMap('careReceivedBy')">
+      <option value="" selected>- Select One -</option>
+      <option *ngFor="let person of houseHoldPersons" value="{{person.id}}">{{person.firstName}} {{person.lastName}}
+      </option>
+    </compass-ui-cw-select>
+    <compass-ui-text [fieldId]="'careExpensesAmount'" [FormGroup]="cldOradultExpDlsCmpForm"
+      requiredText="{{'lblrequired' | translate}}" type="currency"
+      [fieldLabel]="'expHowMuchSpentOncareEachMonth' | translate" [displayError]="isFieldValid('careExpensesAmount')"
+      [requiredIndicator]="requiredFields.indexOf('careExpensesAmount')>-1" [errorText]="errorMap('careExpensesAmount')"
+      [isVisible]="fieldDisplays.careExpensesAmount"
+      [maxLength]="8">
+    </compass-ui-text>
+    <compass-ui-text [fieldId]="'careExpensesFrequency'" [FormGroup]="cldOradultExpDlsCmpForm" [maxLength]="2"
+      [requiredIndicator]="requiredFields.indexOf('careExpensesFrequency')>-1" [fieldLabel]="'expHowOften' | translate"
+      [isVisible]="fieldDisplays.careExpensesFrequency"
+      [fieldHelpText]="'Enter between 1-12 months per year.'" (input)="inputValidator($event)">
+    </compass-ui-text>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

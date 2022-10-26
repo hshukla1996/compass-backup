@@ -1,0 +1,130 @@
+{
+    "projectType": "application",
+    "sourceRoot": "apps/sharedauth/src",
+    "prefix": "compass-ui",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/sharedauth",
+                "index": "apps/sharedauth/src/index.html",
+                "main": "apps/sharedauth/src/main.ts",
+                "polyfills": "apps/sharedauth/src/polyfills.ts",
+                "tsConfig": "apps/sharedauth/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "apps/sharedauth/src/favicon.ico",
+                    "apps/sharedauth/src/assets",
+                    {
+                        "input": "libs/ui/src/assets",
+                        "glob": "**/*",
+                        "output": "assets"
+                    }
+                ],
+                "styles": [
+                    "libs/ui/src/styles.scss",
+                    "apps/sharedauth/src/styles.scss"
+                ],
+                "scripts": [
+                    "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+                ]
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/sharedauth/src/environments/environment.ts",
+                            "with": "apps/sharedauth/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                },
+                "int": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/sharedauth/src/environments/environment.ts",
+                            "with": "apps/sharedauth/src/environments/environment.int.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "sharedauth:build:production"
+                },
+                "int": {
+                    "browserTarget": "sharedauth:build:int"
+                },
+                "development": {
+                    "browserTarget": "sharedauth:build:development"
+                }
+            },
+            "defaultConfiguration": "development",
+            "options": {
+                "proxyConfig": "apps/sharedauth/proxy.conf.json"
+            }
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "sharedauth:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/sharedauth/src/**/*.ts",
+                    "apps/sharedauth/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/sharedauth"],
+            "options": {
+                "jestConfig": "apps/sharedauth/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

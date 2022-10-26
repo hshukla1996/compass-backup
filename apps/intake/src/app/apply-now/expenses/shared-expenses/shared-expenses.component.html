@@ -1,0 +1,41 @@
+<form class="form-horizontal" [formGroup]='sharedExpensesDlsForm' autocomplete="off">
+        <h1>You told us there are some expenses shared with someone outside of your household.</h1>
+            <p>Tell us about the expenses and who you share them with.</p>
+        <compass-ui-text [fieldId]="'shareExpensesWith'" [FormGroup]="sharedExpensesDlsForm"
+                         [requiredIndicator]="requiredFields.indexOf('shareExpensesWith')>-1"
+                         [fieldLabel]="'shareExpensesWith' | translate" [maxLength]="20" [fieldType]="'nameParts'">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'whichExpenseDoYouShare'"
+                              [requiredIndicator]="requiredFields.indexOf('whichExpenseDoYouShare')>-1"
+            [fieldLabel]="'whichExpenseDoYouShare' | translate" [FormGroup]="sharedExpensesDlsForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let source of sharedExpenses" value="{{source.id}}">{{source.displayValue}}
+            </option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'howMuchDoYouContribute'" [FormGroup]="sharedExpensesDlsForm" type="currency"
+            [fieldLabel]="'howMuchDoYouContribute' | translate" [fieldHelpText]="'0.00-9999.99'" [maxLength]="7"
+                         [requiredIndicator]="requiredFields.indexOf('howMuchDoYouContribute')>-1"
+            [displayError]="isFieldValid('howMuchDoYouContribute')"
+            [errorText]="errorMap('howMuchDoYouContribute')" (input)="inputValidator($event)">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'sharedHowOften'" [fieldLabel]="'sharedHowOften' | translate"
+                              [requiredIndicator]="requiredFields.indexOf('sharedHowOften')>-1"
+                              [FormGroup]="sharedExpensesDlsForm"  [requiredText]="'lblrequired' | translate" [errorMsg]="errorMap('sharedHowOften')"
+            [displayError]="isFieldValid('sharedHowOften')">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let employer of daysData" value="{{employer.displayValue}}">{{employer.displayValue}}
+            </option>
+        </compass-ui-cw-select>
+    <nav class="action-bar d-flex justify-content-between">
+            <div>
+                <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                    Back
+                </button>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+                    Next
+                </button>
+            </div>
+        </nav>
+</form>

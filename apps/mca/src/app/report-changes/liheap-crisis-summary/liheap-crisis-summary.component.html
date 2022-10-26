@@ -1,0 +1,126 @@
+<div class="card-body">
+    <h1 class="mb-3">Here is a summary of your changes</h1>
+    <h3 class="mb-3">You're reporting a crisis for these Provider(s).</h3>
+    <div class="card mb-3">
+        <div class="card-body">
+            <label class="form-label">Electric</label>
+            <p>FUEL LIGHT</p>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label class="form-label">Account Number</label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{liheapCrisis?.providers?.accountNumber}} </label>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Name on the account {{liheapCrisis?.individualInformation?.firstName}}
+                        {{liheapCrisis?.individualInformation?.lastName}}</label>
+                </div>
+                <div>
+                    <label class="form-label">Shut-Off Notice Date
+                    </label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{liheapCrisis?.providers?.shutOffNoticeDate}} </label>
+                </div>
+                <div>
+                    <label class="form-label">Crisis Situation {{liheapCrisis?.providers?.description}}
+                    </label>
+                </div>
+            </div>
+
+            <ul>
+                <li>Electricity is shut off</li>
+            </ul>
+            <label class="form-label">Crisis situation Explanation</label>
+            <p>crisis </p>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onEditNavigate('HOUSING_UTILITIES_CHANGES')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('HOUSING_UTILITIES_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2">
+        <div class="card-body">
+            <label class="form-label">Fuel Oil</label>
+            <p>FUEL LIGHT</p>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label class="form-label">Account Number</label>
+                </div>
+                <div class="col-6">
+                    <label class="data">{{liheapCrisis?.providers?.accountNumber}}</label>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-6">
+                    <label class="form-label">Name on the Account</label>
+                </div>
+                <div class="col-6">
+                    <label class="data"> 575 E, Washington Ave Pittsburgh, PA
+                        1210{{liheapCrisis?.individualInformation?.firstName}}
+                        {{liheapCrisis?.individualInformation?.lastName}}
+                    </label>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Days of fuel left</label>
+                </div>
+                <div class="col-6">
+                    <label class="data"> {{liheapCrisis?.providers?.daysOfFuelLeft}}
+                    </label>
+                </div>
+
+            </div>
+            <label class="form-label">Crisis situation Explanation</label>
+            <p>crisis</p>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive">
+                        <i class="fa-regular fa-pen-to-square"
+                            (click)="onEditNavigate('HOUSING_UTILITIES_CHANGES')"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('HOUSING_UTILITIES_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <p>Is these changes life threatening?</p>
+        <div class="col-6">
+            <compass-ui-cw-button [textStyle]="'btn btn-secondary w-100'" [buttonLabel]="'Yes'">
+            </compass-ui-cw-button>
+        </div>
+        <div class="col-6 text-end">
+            <compass-ui-cw-button [textStyle]="'btn btn-outline-tertiary w-100'" [buttonLabel]="'No'">
+            </compass-ui-cw-button>
+        </div>
+    </div>
+    <label class="form-label"></label>
+    <compass-ui-text [fieldId]="'provider'" [FormGroup]="otherSourceForm"
+        [fieldLabel]="'What is the best way to contact you?'" [requiredText]="'(required)'" [requiredIndicator]="true">
+    </compass-ui-text>
+    <div class="col-12">
+        <compass-ui-cw-button [textStyle]="'btn btn-secondary w-100'" [buttonLabel]="'Attach and Submit'">
+        </compass-ui-cw-button>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="Submit Now"
+    (next)="onSubmit()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

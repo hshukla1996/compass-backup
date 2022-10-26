@@ -1,0 +1,74 @@
+<form [formGroup]="fderalRecoganizedTribeInfoForm">
+    <h1>Tell us more about {{currentUser.firstName}}'s federally recoganized tribe</h1>
+    <div class="form-group pt-3">
+        <compass-ui-text [fieldId]="'tribeName'" [FormGroup]="fderalRecoganizedTribeInfoForm" [maxLength]="256"
+            [fieldLabel]="'Tribe Name'" pattern="[a-zA-Z]*" [fieldType]="'nameType'"
+            [requiredIndicator]="requiredFields.indexOf('tribeName')>-1" [displayError]="isFieldValid('tribeName')"
+            [errorText]="errorMap('tribeName')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group pt-3">
+        <compass-ui-cw-select [fieldId]="'tribeState'" [fieldLabel]="'State'"
+            [FormGroup]="fderalRecoganizedTribeInfoForm" [requiredText]=""
+            [requiredIndicator]="requiredFields.indexOf('tribeState')>-1">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.displayValue}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+    </div>
+    <div class="form-group pt-3">
+        <fieldset class="button-group">
+            <legend>Has this person ever received a service from the Indian Health Service, a tribal health program
+                or urban Indian health
+                program, or through a referral from one of these programs?</legend>
+            <compass-ui-cw-radiobutton [showError]="isFieldValid('receivedIndianHealthService')" ngDefaultControl
+                [formControlName]="'receivedIndianHealthService'" [required]="true"
+                [radioButtonGroupName]="'receivedIndianHealthService'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="Yes" (click)="showIsReceivedServiceText(true)"
+                [required]="requiredFields.indexOf('receivedIndianHealthService')>-1">
+            </compass-ui-cw-radiobutton>
+            <compass-ui-cw-radiobutton [showError]="isFieldValid('receivedIndianHealthService')" ngDefaultControl
+                [formControlName]="'receivedIndianHealthService'" [required]="true"
+                [radioButtonGroupName]="'receivedIndianHealthService'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" radioLabel="No" (click)="showIsReceivedServiceText(false)"
+                [required]="requiredFields.indexOf('receivedIndianHealthService')>-1">
+            </compass-ui-cw-radiobutton>
+            <cw-field-error-display [displayError]="isFieldValid('receivedIndianHealthService')"
+                errorMsg="{{errorMap('receivedIndianHealthService')}}">
+            </cw-field-error-display>
+        </fieldset>
+    </div>
+    <ng-container
+        *ngIf="!isReceivedServiceTextVisible || fderalRecoganizedTribeInfoForm.get('receivedIndianHealthService').value === 'No'">
+        <div class="card arrow-card">
+            <div class="px-2 py-2">
+                <fieldset class="button-group">
+                    <legend>Is this person allowed to receive services from the Indian Health Service, tribal health
+                        program or urban Indian health
+                        program, or through a referral from one of these programs?</legend>
+                    <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'allowedIndianHelathService'"
+                        [required]="true" [radioButtonGroupName]="'allowedIndianHelathService'"
+                        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes"
+                        [required]="requiredFields.indexOf('allowedIndianHelathService')>-1">
+                    </compass-ui-cw-radiobutton>
+                    <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'allowedIndianHelathService'"
+                        [required]="true" [radioButtonGroupName]="'allowedIndianHelathService'"
+                        [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="no"
+                        [required]="requiredFields.indexOf('allowedIndianHelathService')>-1">
+                    </compass-ui-cw-radiobutton>
+                </fieldset>
+            </div>
+        </div>
+    </ng-container>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="showPreviousPage()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="showNextPage()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

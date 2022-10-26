@@ -1,0 +1,125 @@
+<!-- <form [formGroup]="linkingOnlineNoticesGroup"> -->
+<h1>Would you like to go paperless?</h1>
+<div class="alert alert-info">
+    <p>Don't worry, you can change your notification preferences later if you want to.</p>
+    <p>Note: CHIP notices are not available online at this time.</p>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <fieldset class="button-group mt-2">
+            <legend>Would you like to receive online notices?<span>(required)</span></legend>
+            <input type="radio" class="btn-check" value="Y" name="isPaperless" id="yes" autocomplete="off">
+            <label (click)="showEmailFields('Y')" class="btn btn-sm btn-outline-tertiary" for="yes">Yes</label>
+            <input type="radio" class="btn-check" value="N" name="isPaperless" id="no" autocomplete="off">
+            <label   (click)="noRadio('N')" class="btn btn-sm btn-outline-tertiary" for="no">No</label>
+        </fieldset>
+        <div *ngIf="isFieldValid('isPaperless')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+            This is required.</div>
+
+    <div class="card arrow-card" *ngIf="showEmailCards==true">
+        <div class="card-body"> 
+            <compass-ui-text [fieldId]="'emailAddress'" [fieldLabel]="'Email'"  
+                [requiredText]="'(required)'" [FormGroup]="linkonlineNoticesGroup" [maxLength]="50"
+                [errorText]="'This is required.'" [displayError]="isFieldValid('emailAddress')"></compass-ui-text>
+
+                <compass-ui-text [fieldId]="'confirmEmailAddress'" [fieldLabel]="'Confirm Email'"  
+                    [requiredText]="'(required)'" [FormGroup]="linkonlineNoticesGroup" [maxLength]="50" [errorText]="'This is required.'"
+                    [displayError]="isFieldValid('confirmEmailAddress')"></compass-ui-text>
+            
+                
+    
+    
+        </div>
+    </div>
+        <!-- <fieldset class="button-group">
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('isPaperless')"
+                    [formControlName]="'isPaperless'" [required]="true"  
+                    [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                    radioLabel="MA">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('isPaperless')"
+                    [formControlName]="'isPaperless'"   [required]="true"  
+                    [radioButtonGroupName]="'isPaperless'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+                    radioLabel="Non-MA">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+            <div *ngIf="isFieldValid('isPaperless')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                This is required.</div> -->
+
+    </div>
+</div>
+
+
+
+<!-- 
+    <fieldset class="button-group mt-2">
+        <legend>Would you like to receive online notices?<span>(required)</span></legend>
+        <input type="radio" class="btn-check" name="radSex" id="yes" autocomplete="off">
+        <label class="btn btn-sm btn-outline-tertiary" for="yes"  >Yes</label>
+        <input type="radio" class="btn-check" name="radSex" id="no" autocomplete="off">
+        <label class="btn btn-sm btn-outline-tertiary" for="no"
+             >No</label>
+    </fieldset>  
+    <div *ngIf="isFieldValid('test')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+        This is required.</div> -->
+
+<div class="row">
+    <div class="col">
+        <ul>
+            <li>Get easy access to your notices online</li>
+            <li>Improve your record keeping</li>
+            <li>Help the environment</li>
+        </ul>
+    </div>
+</div>
+
+<div class="alert alert-info">
+    CHIP notices are not available online at this time.
+</div>
+<p>We will send you a confirmation email if you choose to enroll in online notices. <span class="fw-bold">To make sure
+        you receive this email, add donotreply@pa.gov to your safe senders list.</span></p>
+<p>Once you receive it, you must confirm in the email.</p>
+<p>If your email is undeliverable, you will automatically be enrolled back into paper notices. Any paper notice we send
+    you
+    through the mail because your email is undeliverable will be a copy of the original notice and will have the same
+    date.
+    You can opt-out of online notices at any time by changing your preference or by contacting your caseworker.</p>
+<div class="accordion page-tip mb-3" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                More About Going Paperless
+            </button>
+        </h2>
+
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <p>If you choose to go paperless, we will send alerts to your email whenever your notices are available
+                    to view online. It
+                    is your responsibility to view these notices and share the information with other household members.
+                    However, you will
+                    need to log into your My COMPASS Account to view the actual notices.</p>
+                <p>Note: Some notices will not be available online and will be mailed to you.</p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="back()">
+            Back
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="next()">
+            Next
+        </button>
+    </div>
+</nav>
+
+<!-- </form> -->

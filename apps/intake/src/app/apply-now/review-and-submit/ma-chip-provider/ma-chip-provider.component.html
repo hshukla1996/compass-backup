@@ -1,0 +1,68 @@
+<form [formGroup]="MaChipProviderForm">
+    <ngx-spinner size="medium">
+        <div class="loader"></div>
+        <div class="loadingText">Loading ...</div>
+    </ngx-spinner>
+    <h1>Based on the information you told us, this application will be submitted for the following health care coverage.</h1>
+    <p>These insurance companies provide health care coverage in the household’s county.
+    Select your preference.</p>
+    <hr />
+    <legend>CHIP</legend>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="aetna better health kid" id="aetna-better-health-kid"
+            formControlName="flexRadioDefault">
+        <label class="form-check-label" >
+            <label class="label-text" for="aetna-better-health-kid">Aetna Better Health Kid</label>
+            <div class="description-text">
+            <p class="mb-0">(800) 822 - 2447</p>
+            <p class="mb-0">(860) 754 - 1055</p>
+            <p><a href="#">Visit Aetena Website</a></p>
+            </div>
+        </label>
+    </div>
+
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="UPMC for Kinds"
+            id="upmc-for-kids" formControlName="flexRadioDefault">
+        <label class="form-check-label">
+            <label class="label-text" for="upmc-for-kids">UPMC for Kids</label>
+            <div class="description-text">
+                <p class="mb-0">(800) 822 - 2447</p>
+                <p class="mb-0">(860) 754 - 1055</p>
+                <p><a href="#">Visit UPMC Website</a></p>
+            </div>
+        </label>
+    </div>
+
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="capital bluecross"
+            id="capital-bluecross" formControlName="flexRadioDefault">
+        <label class="form-check-label">
+            <label class="label-text" for="capital-bluecross">Capital BlueCross</label>
+            <div class="description-text">
+                <p class="mb-0">(800) 822 - 2447</p>
+                <p class="mb-0">(860) 754 - 1055</p>
+                <p><a href="#">Visit Aetena Website</a></p>
+            </div>
+        </label>
+    </div>
+<div class="form-check custom standard-mb">
+    <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="No Preferences"
+        id="no-preferenes" formControlName="flexRadioDefault">
+    <label class="form-check-label" for="no-preferenes">
+        <div class="label-text" >No Preferences</div>
+    </label>
+</div>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{ 'back' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="next()">
+                {{ 'next' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

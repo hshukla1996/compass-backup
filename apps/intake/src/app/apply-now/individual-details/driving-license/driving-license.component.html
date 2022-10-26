@@ -1,0 +1,66 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays"  [formGroup]='drivingLicenseForm' (ngSubmit)="onSubmit()">
+  <h1>{{'afsdriverlicence' | translate: { name: currentUser.firstName} }}</h1>   
+  <fieldset class="button-group">
+        <compass-ui-cw-radiobutton [showError]="isFieldValid('licenseStatus')" (click)="showLicenseDetails(true)"
+          ngDefaultControl [formControlName]="'licenseStatus'" [required]="true"
+          [radioButtonGroupName]="'licenseStatus'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+          radioLabel="Yes" value="Yes"></compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton [showError]="isFieldValid('licenseStatus')" ngDefaultControl
+          (click)="showLicenseDetails(false)" [formControlName]="'licenseStatus'" [required]="true"
+          [radioButtonGroupName]="'licenseStatus'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+          radioLabel="No" value="No">
+        </compass-ui-cw-radiobutton>
+          <cw-field-error-display [displayError]="isFieldValid('licenseStatus')"
+            errorMsg="{{errorMap('licenseStatus')}}">
+          </cw-field-error-display>
+      </fieldset>
+
+  <div class="card arrow-card mt-4" *ngIf="showLicenseInfo && fieldDisplays.licenseID">
+    <div class="card-body">
+      <!-- <div class="form-group mb-4">
+        <label class="col-12 control-label pb-2">{{'afsidnum' | translate: { name: currentUser.firstName} }}</label>
+        <input type="text" class="form-control" name="licenseID" formControlName="licenseID"
+          (keypress)="restrictCharacters($event)" [ngClass]="{ 'is-invalid': submitted && f.licenseID.errors }"
+          maxlength="12" />
+      </div> -->
+
+      <compass-ui-text [fieldId]="'licenseID'" [FormGroup]="drivingLicenseForm"
+        [fieldLabel]="'afsidnum' | translate: { name: currentUser.firstName}" [maxLength]="12"
+        [fieldType]="'alphaNumbOnly'"
+          [isVisible]="fieldDisplays.licenseID"
+          [requiredIndicator]="requiredFields.indexOf('licenseID')>-1">
+      </compass-ui-text>
+      <!-- <div class="form-group mb-3">
+        <label class="col-12 control-label pb-2"> {{'afsdlstate' | translate: { name: currentUser.firstName}
+          }}</label>
+        <div class="col-12">
+          <select class="form-select" formControlName="stateID" name="stateID"
+            [ngClass]="{ 'is-invalid': submitted && f.stateID.errors }">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+          </select>
+        </div>
+      </div> -->
+      <compass-ui-cw-select [fieldId]="'stateID'"
+        [fieldLabel]="'afsdlstate' | translate: { name: currentUser.firstName}"
+        [FormGroup]="drivingLicenseForm"
+        [isVisible]="fieldDisplays.stateID"
+        [requiredIndicator]="requiredFields.indexOf('stateID')>-1">
+      <option value="" selected>- Select One -</option>
+      <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+      </compass-ui-cw-select>
+    </div>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

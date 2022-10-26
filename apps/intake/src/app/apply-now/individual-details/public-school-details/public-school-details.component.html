@@ -1,0 +1,42 @@
+<form class="form-horizontal" *ngIf="currentUser && fieldDisplays" [formGroup]='publicSchoolDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Tell us about {{currentUser.firstName}}’s education details.</h1>
+    <compass-ui-cw-select [fieldId]="'schoolDistrict'"
+      [fieldLabel]="'Select the school from the list..'"
+       [FormGroup]="publicSchoolDetailsForm" [isVisible]="fieldDisplays.schoolDistrict"
+      [requiredIndicator]="requiredFields.indexOf('schoolDistrict')>-1">
+      <option value="" selected>- Selection One -</option>
+      <option *ngFor="let schoolDistrict of schoolDistricts" value="{{schoolDistrict.displayValue}}">
+        {{schoolDistrict.displayValue}}</option>
+    </compass-ui-cw-select>
+  <div class="card arrow-card" *ngIf="publicSchoolDetailsForm.get('schoolDistrict').value ==='Cumberland Valley'">
+    <div class="card-body">
+        <compass-ui-cw-select [fieldId]="'schoolbuilding'" 
+          [fieldLabel]="'Which school building does Jill go to?'" [FormGroup]="publicSchoolDetailsForm"
+          [isVisible]="fieldDisplays.schoolbuilding" [requiredIndicator]="requiredFields.indexOf('schoolbuilding')>-1">
+        <option value="" selected>- Selection One -</option>
+        <option *ngFor="let schoolbuilding of data.schoolbuildings" value="{{schoolbuilding.key}}">
+          {{schoolbuilding.value}}</option>
+        </compass-ui-cw-select>
+      <div class="alert alert-info d-flex align-items-center mt-4">
+        <p>If the school, or school building is not listed, please check that all of the information here is correct.
+          If the information is correct, contact the school to see If it participates in the Free or Reduced Price
+          School Meals Program.
+          If “Not Listed” is selected, this student will not receive free or reduced price school meals. Other students
+          in the house may still receive free or reduced price school meals.
+        </p>
+      </div>
+    </div>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

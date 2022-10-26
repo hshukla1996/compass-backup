@@ -1,0 +1,56 @@
+<form [formGroup]="currentPolicyEndForm">
+    <h1>Tell us if you expect {{currentUserName}}'s
+    policy to end.</h1>
+    <fieldset class="button-group mb-3">
+        <legend>Will this health insurance end?</legend>
+        <compass-ui-cw-radiobutton ngDefaultControl
+            [showError]="currentPolicyEndForm.controls['isInsuranceEnd'].invalid && (currentPolicyEndForm.controls['isInsuranceEnd'].dirty || currentPolicyEndForm.controls['isInsuranceEnd'].touched)"
+            [formControlName]="'isInsuranceEnd'" [radioButtonGroupName]="'isInsuranceEnd'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'"
+            [radioBtnId]="'isInsuranceEnd_Y'">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton ngDefaultControl
+            [showError]="currentPolicyEndForm.controls['isInsuranceEnd'].invalid && (currentPolicyEndForm.controls['isInsuranceEnd'].dirty || currentPolicyEndForm.controls['isInsuranceEnd'].touched)"
+            [formControlName]="'isInsuranceEnd'" [radioButtonGroupName]="'isInsuranceEnd'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'"
+            [radioBtnId]="'isInsuranceEnd_N'">
+        </compass-ui-cw-radiobutton>
+    </fieldset>
+
+<div class="mb-3">
+    <compass-ui-cw-datepicker  label="{{'lbldob' | translate }}" [fieldId]="'policyEndDate'"
+        requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'policyEndDate'" [required]="true"
+         [displayError]="currentPolicyEndForm.controls['policyEndDate'].invalid && (currentPolicyEndForm.controls['policyEndDate'].dirty || currentPolicyEndForm.controls['policyEndDate'].touched)" errorMsg="{{'basidDetailRequiredMessage' | translate}}">
+       </compass-ui-cw-datepicker>
+</div>
+<div class="card arrow-card" *ngIf="visible==true">
+    <div class="card-body">
+    <compass-ui-cw-select [fieldId]="'reasonForFutureLossHealthInsurance'" [fieldLabel]="'Why did ' +currentUserName+ ' lose or choose to end coverage?'" [FormGroup]="currentPolicyEndForm"
+        errorMsg="{{'basidDetailRequiredMessage' | translate}}"
+        [displayError]="currentPolicyEndForm.controls['reasonForFutureLossHealthInsurance'].invalid && (currentPolicyEndForm.controls['reasonForFutureLossHealthInsurance'].dirty || currentPolicyEndForm.controls['reasonForFutureLossHealthInsurance'].touched)">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let x of policyEnd" value="{{x.id}}">{{x.displayValue}}</option>
+    </compass-ui-cw-select>
+</div>
+</div>
+
+    <fieldset class="button-group mb-3">
+        <legend>Will this cause your children to lose health
+        insurance?</legend>
+        <compass-ui-cw-radiobutton ngDefaultControl
+            [showError]="currentPolicyEndForm.controls['employerStoppedCoverageChildrenLostInsurance'].invalid && (currentPolicyEndForm.controls['isPolicyAddressSame'].dirty || currentPolicyEndForm.controls['isPolicyAddressSame'].touched)"
+            [formControlName]="'employerStoppedCoverageChildrenLostInsurance'" [radioButtonGroupName]="'employerStoppedCoverageChildrenLostInsurance'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'"
+            [radioBtnId]="'employerStoppedCoverageChildrenLostInsurance_Y'">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton ngDefaultControl
+            [showError]="currentPolicyEndForm.controls['employerStoppedCoverageChildrenLostInsurance'].invalid && (currentPolicyEndForm.controls['isPolicyAddressSame'].dirty || currentPolicyEndForm.controls['isPolicyAddressSame'].touched)"
+            [formControlName]="'employerStoppedCoverageChildrenLostInsurance'" [radioButtonGroupName]="'employerStoppedCoverageChildrenLostInsurance'"
+            [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'"
+            [radioBtnId]="'employerStoppedCoverageChildrenLostInsurance_N'">
+        </compass-ui-cw-radiobutton>
+    </fieldset>
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

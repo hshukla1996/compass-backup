@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/shared/data-models/src",
+    "prefix": "compass-ui",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/shared/data-models"],
+            "options": {
+                "jestConfig": "libs/shared/data-models/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/shared/data-models/src/**/*.ts",
+                    "libs/shared/data-models/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

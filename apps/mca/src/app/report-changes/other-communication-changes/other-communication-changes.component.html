@@ -1,0 +1,15 @@
+    <h1 class="mb-0">Other Communication Changes</h1>
+    <div class="form-group mb-4">
+        <p>If you have any other updates or questions that don't fit into the other change categories, add it here.</p>
+        <div class="mb-2">
+            <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+        </div>
+        <form [formGroup]="changeForm">
+            <textarea class="form-control" rows="3" ngDefaultControl formControlName="description" maxlength="500">
+                    </textarea>
+        </form>
+        <small class="text-muted">Example: I lost my ACCESS card and need a replacement</small>
+    </div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

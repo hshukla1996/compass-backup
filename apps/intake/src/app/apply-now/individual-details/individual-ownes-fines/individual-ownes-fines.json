@@ -1,0 +1,15 @@
+{
+    "questionText": "You told us someone owes fines, costs, or restitution for a felony or misdemeanor offense. Tell us who.",
+    "subHeading": "Select all that apply.",
+    "toolTip": "",
+    "isRequired": true,
+    "requiredText": "Please select at least one",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "John Samples 65 (M)",
+            "isChecked": false,
+            "disabled": false
+        }
+    ]
+}

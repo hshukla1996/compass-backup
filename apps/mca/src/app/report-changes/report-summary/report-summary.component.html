@@ -1,0 +1,457 @@
+<h4 (click)="navigate()">
+    <i class="fa-solid fa-chevron-left mx-2"></i>
+    Back to Dashboard
+</h4>
+<div class="card-head mx-3 mt-3">
+    <h1>Here is the summary of your changes</h1>
+    <p>Review the summary of your changes below. Add any documents you would like to attach to these changes, or
+        you can submit without documents.
+    </p>
+</div>
+<div class="alert alert-info mt-3 mx-3">
+    <p>If any other information is needed, your local County Assistance Office (CAO) will contact you.</p>
+</div>
+<div class="card-body">
+    <div class="card" *ngIf="householdInformation?.residentAddress?.streetAddressLine1">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-location-dot mx-2"></i>Address</h2>
+        </div>
+        <div class="card-body">
+            <h4>Residential Address</h4>
+            <ul>
+                <div class="row mb-1">
+                    <div class="col-6"><label>Address</label> </div>
+                    <div class="col-6"><label class="data">
+                            {{householdInformation?.residentAddress?.streetAddressLine1}},
+                            {{householdInformation?.residentAddress?.streetAddressLine2 ?
+                            householdInformation?.residentAddress?.streetAddressLine2 + ',' : ''}}
+                            {{householdInformation?.residentAddress?.city}},
+                            {{householdInformation?.residentAddress?.state}},
+                            {{householdInformation?.residentAddress?.zip}} </label>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-6"><label>County</label> </div>
+                    <div class="col-6"><label class="data">{{countyObj[householdInformation?.residentAddress?.county]}}
+                        </label></div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-6"><label>School District</label> </div>
+                    <div class="col-6"><label
+                            class="data">{{districtObj[householdInformation?.residentAddress?.schoolDistrict]}} </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><label>Township/Borough</label> </div>
+                    <div class="col-6"><label
+                            class="data">{{townshipObj[householdInformation?.residentAddress?.township] ||
+                            householdInformation?.residentAddress?.township}} </label></div>
+                </div>
+            </ul>
+            <hr>
+            <div class="row" *ngIf="householdInformation?.mailingAddress?.streetAddressLine1">
+                <div class="col-6">
+                    <h2>Mailing Address</h2>
+                </div>
+                <div class="col-6"><label class="data">{{householdInformation?.mailingAddress?.streetAddressLine1}},
+                        {{householdInformation?.mailingAddress?.streetAddressLine2 ?
+                        householdInformation?.mailingAddress?.streetAddressLine2 + ',' : ''}}
+                        {{householdInformation?.mailingAddress?.city}},
+                        {{householdInformation?.mailingAddress?.state}},
+                        {{householdInformation?.mailingAddress?.zip}} </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onEditNavigate('ADDRESS_CHANGE')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('ADDRESS_CHANGE')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" *ngIf="householdInformation?.householdContactInformation">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i>Phone or Email</h2>
+        </div>
+        <div class="card-body">
+            <h4>Main Phone Number</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-6">
+                        <label>{{householdInformation?.householdContactInformation?.mainContactNumber?.phoneNumber}}</label>
+                    </div>
+                    <div class="col-6"><label
+                            class="data">{{householdInformation?.householdContactInformation?.mainContactNumber?.isMobileNumber
+                            ? 'Mobile Number' : 'Not a Mobile Number'}} </label></div>
+                </div>
+            </ul>
+            <hr>
+            <h4>Secondary Phone Number</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-6">
+                        <label>{{householdInformation?.householdContactInformation?.secondContactNumber?.phoneNumber}}</label>
+                    </div>
+                    <div class="col-6"><label
+                            class="data">{{householdInformation?.householdContactInformation?.secondContactNumber?.isMobileNumber
+                            ? 'Mobile
+                            Number' : 'Not a Mobile Number'}} </label></div>
+                </div>
+            </ul>
+            <hr>
+            <h4>Other Phone Number</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-6">
+                        <label>{{householdInformation?.householdContactInformation?.otherContactNumber?.phoneNumber}}</label>
+                    </div>
+                    <div class="col-6"><label
+                            class="data">{{householdInformation?.householdContactInformation?.otherContactNumber?.isMobileNumber
+                            ? 'Mobile
+                            Number' : 'Not a Mobile Number'}} </label></div>
+                </div>
+            </ul>
+            <h4>Email</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-12">
+                        <label>{{householdInformation?.householdContactInformation?.emailAddress}}</label> </div>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onEditNavigate('CONTACT_INFORMATION_CHANGE')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onCancel('CONTACT_INFORMATION_CHANGE')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-money-check-dollar-pen mx-2"></i>Income</h2>
+        </div>
+        <div class="card-body">
+            <h4>New Job</h4>
+            <ul *ngFor="let individualInformation of individualInformations">
+                {{individualInformation?.employmentInformation?.reportNewJob}}
+            </ul>
+            <hr>
+            <h4>Changes in Wages</h4>
+            <div *ngFor="let individualInformation of individualInformations">
+                <ul *ngFor="let info of individualInformation?.employmentInformation?.employmentIncomes">
+                    <div class="row">
+                        <div class="col-6"><label>{{info.employerName}}</label> </div>
+                        <div class="col-6"><label class="data">{{info.grossIncome}}</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><label>{{individualInformation?.firstName}}
+                                {{individualInformation?.lastName}}
+                                {{individualInformation?.age}} ({{individualInformation?.gender}})</label> </div>
+                        <div class="col-6"><label class="data">{{payObj[info.incomeFrequency]}}</label></div>
+                    </div>
+                </ul>
+
+            </div>
+            <hr>
+            <h4>PA Unemployment Changes</h4>
+            <ul>
+                <div class="row" *ngFor="let individualInformation of individualInformations">
+                    <div class="col-6"><label>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+                            {{individualInformation?.age}}
+                            ({{individualInformation?.gender}})</label> </div>
+                    <div class="col-6">
+                        <label
+                            class="data">{{individualInformation?.employmentInformation?.unemploymentIncome?.grossAmount}}
+                        </label><br>
+                        <label
+                            class="data">{{payObj[individualInformation?.employmentInformation?.unemploymentIncome?.frequency]}}
+                        </label>
+                    </div>
+                </div>
+            </ul>
+            <hr>
+            <h4>SSI Changes</h4>
+            <ul>
+                <div class="row" *ngFor="let individualInformation of individualInformations">
+                    <div class="col-6"><label>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+                            {{individualInformation?.age}}
+                            ({{individualInformation?.gender}})</label> </div>
+                    <div class="col-6">
+                        <label
+                            class="data">{{individualInformation?.employmentInformation?.socialSecurityIncome?.grossAmount}}
+                        </label><br>
+                        <label
+                            class="data">{{payObj[individualInformation?.employmentInformation?.socialSecurityIncome?.frequency]}}
+                        </label>
+                    </div>
+                </div>
+            </ul>
+            <hr>
+            <h4>RSDI Changes</h4>
+            <ul>
+                <div class="row" *ngFor="let individualInformation of individualInformations">
+                    <div class="col-6"><label>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+                            {{individualInformation?.age}}
+                            ({{individualInformation?.gender}})</label> </div>
+                    <div class="col-6">
+                        <label
+                            class="data">{{individualInformation?.employmentInformation?.retirementSurvivorDisabilityIncome?.grossAmount}}
+                        </label><br>
+                        <label
+                            class="data">{{payObj[individualInformation?.employmentInformation?.retirementSurvivorDisabilityIncome?.frequency]}}
+                        </label>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onEditNavigate('WAGE_CHANGES')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('WAGE_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i>Household Members</h2>
+        </div>
+        <div class="card-body">
+            <div *ngFor="let individualInformation of individualInformations">
+                <h4>Pregnancy Changes</h4>
+                <ul>
+                    <div class="row">
+                        <div class="col-6"><label>{{individualInformation?.firstName}}
+                                {{individualInformation?.lastName}}
+                                {{individualInformation?.age}}
+                                ({{individualInformation?.gender}})</label> </div>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="row">
+                        <div class="col-6"><label>Number of Expected Children</label> </div>
+                        <div class="col-6"><label
+                                class="data">{{individualInformation?.pregnancy?.numberOfExpectedChildren}}</label>
+                        </div>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="row">
+                        <div class="col-6"><label>Pregnancy Due Date</label> </div>
+                        <div class="col-6"><label
+                                class="data">{{individualInformation?.pregnancy?.numberOfExpectedChildren}}</label>
+                        </div>
+                    </div>
+                </ul>
+                <hr>
+            </div>
+            <h2 *ngIf="householdInformation?.otherHouseholdChanges">Other Household Changes</h2>
+            <ul>
+                <div class="row">
+                    <div class="col-12"><label>{{householdInformation?.otherHouseholdChanges}}</label> </div>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onEditNavigate('PREGNANCY_OTHER_HOUSEHOLD')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('PREGNANCY_OTHER_HOUSEHOLD')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" *ngIf="householdInformation?.shelterAndUtilitiesExpense">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i>Shelter and Utilites Expenses</h2>
+        </div>
+        <div class="card-body">
+            <ul>
+                <div class="row">
+                    <div class="col-6"><label>Mortage/Rent</label> </div>
+                    <div class="col-6">
+                        <label class="data">{{householdInformation?.shelterAndUtilitiesExpense?.mortgageOrRentAmount}}
+                        </label><br>
+                        <label class="data">Monthly </label>
+                    </div>
+                </div>
+            </ul>
+            <hr>
+            <h2>Utilities You Pay</h2>
+            <ul>
+                <div class="row">
+                    <label class="data"
+                        *ngIf="householdInformation?.shelterAndUtilitiesExpense?.isHeatingAndCoolingType">Heating and
+                        Cooling </label>
+                    <label class="data" *ngIf="householdInformation?.shelterAndUtilitiesExpense?.isGasType">Gas </label>
+                    <label class="data"
+                        *ngIf="householdInformation?.shelterAndUtilitiesExpense?.isElectricType">Electric </label>
+                    <label class="data"
+                        *ngIf="householdInformation?.shelterAndUtilitiesExpense?.isPhoneAndInternetType">Phone and
+                        Internet </label>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onEditNavigate('HOUSING_UTILITIES_CHANGES')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('HOUSING_UTILITIES_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" *ngIf="householdInformation?.resources">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i>Resources</h2>
+        </div>
+        <div class="card-body">
+            <h4>Resources</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-6"><label>{{householdInformation?.resources}}</label> </div>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onEditNavigate('RESOURCE_CHANGES')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive" (click)="onCancel('RESOURCE_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" *ngIf="householdInformation?.otherCommunications">
+        <div class="card-head mx-3 mt-3">
+            <h2 class="m-0"><i class="fa-regular fa-address-book mx-2"></i>Other Communication Changes</h2>
+        </div>
+        <div class="card-body">
+            <h4>Other Communication Changes</h4>
+            <ul>
+                <div class="row">
+                    <div class="col-6"><label>{{householdInformation?.otherCommunications}}</label> </div>
+                </div>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <div class="row action-btns">
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onEditNavigate('OTHER_COMMUNICATION_CHANGES')">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-borderless btn-constructive"
+                        (click)="onCancel('OTHER_COMMUNICATION_CHANGES')">
+                        <i class="fa-regular fa-xmark"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-button [textStyle]="'btn btn-secondary w-100'" [buttonLabel]="'Attach and Submit'"
+    (click)="attachSubmit()">
+</compass-ui-cw-button>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="Submit Now"
+    (next)="onSubmit()" (back)="onBack()">
+</compass-ui-cw-dpq-button>
+
+<div class="modal" style="display:block" id="exampleModal" tabindex="-1" *ngIf="cancelCard"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>Are You Sure?</h2>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-tertiary" (click)="onCancelModal()">Cancel</button>
+                <button class="btn btn-primary" (click)="onConfirmModal()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" style="display:block" id="exampleModal" tabindex="-1" *ngIf="confirmModal"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>If you leave now, all of your changes will be lost.</h2>
+                <p>You have unsubmitted changes on this report. Do you still want to leave?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-tertiary" (click)="confirmModal = false">Stay Here</button>
+                <button class="btn btn-primary" (click)="leave()">Leave</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show" style="display:block" [hidden]="!loading" id="loadingModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingModal>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Loading...</h2>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

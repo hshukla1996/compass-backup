@@ -1,0 +1,96 @@
+<form [formGroup]='fosterCareDetailsForm' *ngIf="currentUser && fieldDisplays" (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>Is {{currentUser.firstName}} a foster child? <label><span>(required)</span></label></h1>
+  <fieldset class="button-group" *ngIf="fieldDisplays.isFosterChild">
+    <compass-ui-cw-radiobutton [showError]="isFieldValid('isFosterChild')" (click)="showFosterDetails(true)"
+      ngDefaultControl [formControlName]="'isFosterChild'" [required]="true" [radioButtonGroupName]="'isFosterChild'"
+      [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes" value="Yes">
+    </compass-ui-cw-radiobutton>
+    <compass-ui-cw-radiobutton [showError]="isFieldValid('isFosterChild')" ngDefaultControl
+      (click)="showFosterDetails(false)" [formControlName]="'isFosterChild'" [required]="true"
+      [radioButtonGroupName]="'isFosterChild'" [labelClass]="'btn btn-outline-tertiary'" [radioClass]="'btn-check'"
+      radioLabel="No" value="No">
+    </compass-ui-cw-radiobutton>
+    <cw-field-error-display [displayError]="isFieldValid('isFosterChild')" errorMsg="{{errorMap('isFosterChild')}}">
+    </cw-field-error-display>
+  </fieldset>
+  <div class="card arrow-card mt-4" *ngIf="showFosterInfo">
+    <div class="card-body">
+      <compass-ui-text [FormGroup]="fosterCareDetailsForm" [fieldId]="'amtGivenToEachMonth'" ngDefaultControl
+        [formControlName]="'amtGivenToEachMonth'" [requiredIndicator]="false" [maxLength]="8" type="currencyFormat"
+        [isBackSlashAllowed]="true" [fieldHelpText]="'0.00-99999.99'"
+        [fieldLabel]="'How much money is '+currentUser.firstName+' given to use each month?'"
+        [isVisible]="fieldDisplays.amtGivenToEachMonth"
+    [requiredIndicator]="requiredFields.indexOf('amtGivenToEachMonth')>-1">
+      </compass-ui-text>
+      <div class="form-group mb-3 mt-3" *ngIf="fieldDisplays.mealBenefit">
+        <label for="mealBenefit" class="form-label">Do you want {{currentUser.firstName}} counted in your household size
+          when calculating meal benefits?<span>(required)</span></label>
+        <fieldset class="button-group">
+          <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'mealBenefit'"
+            [radioButtonGroupName]="'mealBenefit'" [labelClass]="'btn btn-outline-tertiary'"
+            [radioClass]="'btn-check'" radioLabel="Yes " value="Yes">
+          </compass-ui-cw-radiobutton>
+          <compass-ui-cw-radiobutton  ngDefaultControl [formControlName]="'mealBenefit'"
+            [radioButtonGroupName]="'mealBenefit'" [labelClass]="'btn btn-outline-tertiary'"
+            [radioClass]="'btn-check'" radioLabel="No " value="No">
+          </compass-ui-cw-radiobutton>
+        </fieldset>
+      </div>
+      <div class="accordion page-tip mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              How will this change my application?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Including a Foster Child on your household application could change the household’s eligibility due to
+                the larger
+                household size. </p>
+              <p>Income received for that child may be counted for some programs, which could affect benefits.</p>
+              <p>For example: A family of four is determined as Reduced due to their income. If the family decides to
+                include the foster
+                child on their household application, it could change their eligibility from Reduced to Free.</p>
+              <p>Note: The household size and income do not affect the free eligibility of the foster child.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion page-tip mb-3 mt-3" id="accordionEx">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="true" aria-controls="collapseTwo">
+          Why is this being asked?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="collapseTwo"
+        data-bs-parent="#accordionEx">
+        <div class="accordion-body">
+          <p>When the County Children and Youth Agency (CCYA) tells the County Assistance Office (CAO) that a child has
+            been placed
+            in foster care, the child is automatically enrolled in the medical assistance program while eligibility is
+            being
+            determined.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

@@ -1,0 +1,18 @@
+{
+    "questionText": "Your current SNAP and Cash Assistance benefits.",
+    "subHeading": "Look below to make sure all SNAP and Cash Assistance benefits are here.",
+    "toolTip": "",
+    "questionAnswers": [
+        {
+            "accordionHeader": "{replace}",
+            "accordionSubHeading": "",
+            "accordionRightHeading": "",
+            "accordionRightSubHeading": "",
+            "userId": 1,
+            "accordionData": [{}],
+            "editButton": "Edit",
+            "deleteButton": "Remove"
+        }
+    ],
+    "addtionalButton": "Add SNAP or Cash Assistance "
+}

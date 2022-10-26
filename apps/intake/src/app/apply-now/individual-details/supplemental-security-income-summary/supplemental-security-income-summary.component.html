@@ -1,0 +1,6 @@
+<cw-simpletile-summary [simpleTileSummaryData]="jsonData" (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)" (nextPage)="next()" (previousPage)="back()"
+    (addAnotherPerson)="addPastSSI($event)" [updatedJson]="jsonData">
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>

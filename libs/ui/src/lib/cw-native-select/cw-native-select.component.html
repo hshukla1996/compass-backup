@@ -1,0 +1,17 @@
+<div class="standard-mb"  [formGroup]="FormGroup" *ngIf="isVisible">
+    <label for="lbl{{fieldId}}" class="form-label">{{fieldLabel}}<span
+            *ngIf="requiredIndicator">{{requiredText | translate}}</span></label>
+   <select
+   (change)="changeInput()"
+    [ngClass]="{ 'is-invalid': displayError, 'form-select':true }"
+   [required]="requiredIndicator" formControlName="{{fieldId}}"  [attr.disabled]="disabled ? 'disabled' : null"
+   >
+<ng-content></ng-content>
+
+ </select>
+      <div *ngIf="fieldHelpText !== null" id=hlp{{fieldId}} class="form-text">{{fieldHelpText}}</div>
+    <!-- <div *ngIf="errorText != null " id=errTxt{{fieldId}} class="error-text"><i class="fa-regular fa-circle-exclamation"></i> {{errorText}}</div> -->
+    <div *ngIf="displayError"  class="error-text"><i
+            class="fa-regular fa-circle-exclamation"></i>
+        {{errorMsg}}</div>
+</div>

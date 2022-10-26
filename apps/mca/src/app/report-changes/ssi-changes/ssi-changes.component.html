@@ -1,0 +1,22 @@
+    <h1 class="mb-3">Supplemntal Security Income (SSI) Changes</h1>
+    <div class="form-group mb-4" *ngFor="let individualInformation of individualInformations;let i = index">
+        <p>{{individualInformation?.firstName}} {{individualInformation?.lastName}}
+            {{individualInformation?.age}}
+             </p>
+        <compass-ui-cw-select [fieldId]="'frequency'"
+            fieldLabel="How often does {{individualInformation?.firstName}} receive this income?"
+            [requiredText]="'(required)'" [FormGroup]="formGroupObj[i]" [errorMsg]="errorMap('frequency', i)"
+            [displayError]="isFieldValid('frequency', i)">
+            <option value="" selected>- {{'selectone' | translate}} -</option>
+            <option *ngFor="let option of pays" [value]="option.id">{{option.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'grossAmount'" [FormGroup]="formGroupObj[i]" [fieldLabel]="'Gross Amount'"
+            [requiredText]="'(required)'" [requiredIndicator]="true" [displayError]="isFieldValid('grossAmount', i)"
+            [errorMsg]="errorMap('grossAmount', i)" [errorText]="errorMap('grossAmount', i)" [maxLength]="10"
+            [type]="'currency'">
+        </compass-ui-text>
+        <small class="text-muted">This is the amount of money {{individualInformation?.firstName}} gets before paying for taxes and other deductions.</small>
+    </div>
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+        (next)="onNext()" (back)="onBack()">
+    </compass-ui-cw-dpq-button>

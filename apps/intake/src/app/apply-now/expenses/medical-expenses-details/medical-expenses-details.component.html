@@ -1,0 +1,71 @@
+<form class="form-horizontal" [formGroup]='medicalExpDlsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <h1>What is {{currentUser.firstName}}'s medical expense?</h1>
+  <p>Tell us about this expense.</p>
+  <div class="form-group" *ngIf="fieldDisplays.willExpensesContinue">
+    <fieldset class="button-group">
+      <legend>Will the medical expenses continue for the next 6 months?</legend>
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'willExpensesContinue'"
+        [radioButtonGroupName]="'willExpensesContinue'" [labelClass]="'btn btn-outline-tertiary'"
+        [radioClass]="'btn-check'" radioLabel="Yes" value="Y"
+        [required]="requiredFields.indexOf('willExpensesContinue')>-1">
+      </compass-ui-cw-radiobutton>
+      <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'willExpensesContinue'"
+        [radioButtonGroupName]="'willExpensesContinue'" [labelClass]="'btn btn-outline-tertiary'"
+        [radioClass]="'btn-check'" radioLabel="No" value="N"
+        [required]="requiredFields.indexOf('willExpensesContinue')>-1">
+      </compass-ui-cw-radiobutton>
+    </fieldset>
+  </div>
+  <div class="alert alert-info mt-3">
+    <dl class="text-left">
+      <p>Consider expenses from these places:</p>
+      <ul>
+        <li>Dentist</li>
+        <li>Doctor</li>
+        <li> Durable Medical Equipment</li>
+        <li>Health Care Premiums</li>
+        <li>Hospital</li>
+        <li>Medication</li>
+        <li>Mental Health Services</li>
+        <li>Prosthetic Devices</li>
+        <li>Institutional Care</li>
+      </ul>
+    </dl>
+  </div>
+  <compass-ui-cw-select [fieldId]="'subExpenseType'" [fieldLabel]="'medicalTypeOfExpense' | translate"
+    [requiredIndicator]="requiredFields.indexOf('subExpenseType')>-1" 
+    [isVisible]="fieldDisplays.subExpenseType"
+    [FormGroup]="medicalExpDlsForm">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let exp of medicalExpensesopts" value="{{exp.id}}">{{exp.displayValue}}
+    </option>
+  </compass-ui-cw-select>
+  <compass-ui-text [fieldId]="'amountActuallyPaid'" [FormGroup]="medicalExpDlsForm"
+    [fieldLabel]="'medicalHowMuchIsBill' | translate" [maxLength]="7" type="currency"
+    [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+    [isVisible]="fieldDisplays.amountActuallyPaid"
+    [displayError]="isFieldValid('amountActuallyPaid')"
+    [requiredIndicator]="requiredFields.indexOf('amountActuallyPaid')>-1" [errorText]="errorMap('amountActuallyPaid')">
+  </compass-ui-text>
+  <compass-ui-cw-select [fieldId]="'frequency'" [fieldLabel]="'frequency' | translate" [FormGroup]="medicalExpDlsForm"
+    [requiredText]="'lblrequired' | translate" [requiredIndicator]="requiredFields.indexOf('frequency')>-1"
+    [errorMsg]="errorMap('frequency')"
+    [isVisible]="fieldDisplays.frequency"
+    [displayError]="isFieldValid('frequency')">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let days of daysData" value="{{days.id}}">{{days.displayValue}}
+    </option>
+  </compass-ui-cw-select>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

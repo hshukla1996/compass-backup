@@ -1,0 +1,106 @@
+    <h1 class="standard-mb">Your benefits not received yet.</h1>
+    <p class="form-subtitle standard-mb">Look below to make sure all benefits not received yet are here.</p>
+    <div *ngFor="let benefitNotReceived of householdPersons;let j=index;" >
+        <div class="accordion data-accordion q-summary standard-mb"
+            *ngFor="let data of benefitNotReceived.benefits; let i=index;" id="indexExpanded === i">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#coll-area-' + j" aria-expanded="true">
+                        <h2 class="card-title text-capitalize">
+                            <div class="main-title">
+                                {{formateLabel(benefitNotReceived)}}
+                            </div>
+                            <div class="sub-title">
+                                {{data?.code}}
+                            </div>
+                        </h2>
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse" id="coll-area-{{j}}">
+                    <hr>
+                    <div class="accordion-body">
+                        <div class="faux-table p-0">
+                            <div class="row">
+                                <div class="col-9 col-md-3">
+                                    <span class="head">
+                                        What date did {{benefitNotReceived?.firstName}} apply for this benefit?
+                                    </span>
+                                </div>
+                                <div class="col-3 col-md-9 text-end">
+                                    <div class="text-capitalize">
+                                        {{formatDate(data?.dateApplied)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9 col-md-3">
+                                    <span class="head">
+                                        How much money did {{benefitNotReceived?.firstName}} apply for?
+                                    </span>
+                                </div>
+                                <div class="col-3 col-md-9 text-end">                                    
+                                    <span *ngIf="data?.howMuch!==''">$</span> {{data?.howMuch}}                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9 col-md-3">
+                                    <span class="head">
+                                        When does {{benefitNotReceived?.firstName}} expect to receive the money?
+                                    </span>
+                                </div>
+                                <div class="col-3 col-md-9 text-end">
+                                    {{formatDate(data.expectedDate)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="dark">
+                    <div class="accordion-footer">
+                        <div class="row action-btns">
+                            <div class="col-6 text-center">
+                                <button class="btn btn-borderless btn-constructive"
+                                    (click)="navigateToEdit(benefitNotReceived?.id,data.code)">
+                                    <i class="fa-regular fa-pen-to-square"></i> {{'lbledit' | translate}}
+                                </button>
+                            </div>
+                            <div class="col-6 text-center">
+                                <button class="btn btn-borderless btn-destructive"
+                                    (click)="setdeleteUser(benefitNotReceived?.id,data.code)" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                    <i class="fa-regular fa-trash-can"></i> {{'lbldelete' | translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="text-center text-md-end standard-mb" *ngIf="getFilteredPersonWithBenefit()">
+        <button type="button" class="btn btn-sm btn-secondary" (click)="addBeneiftsNotReceived()"><i class="fa-regular fa-circle-plus"></i> Add Benefits Not Received Yet</button>
+    </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true"
+    #deleteModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>Are you sure you want to remove this record?</h2>
+                <p class="mb-3">If you remove this record you will need to re-enter the data to get it back.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-tertiary" #closeModal
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deleteUser()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

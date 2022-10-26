@@ -1,0 +1,23 @@
+<form [formGroup]="verifyEmailGroup">
+  <h1> {{ 'sa_loginrbaVEtitle' | translate:{email: email} }}</h1>
+  <p>{{ ('sa_loginrbaVEtext1' | translate) + ' ' }}<span>{{ 'sa_loginrbaVEtext2' | translate }}</span></p>
+
+  <div class="mb-3">
+    <compass-ui-text [fieldId]="'securityCode'" (inputModelChange)="codeError=false" [FormGroup]="verifyEmailGroup" [fieldLabel]="'sa_loginrbaVElbl1' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true"
+      [displayError]="isFieldInvalid('securityCode')" [errorText]="errorMap('securityCode') | translate"
+      [maxLength]="securityCodeMaxL">
+    </compass-ui-text>
+    <div class="row"><a class="hyperlink col text-end" (click)="sendCodeAgain()">{{ 'sa_loginrbaVEtail1' | translate }}</a></div>
+  </div>
+
+  <nav class="action-bar d-flex justify-content-between row text-center">
+    <div>
+        <button type="submit" class="btn btn-primary col-6" (click)="next()">
+            {{ 'next' | translate }}
+        </button>
+    </div>
+  </nav>
+  <br />
+  <p class="text-center"><a class="hyperlink" (click)="tryAnotherVerifyMethod()">{{ 'sa_tryAnotherVerifyMethod' | translate }}</a></p>
+</form>

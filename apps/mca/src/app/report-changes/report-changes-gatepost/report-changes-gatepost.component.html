@@ -1,0 +1,71 @@
+<div class="card-body">
+    <h1 class="mb-3">Tell us if you would like to make any of these changes to your case.</h1>
+    <label class="form-label">Select all that apply.</label>
+    <div class="mb-2">
+        <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+    </div>
+    <div class="row">
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected" (click)="onCardSelect('ADDRESS_CHANGE')"
+                [ngClass]="{selected : selectedCards.includes('ADDRESS_CHANGE'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-location-dot"></i>
+                <h5>Household or Mailing Address</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected"
+                (click)="onCardSelect('CONTACT_INFORMATION_CHANGE')"
+                [ngClass]="{selected : selectedCards.includes('CONTACT_INFORMATION_CHANGE'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-address-book"></i>
+                <h5>Contact Information</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected" (click)="onCardSelect('INCOME_JOB_CHANGE')"
+                [ngClass]="{selected : selectedCards.includes('INCOME_JOB_CHANGE'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-money-check-dollar-pen"></i>
+                <h5>Job or Income</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected" (click)="onCardSelect('PREGNANCY_OTHER_HOUSEHOLD')"
+                [ngClass]="{selected : selectedCards.includes('PREGNANCY_OTHER_HOUSEHOLD'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-user-group"></i>
+                <h5>Pregnancy or Other Household</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected" (click)="onCardSelect('HOUSING_UTILITIES_CHANGES')"
+                [ngClass]="{selected : selectedCards.includes('HOUSING_UTILITIES_CHANGES'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-money-check-dollar-pen"></i>
+                <h5>Housing or Utilities</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected" (click)="onCardSelect('RESOURCE_CHANGES')"
+                [ngClass]="{selected : selectedCards.includes('RESOURCE_CHANGES'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-clipboard-list-check"></i>
+                <h5>Resources</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button [disabled]="selectedCards.length" class="tile"
+                (click)="isLiheapCrisisSelected = !isLiheapCrisisSelected; displayError = false;"
+                [ngClass]="{selected : isLiheapCrisisSelected, disabled : selectedCards.length}">
+                <i class="fa-regular fa-lightbulb-exclamation"></i>
+                <h5>LIHEAP Crisis</h5>
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="tile" [disabled]="isLiheapCrisisSelected"
+                (click)="onCardSelect('OTHER_COMMUNICATION_CHANGES')"
+                [ngClass]="{selected : selectedCards.includes('OTHER_COMMUNICATION_CHANGES'), disabled : isLiheapCrisisSelected}">
+                <i class="fa-regular fa-ellipsis-stroke"></i>
+                <h5>Other Change</h5>
+            </button>
+        </div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'cancel'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

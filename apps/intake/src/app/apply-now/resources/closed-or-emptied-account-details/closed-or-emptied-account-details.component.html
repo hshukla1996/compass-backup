@@ -1,0 +1,45 @@
+<h1>You told us someone has closed or emptied accounts to pay for nursing services. Tell us about the resource.</h1>
+<p class="alert alert-info">Don’t worry, you can add more sold or emptied accounts later if you need to. </p>
+<div class="form-group" [formGroup]="closedOrEmptiedAccountDetailsForm">
+    <div class="form-group mb-3">
+        <compass-ui-cw-select [fieldId]="'accountType'" [fieldLabel]="'Account Type'" [requiredText]="'(required)'"
+            [FormGroup]="closedOrEmptiedAccountDetailsForm" [displayError]="isFieldValid('accountType')"
+            [errorMsg]="'Please select State.'" [requiredIndicator]="requiredFields.indexOf('accountType')>-1">
+            <option value="" selected>-Select One-</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'location'" [fieldLabel]="'Location'"
+            [FormGroup]="closedOrEmptiedAccountDetailsForm" [displayError]="isFieldValid('location')"
+            [requiredText]="'(required)'" [errorText]="errorMap('location')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'accountNumber'" [fieldLabel]="'Account Number'"
+            [FormGroup]="closedOrEmptiedAccountDetailsForm" [displayError]="isFieldValid('accountNumber')"
+            [requiredText]="'(required)'" [errorText]="errorMap('accountNumber')">
+        </compass-ui-text>
+    </div>    
+    <div>
+        <compass-ui-cw-datepicker ngDefaultControl id="accountClosingDate" [formControlName]="'accountClosingDate'"
+            [label]="'What date was the account closed?'" [required]="false" [requiredText]="'(required)'"
+            [displayError]="isFieldValid('accountClosingDate')" [errorMsg]="errorMap('accountClosingDate') | translate"
+            [required]="requiredFields.indexOf('accountClosingDate')>-1">
+        </compass-ui-cw-datepicker>
+        <small class="text-muted">MM/DD/YYYY</small>
+    </div>
+</div>
+
+<div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>

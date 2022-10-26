@@ -1,0 +1,85 @@
+<form class="form-horizontal" [formGroup] = 'individaulVeteranRelativeDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+      <h1 class="standard-mb">Tell us about the United States veteran that is related to someone in the household.</h1>
+    <!-- </div>
+    <div class="panel-body"> -->
+      <div class="form-group mb-3">
+        <compass-ui-cw-select [fieldId]="'veteranName'" [fieldLabel]="'What is the name of the veteran? '"
+                              (OnSelectedChange)="selectPerson($event)"
+                              [FormGroup]="individaulVeteranRelativeDetailsForm"
+                              [displayError]="isFieldValid('veteranName')" [errorMsg]="errorMap('veteranName')"
+                              [requiredIndicator]="true">
+
+   <option value="" selected>- Selection One -</option>
+            <option *ngFor="let nameOfTheVeteran of data.nameOfTheVeteranList" value="{{nameOfTheVeteran.key}}">{{nameOfTheVeteran.value}}</option>
+          </compass-ui-cw-select>
+      </div>
+
+      <div class="card arrow-card" *ngIf="individaulVeteranRelativeDetailsForm.get('veteranName').value==='999'">
+        <div class="card-body">
+
+          <compass-ui-text [fieldId]="'someOneOutSideVeteranName'" [FormGroup]="individaulVeteranRelativeDetailsForm"
+                           [fieldLabel]="'Veteran’s Name'"
+                           [fieldType]="'nameParts'"
+                           [maxLength]="30" [displayError]="isFieldValid('someOneOutSideVeteranName')"
+                           [requiredIndicator]="requiredFields.indexOf('someOneOutSideVeteranName')>-1 && individaulVeteranRelativeDetailsForm.get('veteranName').value==='999'"
+                           [errorText]="errorMap('someOneOutSideVeteranName')">
+          </compass-ui-text>
+
+      </div>
+      </div>
+  <compass-ui-cw-select [fieldId]="'branchOfService'" [fieldLabel]="'Branch of Service '"
+                        [FormGroup]="individaulVeteranRelativeDetailsForm"
+                        [displayError]="isFieldValid('branchOfService')" [errorMsg]="errorMap('branchOfService')"
+                        [requiredIndicator]="requiredFields.indexOf('branchOfService')>-1">
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let branchOfService of serviceBranches" value="{{branchOfService.id}}" >{{branchOfService.displayValue}}</option>
+  </compass-ui-cw-select>
+
+
+      <div class="form-group mb-3 col-sm-6">
+       <compass-ui-cw-datepicker label="Date Entered"
+                                  [required]="requiredFields.indexOf('dateEntered')>-1" ngDefaultControl
+                                  [formControlName]="'dateEntered'" [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+                                 showFieldHelpText="MM/DD/YYYY"
+                                  [displayError]="isFieldValid('dateEntered')" [showError]="isFieldValid('dateEntered')"
+                                  [errorMsg]="errorMap('dateEntered') | translate"
+        >
+
+        </compass-ui-cw-datepicker>
+      </div>
+      <div class="form-group mb-3 col-sm-6">
+        <compass-ui-cw-datepicker label="Date Discharged"
+                                  [required]="requiredFields.indexOf('dateDischarged')>-1" ngDefaultControl
+                                  [formControlName]="'dateDischarged'" [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+                                  showFieldHelpText="MM/DD/YYYY"
+                                  [displayError]="isFieldValid('dateDischarged')" [showError]="isFieldValid('dateDischarged')"
+                                  [errorMsg]="errorMap('dateDischarged') | translate"
+        >
+
+        </compass-ui-cw-datepicker>
+       </div>
+
+  <compass-ui-text [fieldId]="'claimNumber'" [FormGroup]="individaulVeteranRelativeDetailsForm"
+                   [fieldLabel]="'Veteran Claim Number'"
+                   [maxLength]="10" [displayError]="isFieldValid('claimNumber')"
+                   [requiredIndicator]="requiredFields.indexOf('claimNumber')>-1"
+                   [errorText]="errorMap('claimNumber')">
+  </compass-ui-text>
+
+    <!-- </div> -->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+  <!-- </div> -->
+</form>

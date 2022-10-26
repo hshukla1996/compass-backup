@@ -1,0 +1,28 @@
+{
+  "root": "apps/mca-e2e",
+  "sourceRoot": "apps/mca-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/mca-e2e/cypress.json",
+        "devServerTarget": "mca:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "mca:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mca-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["mca"]
+}

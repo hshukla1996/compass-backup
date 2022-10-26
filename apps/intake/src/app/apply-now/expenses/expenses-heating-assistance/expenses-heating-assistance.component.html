@@ -1,0 +1,138 @@
+<form [formGroup]="heatingAssistanceForm">
+    <h1 class="standard-mb">We need some information for your heating assistance application.</h1>
+    <div class="standard-mb">
+      <fieldset class="button-group">
+        <legend>Are you interested in weatherization services?</legend>
+        <input type="radio" class="btn-check"
+        [checked]="houseHoldDetails.expenses?.isWeatherizationSelected ==='Y'"
+        name="isWeatherizationSelected" id="isWeatherizationSelectedYes" autocomplete="off" value="Y">
+        <label class="btn btn-outline-tertiary" for="isWeatherizationSelectedYes">Yes</label>
+        <input type="radio" class="btn-check"
+        [checked]="houseHoldDetails.expenses?.isWeatherizationSelected ==='N'"
+        name="isWeatherizationSelected" id="isWeatherizationSelectedNo" autocomplete="off" value="N">
+        <label class="btn btn-outline-tertiary" for="isWeatherizationSelectedNo">No</label>
+      </fieldset>
+      <div class="form-text">Pennsylvania’s Weatherization Assistance Program improves the energy
+              efficiency of low-income families' homes.</div>
+    </div>
+    <compass-ui-cw-select [fieldId]="'mainHeatingSource'" [fieldLabel]="'What is your main heating source?'" [errorMsg]="errorMap('mainHeatingSource')"
+      [FormGroup]="heatingAssistanceForm" [requiredText]="'(required)'" [displayError]="isFieldValid('mainHeatingSource')" (click)="getLiheapServiceData()">
+      <option value="" selected>- Select One -</option>
+      <option *ngFor="let heatingSource of heatingSource" value="{{heatingSource.id}}">
+        {{heatingSource.displayValue}}</option>
+    </compass-ui-cw-select>
+    <compass-ui-cw-select [fieldId]="'utilityCompany'"
+      [fieldLabel]="'What utility company or fuel dealer provides your main heating source?'" [errorMsg]="errorMap('utilityCompany')"
+      [FormGroup]="heatingAssistanceForm" [requiredText]="'(required)'" (change)="showOtherUtilityCompany($event)" [displayError]="isFieldValid('utilityCompany')">
+      <option value="" selected>- Select One -</option>
+      <option *ngFor="let heatingSource of heatingAssistanceData" value="{{heatingSource.id}}">
+        {{heatingSource.displayValue}}</option>
+      <option value="other">Other</option>
+    </compass-ui-cw-select>
+    <ng-container *ngIf="OtherUtilityInfo">
+      <div class="card arrow-card standard-mb">
+        <div class="card-body">
+          <compass-ui-text [fieldId]="'otherUtilityCompanyName'" [FormGroup]="heatingAssistanceForm"
+            [fieldLabel]="'Other Utility Company or Fuel Dealer Name'" [maxLength]="50" [fieldType]="'nameType'">
+          </compass-ui-text>
+        </div>
+      </div>
+    </ng-container>
+    <compass-ui-text [fieldId]="'providerNumber'" [FormGroup]="heatingAssistanceForm"
+      [fieldLabel]="'What is your account number with the main heating provider?'" [fieldHelpText]="'If you do not have an account number, your name may
+                            be associated with the account.'" [maxLength]="25" [fieldType]="'numberType'">
+    </compass-ui-text>
+    <div class="mb-3">
+      <fieldset class="button-group">
+        <legend>Does your main heating source need electricity? <span>(required)</span></legend>
+        <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'heatingNeedElectricity'" value="Y" [showError]="isFieldValid('heatingNeedElectricity')"
+              [radioButtonGroupName]="'heatingNeedElectricity'" [labelClass]="'btn btn-outline-tertiary float-start'" [radioClass]="'btn-check'" radioLabel="Yes">
+          </compass-ui-cw-radiobutton>
+          <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'heatingNeedElectricity'" value="N" [showError]="isFieldValid('heatingNeedElectricity')"
+            [radioButtonGroupName]="'heatingNeedElectricity'" [labelClass]="'btn btn-outline-tertiary float-start'" [radioClass]="'btn-check'" radioLabel="No">
+          </compass-ui-cw-radiobutton>
+        <!--
+        <span *ngFor="let x of needElectricity">
+          <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'heatingNeedElectricity'"
+            [radioButtonGroupName]="'heatingNeedElectricity'" [labelClass]="'btn btn-outline-tertiary float-start'"
+            [radioClass]="'btn-check'" radioLabel="{{x.DisplayValue}}">
+          </compass-ui-cw-radiobutton>
+        </span>
+            -->
+      </fieldset>
+      <cw-field-error-display  [displayError]="isFieldValid('heatingNeedElectricity')"
+                    errorMsg="{{errorMap('heatingNeedElectricity')}}">
+      </cw-field-error-display>
+    </div>
+    <div class="mb-3">
+      <fieldset class="button-group">
+        <legend>Which provider should the payment be sent to? <span>(required)</span></legend>
+        <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'providerPayment'" value="Yes" [showError]="isFieldValid('providerPayment')"
+              [radioButtonGroupName]="'providerPayment'" (click)="hidePaymentSentTo()" [labelClass]="'btn btn-outline-tertiary float-start'" [radioClass]="'btn-check'" radioLabel="Main">
+        </compass-ui-cw-radiobutton>
+        <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'providerPayment'" value="No" [showError]="isFieldValid('providerPayment')"
+          [radioButtonGroupName]="'providerPayment'" (click)="showPaymentSentTo()" [labelClass]="'btn btn-outline-tertiary float-start'" [radioClass]="'btn-check'" radioLabel="Electric">
+        </compass-ui-cw-radiobutton>
+      </fieldset>
+      <cw-field-error-display [displayError]="isFieldValid('providerPayment')" errorMsg="{{errorMap('providerPayment')}}">
+      </cw-field-error-display>
+      <ng-container *ngIf="providerPamentSentTo">
+        <div class="card arrow-card right-arrow-2 standard-mb">
+          <div class="card-body">
+            <compass-ui-cw-select [fieldId]="'electricCompaniesList'" [fieldLabel]="'Electric Provider Name'"
+              [FormGroup]="heatingAssistanceForm" [requiredText]="'(required)'"
+              [displayError]="isFieldValid('electricCompaniesList')"  [errorMsg]="errorMap('electricCompaniesList')"
+              (change)="showOtherElectricProviderName($event)">
+              <option value="" selected>- Select One -</option>
+              <option *ngFor="let detail of electricCompaniesList" value="{{detail.key}}">{{detail?.value}}</option>
+              <option value="other">Other</option>
+            </compass-ui-cw-select>
+            <ng-container *ngIf="otherProviderName">
+              <compass-ui-text [fieldId]="'otherProviderNameVal'" [FormGroup]="heatingAssistanceForm"
+                [fieldLabel]="'Other Electric Provider Name'" [maxLength]="50" [fieldType]="'nameType'">
+              </compass-ui-text>
+            </ng-container>
+            <compass-ui-text [fieldId]="'otherAccountNumber'" [FormGroup]="heatingAssistanceForm"
+              [fieldLabel]="'Electric Provider Account Number'" [maxLength]="25" [fieldType]="'numberType'">
+            </compass-ui-text>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <compass-ui-cw-select [fieldId]="'accountPaidInName'" [fieldLabel]="'Whose name is on the account that needs to be paid?'"
+      [FormGroup]="heatingAssistanceForm" [requiredText]="'(required)'"
+      [displayError]="isFieldValid('accountPaidInName')" [errorMsg]="errorMap('accountPaidInName')"
+      (change)="showOtherAccountPaid($event)">
+      <option value="" selected>- Select One -</option>
+       <option *ngFor="let person of houseHoldPersons" value="{{person.id}}">
+        {{person.firstName}} {{person.lastName}}</option>
+      <option value="other">Other</option>
+    </compass-ui-cw-select>
+    <ng-container *ngIf="otherAccountPaid">
+      <div class="card arrow-card standard-mb">
+        <div class="card-body">
+          <compass-ui-text [fieldId]="'otherAccountHolderName'" [FormGroup]="heatingAssistanceForm"
+            [fieldLabel]="'Other Account Holder Name'" [maxLength]="30" [fieldType]="'nameType'">
+          </compass-ui-text>
+        </div>
+      </div>
+    </ng-container>
+    <compass-ui-cw-select [fieldId]="'otherHeatingSource'" [fieldLabel]="'Do you use any other heating source?'">
+      <option value="" selected>- Select One -</option>
+      <option *ngFor="let heatingSource of heatingSource" value="{{heatingSource.id}}">
+        {{heatingSource.displayValue}}</option>
+    </compass-ui-cw-select>
+
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previousRoute()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

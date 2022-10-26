@@ -1,0 +1,57 @@
+<form class="form-horizontal" *ngIf="householdMembers.length>0" [formGroup]='householdHeadSelectionForm'
+  (ngSubmit)="onSubmit()" #generalDetailsFormEle="ngForm">
+  <div class="parent_heading_text">
+  <h1>Who would you like to be listed as the head of household?</h1>
+  </div>
+  <div class="accordion page-tip standard-mb" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          What is a Head of Household?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <p>The Head of Household could be:</p>
+          <ul>
+            <li>The person who is applying for everyone in the household, including themselves.</li>
+            <li>The person in charge of paying the bills.</li>
+            <li>The person to whom mail is addressed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <cw-field-error-display [displayError]="displayError" [errorMsg]="error"></cw-field-error-display>
+
+  <div *ngFor="let individual of individualFormArray.controls;let i=index" formArrayName="id" class="standard-mb">
+    <div class="form-check custom">
+      <input class="form-check-input" id={{householdMembers[i].id}} type="radio" name="radHouseholdHeadSelection"
+        value={{householdMembers[i].id.toString()}} (change)="onCheckboxChange($event)" [disabled]="householdHeadonly" 
+        [checked]="selectedUserids.indexOf(householdMembers[i].id.toString()) !== -1  ||
+        memberCount === 1 ? true : false">
+
+      <label class="form-check-label text-capitalize" for="{{householdMembers[i].id}}">
+        {{householdMembers[i].firstName}} {{householdMembers[i].lastName}}
+        {{getAge(householdMembers[i]?.dateOfBirth)}} ({{householdMembers[i].gender.charAt(0)}})
+      </label>
+    </div>
+  </div>
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>
+<!-- <cw-simpletile-checkbox [simpleTileCheckboxData]="householdHeadSelectionJsonData" (nextPage)="showNextPage($event)"
+    (previousPage)="showPreviousPage()">
+</cw-simpletile-checkbox> -->

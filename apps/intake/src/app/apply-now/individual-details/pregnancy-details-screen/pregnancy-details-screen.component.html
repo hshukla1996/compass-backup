@@ -1,0 +1,42 @@
+<form class="form-horizontal" [formGroup]='pregnancySummaryScreenDetailsForm'
+    #pregnancySummaryScreenDetailsFormEle="ngForm">
+    <h1>
+        Tell us more about {{getUserFirstName}} pregnancy.
+    </h1>
+    <div>
+        <div class="mb-3">
+            <compass-ui-cw-datepicker ngDefaultControl id="pregnancyDueDate" [formControlName]="'pregnancyDueDate'"
+                [label]="'When is '  + getUserFirstName +  ' Due?'" [required]="false" [requiredText]="'(required)'"
+                [displayError]="isFieldValid('pregnancyDueDate')" [errorMsg]="errorMap('pregnancyDueDate') | translate"
+                [required]="requiredFields.indexOf('pregnancyDueDate')>-1" showFieldHelpText="MM/DD/YYYY">
+            </compass-ui-cw-datepicker>
+        </div>
+
+        <div class="mb-3">
+            <div class="d-md-flex">
+                <compass-ui-cw-select [fieldId]="'babiesRequired'" [fieldLabel]="'How many babies are due?'"
+                    [requiredText]="'(required)'" [FormGroup]="pregnancySummaryScreenDetailsForm"
+                    [displayError]="isFieldValid('babiesRequired')"
+                    [errorMsg]="'Please select number of babies required.'"
+                    [requiredIndicator]="requiredFields.indexOf('babiesRequired')>-1">
+                    <option value="" selected>-Select One-</option>
+                    <option *ngFor="let noOfBabies of babiesRequireds" [ngValue]="noOfBabies.id">
+                        {{ noOfBabies.displayValue }}
+                    </option>
+                </compass-ui-cw-select>
+            </div>
+        </div>
+    </div>
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

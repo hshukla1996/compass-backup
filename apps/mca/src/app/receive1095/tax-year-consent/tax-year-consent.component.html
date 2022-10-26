@@ -1,0 +1,27 @@
+<form [formGroup]="taxYearGroup">
+  <h1>{{ '1095consentTitle' | translate }}</h1>
+
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="taxYear" fieldId="taxYear"
+      [fieldLabel]="'1095consentLbl1' | translate" [requiredText]="'lblrequired' | translate" [FormGroup]="taxYearGroup"
+      [errorMsg]="errorMap('taxYear') | translate" [displayError]="isFieldInvalid('taxYear')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let year of years">{{year}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <div class="mb-3">
+    <compass-ui-cw-checkbox checkboxId="consent" (inputModelChange)="consent($event.checked)"
+      [label]="'1095consentLbl2' | translate" [showError]="isFieldInvalid('consent')"
+      [requiredText]="errorMap('consent') | translate">
+    </compass-ui-cw-checkbox>
+  </div>
+
+  <div class="alert alert-info">
+    <p>{{ '1095consentTip1' | translate }}</p>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+    nextButtonLabel="{{'1095consentLbl3'| translate}}" (back)="back()" (next)="submit()">
+  </compass-ui-cw-dpq-button>
+</form>

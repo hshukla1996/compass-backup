@@ -1,0 +1,45 @@
+<form [formGroup]="incomePastJobDetailsForm">
+    <h1 class="standard-mb">Tell us about {{currentUser.firstName}}'s past job.</h1>
+    
+    <compass-ui-text [fieldId]="'name'" [FormGroup]="incomePastJobDetailsForm" [fieldLabel]="'lblEmployerName' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [maxLength]="26" pattern="[a-zA-Z]*"
+      [displayError]="isFieldValid('name')" [errorMsg]="errorMap('name')" [errorText]="errorMap('name')">
+    </compass-ui-text>
+    
+    <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="incomePastJobDetailsForm"
+      [fieldLabel]="'lblEmployerStreetAddress' | translate" [requiredText]="'lblrequired' | translate"
+      [requiredIndicator]="true" [errorText]="errorMap('addressLine1')" [maxLength]="26" pattern="[a-zA-Z0-9#/-\s]*"
+      [displayError]="isFieldValid('addressLine1')" [errorMsg]="errorMap('addressLine1')" (keypress)="checkAddress($event)">
+    </compass-ui-text>
+    
+    <compass-ui-text [fieldId]="'addressLine2'" [FormGroup]="incomePastJobDetailsForm"
+      [fieldLabel]="' Employer Street Address (2)' | translate" [maxLength]="26" pattern="[a-zA-Z0-9#/-\s]*" (keypress)="checkAddress($event)">
+    </compass-ui-text>
+    
+    <compass-ui-text [fieldId]="'city'" [FormGroup]="incomePastJobDetailsForm" [fieldLabel]="'Employer City' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [errorText]="errorMap('city')" [maxLength]="16"
+      pattern="[a-zA-Z0-9#/-\s]*" [displayError]="isFieldValid('city')" [errorMsg]="errorMap('city')" (keypress)="checkCity($event)">
+    </compass-ui-text>
+    
+    <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'Employer State' | translate" [FormGroup]="incomePastJobDetailsForm"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+    </compass-ui-cw-select>
+    
+    <compass-ui-text [fieldId]="'zip'" [FormGroup]="incomePastJobDetailsForm" [fieldLabel]="'Employer ZIP code' | translate"
+      [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" (keypress)="OnlyNumberAllowed($event)"
+      [errorText]="errorMap('zip')" [maxLength]="5" pattern="[0-9]*" [displayError]="isFieldValid('zip')"
+      [errorMsg]="errorMap('zip')">
+    </compass-ui-text>
+    
+    <div class="form-group mb-4">
+      <compass-ui-text [fieldId]="'phoneNumber'" [phoneNumber]="true" [FormGroup]="incomePastJobDetailsForm"
+        [fieldLabel]="'lblEmployerPhoneNumber' | translate" [maxLength]="10" pattern="[0-9]*" [fieldHelpText]="'(XXX) XXX-XXXX'" (keypress)="OnlyNumberAllowed($event)">
+      </compass-ui-text>
+    </div>
+    
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+      (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+</form>

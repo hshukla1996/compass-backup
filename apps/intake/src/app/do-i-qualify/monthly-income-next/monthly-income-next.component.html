@@ -1,0 +1,16 @@
+
+        <h1 class="card-title">What is the total monthly income from {{currentUserName}}'s Jobs</h1>
+        <!-- <p class="alert alert-warning"
+            *ngIf="(this.monthlyIncomeForm.controls['monthlyIncomeAmount'].errors?.['required'] && this.monthlyIncomeForm.controls['monthlyIncomeAmount'].touched) || !isValidate">
+            Total monthly income is required.
+        </p> -->
+        <div class="mb-3" [formGroup]="monthlyIncomeForm">
+            <label for="txtTotalResources" class="form-label" for="txtTotalResources">Total Value</label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder="$200.00"
+                id="txtTotalResources" formControlName="monthlyIncomeAmount"
+            />
+        </div>
+  

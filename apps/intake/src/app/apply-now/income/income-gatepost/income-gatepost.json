@@ -1,0 +1,57 @@
+{
+    "questionText": "Does anyone in the household have any of these income situations?",
+    "toolTip": "",
+    "subHeading": "",
+    "requiredText": "Please select required options",
+    "questionAnswers": [
+        {
+            "legend": "Current or Future Employer",
+            "toolTip": "One or more individuals currently have income from a job, or will start a job in the next 30 days (not including Self-Employment)",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "incomefutureJob"
+        },
+        {
+            "legend": "Past Employer",
+            "toolTip": "One or more individuals have stopped working at a job in the past 30 days",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "incomepastJob"
+        },
+        {
+            "legend": "Other Income",
+            "toolTip": "One or more individuals have income from self-employment or receive money from other sources",
+            "accordionButton": "Other Income Examples",
+            "accordionData": 
+            "Examples of other income include: \n •\tAlimomy\n •\tAnnuity\n •\tBlack Lung\n •\tCash Assistance\n •\tChild Support\n •\tDividends/Interest\n •\tLottery and Gambling Winnings\n •\tPayments from a Trust\n •\tPensions/Retirement\n •\tRailroad Retirement\n •\tRental Income\n •\tSelf-Employment\n •\tSocial Security Disability\n •\tSocial Security Retirement\n •\tSupplemental Security Income (SSI)\n •\tSurvivors of Disability Income (RSDI)\n •\tUnemployment Benefits\n •\tV.A Aid and Attendance\n •\tVeterans Benefits\n •\tWorker Compensation\n" ,
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "otherincome"
+        },
+        {
+            "legend": "Financial Assistance for a Disability",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": true,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "disabilityassistance"
+        }   
+    ]
+}

@@ -1,0 +1,14 @@
+<button class="btn btn-secondary standard-mb" id="{{fieldId}}" onclick="document.getElementById('file').click();">
+    <i class="fa-light fa-file-arrow-up"></i>
+    {{buttonLabel}}
+</button>
+<input type="file" style="display:none;" id="file" name="file" (change)="readFile($event)" />
+<div *ngIf="displayError" class="error-text" id="err-txt-{{fieldId}}">
+    <i class="fa-regular fa-circle-exclamation"></i>
+    {{errorText}}
+</div>
+<div>
+    <small>
+        {{uploadText}}
+    </small>
+</div> 

@@ -1,0 +1,28 @@
+{
+    "root": "apps/sharedauth-e2e",
+    "sourceRoot": "apps/sharedauth-e2e/src",
+    "projectType": "application",
+    "targets": {
+        "e2e": {
+            "executor": "@nrwl/cypress:cypress",
+            "options": {
+                "cypressConfig": "apps/sharedauth-e2e/cypress.json",
+                "devServerTarget": "sharedauth:serve:development"
+            },
+            "configurations": {
+                "production": {
+                    "devServerTarget": "sharedauth:serve:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/sharedauth-e2e/**/*.{js,ts}"]
+            }
+        }
+    },
+    "tags": [],
+    "implicitDependencies": ["sharedauth"]
+}

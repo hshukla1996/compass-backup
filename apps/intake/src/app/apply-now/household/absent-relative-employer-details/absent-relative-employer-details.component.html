@@ -1,0 +1,53 @@
+<form [formGroup]="absentRelativeEmployerDetailsForm" (ngSubmit)="onSubmit()">
+        <h1>Tell us about {{this.currentUser.firstName}}'s employer.</h1>
+        <div class="alert alert-info">
+            <dl class="text-left">
+                Give us their current or most recent employer.
+            </dl>
+        </div>
+        <compass-ui-text [fieldId]="'EmployerName'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            [fieldLabel]="'Employer Name'" [maxLength]="26" fieldType="absentEmployerNameType"
+            (inputModelChange)="GetValue($event)" (inputModelChange)="GetValue($event)">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'AddressLine1'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            [fieldLabel]="'Employer Street Address'" fieldType="prevStreetType"  [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'AddressLine2'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            [fieldLabel]="'Employer Street Address (2)'" fieldType="prevStreetType" [maxLength]="26">
+        </compass-ui-text>
+        <compass-ui-text [fieldId]="'City'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            [fieldLabel]="'Employer City'" fieldType="cityType" [maxLength]="16">
+        </compass-ui-text>
+        <compass-ui-cw-select [fieldId]="'State'" [fieldLabel]="'Employer State'"
+            [FormGroup]="absentRelativeEmployerDetailsForm">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+        </compass-ui-cw-select>
+        <compass-ui-text [fieldId]="'Zip'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            [fieldLabel]="'Employer ZIP Code'" [displayError]="isFieldValid('Zip')" [errorText]="'Please enter 5 digit zip code'" [fieldType]="'numberType'"
+            [maxLength]="5">
+        </compass-ui-text>
+        <div class="form-group mb-4">
+            <compass-ui-text [fieldId]="'EmployerPhoneNumber'" [FormGroup]="absentRelativeEmployerDetailsForm"
+                fieldLabel="Employer Phone Number"
+                [type]="'phone'"  [maxLength]="10"  [fieldHelpText]="'(XXX)XXX-XXXX'" (keydown)="OnlyNumberAllowed($event, 'EmployerPhoneNumber')" 
+                [displayError]="showError ? isFieldValid('EmployerPhoneNumber') : showError" [errorText]="'Please enter 10 digit phone number'">
+            </compass-ui-text>
+        </div>
+        <compass-ui-text [fieldId]="'EmployerPhoneNumberExtension'" [FormGroup]="absentRelativeEmployerDetailsForm"
+            ngDefaultControl [formControlName]="'EmployerPhoneNumberExtension'" fieldLabel=" Extension" [maxLength]="4"
+            (inputModelChange)="GetValue($event)" (keypress)="showContactNumber()"  [fieldType]="'numberType'">
+        </compass-ui-text>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

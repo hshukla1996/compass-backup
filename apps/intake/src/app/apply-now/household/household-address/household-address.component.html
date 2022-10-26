@@ -1,0 +1,250 @@
+<form [formGroup]="householdAddressForm" (ngSubmit)="onSubmit()">
+    <h1>What is your household's address?</h1>
+    <ng-container *ngIf="requiredFields.indexOf('AddressLine1')>-1">
+        <compass-ui-text [fieldId]="'AddressLine1'" [FormGroup]="householdAddressForm" [fieldLabel]="'Street Address'"
+            [requiredText]="requiredFields.indexOf('AddressLine1')>-1 ? '(required)' : ''"
+            [requiredIndicator]="requiredFields.indexOf('AddressLine1')>-1"
+            [displayError]="isFieldValid('AddressLine1')" [maxLength]="26" [errorText]="errorMap('AddressLine1')"
+            fieldType="referralsaddressType">
+        </compass-ui-text>
+    </ng-container>
+    <ng-container *ngIf="optionalFields.indexOf('AddressLine2')>-1">
+        <compass-ui-text [fieldId]="'AddressLine2'" [FormGroup]="householdAddressForm"
+            [fieldLabel]="'Street Address (2)'" [maxLength]="26" fieldType="referralsaddressType">
+        </compass-ui-text>
+    </ng-container>
+    <ng-container *ngIf="requiredFields.indexOf('City')>-1">
+        <compass-ui-text [fieldId]="'City'" [FormGroup]="householdAddressForm" [fieldLabel]="'City'"
+            [requiredText]="requiredFields.indexOf('City')>-1 ? '(required)' : ''"
+            [requiredIndicator]="requiredFields.indexOf('City')>-1" [displayError]="isFieldValid('City')"
+            [maxLength]="26" [errorText]="errorMap('City')" fieldType="cityType">
+        </compass-ui-text>
+    </ng-container>
+    <ng-container *ngIf="requiredFields.indexOf('State')>-1">
+        <compass-ui-cw-select [fieldId]="'State'" [fieldLabel]="'State'" [FormGroup]="householdAddressForm"
+            [disabled]="false" [requiredText]="requiredFields.indexOf('State')>-1 ? '(required)' : ''"
+            [requiredIndicator]="requiredFields.indexOf('State')>-1" [displayError]="isFieldValid('State')"
+            [errorMsg]="errorMap('State')">
+
+            <option value="PA" selected>PENNSYLVANIA</option>
+            <option *ngFor="let state of states" value={{state.id}}>{{state.displayValue}} </option>
+        </compass-ui-cw-select>
+    </ng-container>
+    <ng-container *ngIf="requiredFields.indexOf('Zip')>-1">
+        <compass-ui-text [fieldId]="'Zip'" [FormGroup]="householdAddressForm" [fieldLabel]="'ZIP Code'"
+            [requiredIndicator]="requiredFields.indexOf('Zip')>-1"
+            [requiredText]="requiredFields.indexOf('Zip')>-1 ? '(required)' : ''" [displayError]="isFieldValid('Zip')"
+            fieldType="numberType" [maxLength]="5" [errorText]="errorMap('Zip')">
+        </compass-ui-text>
+    </ng-container>
+    <ng-container *ngIf="requiredFields.indexOf('County')>-1">
+        <compass-ui-cw-select *ngIf="counties" [fieldId]="'County'" [fieldLabel]="'County'"
+            [FormGroup]="householdAddressForm" [requiredIndicator]="requiredFields.indexOf('County')>-1"
+            [requiredText]="requiredFields.indexOf('County')>-1 ? '(required)' : ''"
+            [displayError]="isFieldValid('County')" [errorMsg]="errorMap('County')">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let county of counties.tableRows" value={{county.id}}>{{county.displayValue}}</option>
+        </compass-ui-cw-select>
+    </ng-container>
+    <ng-container *ngIf="requiredFields.indexOf('school')>-1 || optionalFields.indexOf('school')>-1">
+        <compass-ui-cw-select [fieldId]="'school'" [fieldLabel]="'What school district do you live in?'"
+            [FormGroup]="householdAddressForm" [requiredIndicator]="requiredFields.indexOf('school')>-1"
+            [requiredText]="requiredFields.indexOf('school')>-1 ? '(required)' : ''"
+            [displayError]="isFieldValid('school')" [errorMsg]="errorMap('school')">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let district of schoolDistricts" value={{district.id}}>{{district.displayValue}} </option>
+        </compass-ui-cw-select>
+    </ng-container>
+    <div class="card arrow-card standard-mb" *ngIf="selectedSchoolDistrictName ==='99999'">
+        <div class="card-body">
+            <div class="form-group standard-mb">
+                <compass-ui-text [fieldId]="'school1'" [FormGroup]="householdAddressForm"
+                    [fieldLabel]="'Enter your school district'" [requiredText]="' (required)'"
+                    [requiredIndicator]="true" [displayError]="isFieldValid('school1')" [maxLength]="35"
+                    [errorText]="errorMap('school1')">
+                </compass-ui-text>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="requiredFields.indexOf('township')>-1 || optionalFields.indexOf('township')>-1">
+        <compass-ui-cw-select [fieldId]="'township'" [fieldLabel]="'City, Township, or Borough'"
+            [FormGroup]="householdAddressForm" [requiredIndicator]="requiredFields.indexOf('township')>-1"
+            [requiredText]="requiredFields.indexOf('township')>-1 ? '(required)' : ''"
+            [displayError]="isFieldValid('township')" [errorMsg]="errorMap('township')">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let township of townships" value={{township.id}}>{{township.displayValue}}</option>
+        </compass-ui-cw-select>
+    </ng-container>
+    <div class="card arrow-card standard-mb" *ngIf="selectedTownshipName ==='99999'">
+        <div class="card-body">
+            <div class="form-group mb-md-4 mb-3">
+                <compass-ui-text [fieldId]="'township1'" [FormGroup]="householdAddressForm"
+                    [fieldLabel]="'Enter your city/township/borough'"
+                    [requiredText]="requiredFields.indexOf('township1')>-1 ? '(required)' : ''"
+                    [requiredIndicator]="requiredFields.indexOf('township1')>-1"
+                    [displayError]="isFieldValid('township1')" [errorText]="errorMap('township1')" [maxLength]="35">
+                </compass-ui-text>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="requiredFields.indexOf('anotherAdd')>-1">
+        <div class="form-group standard-mb">
+            <fieldset class="button-group">
+                <legend>Should we send mail to a different address?<span
+                        *ngIf="requiredFields.indexOf('anotherAdd')>-1">(required)</span></legend>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('anotherAdd')" ngDefaultControl
+                    [formControlName]="'anotherAdd'" [required]="requiredFields.indexOf('anotherAdd')>-1"
+                    [radioButtonGroupName]="'anotherAdd'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="Yes" (click)="showAnotherAddress()">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton [showError]="isFieldValid('anotherAdd')" ngDefaultControl
+                    [formControlName]="'anotherAdd'" [required]="requiredFields.indexOf('anotherAdd')>-1"
+                    [radioButtonGroupName]="'anotherAdd'" [labelClass]="'btn btn-sm btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="No" (click)="removeAnotherAddress()">
+                </compass-ui-cw-radiobutton>
+                <cw-field-error-display [displayError]="isFieldValid('anotherAdd')"
+                    errorMsg="{{errorMap('anotherAdd')}}">
+                </cw-field-error-display>
+            </fieldset>
+        </div>
+    </ng-container>
+    <div class="card arrow-card standard-mb" *ngIf="anotherAddressCon">
+        <div class="card-body">
+            <ng-container *ngIf="requiredFields.indexOf('AddressLine1')>-1">
+                <div class="form-group standard-mb">
+                    <compass-ui-text [fieldId]="'anotherAddress'" [FormGroup]="householdAddressForm"
+                        [fieldLabel]="'Street Address'"
+                        [requiredText]="requiredFields.indexOf('AddressLine1')>-1 ? '(required)' : ''"
+                        [requiredIndicator]="requiredFields.indexOf('AddressLine1')>-1"
+                        [displayError]="isFieldValid('anotherAddress')" [errorText]="errorMap('anotherAddress')"
+                        fieldType="referralsaddressType" [maxLength]="26">
+                    </compass-ui-text>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="optionalFields.indexOf('AddressLine2')>-1">
+                <div class="form-group standard-mb">
+                    <compass-ui-text [fieldId]="'anotherAddress2'" [FormGroup]="householdAddressForm"
+                        [fieldLabel]="'Street Address (2)'"  fieldType="referralsaddressType" [maxLength]="26">
+                    </compass-ui-text>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="requiredFields.indexOf('City')>-1">
+                <div class="form-group standard-mb">
+                    <compass-ui-text [fieldId]="'anotherCity'" [FormGroup]="householdAddressForm" [fieldLabel]="'City'"
+                        [requiredText]="requiredFields.indexOf('City')>-1 ? '(required)' : ''"
+                        [requiredIndicator]="requiredFields.indexOf('City')>-1"
+                        [displayError]="isFieldValid('anotherCity')" [errorText]="errorMap('anotherCity')"
+                        fieldType="cityType" [maxLength]="26">
+                    </compass-ui-text>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="requiredFields.indexOf('State')>-1">
+                <div class="form-group standard-mb">
+                    <compass-ui-cw-select [fieldId]="'anotherState'" [fieldLabel]="'State'"
+                        [FormGroup]="householdAddressForm" [disabled]="false"
+                        [requiredIndicator]="requiredFields.indexOf('State')>-1"
+                        [requiredText]="requiredFields.indexOf('State')>-1 ? '(required)' : ''"
+                        [displayError]="isFieldValid('anotherState')" [errorMsg]="errorMap('anotherState')">
+                        <option value="PA" selected>PENNSYLVANIA</option>
+                        <option *ngFor="let state of states" value={{state.id}}>{{state.displayValue}} </option>
+                    </compass-ui-cw-select>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="requiredFields.indexOf('Zip')>-1">
+                <div class="form-group standard-mb">
+                    <compass-ui-text [fieldId]="'anotherZip'" [FormGroup]="householdAddressForm"
+                        [requiredText]="requiredFields.indexOf('Zip')>-1 ? '(required)' : ''" [fieldLabel]="'ZIP Code'"
+                        [requiredIndicator]="requiredFields.indexOf('Zip')>-1" [errorText]="'Enter valid Zip'"
+                        [errorMsg]="errorMap('anotherZip')" [displayError]="isFieldValid('anotherZip')"
+                        fieldType="numberType" [maxLength]="5">
+                    </compass-ui-text>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="optionalFields.indexOf('AddressLine2')>-1">
+                <div class="form-group standard-mb">
+                    <fieldset class="button-group" [formGroup]="householdAddressForm">
+                        <legend>Can we send mail to this address now?</legend>
+                        <input type="radio" class="btn-check" name="sendMail" [checked]="mailAddress" id="Yes1"
+                            autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="Yes1" (click)="showMailAddress()">Yes </label>
+                        <input type="radio" class="btn-check" name="sendMail" [checked]="!mailAddress" id="no"
+                            autocomplete="off">
+                        <label class="btn btn-sm btn-outline-tertiary" for="no" (click)="hideMailAddress()">No</label>
+                    </fieldset>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="mailAddress">
+                <div class="form-group pt-3">
+                    <compass-ui-cw-datepicker ngDefaultControl id="sendMailStartDate" [minRange]="today"
+                        [formControlName]="'sendMailStartDate'"
+                        [label]="'When can we start sending mail to this address?'" [displayError]="isFieldValid('sendMailStartDate')"
+                        [showError]="isFieldValid('sendMailStartDate')" [errorMsg]="errorMap('sendMailStartDate') | translate">
+                    </compass-ui-cw-datepicker>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <!--   </ng-container> -->
+    <ng-container *ngIf="optionalFields.indexOf('years')>-1">
+        <div class="form-group standard-mb">
+            <!-- <label>How long have you lived at this address?</label> -->
+            <fieldset>
+                <legend>How long have you lived at this address?</legend>
+            </fieldset>
+            <compass-ui-text [fieldId]="'years'" [FormGroup]="householdAddressForm" [fieldLabel]="'Year(s)'"
+            fieldType="numberType" [maxLength]="3">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'months'" [FormGroup]="householdAddressForm" [fieldLabel]="'Month(s)'"
+                [displayError]="householdAddressForm.get('months').value > 11 ? true : false"
+                [errorText]="householdAddressForm.get('months').value > 11 ? 'Please enter only numbers (less than or equal to 11)' : ''"
+                fieldType="numberType" [maxLength]="2">
+            </compass-ui-text>
+        </div>
+    </ng-container>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>
+<div style="display:block" class="modal fade show" [hidden]="!isAddressGISValidated" id="loadingModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>We could not confirm the address you entered</h2>
+                <p class="mb-md-4 mb-3">The address you entered doesn’t match any address that USPS has on record. </p>
+                <p>Without an address, it may take longer to process your application.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-tertiary" #closeModal data-bs-dismiss="modal"
+                    (click)="useAnyway()">Use Anyway</button>
+                <button type="button" class="btn btn-primary" (click)="editAddress()">Edit Address</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:block" class="modal fade show" [hidden]="!loadingUSPS" id="loadingUSPSModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true" #loadingUSPSModal>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Validating Address</h2>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

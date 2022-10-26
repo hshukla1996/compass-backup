@@ -1,0 +1,116 @@
+{
+    "questionText": "Do these situations apply to anyone in the household?",
+    "toolTip": "",
+    "subHeading": "",
+    "requiredText": "Please select required options",
+    "questionAnswers": [
+        {
+            "legend": "Have a medical condition (including a disability), a chronic condition (such as arthritis), or an ongoing special health care need",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "medicalcondition"
+        },
+        {
+            "legend": "Have a medical condition that requires health sustaining medication",
+            "toolTip": "Health sustaining medication is required by a doctor for an acute or chronic medical condition that the patient needs to maintain employability.",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "sustainingmedication"
+        },
+        {
+            "legend": "Have any paid or unpaid medical bills that have a date of service that occurred this month or within the past 3 months",
+            "toolTip": "",
+            "accordionButton": "More Information",
+            "accordionData": "The date of service is listed on your bill as the date the medical appointment or procedure occurred.\n This date may not be the same as the date of the bill.\n Some examples of medical bills: \n doctor bills, hospital bills, health insurance premium bills, co-payments, prescription costs, medical and remedial expenses which are recognized by state regulation or statute, medical expenses which are covered by the Non-Money Payment/Medically Needy Only program, the full cost of services which are partially paid by Mental Health/Intellectual Disabilities, private pay to the Long Term Living Services - Nursing Home and Related Facilities",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "medicalbills"
+        },
+        {
+            "legend": "Currently receiving SNAP (formerly known as Food Stamps) or Cash Assistance, for example Temporary Assistance for Needy Families (TANF)",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "receivingTANF"
+        },
+        {
+            "legend": "Received Cash Assistance, for example TANF, in the past 6 months",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "receivedTANFInPasts6Months"
+        },
+        {
+            "legend": "Have applied for any benefits that they have not received yet",
+            "toolTip": "",
+            "accordionButton": "",
+            "accordionData": "",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "benifitsnotreceived"
+        },
+        {
+            "legend": "Want to be reviewed for coverage for the Family Planning Services program if not eligible for full health care coverage",
+            "toolTip": "",
+            "accordionButton": "More Information",
+            "accordionData": "Examples of services covered through the Family Planning Services program are: \n•\tOffice visits \n•\tPregnancy counseling \n•\tPharmaceutical coverage for family planning drugs, birth control supplies and medications, vaccines and antibiotics for family-planning related conditions such as genitourinary infections and Sexually Transmitted Infections (STI) \n•\tLaboratory services \n•\tHIV (the virus that causes AIDS) and STI testing and treatment \n•\tGenetic counseling and testing \n•\tMale and female sterilization \n•\tBreast, reproductive, and testicular cancer screening and education \n•\tSmoking cessation counseling",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "familyplanningservices"
+        },
+        {
+            "legend": "Received Supplemental Security Income (SSI) in the past",
+            "toolTip": "",
+            "accordionButton": "More information",
+            "accordionData": "Supplemental Security Income (or SSI) is money given to people who are 65 and over (aged), blind, or disabled and have little or no income. It is not the same as Social Security Disability (SSD).",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "supplementalsecurityincome"
+        },
+        {
+            "legend": "Received Social Security Disability (SSD) in the past",
+            "toolTip": "",
+            "accordionButton": "More information",
+            "accordionData": "Social Security Disability is a federal insurance program. It is not the same as Supplemental Security Income (SSI).",
+            "show": true,
+            "disable": false,
+            "isRequired": false,
+            "isYesChecked": false,
+            "isNoChecked": false,
+            "value": "socialsecuritydisability"
+        }
+    ]
+}

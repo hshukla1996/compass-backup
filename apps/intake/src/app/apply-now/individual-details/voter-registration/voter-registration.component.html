@@ -1,0 +1,66 @@
+<form class="form-horizontal" [formGroup] = 'voterRegForm' (ngSubmit)="onSubmit()">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+      <h1>{{'afsvoterregistration' | translate: { name: currentUser.firstName} }}</h1>
+    <!-- </div>
+    <div class="panel-body"> -->
+      <div class="form-group mb-4">
+        <div class="col-12 pt-3">
+          <select class="form-select"  formControlName="reginfo" name="reginfo"
+            [ngClass]="{ 'is-invalid': submitted && f.reginfo.errors }">
+            <option value="" selected>- Select One -</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="alert alert-info mb-4">
+        <p>To register, you must:</p>
+      <ul>
+        <li>Be at least 18 on the day of the next election.</li>
+        <li>Be a citizen of the United States or at least one month PRIOR TO THE NEXT ELECTION.</li>
+        <li>Reside in Pennsylvania and the voting district at least 30 days prior to the next election</li>
+      </ul>
+      </div>
+      <div class="form-group">
+        <div class="accordion page-tip mb-4" id="moreInfo">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                More Information on Voter Retistration
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#moreInfo">
+              <div class="accordion-body">
+                <p class="pb-4">IF YOU DO NOT ANSWER THE QUESTION, YOU WILL BE CONSIDERED TO HAVE DECIDED NOT TO REGISTER TO VOTE AT THIS TIME.</p>
+                <p class="pb-4">Applying to register or declining to register to vote will not affect the amount of assistance that you will be provided
+                by this agency.</p>
+                <p class="pb-4">If you would like help filling out the voter registration application form, we will help you. The decision whether to
+                seek or accept help is yours. You may fill out the application form in private. Please contact the DHS Helpline at
+                1-800-692-7462 if you would like help.</p>
+                <p class="pb-4">If you believe that someone has interfered with your right to register or to decline to register to vote, your right to
+                privacy in deciding whether to register or in applying to register to vote, or your right to choose your own political
+                party or other political preference, you may file a complaint with the Secretary of the Commonwealth, PA Department of
+                State, Harrisburg, PA 17120.</p>
+                <p class="pb-4">(Toll-free telephone number 1-877-VOTESPA.)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+  <nav class="action-bar d-flex justify-content-between">
+    <div>
+      <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+        Back
+      </button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </nav>
+</form>

@@ -1,0 +1,68 @@
+<h1 class="standard-mb">
+    {{ commomComponentData['questionText'] }}
+</h1>
+<p *ngIf="commomComponentData['subHeading'] !== ''" class="form-subtitle standard-mb">
+    {{ commomComponentData['subHeading'] }}
+</p>
+<div class="alert alert-info d-flex align-items-center standard-mb" *ngIf="commomComponentData['alertMessageBefore'] !== ''">
+    <div>
+        {{ commomComponentData['alertMessageBefore'] }}
+    </div>
+</div>
+<form [formGroup]="commomComponentForm" (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let commonComponent of commomComponentData['questionAnswers'];let i=index">
+        <ng-container *ngIf="commonComponent['control'] === 'checkbox'">
+                    <compass-ui-cw-checkbox id="checkbox" [textStyle]="'custom standard-mb'"
+                        label="{{commonComponent['label']}}">
+                    </compass-ui-cw-checkbox>
+        </ng-container>
+        <ng-container *ngIf="commonComponent['control'] === 'datepicker'">
+            <div class="standard-mb">
+                <compass-ui-cw-datepicker ngDefaultControl id="datepicker" [formControlName]="'datepicker'"
+                    [label]="commonComponent['label']">
+                </compass-ui-cw-datepicker>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="commonComponent['control'] === 'dropdown'">
+            <div class="standard-mb">
+                <div class="form-group">
+                    <label class="form-label">{{commonComponent['label']}}</label>
+                    <select class="form-control" #dropdown formControlName="dropdown">
+                        <option value="" selected>{{commonComponent['selected']}}</option>
+                        <option *ngFor="let dropdownArray of commonComponent['dropdownArray']" 
+                            [ngValue]="dropdownArray">
+                            {{ dropdownArray }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="commonComponent['control'] === 'booleanradio'">
+            <fieldset class="button-group standard-mb">
+                <legend [ngClass]="commonComponent['legend'] === '' ? 'text-white' : ''">
+                    {{commonComponent['legend'] === '' ? 'a' : commonComponent['legend']}}
+                </legend>
+                <compass-ui-cw-radiobutton (click)="showSubQuestion()" ngDefaultControl [formControlName]="'booleanradio1'"
+                    [required]="true" [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="{{ commonComponent['label1'] }}" value="Y">
+                </compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton (click)="hideSubQuestion()" ngDefaultControl [formControlName]="'booleanradio2'" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="{{ commonComponent['label2'] }}" value="N">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+        </ng-container>
+        <ng-container *ngIf="commonComponent['control'] === 'inputtext'">
+            <div class="standard-mb">
+                <compass-ui-text [fieldId]="'inputtext'" [FormGroup]="commomComponentForm" 
+                    [fieldLabel]="commonComponent['label'] === '' ? ' ' : commonComponent['label']" [requiredIndicator]="false">
+                </compass-ui-text>    
+            </div>
+        </ng-container>
+    </ng-container>
+</form>
+<div class="alert alert-info d-flex align-items-center standard-mb" *ngIf="commomComponentData['alertMessageAfter'] !== ''">
+    <div>
+        {{ commomComponentData['alertMessageAfter'] }}
+    </div>
+</div>

@@ -1,0 +1,63 @@
+export class DateFormatConstants {
+    public static MMDDYYYY = 'MM/dd/yyyy';
+}
+export const houseHoldSaveURL = "/api/intake/applyforservices/save";
+export const houseHoldSubmitURL = "/api/intake/applyforservices/submit";
+export const gettingStartedURL = "/api/intake/applyforservices/create";
+export const lgbtqInitiateURL = "/api/intake/applyforservices/initiatesurvey";
+export const lgbtqSubmitURL = "/api/intake/applyforservices/submitsurvey";
+export const doIqualifyURL  = "/api/intake/screening/submit";
+export const referralURL = "/api/intake/referral/submit";
+export const getVoterRegistrationURL = "api/intake/applyforservices/getvoterregistration";
+export const submitVoterRegistrationURL = "api/intake/applyforservices/submitvoterregistration";
+
+
+
+
+export const DIQ_INDIVIDUAL_AGE_LIMIT=200
+export const  modalData = {
+        "modalTitle": "Are you sure you want to remove this record?",
+        "modalContent": "If you remove this record you will need to re-enter the data to get it back.",
+        "cancelButton": "Cancel",
+        "continueButton": "Remove"
+    }
+export class accordian {
+    label!: string;
+    value!: string;
+    bold!: false
+}
+// export const INDIVIDUAL_PROGRAMS={
+//     HC:"HC",
+//     HA:"HA",
+//     CA:"CA",
+//     FS:"FS",
+//     FSR:"FSR",
+//     CAR:"CAR",
+//     CHR:"CHR",
+//     ABR:"ABR",
+// BL:"BL",
+// MAR:"MAR",
+// MCR:"MCR",
+// MI:"MI",
+// CI:"CI",
+// CIR:"CIR"
+// }
+// export const REQUIREDOPTIONALCONTSTANTS=
+// {
+// REQ:'Required',
+// OPT:'Optional',
+// NULL:null
+// }
+// export const IND_BENEFITNOTRECEIVED_DETAIL_CONDITIONALPROGRAMS =[INDIVIDUAL_PROGRAMS.FS, INDIVIDUAL_PROGRAMS.FSR]
+// export const IND_BENEFITNOTRECEIVED_DETAIL_REQUIREDPROGRAMS = [INDIVIDUAL_PROGRAMS.HC, INDIVIDUAL_PROGRAMS.HA, INDIVIDUAL_PROGRAMS.CHR, INDIVIDUAL_PROGRAMS.ABR, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.CAR]
+// export const IND_FAMILYPLANNING_REVIEW_CONDITIONALPROGRAMS = [INDIVIDUAL_PROGRAMS.MI,INDIVIDUAL_PROGRAMS.HA, INDIVIDUAL_PROGRAMS.HC, INDIVIDUAL_PROGRAMS.MAR, INDIVIDUAL_PROGRAMS.MCR]
+// export const IND_FAMILYPLANNING_REVIEW_REQUIREDPROGRAMS = []
+// export const IND_SSI__REQUIREDPROGRAMS = [INDIVIDUAL_PROGRAMS.HC, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.HA];
+// export const IND_SSI_CONDITIONALPROGRAMS=[]
+// export const IND_CURRENTEDUCATION_SCHOOLNAME_OPTIONALPROGRAMS = [INDIVIDUAL_PROGRAMS.FS, INDIVIDUAL_PROGRAMS.FSR]
+// export const IND_CURRENTEDUCATION_SCHOOLNAME_REQUIREDPROGRAMS = [INDIVIDUAL_PROGRAMS.MAR, INDIVIDUAL_PROGRAMS.MCR, INDIVIDUAL_PROGRAMS.CHR, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.CAR, INDIVIDUAL_PROGRAMS.CI, INDIVIDUAL_PROGRAMS.CIR]
+// export const IND_CURRENTEDUCATION_SCHOOLTYPE_OPTIONALPROGRAMS = [INDIVIDUAL_PROGRAMS.FS, INDIVIDUAL_PROGRAMS.FSR]
+// export const IND_CURRENTEDUCATION_SCHOOLTYPE_REQUIREDPROGRAMS = [INDIVIDUAL_PROGRAMS.HC,  INDIVIDUAL_PROGRAMS.HA,INDIVIDUAL_PROGRAMS.MAR, INDIVIDUAL_PROGRAMS.MCR, INDIVIDUAL_PROGRAMS.CHR, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.CAR, INDIVIDUAL_PROGRAMS.CI, INDIVIDUAL_PROGRAMS.CIR]
+// export const IND_CURRENTEDUCATION_ATTENDSCHOOLE_OPTIONALPROGRAMS = [INDIVIDUAL_PROGRAMS.FS, INDIVIDUAL_PROGRAMS.FSR, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.CAR]
+// export const IND_CURRENTEDUCATION_ATTENDSCHOOLE_REQUIREDPROGRAMS = [INDIVIDUAL_PROGRAMS.HC, INDIVIDUAL_PROGRAMS.HA, INDIVIDUAL_PROGRAMS.MAR, INDIVIDUAL_PROGRAMS.MCR, INDIVIDUAL_PROGRAMS.CHR,  INDIVIDUAL_PROGRAMS.CI, INDIVIDUAL_PROGRAMS.CIR]
+// export const IND_CURRENTEDUCATION_EXPECTGRADUATE_OPTIONALPROGRAMS = [INDIVIDUAL_PROGRAMS.HA, INDIVIDUAL_PROGRAMS.MAR, INDIVIDUAL_PROGRAMS.CA, INDIVIDUAL_PROGRAMS.CAR, INDIVIDUAL_PROGRAMS.FS, INDIVIDUAL_PROGRAMS.FSR, INDIVIDUAL_PROGRAMS.CI, INDIVIDUAL_PROGRAMS.CIR]

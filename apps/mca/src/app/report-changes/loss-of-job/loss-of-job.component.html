@@ -1,0 +1,50 @@
+<h1 class="mb-0">How to report loss of job.</h1>
+<h2>Follow these instructions to report a job loss. </h2>
+<div class="mx-1">
+    <ol>
+        <li class="mb-3">
+            <p>Download the <a href="https://www.compass-t.state.pa.us/Compass.Web/Content/PDF/PA1898.pdf"
+                    target="_blank">Employment Termination form</a>.</p>
+        </li>
+        <li class="mb-3">
+            <p>Add the Name, Case Record Number, and SSN on the form.</p>
+        </li>
+        <li class="mb-3">
+            <p>Have your previous employer complete and sign the form.</p>
+        </li>
+        <li class="mb-3">
+            <p>Return the form to your County Assistance Office (CAO) within 10 days using one of these ways:</p>
+        </li>
+    </ol>
+    <div class="card-body">
+        <ul>
+            <li>Upload the form to your MyCompass account </li>
+            <li>Email to: {{countyObj[county] ? countyObj[county].email : ''}}</li>
+            <li>Mail to: {{countyObj[county] ? countyObj[county].officeName : ''}}, {{countyObj[county] ? countyObj[county].address : ''}}
+            </li>
+        </ul>
+    </div>
+</div>
+<p>If you have questions or need help, you can contact the <strong>local county assistance office</strong> local
+    county assistance office at:
+    Phone Number: {{countyObj[county] ? countyObj[county].phoneNumber : ''}}
+    Fax Number: {{countyObj[county] ? countyObj[county].fax : ''}}
+</p>
+
+<div class="alert alert-info">
+    <p> You can also report this change by having your previous employer write a statement that
+        includes the following information:</p>
+    <ul>
+        <li class="mb-0">Employer's Name </li>
+        <li class="mb-0">Employer's address and telephone number</li>
+        <li class="mb-0">Date Employment ended</li>
+        <li class="mb-0">Date of final pay and gross amount of final pay </li>
+        <li class="mb-0">Employer's Signature</li>
+    </ul>
+    <p>Return this statement to your County Assistance Office within 10 days.Make sure you include
+        your name and record number on the statement.
+    </p>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="onNext()" (back)="onBack()">
+</compass-ui-cw-dpq-button>

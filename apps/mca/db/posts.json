@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Sebastian",
+      "description": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "title": "Steve",
+      "description": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "title": "Ann",
+      "description": "ann@codingthesmartway.com"
+    }
+  ]
+}

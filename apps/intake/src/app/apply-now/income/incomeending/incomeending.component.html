@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="text-center">
+        <h1>Section {{visitCount}} of 8 Visited</h1>
+    </div>
+    <div class="col text-center">
+        <i class="fa-light fa-thumbs-up fa-10x"> </i>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h1 class="text-center mt-3">Great job!</h1>
+    </div>
+</div>
+
+<p class="text-center">You make this look easy!</p>
+<p class="text-center fw-bold">Next, let's see if anyone has any expenses that need to be entered.</p>
+<p class="text-center"><a href="#" class="hyperlink-lg">Save and exit</a> if you’d like to
+    come back later.</p>
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="completeSection()">
+            Complete Section
+        </button>
+    </div>
+
+</nav>
+

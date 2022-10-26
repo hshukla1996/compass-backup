@@ -1,0 +1,6 @@
+<cw-simpletile-summary [simpleTileSummaryData]="demographicData" (deleteButtonClicked)="deleteClicked($event)"
+  (editButtonClicked)="editClicked($event)" (addAnotherPerson)="addClicked()" (nextPage)="next()"
+  (previousPage)="back()" >
+</cw-simpletile-summary>
+<cw-modal [modalData]="modalData" (continue)="continueClicked()">
+</cw-modal>

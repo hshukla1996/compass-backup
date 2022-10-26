@@ -1,0 +1,51 @@
+<form [formGroup]="householdMortgageRentForm">
+    <h1>Tell us about the household's rent or mortgage expenses.</h1>
+    <compass-ui-text [fieldId]="'mortgageRent'" [FormGroup]="householdMortgageRentForm"
+        [fieldLabel]="'What is your household\'s rent or mortgage amount?'" type="currency" [maxLength]="8"
+        [isVisible]="fieldDisplays.mortgageRent"
+        [requiredIndicator]="requiredFields.indexOf('mortgageRent')>-1">
+    </compass-ui-text>
+    <compass-ui-cw-select [fieldId]="'oftenMortgageRent'"
+        [fieldLabel]="'How often does your household pay rent or mortgage?'"
+        [isVisible]="fieldDisplays.oftenMortgageRent"
+        [requiredIndicator]="requiredFields.indexOf('oftenMortgageRent')>-1" [FormGroup]="householdMortgageRentForm">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let x of pays" value="{{x.id}}">{{x.displayValue}}</option>
+    </compass-ui-cw-select>
+    <compass-ui-text [fieldId]="'condoFee'" [FormGroup]="householdMortgageRentForm"
+        [requiredIndicator]="requiredFields.indexOf('condoFee')>-1"
+        [isVisible]="fieldDisplays.condoFee"
+        [fieldLabel]="'How much does your household pay in condo fees?'" type="currency" [maxLength]="8">
+    </compass-ui-text>
+    <compass-ui-cw-select [fieldId]="'oftenCondoFee'" [fieldLabel]="'How often does your household pay condo fees?'"
+    [isVisible]="fieldDisplays.oftenCondoFee"
+    [requiredIndicator]="requiredFields.indexOf('oftenCondoFee')>-1" [FormGroup]="householdMortgageRentForm">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let x of pays" value="{{x.id}}">{{x.displayValue}}</option>
+    </compass-ui-cw-select>
+    <compass-ui-text [fieldId]="'mobileRent'" [requiredIndicator]="requiredFields.indexOf('mobileRent')>-1"
+        [isVisible]="fieldDisplays.mobileRent"
+        [FormGroup]="householdMortgageRentForm"
+        [fieldLabel]="'How much does your household pay in mobile home lot rent?'" type="currency" [maxLength]="8">
+    </compass-ui-text>
+    <compass-ui-cw-select [fieldId]="'oftenMobileRent'"
+        [requiredIndicator]="requiredFields.indexOf('oftenMobileRent')>-1"
+        [isVisible]="fieldDisplays.oftenMobileRent"
+        [fieldLabel]="'How often does your household pay mobile home lot rent?'"
+        [FormGroup]="householdMortgageRentForm">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let x of pays" value="{{x.id}}">{{x.displayValue}}</option>
+    </compass-ui-cw-select>
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                Back
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="submit()">
+                Next
+            </button>
+        </div>
+    </nav>
+</form>

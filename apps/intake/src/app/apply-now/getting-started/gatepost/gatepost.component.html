@@ -1,0 +1,65 @@
+<form [formGroup]="gettingStartedGatepostForm">
+    <h1 class="standard-mb">{{ 'afsGSgateTitle' | translate}}</h1>
+    <div class="mb-2">
+        <cw-field-error-display [displayError]="displayError" [errorMsg]="'afsGSerrorNoneSelected' | translate"></cw-field-error-display>
+    </div>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" id="familyMemberRadio" value="FamMem" formControlName="flexRadioDefault">
+        <label class="form-check-label" for="familyMemberRadio">
+            {{ 'afsGSgateOption1' | translate}}
+        </label>
+    </div>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="elseSome" id="householdRadio" formControlName="flexRadioDefault">
+        <label class="form-check-label" for="householdRadio">
+            <div class="label-text">{{ 'afsGSgateOption2' | translate}}</div>
+            <div class="description-text">
+                <p>{{ 'afsGSgateHelp2.1' | translate}}</p>
+                <ul>
+                    <li>{{ 'afsGSgateHelp2.2' | translate}}</li>
+                    <li>{{ 'afsGSgateHelp2.3' | translate}}</li>
+                </ul>
+            </div>
+        </label>
+    </div>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="NonMediAssis" id="enrolledRadio" formControlName="flexRadioDefault">
+        <label class="form-check-label" for="enrolledRadio">
+            <div class="label-text">{{ 'afsGSgateOption3' | translate}}</div>
+            <div class="description-text">
+                <p>{{ 'afsGSgateHelp3' | translate}}</p>
+            </div>
+        </label>
+    </div>
+    <div class="form-check custom standard-mb">
+        <input class="form-check-input" (change)="checkedClass($event)" type="radio" value="CommuOrg" id="organizationRadio" formControlName="flexRadioDefault">
+        <label class="form-check-label" for="organizationRadio">
+            <div class="label-text">{{ 'afsGSgateOption4' | translate}}</div>
+            <div class="description-text">
+                <p>{{ 'afsGSgateHelp4' | translate}}</p>
+            </div>
+        </label>
+    </div>
+    <!-- <div class="alert alert-info standard-mb">
+        <div class="text-left">
+            <p>If you're interested in Early Intervention, Intellectual Disability, or Adult Autism Services, you must <a href="/intake/referrals" >submit a referral application</a></p>
+            <p>
+                If you do this, you will be taken to a new page to complete a short questionnaire and submit your referral. If you would
+                like to submit this referral at a later time, you may do so at any time by using the “Start Referral” button on your
+                dashboard or the home page.
+            </p>
+        </div>
+    </div> -->
+    <nav class="action-bar d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+                {{ 'back' | translate}}
+            </button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="submit()">
+                {{ 'next' | translate}}
+            </button>
+        </div>
+    </nav>
+</form>

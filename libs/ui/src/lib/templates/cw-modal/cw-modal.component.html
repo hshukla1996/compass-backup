@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-icon-div">
+                    <i class="fa-regular fa-triangle-exclamation danger"></i>
+                </div>
+                <h2>{{modalData['modalTitle'] | translate : modalData['modalTitleTO']}}</h2>
+                <p>
+                    {{modalData['modalContent'] | translate : modalData['modalContentTO']}}
+                </p>
+            </div>
+            <div class="modal-footer {{modalData['continueButton'] === '' ? 'justify-content-center' : ''}}">
+                <button 
+                    class="btn btn-outline-tertiary" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal">
+                    {{modalData['cancelButton'] | translate : modalData['cancelButtonTO']}}
+                </button>
+                <button 
+                    *ngIf="modalData['continueButton'] !== ''" 
+                    class="btn btn-primary" 
+                    (click)="continueClicked()"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal">
+                    {{modalData['continueButton'] | translate : modalData['continueButtonTO']}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,472 @@
+<h1>Do any of these apply to anyone in the household?</h1>
+<p class="form-subtitle standard-mb">Select all that apply.</p>
+<cw-field-error-display [displayError]="this.showRequired" 
+    errorMsg="Please select required options">
+</cw-field-error-display>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isLess150BeforeTaxesAreTakenOut" [ngClass]="{'yes' :  (householdMemberSituations?.isLess150BeforeTaxesAreTakenOut==null)?false:householdMemberSituations?.isLess150BeforeTaxesAreTakenOut}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Your household's total income for this month will be less than $150 before taxes are taken out</legend>
+                    <p>Include money you have already received this month, and money you think you will receive later this month.</p>
+                    <input type="radio" name="radisLess150BeforeTaxesAreTakenOut" class="btn-check"
+                        (click)="onRadioChecked('isLess150BeforeTaxesAreTakenOut',true,$event)"
+                        id="radisLess150BeforeTaxesAreTakenOutYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isLess150BeforeTaxesAreTakenOut==null)?false:householdMemberSituations?.isLess150BeforeTaxesAreTakenOut,
+                                    'unselected': (householdMemberSituations?.isLess150BeforeTaxesAreTakenOut==null)?false:!householdMemberSituations?.isLess150BeforeTaxesAreTakenOut}"
+                        for="radisLess150BeforeTaxesAreTakenOutYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisLess150BeforeTaxesAreTakenOut"
+                        id="radisLess150BeforeTaxesAreTakenOutNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isLess150BeforeTaxesAreTakenOut',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisLess150BeforeTaxesAreTakenOutNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isLess150BeforeTaxesAreTakenOut==null)?false:(householdMemberSituations?.isLess150BeforeTaxesAreTakenOut==null)?false:!householdMemberSituations?.isLess150BeforeTaxesAreTakenOut,'unselected':householdMemberSituations?.isLess150BeforeTaxesAreTakenOut}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isLess150BeforeTaxesAreTakenOut')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isLessEqual100InCashCheckingSaving" [ngClass]="{'yes' :  (householdMemberSituations?.isLessEqual100InCashCheckingSaving==null)?false:householdMemberSituations?.isLessEqual100InCashCheckingSaving}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Your household has $100 or less in cash, checking accounts, or savings accounts</legend>
+                    <input type="radio" name="radisLessEqual100InCashCheckingSaving" class="btn-check"
+                        (click)="onRadioChecked('isLessEqual100InCashCheckingSaving',true,$event)"
+                        id="radisLessEqual100InCashCheckingSavingYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isLessEqual100InCashCheckingSaving==null)?false:householdMemberSituations?.isLessEqual100InCashCheckingSaving,
+                                    'unselected': (householdMemberSituations?.isLessEqual100InCashCheckingSaving==null)?false:!householdMemberSituations?.isLessEqual100InCashCheckingSaving}"
+                        for="radisLessEqual100InCashCheckingSavingYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisLessEqual100InCashCheckingSaving"
+                        id="radisLessEqual100InCashCheckingSavingNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isLessEqual100InCashCheckingSaving',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisLessEqual100InCashCheckingSavingNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isLessEqual100InCashCheckingSaving==null)?false:(householdMemberSituations?.isLessEqual100InCashCheckingSaving==null)?false:!householdMemberSituations?.isLessEqual100InCashCheckingSaving,'unselected':householdMemberSituations?.isLessEqual100InCashCheckingSaving}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isLessEqual100InCashCheckingSaving')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isUtilityMoreThanAsset" [ngClass]="{'yes' :  (householdMemberSituations?.isUtilityMoreThanAsset==null)?false:householdMemberSituations?.isUtilityMoreThanAsset}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Monthly rent or mortgage and utilities bills cost more combined than you have available in cash, checking accounts, savings accounts, and monthly income before taxes are taken out</legend>
+                    <p>Examples of utilities include gas, electric, water, and phone.</p>
+                    <input type="radio" name="radisUtilityMoreThanAsset" class="btn-check"
+                        (click)="onRadioChecked('isUtilityMoreThanAsset',true,$event)" id="radisUtilityMoreThanAssetYes"
+                        autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isUtilityMoreThanAsset==null)?false:householdMemberSituations?.isUtilityMoreThanAsset,
+                                    'unselected': (householdMemberSituations?.isUtilityMoreThanAsset==null)?false:!householdMemberSituations?.isUtilityMoreThanAsset}"
+                        for="radisUtilityMoreThanAssetYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisUtilityMoreThanAsset"
+                        id="radisUtilityMoreThanAssetNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isUtilityMoreThanAsset',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisUtilityMoreThanAssetNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isUtilityMoreThanAsset==null)?false:(householdMemberSituations?.isUtilityMoreThanAsset==null)?false:!householdMemberSituations?.isUtilityMoreThanAsset,'unselected':householdMemberSituations?.isUtilityMoreThanAsset}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isUtilityMoreThanAsset')"
+                        >Reset</a>
+                </fieldset>
+                <div class="accordion page-tip mt-3" id="accordionisUtilityMoreThanAsset">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingisUtilityMoreThanAsset">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseisUtilityMoreThanAsset" aria-expanded="true"
+                                aria-controls="collapseisUtilityMoreThanAsset" [disabled]="isDisabled">
+                                More Information
+                            </button>
+                        </h2>
+                        <div id="collapseisUtilityMoreThanAsset" class="accordion-collapse collapse"
+                            aria-labelledby="headingisUtilityMoreThanAsset"
+                            data-bs-parent="#accordionisUtilityMoreThanAsset">
+                            <div class="accordion-body">
+                                <p>For example: Your rent is $500 a month - you pay for heat or air conditioning (we can
+                                    count your utility expenses as
+                                    $524 per month.) Your monthly income (before taxes are taken out) is $1000. You
+                                    would answer YES to this question,
+                                    because your rent ($500) and your utilities ($524) combined equal $1024 which is
+                                    more than your monthly income ($1000).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isReceivingUtilityAllowanceCheck" [ngClass]="{'yes' :  (householdMemberSituations?.isReceivingUtilityAllowanceCheck==null)?false:householdMemberSituations?.isReceivingUtilityAllowanceCheck}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Living in subsidized or public housing and receive a utility allowance check</legend>
+                    <input type="radio" name="radisReceivingUtilityAllowanceCheck" class="btn-check"
+                        (click)="onRadioChecked('isReceivingUtilityAllowanceCheck',true,$event)" required
+                        id="radisReceivingUtilityAllowanceCheckYes" autocomplete="off" value="true">
+                    <label class="{{showReceivingUtilityAllowanceCheckRequired && householdMemberSituations?.isReceivingUtilityAllowanceCheck==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isReceivingUtilityAllowanceCheck==null)?false:householdMemberSituations?.isReceivingUtilityAllowanceCheck,
+                                    'unselected' :  (householdMemberSituations?.isReceivingUtilityAllowanceCheck==null)?false:!householdMemberSituations?.isReceivingUtilityAllowanceCheck}"
+                        for="radisReceivingUtilityAllowanceCheckYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisReceivingUtilityAllowanceCheck"
+                        id="radisReceivingUtilityAllowanceCheckNo" autocomplete="off" value="false" 
+                        (click)="onRadioChecked('isReceivingUtilityAllowanceCheck',false,$event)" />
+                    <label class="{{showReceivingUtilityAllowanceCheckRequired && householdMemberSituations?.isReceivingUtilityAllowanceCheck==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radisReceivingUtilityAllowanceCheckNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isReceivingUtilityAllowanceCheck==null)?false:(householdMemberSituations?.isReceivingUtilityAllowanceCheck==null)?false:!householdMemberSituations?.isReceivingUtilityAllowanceCheck,'unselected':householdMemberSituations?.isReceivingUtilityAllowanceCheck}">No</label>
+                        <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isReceivingUtilityAllowanceCheck')"
+                        >Reset</a>
+                </fieldset>
+               
+                <div class="accordion page-tip mt-3" id="accordionisReceivingUtilityAllowanceCheck">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingisReceivingUtilityAllowanceCheck">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseisReceivingUtilityAllowanceCheck" aria-expanded="true"
+                                aria-controls="collapseisReceivingUtilityAllowanceCheck" [disabled]="isDisabled">
+                                More Information
+                            </button>
+                        </h2>
+                        <div id="collapseisReceivingUtilityAllowanceCheck" class="accordion-collapse collapse"
+                            aria-labelledby="headingisReceivingUtilityAllowanceCheck"
+                            data-bs-parent="#accordionisReceivingUtilityAllowanceCheck">
+                            <div class="accordion-body">
+                                <p>By utility allowance check, we mean receiving help along with your subsidized housing
+                                    to pay bills such as gas,
+                                    electric, water, and phone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isParentNotLiveOrDiedFor21OrYounger" [ngClass]="{'yes' :  (householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null)?false:householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Is 21 or younger with a parent who doesn't live in the house or who has died</legend>
+                    <input type="radio" name="radisParentNotLiveOrDieFor21OrYounger" class="btn-check"
+                        (click)="onRadioChecked('isParentNotLiveOrDiedFor21OrYounger',true,$event)"
+                        id="radisParentNotLiveOrDieFor21OrYoungerYes" autocomplete="off" value="true">
+                    <label class="{{showParentNotLiveOrDiedFor21OrYoungerRequired && householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null)?false:householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger,
+                                    'unselected': (householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null)?false:!householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger}"
+                        for="radisParentNotLiveOrDieFor21OrYoungerYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisParentNotLiveOrDieFor21OrYounger"
+                        id="radisParentNotLiveOrDieFor21OrYoungerNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isParentNotLiveOrDiedFor21OrYounger',false,$event)" />
+                    <label class="{{showParentNotLiveOrDiedFor21OrYoungerRequired && householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radisParentNotLiveOrDieFor21OrYoungerNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null)?false:(householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger==null)?false:!householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger,'unselected':householdMemberSituations?.isParentNotLiveOrDiedFor21OrYounger}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isParentNotLiveOrDiedFor21OrYounger')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isSpouseDiedOrNotLivingInTheHouse" [ngClass]="{'yes' :  (householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null)?false:householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Has a spouse who is not living in the house or has died</legend>
+                    <input type="radio" name="radisSpouseDiedOrNotLivingInTheHouse" class="btn-check"
+                        (click)="onRadioChecked('isSpouseDiedOrNotLivingInTheHouse',true,$event)"
+                        id="radisSpouseDiedOrNotLivingInTheHouseYes" autocomplete="off" value="true">
+                    <label class="{{showSpouseDiedOrNotLivingInTheHouseRequired && householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null)?false:householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse,
+                                    'unselected' : (householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null)?false:!householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse}"
+                        for="radisSpouseDiedOrNotLivingInTheHouseYes">Yes</label>
+
+                    <input type="radio" class="btn-check" name="radisSpouseDiedOrNotLivingInTheHouse"
+                        id="radisSpouseDiedOrNotLivingInTheHouseNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isSpouseDiedOrNotLivingInTheHouse',false,$event)" />
+                    <label class="{{showSpouseDiedOrNotLivingInTheHouseRequired && householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radisSpouseDiedOrNotLivingInTheHouseNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null)?false:(householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse==null)?false:!householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse,'unselected':householdMemberSituations?.isSpouseDiedOrNotLivingInTheHouse}">No</label>
+
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isSpouseDiedOrNotLivingInTheHouse')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isNeedChildSupportOrHealthInsurance" [ngClass]="{'yes' :  (householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null)?false:householdMemberSituations?.isNeedChildSupportOrHealthInsurance}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Needs help applying for child support or health insurance from an absent parent</legend>
+                    <input type="radio" name="radisNeedChildSupportOrHealthInsurance" class="btn-check"
+                        (click)="onRadioChecked('isNeedChildSupportOrHealthInsurance',true,$event)"
+                        id="radisNeedChildSupportOrHealthInsuranceYes" autocomplete="off" value="true">
+                    <label class="{{showNeedChildSupportOrHealthInsuranceRequired && householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null)?false:householdMemberSituations?.isNeedChildSupportOrHealthInsurance,
+                                    'unselected': (householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null)?false:!householdMemberSituations?.isNeedChildSupportOrHealthInsurance}"
+                        for="radisNeedChildSupportOrHealthInsuranceYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisNeedChildSupportOrHealthInsurance"
+                        id="radisNeedChildSupportOrHealthInsuranceNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isNeedChildSupportOrHealthInsurance',false,$event)" />
+                    <label class="{{showNeedChildSupportOrHealthInsuranceRequired && householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radisNeedChildSupportOrHealthInsuranceNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null)?false:(householdMemberSituations?.isNeedChildSupportOrHealthInsurance==null)?false:!householdMemberSituations?.isNeedChildSupportOrHealthInsurance,'unselected':householdMemberSituations?.isNeedChildSupportOrHealthInsurance}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isNeedChildSupportOrHealthInsurance')"
+                        >Reset</a>
+                </fieldset>
+                <div class="accordion page-tip mt-3" id="accordionisNeedChildSupportOrHealthInsurance">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingisNeedChildSupportOrHealthInsurance">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseisNeedChildSupportOrHealthInsurance" aria-expanded="true"
+                                aria-controls="collapseisNeedChildSupportOrHealthInsurance" [disabled]="isDisabled">
+                                More Information
+                            </button>
+                        </h2>
+                        <div id="collapseisNeedChildSupportOrHealthInsurance" class="accordion-collapse collapse"
+                            aria-labelledby="headingisNeedChildSupportOrHealthInsurance"
+                            data-bs-parent="#accordionisNeedChildSupportOrHealthInsurance">
+                            <div class="accordion-body">
+                                <p>If you receive cash assistance, you are required to cooperate by establishing
+                                    paternity and applying for child support
+                                    for your children. If you do not, your cash grant may be reduced unless there is
+                                    'good cause', like a domestic violence
+                                    situation. If there is 'good cause', you may not have to establish paternity or
+                                    apply for child support right away. If
+                                    you have questions about support, call the state Bureau of Child Support Enforcement
+                                    toll free at 1-800-932-0211.</p>
+                                <p>
+                                    When you accept cash assistance, you must allow the state to collect the support. If
+                                    support is collected, the support
+                                    is used to pay the state for the cash assistance paid to your family. If support is
+                                    more than the cash assistance paid
+                                    to your family, the rest of the support is given back to you.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.hasLivedInNursingFacility" [ngClass]="{'yes' :  (householdMemberSituations?.hasLivedInNursingFacility==null)?false:householdMemberSituations?.hasLivedInNursingFacility}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Has ever lived in a nursing facility</legend>
+                    <input type="radio" name="radhasLivedInNursingFacility" class="btn-check"
+                        (click)="onRadioChecked('hasLivedInNursingFacility',true,$event)"
+                        id="radhasLivedInNursingFacilityYes" autocomplete="off" value="true">
+                    <label class="{{showLivedInNursingFacilityRequired && householdMemberSituations?.hasLivedInNursingFacility==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.hasLivedInNursingFacility==null)?false:householdMemberSituations?.hasLivedInNursingFacility,
+                                    'unselected': (householdMemberSituations?.hasLivedInNursingFacility==null)?false:!householdMemberSituations?.hasLivedInNursingFacility}"
+                        for="radhasLivedInNursingFacilityYes">Yes</label>
+
+                    <input type="radio" class="btn-check" name="radhasLivedInNursingFacility"
+                        id="radhasLivedInNursingFacilityNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('hasLivedInNursingFacility',false,$event)" />
+
+                    <label class="{{showLivedInNursingFacilityRequired && householdMemberSituations?.hasLivedInNursingFacility==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radhasLivedInNursingFacilityNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.hasLivedInNursingFacility==null)?false:(householdMemberSituations?.hasLivedInNursingFacility==null)?false:!householdMemberSituations?.hasLivedInNursingFacility,'unselected':householdMemberSituations?.hasLivedInNursingFacility}">No</label>
+
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('hasLivedInNursingFacility')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isLivingInCertifiedShelter" [ngClass]="{'yes' :  (householdMemberSituations?.isLivingInCertifiedShelter==null)?false:householdMemberSituations?.isLivingInCertifiedShelter}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Everyone in the household is living in a certified shelter for battered persons</legend>
+                    <input type="radio" name="radisLivingInCertifiedShelter" class="btn-check"
+                        (click)="onRadioChecked('isLivingInCertifiedShelter',true,$event)"
+                        id="radisLivingInCertifiedShelterYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isLivingInCertifiedShelter==null)?false:householdMemberSituations?.isLivingInCertifiedShelter,
+                                    'unselected': (householdMemberSituations?.isLivingInCertifiedShelter==null)?false:!householdMemberSituations?.isLivingInCertifiedShelter}"
+                        for="radisLivingInCertifiedShelterYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisLivingInCertifiedShelter"
+                        id="radisLivingInCertifiedShelterNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isLivingInCertifiedShelter',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisLivingInCertifiedShelterNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isLivingInCertifiedShelter==null)?false:(householdMemberSituations?.isLivingInCertifiedShelter==null)?false:!householdMemberSituations?.isLivingInCertifiedShelter,'unselected':householdMemberSituations?.isLivingInCertifiedShelter}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isLivingInCertifiedShelter')"
+                        >Reset</a>
+                </fieldset>
+                <div class="accordion page-tip mt-3" id="accordionisLivingInCertifiedShelter">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingisLivingInCertifiedShelter">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseisLivingInCertifiedShelter" aria-expanded="true"
+                                aria-controls="collapseisLivingInCertifiedShelter" [disabled]="isDisabled">
+                                More Information
+                            </button>
+                        </h2>
+                        <div id="collapseisLivingInCertifiedShelter" class="accordion-collapse collapse"
+                            aria-labelledby="headingisLivingInCertifiedShelter"
+                            data-bs-parent="#accordionisLivingInCertifiedShelter">
+                            <div class="accordion-body">
+                                <p>In cases of domestic violence, the household may be able to receive double SNAP
+                                    (formerly known as Food Stamps) benefits
+                                    if the household can't receive the SNAP that were given that month, or the household
+                                    may be able to get SNAP right away.</p>
+                                <p>
+                                    If you are in a situation that involves domestic violence, it is best to contact a
+                                    caseworker as soon as possible.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isLostJobReducedHoursWithNoFaultInLastYr" [ngClass]="{'yes' :  (householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr==null)?false:householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Within the last year, has lost their job or had work hours lowered and it wasn't their fault</legend>
+                    <input type="radio" name="radisLostJobReducedHoursWithNoFaultInLastYr" class="btn-check"
+                        (click)="onRadioChecked('isLostJobReducedHoursWithNoFaultInLastYr',true,$event)"
+                        id="radisLostJobReducedHoursWithNoFaultInLastYrYes" autocomplete="off" value="true">
+                    <label class="btn btn-sm btn-toggle left"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr==null)?false:householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr,
+                                    'unselected': (householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr==null)?false:!householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr}"
+                        for="radisLostJobReducedHoursWithNoFaultInLastYrYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisLostJobReducedHoursWithNoFaultInLastYr"
+                        id="radisLostJobReducedHoursWithNoFaultInLastYrNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isLostJobReducedHoursWithNoFaultInLastYr',false,$event)" />
+                    <label class="btn btn-sm btn-toggle right " for="radisLostJobReducedHoursWithNoFaultInLastYrNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr==null)?false:(householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr==null)?false:!householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr,'unselected':householdMemberSituations?.isLostJobReducedHoursWithNoFaultInLastYr}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isLostJobReducedHoursWithNoFaultInLastYr')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol" [ngClass]="{'yes' :  (householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null)?false:householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Either/both of the below apply
+                        <ul>
+                            <li>
+                                Disabled, blind, or seriously ill
+                            </li>
+                            <li>
+                                In need of help to overcome a drug or alcohol problem
+                            </li>
+                        </ul>
+                    </legend>
+                    <input type="radio" name="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol" class="btn-check"
+                        (click)="onRadioChecked('isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol',true,$event)"
+                        id="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholYes" autocomplete="off" value="true">
+                    <label class="{{showDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholRequired && householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null)?false:householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol,
+                                    'unselected': (householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null)?false:!householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol}"
+                        for="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol"
+                        id="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol',false,$event)" />
+                    <label class="{{showDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholRequired && householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}"
+                        for="radisDisbledBlindIllOrNeedtoOvercomeDrugOrAlcoholNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null)?false:(householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol==null)?false:!householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol,'unselected':householdMemberSituations?.isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isDisbledBlindIllOrNeedtoOvercomeDrugOrAlcohol')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card gatepost-card standard-mb" *ngIf="visibleHouseHoldOption.isReceivingTreatmentForDrugOrAlcohol" [ngClass]="{'yes' :  (householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null)?false:householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <fieldset class="button-group " [disabled]="isDisabled">
+                    <legend>Receiving treatment for drug or alcohol substance use</legend>
+                    <input type="radio" name="radisReceivingTreatmentForDrugOrAlcohol" class="btn-check"
+                        (click)="onRadioChecked('isReceivingTreatmentForDrugOrAlcohol',true,$event)"
+                        id="radisReceivingTreatmentForDrugOrAlcoholYes" autocomplete="off" value="true">
+                    <label class="{{showReceivingTreatmentForDrugOrAlcoholRequired && householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null ? 'btn btn-sm btn-toggle left error' : 'btn btn-sm btn-toggle left' }}"
+                        [ngClass]="{'selected' :  (householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null)?false:householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol,
+                                    'unselected': (householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null)?false:!householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol}"
+                        for="radisReceivingTreatmentForDrugOrAlcoholYes">Yes</label>
+                    <input type="radio" class="btn-check" name="radisReceivingTreatmentForDrugOrAlcohol"
+                        id="radisReceivingTreatmentForDrugOrAlcoholNo" autocomplete="off" value="false"
+                        (click)="onRadioChecked('isReceivingTreatmentForDrugOrAlcohol',false,$event)" />
+                    <label class="{{showReceivingTreatmentForDrugOrAlcoholRequired && householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null ? 'btn btn-sm btn-toggle right error' : 'btn btn-sm btn-toggle right' }}" for="radisReceivingTreatmentForDrugOrAlcoholNo"
+                        [ngClass]="{'selected' : (householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null)?false:(householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol==null)?false:!householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol,'unselected':householdMemberSituations?.isReceivingTreatmentForDrugOrAlcohol}">No</label>
+
+                    <a class="hyperlink-lg float-end" href="javascript:void(0);" class="hyperlink-lg float-end"
+                        (click)="resetRadioButton('isReceivingTreatmentForDrugOrAlcohol')"
+                        >Reset</a>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

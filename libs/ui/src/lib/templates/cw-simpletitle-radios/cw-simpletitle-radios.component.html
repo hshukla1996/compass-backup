@@ -1,0 +1,35 @@
+<h1 class="standard-mb">
+  {{ simpleTileRadiosData['questionText'] | translate : simpleTileRadiosData['questionTextTO'] }}
+</h1>
+<div class="alert alert-info d-flex align-items-center standard-mb" *ngIf="simpleTileRadiosData['toolTip'] !== ''">
+  <div>
+    {{ simpleTileRadiosData['toolTip'] | translate : simpleTileRadiosData['toolTipTO']}}
+  </div>
+</div>
+<p class="form-subtitle standard-mb" *ngIf="simpleTileRadiosData['subHeading'] !== ''">{{ simpleTileRadiosData['subHeading'] | translate : simpleTileRadiosData['subHeadingTO'] }}</p>
+<cw-field-error-display [displayError]="formSubmitAttempt && simpleTileRadiosData['isRequired']"
+                        errorMsg="{{ simpleTileRadiosData['requiredText'] | translate : simpleTileRadiosData['requiredTextTO'] }}">
+</cw-field-error-display>
+<div [formGroup]="simpleTileRadioForm">
+  <ng-container *ngFor="let simpleRadio of simpleTileRadiosData['questionAnswers']">
+        <compass-ui-cw-radiobutton
+          id="{{ simpleRadio['id'] }}"
+          [formControlName]="'radios'"
+          radioLabel="{{ simpleRadio['label'] | translate : simpleRadio['labelTO'] }}"
+          helpText="{{ simpleRadio['helpText'] | translate : simpleRadio['helpTextTO']}}"
+          [isChecked]="simpleRadio['isChecked']"
+          [required]="true"
+          [radioButtonGroupName]="'simpletileradios'"
+          (inputModelChange)="GetValue({value:simpleRadio.label})"
+          [disabled]="simpleRadio['disabled']"
+          textStyle="custom small-mb">
+        </compass-ui-cw-radiobutton>
+  </ng-container>
+
+</div>
+<compass-ui-cw-dpq-button
+  [backButtonLabel]="'back' | translate"
+  [nextButtonLabel]="'next' | translate"
+  (next)="next()"
+  (back)="back()">
+</compass-ui-cw-dpq-button>

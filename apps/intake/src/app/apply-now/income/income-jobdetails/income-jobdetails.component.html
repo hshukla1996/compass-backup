@@ -1,0 +1,70 @@
+<form [formGroup]="incomeJobDetailsForm">
+  <h1 class="standard-mb">Tell us about {{currentUser.firstName}}'s current or future job.</h1>
+
+  <div class="alert alert-info d-flex align-items-center standard-mb">
+    <p>Don't worry, you can add more jobs later if you need to.</p>
+  </div>
+
+
+  <fieldset class="button-group standard-mb">
+    <legend>Is this Self Employment?</legend>
+    <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isSelfEmployment'" [required]="true"
+      [showError]="isFieldValid('isSelfEmployment')" [radioButtonGroupName]="'isSelfEmployment'"
+      [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="Yes">
+    </compass-ui-cw-radiobutton>
+
+    <compass-ui-cw-radiobutton ngDefaultControl [formControlName]="'isSelfEmployment'" [required]="true"
+      [showError]="isFieldValid('isSelfEmployment')" [radioButtonGroupName]="'isSelfEmployment'"
+      [labelClass]="'btn btn-sm btn-outline-tertiary'" [radioClass]="'btn-check'" radioLabel="No">
+    </compass-ui-cw-radiobutton>
+    <div>
+      <cw-field-error-display [displayError]="isFieldValid('isSelfEmployment')"
+        errorMsg="{{errorMap('isSelfEmployment')}}">
+      </cw-field-error-display>
+    </div>
+  </fieldset>
+
+  <compass-ui-text [fieldId]="'name'" [FormGroup]="incomeJobDetailsForm" [fieldLabel]="'lblEmployerName' | translate"
+    [requiredText]="'lblrequired' | translate" [requiredIndicator]="true" [maxLength]="26" pattern="[a-zA-Z]*"
+    [displayError]="isFieldValid('name')" [errorMsg]="errorMap('name')" [errorText]="errorMap('name')">
+  </compass-ui-text>
+
+  <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="incomeJobDetailsForm"
+    [fieldLabel]="'lblEmployerStreetAddress' | translate" [maxLength]="26" (keypress)="checkAddress($event)">
+  </compass-ui-text>
+
+  <compass-ui-text [fieldId]="'addressLine2'" [FormGroup]="incomeJobDetailsForm"
+    [fieldLabel]="' Employer Street Address (2)' | translate" [maxLength]="26" (keypress)="checkAddress($event)">
+  </compass-ui-text>
+
+  <compass-ui-text [fieldId]="'city'" [FormGroup]="incomeJobDetailsForm" [fieldLabel]="'Employer City' | translate"
+    [requiredText]="requiredFields.indexOf('city')>-1 ? '(required)' : ''"
+    [requiredIndicator]="requiredFields.indexOf('city')>-1" [displayError]="isFieldValid('city')"
+    [errorText]="errorMap('city')" [maxLength]="16" (keypress)="checkCity($event)">
+  </compass-ui-text>
+
+  <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'Employer State' | translate"
+    [FormGroup]="incomeJobDetailsForm" [requiredText]="requiredFields.indexOf('state')>-1 ? '(required)' : ''"
+    [requiredIndicator]="requiredFields.indexOf('state')>-1" [displayError]="isFieldValid('state')"
+    [errorMsg]="errorMap('state')">
+    <option value="" selected>- {{'selectone' | translate}} -</option>
+    <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+  </compass-ui-cw-select>
+
+  <compass-ui-text [fieldId]="'zip'" [FormGroup]="incomeJobDetailsForm" [fieldLabel]="'Employer ZIP code' | translate"
+    [requiredIndicator]="requiredFields.indexOf('zip')>-1"
+    [requiredText]="requiredFields.indexOf('zip')>-1 ? '(required)' : ''" [displayError]="isFieldValid('zip')"
+    (keypress)="OnlyNumberAllowed($event)" [errorText]="errorMap('zip')" [maxLength]="5">
+  </compass-ui-text>
+
+  <div class="form-group mb-4">
+    <compass-ui-text [fieldId]="'phoneNumber'" [phoneNumber]="true" [FormGroup]="incomeJobDetailsForm"
+      [fieldLabel]="'lblEmployerPhoneNumber' | translate" [maxLength]="10" pattern="[0-9]*"
+      [fieldHelpText]="'(XXX) XXX-XXXX'" (keypress)="OnlyNumberAllowed($event)">
+    </compass-ui-text>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}"
+    nextButtonLabel="{{'nextBtnText'| translate}}" (next)="goNext()" (back)="goBack()">
+  </compass-ui-cw-dpq-button>
+</form>

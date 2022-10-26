@@ -1,0 +1,217 @@
+[
+    {
+        "questionText": "Who is Pregnant?",
+        "subHeading": "Select all that apply.",
+        "toolTip": "tooltip\ntooltip",
+        "isRequired": false,
+        "requiredText": "Please select at least one",
+        "questionAnswers": [
+            {
+                "id": 1,
+                "label": "Jane Sample 57 F",
+                "isChecked": false,
+                "disabled": false
+            },
+            {
+                "id": 2,
+                "label": "Jill Sample 28 F",
+                "isChecked": false,
+                "disabled": true
+            }
+        ],
+        "buttonName": "+ Add Another Person"
+    },
+    {
+        "questionText": "Does John have a Driver's License or State Issued ID?",
+        "toolTip": "",
+        "accodionButton": "What is a permanent disability?",
+        "accordionHeading": "A permanent disability is any of these:",
+        "accordion": ["hello", "One"],
+        "legend": "",
+        "isRequired": false,
+        "requiredText": "Required",
+        "questionAnswers": {
+            "label1": "Yes",
+            "label2": "No"
+        }
+    },
+    {
+        "questionText": "Tell us more about Jane's pregnancy",
+        "questionTextRequired": false,
+        "label": "How many babies are required?",
+        "labelRequired": false,
+        "requiredText": "(required)",
+        "selected": "- Select One -",
+        "dropdownArray": [1, 2, 3, 4],
+        "toolTip": ""
+    },
+    {
+        "questionText": "Tell us more about Jane's pregnancy",
+        "questionTextRequired": false,
+        "label": "Label",
+        "labelRequired": false,
+        "type": "text",
+        "placeHolder": "",
+        "maxLength": 99,
+        "pattern": "",
+        "requiredText": "(required)",
+        "requiredMessage": "Required",
+        "patternMessage": "Enter correct pattern",
+        "maxLengthMessage": "Max length exceeds",
+        "helpText": "",
+        "toolTip": ""
+    },
+    {
+        "questionText": "Tell us more about Jane's pregnancy",
+        "questionTextRequired": false,
+        "dropDownLabel": "How many babies are required?",
+        "dropDownLabelRequired": true,
+        "selected": "- Select One -",
+        "dropdownArray": [1, 2, 3, 4],
+        "inputLabel": "Label",
+        "inputLabelRequired": false,
+        "type": "zipcode",
+        "placeHolder": "",
+        "maxLength": 99,
+        "pattern": "",
+        "requiredText": "(required)",
+        "dropdownRequiredMessage": "Dropdown required",
+        "inputRequiredMessage": "Input required",
+        "patternMessage": "Enter correct pattern",
+        "maxLengthMessage": "Max length exceeds",
+        "helpText": "",
+        "toolTip": ""
+    },
+    {
+        "questionText": "Do any of these criminal history situations apply to anyone in the household? ",
+        "toolTip": "Don't worry, you can still get benefits. ",
+        "subHeading": "Select all that apply.",
+        "requiredText": "Please select required options",
+        "questionAnswers": [
+            {
+                "legend": "Owes fines, costs, or restitution for a felony or misdemeanor offence",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": true,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "ownesFines"
+            },
+            {
+                "legend": "Convicted of welfare fraud",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": false,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "convictedWelfareFraud"
+            },
+            {
+                "legend": "Currently on probation or parole",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": false,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "currentlyOnProbation"
+            },
+            {
+                "legend": "Currently fleeing from law enforcement officials",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": false,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "currentlyFleeing"
+            },
+            {
+                "legend": "Currently in prison or another correctional facility (Incarcerated)",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": false,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "isAnyoneCurrentlyIncarcerated"
+            },
+            {
+                "legend": "None of these apply",
+                "toolTip": "",
+                "accordionButton": "",
+                "accordionData": "",
+                "show": true,
+                "disable": false,
+                "isRequired": false,
+                "isYesChecked": null,
+                "isNoChecked": null,
+                "value": "noneOfAbove"
+            }
+        ]
+    },
+    {
+        "questionText": "Your veteran relatives.",
+        "subHeading": "Look below to make sure all veteran relatives are here.",
+        "toolTip": "",
+        "questionAnswers": [
+            {
+                "accordionHeader": "John Sample",
+                "accordionSubHeading": "Filing Jointly",
+                "accordionRightHeading": "",
+                "accordionRightSubHeading": "",
+                "userId": 1,
+                "accordionData": [
+                    {
+                        "label": "Jake Sample (15)",
+                        "value": "Name",
+                        "bold": true
+                    },
+                    {
+                        "label": "Jill Sample (11)",
+                        "value": "name",
+                        "bold": false
+                    }
+                ],
+                "editButton": "Edit",
+                "deleteButton": "Delete"
+            },
+            {
+                "accordionHeader": "",
+                "accordionSubHeading": "",
+                "accordionRight": "",
+                "accordionData": [
+                    {
+                        "label": "",
+                        "value": ""
+                    },
+                    {
+                        "label": "",
+                        "value": ""
+                    }
+                ],
+                "editButton": "",
+                "deleteButton": ""
+            }
+        ],
+        "addtionalButton": "Add Tax Filer"
+    },
+    {
+        "modalTitle": "Are you Sure?",
+        "modalContent": "Do you want to continue?",
+        "cancelButton": "Cancel",
+        "continueButton": "Continue"
+    }
+]

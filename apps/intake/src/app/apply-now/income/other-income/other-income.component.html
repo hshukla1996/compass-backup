@@ -1,0 +1,20 @@
+<h1> You told us someone receives other income. Tell us who.</h1>
+<p class="form-subtitle standard-mb">Select all that apply.</p>
+<div class="alert alert-info d-flex align-items-center">
+    <p>Let us know if anyone has income from self-employment or receives money from any sources that are not a job.</p>
+</div> 
+<form [formGroup]="otherIncomeForm">
+    <cw-field-error-display [displayError]="displayError" errorMsg="{{'diqSelectOneOption' | translate}}">
+    </cw-field-error-display>
+    <div *ngFor="let person of householdPersons; let i = index" class="standard-mb">
+            <compass-ui-cw-checkbox label="{{person?.firstName}} {{person?.midName}} {{person?.lastName}}
+                                        {{person?.suffix}} {{getAge(person?.dateOfBirth)}} "
+                                (inputModelChange)="onCheckboxChange(person.id!, $event)" 
+                                 [isChecked]="isPersonHavingOtherIncome(person.id!)"
+                                 [textStyle]="'custom'">
+            </compass-ui-cw-checkbox>
+    </div>
+    <compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+        (next)="goNext()" (back)="goBack()">
+    </compass-ui-cw-dpq-button>
+</form>

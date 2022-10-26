@@ -1,0 +1,19 @@
+{
+    "questionText": "Who had a job they started working in the last 30 days?",
+    "isRequired": false,
+    "requiredText": "",
+    "toolTip" :"",
+    "questionAnswers": [
+        {
+            "id": 1,
+            "label": "Jane Sample 57 F",
+            "isChecked": false
+        },
+        {
+            "id": 2,
+            "label": "Jill Sample 28 F",
+            "isChecked": false
+        }
+    ]
+
+}

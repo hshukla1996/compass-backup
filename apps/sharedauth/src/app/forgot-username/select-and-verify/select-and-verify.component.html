@@ -1,0 +1,87 @@
+<form [formGroup]="selectAndVerifyGroup">
+  <h1>{{ 'sa_forgotuserSAVtitle' | translate }}</h1>
+  <div class="mb-3">
+    <compass-ui-cw-select ngDefaultControl formControlName="verifyMethod" fieldId="verifyMethod"
+      [FormGroup]="selectAndVerifyGroup" [errorMsg]="errorMap('verifyMethod') | translate"
+      [displayError]="isFieldInvalid('verifyMethod')">
+      <option value="" selected>- {{'selectone' | translate}} -</option>
+      <option *ngFor="let verifyMethod of verifyMethods" [value]="verifyMethod.id">{{verifyMethod.displayValue |
+        translate}}</option>
+    </compass-ui-cw-select>
+  </div>
+
+  <!-- arrow card 1 (email) -->
+  <div class="card arrow-card" *ngIf="entryEmail">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'email'" (modelInputChange)="emailWrong = false" [FormGroup]="selectAndVerifyGroup"
+          [fieldLabel]="'sa_forgotuserSAVlbl1' | translate" [displayError]="isFieldInvalid('email')"
+          [requiredIndicator]="true" [requiredText]="'lblrequired' | translate"
+          [errorText]="errorMap('email') | translate" [fieldType]="'emailType'" [maxLength]="emailMaxL">
+        </compass-ui-text>
+      </div>
+    </div>
+  </div>
+
+  <!-- arrow card 2 (e-form) -->
+  <div class="card arrow-card" *ngIf="entryEForm">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'eformNumber'" (modelInputChange)="eformWrong = false"
+          [FormGroup]="selectAndVerifyGroup" [fieldLabel]="'sa_forgotuserSAVlbl2' | translate"
+          [displayError]="isFieldInvalid('eformNumber')" [requiredIndicator]="true"
+          [requiredText]="'lblrequired' | translate"
+          [errorText]="errorMap('eformNumber') | translate: {minLength: eformMinL}" [fieldType]="'eformNumber'"
+          [maxLength]="eformMaxL">
+        </compass-ui-text>
+      </div>
+    </div>
+  </div>
+
+  <!-- arrow card 3 (mci) -->
+  <div class="card arrow-card" *ngIf="entryMCI">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'mciMedEbt'" (modelInputChange)="mciWrong = false" [FormGroup]="selectAndVerifyGroup"
+          [fieldLabel]="'sa_forgotuserSAVlbl3' | translate" [requiredText]="'lblrequired' | translate"
+          [requiredIndicator]="true" [displayError]="isFieldInvalid('mciMedEbt')"
+          [errorText]="errorMap('mciMedEbt') | translate: {minLength: mciMinL}" fieldType="numbersOnly"
+          [maxLength]="mciMaxL">
+        </compass-ui-text>
+      </div>
+
+      <div class="form-text">
+        <p>{{ 'sa_forgotuserSAVtext1' | translate }}</p>
+      </div>
+      <div class="row">
+        <div class="col text-center standard-mb">
+          <img (click)="enlargeImage1()" src="../../../../assets/images/SnapOrTanfImg-1.png"
+            class="{{largeImage1 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 1">
+        </div>
+        <div class="col text-center standard-mb">
+          <img (click)="enlargeImage2()" src="../../../../assets/images/SnapOrTanfImg-2.png"
+            class="{{largeImage2 ? 'img-fluid p-2' : 'sm-img p-2'}}" alt="Access Card Image 2">
+        </div>
+      </div>
+      <p class="text-center fw-bold">{{ 'sa_forgotuserSAVtext2' | translate }}</p>
+    </div>
+  </div>
+
+  <!-- arrow card 2 (e-form) -->
+  <div class="card arrow-card" *ngIf="entrySSN">
+    <div class="card-body">
+      <div class="mb-3">
+        <compass-ui-text [fieldId]="'ssn'" (modelInputChange)="ssnWrong = false"
+          [FormGroup]="selectAndVerifyGroup" [fieldLabel]="'sa_forgotuserSAVlbl4' | translate"
+          [displayError]="isFieldInvalid('ssn')" [requiredIndicator]="true"
+          [requiredText]="'lblrequired' | translate" [fieldHelpText]="'sa_forgotuserSAVhelp1' | translate"
+          [errorText]="errorMap('ssn') | translate" [fieldType]="'ssn'" type="ssn">
+        </compass-ui-text>
+      </div>
+    </div>
+  </div>
+
+  <compass-ui-cw-dpq-button backButtonLabel="{{'back'| translate}}" nextButtonLabel="{{'submitLbl'| translate}}"
+    (back)="back()" (next)="submit()">
+  </compass-ui-cw-dpq-button>
+</form>

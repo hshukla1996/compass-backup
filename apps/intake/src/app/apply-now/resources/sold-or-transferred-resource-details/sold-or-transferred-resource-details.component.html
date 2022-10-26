@@ -1,0 +1,56 @@
+<h1>You told us someone sold, transferred, or gave away a resource in the past 5 years. Tell us about the resource</h1>
+<p class="alert alert-info">Don’t worry, you can add more given away, sold, or transferred resources later if you need to.</p>
+<div class="form-group" [formGroup]="soldOrTransferredResourceDetailsForm">
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'resourceType'" [fieldLabel]="'Tell us about the resource type.'"
+            [FormGroup]="soldOrTransferredResourceDetailsForm" [displayError]="isFieldValid('resourceType')"
+            [requiredText]="'(required)'" [errorText]="errorMap('resourceType')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'currency'" [fieldId]="'estimateResourceValue'" [fieldLabel]="'Estimated Resource Value'"
+            [FormGroup]="soldOrTransferredResourceDetailsForm" [displayError]="isFieldValid('estimateResourceValue')"
+            [requiredText]="'(required)'" [errorText]="errorMap('estimateResourceValue')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'individualOrTrustPropertyName'" [fieldLabel]="'Name of the individual or trust property was transferred to.'"
+            [FormGroup]="soldOrTransferredResourceDetailsForm" [displayError]="isFieldValid('individualOrTrustPropertyName')"
+            [requiredText]="'(required)'" [errorText]="errorMap('individualOrTrustPropertyName')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">
+        <compass-ui-text [type]="'text'" [fieldId]="'relationship'" [fieldLabel]="'If the property was transferred to an individual, tell us their relationship to the applicant.'"
+            [FormGroup]="soldOrTransferredResourceDetailsForm" [displayError]="isFieldValid('relationship')"
+            [requiredText]="'(required)'" [errorText]="errorMap('relationship')">
+        </compass-ui-text>
+    </div>
+    <div class="form-group mb-3">        
+        <compass-ui-cw-datepicker ngDefaultControl id="soldDate" [formControlName]="'soldDate'"
+            [label]="'What date was the resource sold, transferred, or given away?'" [required]="false" [requiredText]="'(required)'"
+            [displayError]="isFieldValid('soldDate')" [errorMsg]="errorMap('soldDate') | translate"
+            [required]="requiredFields.indexOf('soldDate')>-1">
+        </compass-ui-cw-datepicker>
+        <small class="text-muted">MM/DD/YYYY</small>
+
+    </div>
+    <div>
+        <compass-ui-text [type]="'text'" [fieldId]="'soldReason'" [fieldLabel]="'Tell us why the property was sold, transferred, or given away.'"
+            [FormGroup]="soldOrTransferredResourceDetailsForm" [displayError]="isFieldValid('soldReason')"
+            [requiredText]="'(required)'" [errorText]="errorMap('soldReason')">
+        </compass-ui-text>
+    </div>
+</div>
+
+<div class="row action-bar">
+    <div class="col">
+        <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+            Back
+        </button>
+    </div>
+    <div class="col text-end">
+        <button type="button" class="btn btn-primary" (click)="goNext()">
+            Next
+        </button>
+    </div>
+</div>

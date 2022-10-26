@@ -1,0 +1,68 @@
+
+<form class="form-horizontal" [formGroup] = 'trainingDetailsForm' (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- <div class="panel panel-primary">
+    <div class="panel-heading"> -->
+      <h1 class="standard-mb">Tell us about {{currentUser.firstName}}'s training program.</h1>
+
+    <!-- </div> -->
+    <!-- <div class="panel-body"> -->
+      <div class="alert alert-info d-flex align-items-center standard-mb">
+        <p>Don't worry, you can add more training programs or education later if you need to.</p>
+      </div>
+  <compass-ui-text [fieldId]="'nameOfTraining'" [FormGroup]="trainingDetailsForm"
+                   [fieldType]="'orgType'"
+                   [isVisible] ="fieldDisplays.nameOfTraining"
+                   [fieldLabel]="'Training or Educational Institution Name'"
+                   [maxLength]="26" [displayError]="isFieldValid('nameOfTraining')"
+                   [requiredIndicator]="requiredFields.indexOf('nameOfTraining')>-1"
+                   [errorText]="errorMap('nameOfTraining')">
+  </compass-ui-text>
+
+  <compass-ui-cw-datepicker label="Program Start Date"
+                            [required]="requiredFields.indexOf('programmeStartDate')>-1" ngDefaultControl
+                            [formControlName]="'programmeStartDate'"
+                            [maxRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+                            [isVisible] ="fieldDisplays.programmeStartDate"
+                            showFieldHelpText="MM/DD/YYYY"
+                            [displayError]="isFieldValid('programmeStartDate')"
+                            [showError]="isFieldValid('programmeStartDate')"
+                            [errorMsg]="errorMap('programmeStartDate') | translate">
+  </compass-ui-cw-datepicker>
+
+  <compass-ui-cw-datepicker label="When does {{currentUser.firstName}} expect to finish the program?"
+                            [required]="requiredFields.indexOf('programmeEndDate')>-1" ngDefaultControl
+                            [formControlName]="'programmeEndDate'"
+                            [isVisible] ="fieldDisplays.programmeEndDate"
+                            [minRange]="maxDateRange" requiredText="{{'lblrequired' | translate}}"
+
+                            showFieldHelpText="MM/DD/YYYY"
+                            [displayError]="isFieldValid('programmeEndDate')"
+                            [showError]="isFieldValid('programmeEndDate')"
+                            [errorMsg]="errorMap('programmeEndDate')">
+  </compass-ui-cw-datepicker>
+
+    <!-- </div> -->
+  <compass-ui-text [fieldId]="'hrsSpendInProgramme'" [FormGroup]="trainingDetailsForm"
+                   [fieldType]="'numbersOnly'"
+                   [isVisible] ="fieldDisplays.hrsSpendInProgramme"
+                   [fieldLabel]="'How many hours per week does '+currentUser.firstName+' spend in the program?'"
+                   [maxLength]="2" [displayError]="isFieldValid('hrsSpendInProgramme')"
+                   [requiredIndicator]="requiredFields.indexOf('hrsSpendInProgramme')>-1"
+                   [errorText]="errorMap('hrsSpendInProgramme')">
+  </compass-ui-text>
+
+
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+  <!-- </div> -->
+</form>

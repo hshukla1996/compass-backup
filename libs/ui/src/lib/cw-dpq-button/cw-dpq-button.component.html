@@ -1,0 +1,17 @@
+<nav class="action-bar d-flex justify-content-between">
+    <div>
+       
+        <button [type]="backButtonType" [disabled]="disabledBackButton" [attr.aria-describedby]="backButtonId" [id]="backButtonId"
+            [ngClass]="backButtonStyle" (click)="backClicked($event)">
+            {{backButtonLabel}}
+        </button>
+       
+    </div>
+    <div>
+        <button [type]="nextButtonType" [disabled]="disabledNextButton" [attr.aria-describedby]="nextButtonId" [id]="nextButtonId"
+            [ngClass]="nextButtonStyle" (click)="nextClicked($event)">
+            {{nextButtonLabel}}
+        </button>
+    </div>
+   
+</nav>

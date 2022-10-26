@@ -1,0 +1,31 @@
+<form [formGroup]="outofHouseholdOnformationForm">
+    <h1>Tell us more about the person outside of the household who has this health or medical insurance.</h1>
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="outofHouseholdOnformationForm" [fieldId]="'otherIndividualFirstName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'otherIndividualFirstName'"
+            fieldLabel="{{'lblFirstName' | translate}}" [requiredIndicator]="true"
+            [maxLength]="11"
+           >
+        </compass-ui-text>
+    </div>
+
+    <div class="mb-3">
+        <compass-ui-text [FormGroup]="outofHouseholdOnformationForm" [fieldId]="'otherIndividualLastName'" [fieldType]="'nameType'"
+            requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'otherIndividualLastName'"
+            fieldLabel="{{'lblLastName' | translate}}" [maxLength]="14" [requiredIndicator]="true"
+            errorText="{{'basidDetailRequiredMessage' | translate}}" >
+        </compass-ui-text>
+    </div>
+  
+<div class="mb-3">
+    <compass-ui-text [FormGroup]="outofHouseholdOnformationForm" [fieldId]="'otherIndividualSocialSecurityNumber'" [fieldType]="'nameType'"
+        requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'otherIndividualSocialSecurityNumber'"
+        fieldLabel="SSN" [maxLength]="9" [requiredIndicator]="true"
+        errorText="{{'basidDetailRequiredMessage' | translate}}" >
+    </compass-ui-text>
+</div>
+
+</form>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

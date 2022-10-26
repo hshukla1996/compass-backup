@@ -1,0 +1,370 @@
+{
+  
+
+  "houseHoldDetails": {
+    "Household": {
+      "HeadofHousehold": "",
+      "applicantAddress": {
+        "addressLine1": "1003 columbine dr",
+        "addressLine2": "Apt 1D",
+        "city": "Frederick",
+        "state": "PA",
+        "zip": "21701",
+        "county": "03",
+        "schoolDistrict": "02100",
+        "township": "01027",
+        "sendMail": {
+          "Yes": false,
+          "no": true
+        },
+        "anotherAdd": "Yes",
+        "isThisAddressEffectiveImmediately": false,
+        "zipExtension": ""
+      },
+      "previousAddress": {
+        "addressLine1": " ",
+        "addressLine2": " ",
+        "city": " ",
+        "state": " ",
+        "zip": "",
+        "zipExtension": "",
+        "county": " ",
+        "isThisAddressEffectiveImmediately": "Yes",
+        "addressEffectiveDate": ""
+      },
+      "mailingAddress": {
+        "addressLine1": "1003 columbine dr",
+        "addressLine2": "Apt 1D",
+        "city": "Frederick",
+        "state": "PA",
+        "zip": "21701",
+        "isThisAddressEffectiveImmediately": false,
+        "addressEffectiveDate": "2022-08-06",
+        "zipExtension": ""
+      },
+      "fromHowManyYearsAtThisAddress": "1",
+      "fromHowManyMonthsAtThisAddress": "6",
+      "doYouPreferSeperateMailingAddress": "Yes"
+    },
+    "HeadofHousehold": "1659124189503",
+    "householdGatepost": {
+      "chkSsn": "",
+      "chkHousing": "",
+      "chkCashAssis": "",
+      "chkFoodStamp": "",
+      "chkIncomeBefTax": "",
+      "chkCheckingAC": "",
+      "chkObtaiFoodStamps": "",
+      "chkAge": "",
+      "chkSpouse": "",
+      "chkHelp": "",
+      "chkMembers": "",
+      "chkNursing": "",
+      "chkMortgage": "",
+      "chkEveryone": "",
+      "chkMedical": "",
+      "chkBenefitApp": "",
+      "chkNone": ""
+    },
+    "householdSnapDisbility": {
+      "isPermenantDisability": "",
+      "isage60permenantlydisabled": "",
+      "earningsfordisabled": ""
+    },
+    "householdHead": {},
+    "householdBenefitDetails": {
+      "chkHealthCareCoverage": false,
+      "chkFoodAssistance": false,
+      "chkCashAssistance": false,
+      "chkFreeSchoolMeals": false,
+      "chkHeatingBills": false,
+      "chkChildcareCosts": false,
+      "chkWaterBill": false,
+      "chkServiceCommunity": false,
+      "chkServiceFacility": false
+    },
+    "householdElectricProvider": {
+      "electricCompany": "2325",
+      "acconumber": "1234567890123456789012345"
+    },
+    "householdFoodStamps": {
+      "name": "samuel",
+      "ssn": "133545444",
+      "address": "1003 columbine dr",
+      "address2": "Apt 1D",
+      "city": "Frederick",
+      "state": "MD",
+      "zip": "21701",
+      "phoneNo": "45466477474"
+    },
+    "householdBenefitsAppliedBefore": {
+      "state": "AR",
+      "county": "asdfasdf"
+    },
+    "householdWaterQuestions": {
+      "waterRent": "Yes",
+      "wasteRent": "no",
+      "payingForDrinkingWater": "DrinkingWater"
+    },
+    "householdPreviousAddress": {
+      "address": "1003 columbine dr",
+      "address2": "Apt 1D",
+      "city": "Frederick",
+      "state": "MD",
+      "zip": "21701",
+      "county": "16",
+      "phoneNo": "1231231231"
+    },
+    "householdCountyRecNo": {
+      "recordNo": "534664646"
+    },
+    "householdLivedInPA": {
+      "years": "0",
+      "months": "1",
+      "monthsMoved": "2022-07-22"
+    },
+    "houseHoldPersons": [
+      {
+        "id": 1659124189503,
+        "dateOfBirth": "2022-06-27",
+        "firstName": "John",
+        "gender": "Male",
+        "lastName": "Gordon",
+        "midName": "J",
+        "otherName": "Yes",
+        "otherNameVal": "Jon",
+        "suffix": "III",
+        "memberRelationships": [
+          {
+            "individualLookupId": 1659124222696,
+            "relationshipType": "H"
+          }
+        ],
+        "isThisIndividualHeadOfHousehold": "Y"
+      },
+      {
+        "id": 1659124222696,
+        "dateOfBirth": "2022-06-27",
+        "firstName": "Madai",
+        "gender": "Female",
+        "lastName": "Gordon",
+        "midName": "m",
+        "otherName": "Yes",
+        "otherNameVal": "Madei",
+        "suffix": "II",
+        "relationship": " nx ",
+        "memberRelationships": [
+          {
+            "individualLookupId": "1659124189503",
+            "relationshipType": "W"
+          }
+        ],
+        "headOfHouse": false
+      }
+    ],
+    "householdContactInfo": {
+      "mainContact": "(545) 677-7777",
+      "secContact": "(256) 264-7575",
+      "othContact": "(354) 546-5656",
+      "email": "rtyrfyghjhb@gmail.com",
+      "contact": "Email"
+    },
+    "absentRelative": [
+      {
+        "id": 1,
+        "firstName": "Jack",
+        "lastName": "Gordon",
+        "midName": "J",
+        "suffix": "IV",
+        "dateOfBirth": "2022-06-28",
+        "deceased": "No",
+        "gender": "Male",
+        "socialSecurityNumber": "234-23-422",
+        "isThisPersonSpouseParentOrBothOfTheHouseholdMember": "Parent",
+        "RelativeRace": {
+          "raceInformation": [
+            "Black or African American",
+            "White or Caucasian"
+          ],
+          "hispanicOrigin": "No"
+        },
+        "Relationships": [
+          "1659124189503",
+          "1659124222696"
+        ],
+        "Address": {
+          "id": "1",
+          "AddressLine1": "1003 columbine dr",
+          "AddressLine2": "Apt 1D",
+          "City": "Frederick",
+          "State": "MD",
+          "Zip": "21701",
+          "PhoneNumber": "(564) 756-5859"
+        },
+        "Employer": {
+          "EmployerName": "abc org",
+          "EmployerPhoneNumber": "(476) 567-8586",
+          "EmployerPhoneNumberExtension": "6546",
+          "Address": {
+            "AddressLine1": "1003 columbine dr",
+            "AddressLine2": "Apt 1D",
+            "City": "Frederick",
+            "State": "MD",
+            "Zip": "21701"
+          }
+        },
+        "nonResidentialProperty": {
+          "id": "1",
+          "ownproperty": "Yes",
+          "ownNonResidentialProperty": "Yes",
+          "datePurchased": "2022-06-28",
+          "marketValue": "456",
+          "AddressLine1": "1003 columbine dr",
+          "Addressline2": "Apt 1D",
+          "City": "Frederick",
+          "State": "MD",
+          "Zip": "21701",
+          "ZipExtension": "",
+          "County": "",
+          "IsThisAddressEffectiveImmediately": false,
+          "AddressEffectiveDate": ""
+        },
+        "childSupport": {
+          "id": "1",
+          "courtOrder": {
+            "id": "1",
+            "courtName": "cshmcjvjb",
+            "courtOrderNumber": "5777",
+            "courtOrderChildSupportAmount": "900",
+            "courtOrderDate": "2022-07-06",
+            "courtOrderChildSupportAmountFrequency": "6",
+            "specialTerms": "hjkhjk"
+          },
+          "payForChildSupport": "366",
+          "courtOrderedOrVoluntary": "Court-Ordered",
+          "voluntaryChildSupportAmount": "366",
+          "VoluntaryChildSupportAmountFrequency": "2",
+          "lastDatePaidVoluntaryChildSupport": "2022-07-06",
+          "voluntaryChildSupportPaidToWhom": "1659124189503"
+        }
+      }
+    ],
+    "absentRelativeChildSupport": {
+      "childsupport": "Yes",
+      "id": "1"
+    },
+    "absentRelativeChildSupportDetails": {},
+    "nonResidentialProperty": {},
+    "nursingFacility": {
+      "NursingFacilityDetails": {
+        "AddressLine1": "1003 columbine dr",
+        "AddressLine2": "Apt 1D",
+        "City": "Frederick",
+        "State": "MD",
+        "Zip": "21701",
+        "FacilityName": "GJWJSBF",
+        "nursingFacilityStartDate": "2022-07-07",
+        "nursingFacilityEndDate": "2022-06-28"
+      }
+    },
+    "IsThisIndividualOutsideHousehold": [],
+    "householdWhoApplyLtc": [],
+    "individualSituations": [
+      ""
+    ],
+    "areYouWantToApplyLTC": "No",
+    "responsibleRelative": [],
+    "selectedForCoverage": [
+      "1659124189503"
+    ],
+    "selectedForSnapScreen": [
+      "1659124222696"
+    ],
+    "selectedForCashAssitance": [
+      "1659124189503"
+    ],
+    "selectedForChildCareCost": [
+      "1659124222696"
+    ],
+    "selectedForSchoolMeals": [
+      "1659124189503"
+    ],
+    "selectedForLongtermLivingServices": [
+      "1659124189503"
+    ],
+    "householdHeadSelection": "1659124189503",
+    "householdAddressSelection": [],
+    "livSituation": "11",
+    "effDate": "2022-07-06",
+    "houSituation": "3",
+    "othHouSituation": "",
+    "allowance": 453,
+    "pageAction": {
+      "absentRelativeMap": {
+        "absentRelativeMap": {
+          "undefined": true
+        }
+      }
+    },
+    "individualLegalSituations": [
+      ""
+    ],
+    "individualMedicalSituations": [
+      ""
+    ],
+    "applicantAddress": {
+      "addressLine1": "",
+      "addressLine2": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "county": "",
+      "isThisAddressEffectiveImmediately": "Yes",
+      "addressEffectiveDate": "",
+      "zipExtension": ""
+    },
+    "previousAddress": {
+      "addressLine1": " ",
+      "addressLine2": " ",
+      "city": " ",
+      "state": " ",
+      "zip": "",
+      "zipExtension": "",
+      "county": " ",
+      "isThisAddressEffectiveImmediately": "Yes",
+      "addressEffectiveDate": ""
+    },
+    "id": [],
+    "address": "",
+    "address2": "",
+    "city": "",
+    "state": "",
+    "zip": "",
+    "county": "",
+    "phoneNo": "",
+    "years": "",
+    "months": "",
+    "monthsMoved": "",
+    "electricCompany": "",
+    "acconumber": "",
+    "waterRent": "",
+    "wasteRent": "",
+    "payingForDrinkingWater": "",
+    "householdGatepostValue": {
+      "checked": [
+        "ssnbenefits",
+        "intermediateCare",
+        "otherStatesBenefits",
+        "pnBenefits",
+        "SNAPbenefits",
+        "disqBenefits",
+        "someoneElseBenefits"
+      ],
+      "unchecked": []
+    },
+    "recordNo": "",
+    "name": "",
+    "ssn": ""
+  }
+  
+}

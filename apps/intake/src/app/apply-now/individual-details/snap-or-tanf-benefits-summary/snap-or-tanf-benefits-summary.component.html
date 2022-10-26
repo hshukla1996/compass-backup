@@ -1,0 +1,51 @@
+<!-- <div class="card">
+    <div class="card-body">
+        <div>
+            <h1>Your SNAP and TANF Benefits.</h1>
+            <p>Review the entries below to make sure all SNAP and TANF benefits are shown.</p>
+        </div>
+        <div class="accordion page-tip" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h3>John Sample 65 (M) <br />
+                            <p> 445534564 </p>
+                        </h3>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Accordion Panels:</p>
+                        <ul>
+                            <li>Will expand and collapse the bottom section when the top button is clicked
+                            </li>
+                            <li>Hold extended and more detailed information in the bottom section, this
+                                allows the user to show what they need and collapse it when they don't</li>
+                            <li>This panel's width can be controlled with columns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <button type="button" class="btn btn-outline-secondary" style="width:100%">+ Add SNAP or TANF
+                Benefits</button>
+        </div>
+    </div>
+</div> -->
+
+<cw-simpletile-summary
+    [simpleTileSummaryData]="jsonData"
+    (deleteButtonClicked)="deleteClicked($event)"
+    (editButtonClicked)="editClicked($event)"
+    (nextPage)="next()"
+    (previousPage)="back()"
+    (addAnotherPerson)="addPerson()"
+    [updatedJson]="jsonData">
+</cw-simpletile-summary>
+<cw-modal
+    [modalData]="modalData"
+    (continue)="continueClicked()">
+</cw-modal>

@@ -1,0 +1,13 @@
+export const myBenefitsURL = "/api/myaccount/benefits/caseinformation";
+export const linkCaseURL = "/api/myaccount/benefits/linkcase";
+export const myNoticesGetEnrollmentURL = "api/myaccount/notices/enrollment";
+export const myNoticesUpdateEnrollmentURL = "api/myaccount/notices/updateenrollment";
+export const myNoticesGetUserNoticesURL = "api/myaccount/notices/getusernotices";
+export const myNoticesVerifyEnrollmentEmailURL = "api/myaccount/notices/verifyenrollmentemail";
+export const getTicketsURL = "/api/myaccount/reportchanges/gettickets";
+export const getTicketInfoURL = "/api/myaccount/reportchanges/ticketdetail";
+export const getScannedDocURL = "/api/myaccount/reportchanges/getscanneddocuments";
+export const getCaseInfoURL = "/api/myaccount/reportchanges/caseinformation";
+export const saveReportChangesURL = "/api/myaccount/reportchanges/savereport";
+export const myNoticesURL = "";
+export const receive1095FormURL = "api/myaccount/??"; // TODORW Update to correct url

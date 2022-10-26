@@ -1,0 +1,35 @@
+<!-- <form [formGroup]="FormGroup"> -->
+<div class="standard-mb {{textClass}}" >
+    <label class="form-label {{labelClass}}" for=fieldId> {{label}} <span *ngIf="requiredIndicator">{{'lblrequired' | translate}}</span> </label>
+    <!-- <span class="text-danger {{requiredTextClass}}" *ngIf="required">{{requiredText}}</span> -->
+    <div>
+        <input
+                type="text"
+                required="requiredIndicator"
+                (change)="changeInput()"
+                [ngClass]="[!validValue  && requiredIndicator ? 'form-control error' : 'form-control']"
+                pattern="{{pattern}}"
+                [required]="required"
+                class="form-control {{textBoxClass}}"
+                id=fieldId
+                name=fieldId
+                [hidden]="isHidden"
+                value="{{textValue}}"
+                [readonly]="readOnly"
+                placeholder="{{placeholder}}"
+                [attr.aria-describedby]=fieldId
+                (input)="textChange($event.target)"
+                [attr.maxlength]="restrictInputLength"
+                [attr.minlength]="minInputLength"
+                [disabled]="disabled"
+
+        />
+        <!-- [ngClass]="{ 'error': showError }"   -->
+    </div>
+    <div *ngIf="!validValue && requiredIndicator" id="errTxt-{{fieldId}}" class="error-text"><i
+            class="fa-regular fa-circle-exclamation"></i>
+        {{errorText}}</div>
+
+    <div *ngIf="showFieldHelpText" id="hlp-txt-{{fieldId}}" class={{hintClass}}>{{helpText}}</div>
+</div>
+<!-- </form> -->

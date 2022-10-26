@@ -1,0 +1,92 @@
+<form class="form-horizontal" [formGroup]='waterAsstApplicationForm'>
+    <h1>We need some information for your water assistance application.</h1>
+
+    <compass-ui-cw-select [fieldId]="'drinkingWater'" [fieldLabel]="'Who provides your drinking water? '"
+        [FormGroup]="waterAsstApplicationForm" [requiredText]="'(required)'" [requiredIndicator]="true"
+        [displayError]="isFieldValid('drinkingWater')" [errorMsg]="errorMap('drinkingWater')"
+        (change)="drinkingWaterReset()" *ngIf="isDrinikingWaterVisible">
+        <option value=undefined selected>- Select One -</option>
+        <option *ngFor="let detail of drinkingWaterData" value="{{detail.id}}">{{detail?.displayValue}}
+        </option>
+        <option value="Other"> Other </option>
+    </compass-ui-cw-select>
+    <div class="card arrow-card p-3" *ngIf="waterAsstApplicationForm.value.drinkingWater === 'Other'">
+        <compass-ui-text [fieldId]="'OtherDrinkingWater'" [FormGroup]="waterAsstApplicationForm"
+            [fieldLabel]="'Other Drinking Water Provider Name'" [requiredIndicator]="true"
+            [errorText]="'Enter Other Provider Name'" [fieldType]="'nameType'" [maxLength]="256"
+            [displayError]="isFieldValid('OtherDrinkingWater')" [errorMsg]="errorMap('OtherDrinkingWater')">
+        </compass-ui-text>
+    </div>
+
+    <compass-ui-cw-select [fieldId]="'whoseNamedrinkingWaterAcc'"
+        [fieldLabel]="'Whose name is on the drinking water account that needs to be paid?'"
+        [FormGroup]="waterAsstApplicationForm" [displayError]="isFieldValid('whoseNamedrinkingWaterAcc')"
+        [requiredText]="'(required)'" [requiredIndicator]="true" [errorMsg]="errorMap('whoseNamedrinkingWaterAcc')"
+        (change)="drinkWaterAccReset()" *ngIf="isDrinikingWaterVisible">
+        <!-- <option value=undefined selected>- Select One -</option> -->
+        <option value=undefined selected>- Select One -</option>
+        <option *ngFor="let person of houseHoldPersons" value="{{person.id}}">{{person.firstName}} {{person.lastName}}
+        </option>
+        <option value="Other"> Other </option>
+        <!-- <option *ngFor="let detail of drinkingWaterList" value="{{detail.key}}">{{detail?.value}} -->
+        <!-- </option> -->
+    </compass-ui-cw-select>
+    <div class="card arrow-card p-3" *ngIf="waterAsstApplicationForm.value.whoseNamedrinkingWaterAcc === 'Other'">
+        <compass-ui-text [fieldId]="'OtherDrinkingWaterAccHolder'" [FormGroup]="waterAsstApplicationForm"
+            [fieldLabel]="'Other Drinking Water Account Holder Name'" [requiredIndicator]="true"
+            [errorText]="'Enter Other Account Holder Name'" [fieldType]="'nameType'" [maxLength]="30"
+            [displayError]="isFieldValid('OtherDrinkingWaterAccHolder')"
+            [errorMsg]="errorMap('OtherDrinkingWaterAccHolder')"
+            [fieldType]="'nameType'">
+        </compass-ui-text>
+    </div>
+
+    <compass-ui-cw-select [fieldId]="'wasteWater'" [fieldLabel]="'Who provides your wastewater?'"
+        [FormGroup]="waterAsstApplicationForm" [displayError]="isFieldValid('wasteWater')" [requiredText]="'(required)'"
+        [requiredIndicator]="true" [errorMsg]="errorMap('wasteWater')" (change)="wasteWaterReset()"
+        *ngIf="isWasteWaterVisible">
+        <option value=undefined selected>- Select One -</option>
+        <option *ngFor="let detail of wasteWaterData" value="{{detail.id}}">{{detail?.displayValue}}
+        </option>
+        <option value="Other"> Other </option>
+
+    </compass-ui-cw-select>
+    <div class="card arrow-card p-3" *ngIf="waterAsstApplicationForm.value.wasteWater === 'Other'">
+        <compass-ui-text [fieldId]="'OtherWasteWater'" [FormGroup]="waterAsstApplicationForm"
+            [fieldLabel]="'Other Wastewater Provider Name'" [requiredIndicator]="true"
+            [errorText]="'Enter Wastewater Provider Name'" [fieldType]="'nameType'" [maxLength]="256"
+            [displayError]="isFieldValid('OtherWasteWater')" [errorMsg]="errorMap('OtherWasteWater')">
+        </compass-ui-text>
+    </div>
+
+    <compass-ui-cw-select [fieldId]="'whoseNamewasteWaterAcc'"
+        [fieldLabel]="'Whose name is on the wastewater account that needs to be paid?'"
+        [FormGroup]="waterAsstApplicationForm" [displayError]="isFieldValid('whoseNamewasteWaterAcc')"
+        [requiredIndicator]="true" [requiredText]="'(required)'" [errorMsg]="errorMap('whoseNamewasteWaterAcc')"
+        (change)="wasteWaterAccReset()" *ngIf="isWasteWaterVisible">
+        <option value=undefined selected>- Select One -</option>
+        <option *ngFor="let person of houseHoldPersons" value="{{person.id}}">{{person.firstName}} {{person.lastName}}
+        </option>
+        <option value="Other"> Other </option>
+    </compass-ui-cw-select>
+    <div class="card arrow-card p-3" *ngIf="waterAsstApplicationForm.value.whoseNamewasteWaterAcc === 'Other'">
+        <compass-ui-text [fieldId]="'OtherWasteWaterAccHolder'" [FormGroup]="waterAsstApplicationForm"
+            [fieldLabel]="'Other Wastewater Account Holder Name'" [requiredIndicator]="true"
+            [errorText]="'Enter Wastewater Account Holder Name'" [fieldType]="'nameType'" [maxLength]="30"
+            [displayError]="isFieldValid('OtherWasteWaterAccHolder')" [errorMsg]="errorMap('OtherWasteWaterAccHolder')">
+        </compass-ui-text>
+    </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>

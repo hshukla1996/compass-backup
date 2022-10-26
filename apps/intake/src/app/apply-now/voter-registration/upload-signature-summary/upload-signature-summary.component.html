@@ -1,0 +1,25 @@
+<h1>{{ 'afsSignatureSummaryTitle' | translate }}</h1>
+<p>{{ 'afsSignatureSummaryReview' | translate }}</p>
+
+<!-- summary card w/ delete -->
+<div class="card section-summary mb-3">
+  <div class="card-heading">
+    <h3><span>{{ 'afsSignatureSummarySignature' | translate }}</span></h3>
+    <div class="icn-div">
+      <button class="btn btn-borderless" (click)="delete()">
+        <i class="fa-regular fa-trash-can"></i>
+      </button>
+    </div>
+  </div>
+  <!-- <p>{{ file.name }}</p> -->
+</div>
+
+<!-- choose another file -->
+<compass-ui-cw-button buttonType="file" buttonId="upload" [textStyle]="'btn btn-tertiary'"
+  [buttonLabel]="'afsSignatureSummaryLbl1' | translate" (onClick)="upload()">
+</compass-ui-cw-button>
+
+<!-- nav buttons -->
+<compass-ui-cw-dpq-button [backButtonLabel]="'backBtnText' | translate" [nextButtonLabel]="'nextBtnText' | translate"
+  (back)="back()" (next)="next()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,993 @@
+<!-- <ng-container *ngIf="mybenefit"> -->
+ 
+<ng-container *ngIf="caseNumbers?.length>0">
+    
+    <div class="container page-content">
+        <div class="row mb-2">
+            <div class="col">
+            <i class="fa-regular fa-angle-left"></i>&nbsp;<a [routerLink]="['/',backTobenefits]">Back to Dashboard</a>
+            </div>
+        </div>
+        <!-- {{counties| async |json }} -->
+        <div class="row">
+            <div class="col">
+                <div class="card pull-down mb-3" [ngClass]="pillExpand === true ? 'expand' : 'cust-collapse'">
+                    <div class="card-head"> 
+                        <h2  *ngIf="myBenefitsData?.casesInformationDetail[0]?.isCHIPCase==false">Case {{myBenefitsData?.casesInformationDetail[0]?.county}}|{{myBenefitsData?.casesInformationDetail[0]?.caseNumber}}
+                            <p> {{caseNumbers[0]?.headOfHouseholdName}} 
+                                <!-- ({{caseNumbers[0].age}}) -->
+                            </p>
+                        </h2>
+                        <h2 *ngIf="myBenefitsData?.casesInformationDetail[0]?.isCHIPCase==true">
+                            {{myBenefitsData?.casesInformationDetail[0]?.chipProviderName}}
+                            <p> {{caseNumbers[0]?.headOfHouseholdName}}
+                                <!-- ({{caseNumbers[0].age}}) -->
+                            </p>
+                        </h2>
+                        <div *ngFor="let caseStatus of mycaseInformation"  (click)="updateSelected(0)">
+                            <!-- *ngIf="caseStatus.caseStatusCode =='O'" -->
+                        <span class="badge rounded-pill bg-success"  > {{caseStatus.caseStatus}} </span>
+                        <span class="badge rounded-pill bg-warning" *ngIf="caseStatus.caseStatusCode =='C'"> {{caseStatus.caseStatus}} </span>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="faux-table bg-tp">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Phone:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">{{myBenefitsData?.casesInformationDetail[0].householdInformation.householdContactInformation.mainContactNumber.phoneNumber}} </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Address:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">{{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.streetAddressLine1}}
+                                        {{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.streetAddressLine2}}
+                                    </div>
+                                    <div class="data">
+                                    {{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.city}},
+                                    {{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.state}},
+                                    {{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.zip}}
+                                    {{myBenefitsData?.casesInformationDetail[0].householdInformation.residentAddress.zipExt}}
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="myBenefitsData?.casesInformationDetail[0].isCHIPCase== true">
+                                <div class="col-6">
+                                    <span class="head">UFI#</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">
+                                        {{myBenefitsData?.casesInformationDetail[0].ufi}}
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="myBenefitsData?.casesInformationDetail[0].isCHIPCase== true">
+                                <div class="col-6">
+                                    <span class="head">Insurance Company</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">
+                                        {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].providerName}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="myBenefitsData?.casesInformationDetail[0].isCHIPCase== false">
+                                <div class="col-6">
+                                    <span class="head">School District:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">{{myBenefitsData?.casesInformationDetail[0].schoolDistrict}}</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="head">Language:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">{{myBenefitsData?.casesInformationDetail[0].langauge}}</div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="myBenefitsData?.casesInformationDetail[0].isCHIPCase== false">
+                                <div class="col-6">
+                                    <span class="head">County Office:</span>
+                                </div>
+                                <div class="col-6">
+                                    <div class="data">{{myBenefitsData?.casesInformationDetail[0].countyOfficeName}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alt-case">
+                            <div class="row" *ngFor="let caseNum of myBenefitsData.casesInformationDetail.slice(1); let i=index">
+                                <div class="col-8">
+                                    <h2 *ngIf="caseNum.isCHIPCase==true"> 
+                                        {{caseNum.chipProviderName}}
+                                        <p> {{caseNumbers[i+1]?.headOfHouseholdName}}
+                                            <!-- ({{caseNumbers[0].age}}) -->
+                                        </p>
+                                    </h2>
+                                    <h2 *ngIf="caseNum.isCHIPCase==false"> 
+                                        Case {{myBenefitsData.casesInformationDetail[i+1]?.county}}|{{myBenefitsData.casesInformationDetail[i+1]?.caseNumber}}
+                                        <p>{{caseNumbers[i+1]?.headOfHouseholdName}}</p>
+                                    </h2>
+                                    
+                                </div> 
+                                <div class="col-4 text-end">
+                                    <button class="btn btn-secondary btn-sm"   
+                                        (click)="updateSelected(i+1)">Select</button>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <button class="badge rounded-pill pull" (click)="pillExpand = !pillExpand">
+                        <i class="fa-regular fa-angle-up"></i>
+                    </button>
+
+                </div>
+
+                <div class="card collapsable accordion mb-3 mt-4" id="collapseCardExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header card-head" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#reportingCard" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="collapse-card-btn-text"><i class="fa-regular fa-house-user"></i> Household
+                                    Information</div>
+                            </button>
+                        </h2>
+                        <div id="reportingCard" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#collapseCardExample">
+                            <div class="accordion-body card-body">
+
+                                <ul>
+                                    <li>
+                                        <div class="row rec-data">
+                                            <div class="col-12" *ngFor="let caseInfo of caseNumbers[0].individualsInformation"> 
+                                            <!-- {{caseInfo|json}} -->
+                                                <label><i class="fa-solid fa-user"></i> {{caseInfo.firstName}}
+                                                    {{caseInfo.lastName}}
+                                                    ({{caseInfo.age}})  </label>
+                                                    <label class="data" *ngIf="caseInfo.headOfHouseholdName">Head of Household</label>
+                                                <label class="data">{{caseInfo.maritalStatus}},
+                                                    {{caseInfo.citizenship}}</label>
+                                                <hr>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="alert alert-info">
+                                <p class="mb-1">This section lists all of your current household members and their information. If any of these details are incorrect or
+                                have changed, contact your benefits provider. (Examples include County Assistance Office (CAO), CHIP, or the insurance
+                                company listed on your ID card.)</p>
+                                <!-- <p>
+                                    Examples of benefits providers include County Assistance Office (CAO), CHIP, or the
+                                    insurance company listed on your ID
+                                    card.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1>Your Benefits</h1>
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                <div *ngIf="showFoodStamps()" >
+                    <div class="card mb-3">
+                    <div class="card-body">
+                        <h2><i class="fa-regular fa-cart-shopping"></i>&nbsp;Food Assistance</h2>
+                        <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                            <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'FS'" [ngClass]="foodstampsExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                <div class="card-head" >
+                                    <div class="row heading-content">
+                                        <div class="col-6">
+                                            <h2>
+                                                {{benefitinfo.programName}}
+                                                <div>${{benefitinfo.benefitAmount}}<span>Monthly</span></div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span class="badge rounded-pill bg-success" *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                            <span class="badge rounded-pill bg-success" *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+
+                                            <div class="date-lbl">
+                                                Next Payment Due
+                                            </div>
+                                            <div class="date-data">
+                                                {{benefitinfo?.nextPaymentDueDate | date : "MM/dd/y"}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="coll-toggle btn btn-borderless btn-carat"
+                                        (click)="foodstampsExpand[i] = !foodstampsExpand[i]">
+                                        <i class="fa-regular fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body" *ngIf="benefitinfo.categoryCode == 'FS'">
+                                    <div class="faux-table">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Members
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    <div>{{benefitinfo.individuals}} </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Opened
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo?.openDate | date : "MM/dd/y"}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Renewal Date
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo?.renewalDueDate | date : "MM/dd/y"}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                            </div>
+                            <div class="accordion page-tip mb-3" id="householdAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne1">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                            More about SNAP(Food Stamps)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1"
+                                        data-bs-parent="#householdAccordion">
+                                        <div class="accordion-body">
+                                            <p>The SNAP section shows all of the household members who are currently receiving or have recently been
+                                                rejected or closed
+                                                for SNAP benefits. If the household is not receiving SNAP benefits, it will say "None".
+                                            </p>
+                                            <p>
+                                                The status of a benefit can be "Open" or "Closed/Rejected." If a case is closed, certain benefit
+                                                details may be
+                                                unavailable.
+                                            </p>
+                                            <p>"Renewal Date" shows the date that the household's SNAP benefits must be renewed by.
+                                            </p>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                  
+
+                    </div>
+
+                <!-- </div> -->
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                    <div *ngIf="showCA()">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h2><i class="fa-regular fa-money-bill"></i>&nbsp;Cash Assistance</h2>
+                                <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                                    <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'CA'"
+                                        [ngClass]="progCardExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                        <div class="card-head" >
+                                            <div class="row heading-content">
+                                                <div class="col-6">
+                                                    <h2>
+                                                        {{benefitinfo.programName}}
+                                                        <div>${{benefitinfo.benefitAmount}}<span>Monthly</span></div>
+                                                    </h2>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <span class="badge rounded-pill bg-success"
+                                                        *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                                    <span class="badge rounded-pill bg-success"
+                                                        *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+                                                    <div class="date-lbl">
+                                                        Next Payment Due
+                                                    </div>
+                                                    <div class="date-data">
+                                                        {{benefitinfo?.nextPaymentDueDate | date : "MM/dd/y"}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="coll-toggle btn btn-borderless btn-carat"
+                                                (click)="progCardExpand[i] = !progCardExpand[i]">
+                                                <i class="fa-regular fa-angle-down"></i>
+                                            </button>
+                                        </div>
+                                        <div class="card-body" *ngIf="benefitinfo.categoryCode == 'CA'">
+                                            <div class="faux-table">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <span class="head">
+                                                            Members
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6" >
+                                                        <div class="data" *ngFor="let indi of benefitinfo.individuals">
+                                                            <div>{{indi}} </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <span class="head">
+                                                            Opened
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="data">
+                                                            {{benefitinfo?.openDate | date : "MM/dd/y"}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <span class="head">
+                                                            Renewal Date
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="data">
+                                                            {{benefitinfo?.renewalDueDate | date : "MM/dd/y"}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion page-tip mb-3" id="householdAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne2">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne2" aria-expanded="true"
+                                                aria-controls="collapseOne2">
+                                                More about Cash Assistance
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2"
+                                            data-bs-parent="#householdAccordion">
+                                            <div class="accordion-body">
+                                                <p>
+                                                    The Cash Assistance section shows the household members who are currently receiving or have recently been rejected or
+                                                    closed for Cash Assistance. If no one in the household is receiving Cash Assistance, it will say "None".
+                                                </p>
+                                                <p>
+                                                The status of a benefit can be "Open" or "Closed/Rejected." If a case is closed, certain benefit details may be
+                                                unavailable.
+                                                </p>
+                                                <p>
+                                                    "Renewal Date" shows the date that the household's Cash Assistance benefits must be renewed by.
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                    <div *ngIf="showMA()">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h2><i class="fa-regular fa-heart-pulse"></i>&nbsp;Health Care</h2>
+                                <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                                <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'MA'"
+                                    [ngClass]="healthcareExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                    <div class="card-head">
+                                        <div class="row heading-content">
+                                
+                                            <div class="col-6">
+                                                <h2>
+                                                    {{benefitinfo.programName}}
+                                                    <div class="date-lbl">
+                                                        Benefit
+                                                    </div>
+                                                    <div class="date-data">
+                                                        <a *ngIf="benefitinfo.benefitPackage === 'Adult'"
+                                                            href="https://www.compass-t.state.pa.us/Compass.Web/Custom/PDF/EN/Adult.pdf">{{benefitinfo.benefitPackage}}</a>
+                                                        <a *ngIf="benefitinfo.benefitPackage === 'Child'"
+                                                            href="https://www.compass-t.state.pa.us/Compass.Web/Custom/PDF/EN/Children.pdf">{{benefitinfo.benefitPackage}}</a>
+                                
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <span class="badge rounded-pill bg-success"
+                                                    *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                                <span class="badge rounded-pill bg-success"
+                                                    *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+                                                <div class="date-lbl">
+                                                    Renewal Date
+                                                </div>
+                                                <div class="date-data">
+                                                    {{benefitinfo?.renewalDueDate | date : "MM/dd/y"}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="coll-toggle btn btn-borderless btn-carat" (click)="healthcareExpand[i] = !healthcareExpand[i]">
+                                            <i class="fa-regular fa-angle-down"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body" *ngIf="benefitinfo.programCode == 'CHIP'">
+                                        <div class="faux-table">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="head">
+                                                        Members
+                                                    </span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="data">
+                                                        <div>{{benefitinfo.individuals}} </div>
+                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" *ngIf="benefitinfo.categoryCode == 'MA'">
+                                        <div class="faux-table">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="head">
+                                                        Members
+                                                    </span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="data">
+                                                        <div>{{benefitinfo.individuals}} </div>
+                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="head">
+                                                        Managed Care Physical
+                                                    </span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="data">
+                                                        {{benefitinfo.managedCareProvider}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="head">
+                                                        Managed Care Behavioral
+                                                    </span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="data">
+                                                        {{benefitinfo.behavioralHealthProvider}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="head">
+                                                        Opened
+                                                    </span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="data">
+                                                        {{benefitinfo.openDate | date : "MM/dd/y"}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>*Current plan listed. Visit
+                                                        <span><a href="https://www.enrollnow.net/" target="_blank">https://www.enrollnow.net/</a></span>
+                                                        or call <span class="fw-bold">1-800-440-3989</span> for plan options
+                                                        in your area.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="accordion page-tip mb-3" id="householdAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne3">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                                                More About Health Care Coverage
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3"
+                                            data-bs-parent="#householdAccordion">
+                                            <div class="accordion-body">
+                                                <p>
+                                                    The Health Care section lists all of the household members who are currently receiving or have
+                                                    recently been rejected or
+                                                    closed for Health Care benefits.
+                                                </p>
+                                                <p>
+                                                    The status of a benefit can be "Open" or "Closed/Rejected." If a case is closed, certain benefit
+                                                    details may be
+                                                    unavailable. CHIP recipients whose benefits are in "Closed" status will not be shown in this
+                                                    section.
+                                                </p>
+                                                <p>
+                                                    "Renewal Date" shows the date that the household's Health Care benefits must be renewed by.
+                                                </p>
+                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- </div> -->
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                <div *ngIf="showChip()">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2><i class="fa-regular fa-heart-pulse"></i>&nbsp;Health Care</h2>
+                        <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                           
+                            <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'CHIP'"
+                                [ngClass]="healthcareExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                <div class="card-head">
+                                    <div class="row heading-content">
+                            
+                                        <div class="col-6">
+                                            <h2>
+                                                <a href="https://www.dhs.pa.gov/CHIP/Pages/CHIP.aspx" target="_blank">{{benefitinfo.programName}}</a>
+                                                <div class="date-lbl">
+                                                    Renewal Date
+                                                </div>
+                                                <div class="date-data">
+                                                    {{benefitinfo?.renewalDueDate | date : "MM/dd/y"}}
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span class="badge rounded-pill bg-success"
+                                                *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                            <span class="badge rounded-pill bg-success"
+                                                *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+                                                <span class="badge rounded-pill bg-success"
+                                                    *ngIf="benefitinfo.categoryStatusCode=='E'">{{benefitinfo?.categoryStatus}}</span>
+                                           
+                                        </div>
+                                    </div>
+                                    <button class="coll-toggle btn btn-borderless btn-carat" (click)="healthcareExpand[i] = !healthcareExpand[i]">
+                                        <i class="fa-regular fa-angle-down"></i>
+                                    </button>
+                                </div>
+                            
+                            
+                            
+                            
+                               
+                                <!-- <div class="card-body" *ngIf="benefitinfo.programCode == 'CHIP'">
+                                    <div class="faux-table">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Members
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    <div>{{benefitinfo.individuals}} </div>
+                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="card-body" *ngIf="benefitinfo.categoryCode == 'CHIP'">
+                                    <p>If you have questions, need to report any changes, or you need to send in paperwork for these health insurance
+                                    benefit(s), use the contact information for your insurance company below.</p>
+                                    <p>
+                                    Important Note: You must write your name and UFI on all paperwork you send in.</p>
+
+                                    <div class="faux-table">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Members
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    <div>{{benefitinfo.individuals}} </div>
+                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Insurance Company
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data"> 
+                                                    {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].providerName}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Insurance Company Address
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                     {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].address.streetAddressLine1}}
+                                                    {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].address.streetAddressLine2}}
+                                                    {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].address.city}}
+                                                    {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].address.state}}
+                                                    {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].address.zip}}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Insurance Company Phone Number
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                             {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].phoneNumber}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                Insurance Company Fax Number
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                               {{myBenefitsData?.casesInformationDetail[0].providerInformation[0].faxNumber}}
+
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="householdAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne3" aria-expanded="true"
+                                        aria-controls="collapseOne3">
+                                        More About Health Care Coverage
+                                    </button>
+                                </h2>
+                                <div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3"
+                                    data-bs-parent="#householdAccordion">
+                                    <div class="accordion-body">
+                                        <p>
+                                        The Health Care section lists all of the household members who are currently receiving or have recently been rejected or
+                                        closed for Health Care benefits.
+                                        </p>
+                                        <p>
+                                            The status of a benefit can be "Open" or "Closed/Rejected." If a case is closed, certain benefit details may be
+                                            unavailable. CHIP recipients whose benefits are in "Closed" status will not be shown in this section.
+                                        </p>
+                                        <p>
+                                        "Renewal Date" shows the date that the household's Health Care benefits must be renewed by.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- </div> -->
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                    <div *ngIf="showLH()"> 
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2><i class="fa-regular fa-lightbulb-dollar"></i>&nbsp;Help With Paying Your Heating Bill</h2>
+                        <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                            <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'LH'"
+                                [ngClass]="liheapExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                <div class="card-head" >
+                                    <div class="row heading-content">
+
+                                        <div class="col-6">
+                                            <h2>
+                                                {{benefitinfo.programName}}
+                                                <div class="date-lbl">
+                                                    Benefit
+                                                </div>
+                                                <div class="date-data">
+                                                    {{benefitinfo.benefitPackage}}
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                        <span class="badge rounded-pill bg-success"
+                                            *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                        <span class="badge rounded-pill bg-success"
+                                            *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+                                            <div class="date-lbl">
+                                                Energy Season
+                                            </div>
+                                            <div class="date-data">
+                                                {{benefitinfo?.energyYear}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="coll-toggle btn btn-borderless btn-carat"
+                                        (click)="liheapExpand[i] = !liheapExpand[i]">
+                                        <i class="fa-regular fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body" *ngIf="benefitinfo.categoryCode == 'LH'">
+                                    <div class="faux-table">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Vendor
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    <div> </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Direct Pay
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo.directPay}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Budget Opened
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo.openDate| date : "MM/dd/y"}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion page-tip mb-3" id="householdAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne4" aria-expanded="true"
+                                        aria-controls="collapseOne4">
+                                        More About LIHEAP
+                                    </button>
+                                </h2>
+                                <div id="collapseOne4" class="accordion-collapse collapse" aria-labelledby="headingOne4"
+                                    data-bs-parent="#householdAccordion">
+                                    <div class="accordion-body">
+                                        <p>
+                                        If the household is not receiving LIHEAP, it will say "None".
+                                        </p>
+                                        <p>
+                                        "Direct pay" will show "Yes" if the payment has been sent directly to the household. Otherwise, it will show "No" and
+                                        "Vendor" will list the vendor where the LIHEAP grant has been sent.
+                                        </p>
+                                        <p>
+                                            For LIHEAP Crisis for Deliverable fuels, the amount will display as "Up to $500" until the exact amount of funds needed
+                                            to resolve the crisis is entered into the system by the vendor. If a case is closed, rejected, or has not yet been
+                                            processed, certain benefit details may be unavailable.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- </div> -->
+                <!-- <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index"> -->
+                    <div  *ngIf="showLW()">
+                <div class="card">
+                    <div class="card-body">
+                        <h2><i class="fa-regular fa-faucet-drip"></i>&nbsp;Help With Paying Your Water Bill</h2>
+                        <div *ngFor="let benefitinfo of caseNumbers[0].benefitsInformation;let i=index">
+                            <div class="card program-card mb-3" *ngIf="benefitinfo.categoryCode == 'LW'"
+                                [ngClass]="liwhapExpand[i] === true ? 'expand' : 'cust-collapse'">
+                                <div class="card-head" >
+                                    <div class="row heading-content">
+
+                                        <div class="col-6">
+                                            <h2>
+                                                {{benefitinfo.programName}}
+                                                <div class="date-lbl">
+                                                    Benefit
+                                                </div>
+                                                <div class="date-data">
+                                                    {{benefitinfo.benefitPackage}}
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span class="badge rounded-pill bg-success"
+                                                *ngIf="benefitinfo.categoryStatusCode=='O'">{{benefitinfo?.categoryStatus}}</span>
+                                            <span class="badge rounded-pill bg-success"
+                                                *ngIf="benefitinfo.categoryStatusCode=='C'">{{benefitinfo?.categoryStatus}}</span>
+                                            <div class="date-lbl">
+                                                Payment Date
+                                            </div>
+                                            <div class="date-data">
+                                                {{benefitinfo?.nextPaymentDueDate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="coll-toggle btn btn-borderless btn-carat"
+                                        (click)="liwhapExpand[i] = !liwhapExpand[i]">
+                                        <i class="fa-regular fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body" *ngIf="benefitinfo.categoryCode == 'LH'">
+                                    <div class="faux-table">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Vendor
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    <div>{{benefitinfo?.providerName}} </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Benefit
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo.waterType}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="head">
+                                                    Opened
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="data">
+                                                    {{benefitinfo.openDate| date : "MM/dd/y"}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion page-tip mb-3" id="householdAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne5" aria-expanded="true"
+                                        aria-controls="collapseOne5">
+                                        More About LIHWAP
+                                    </button>
+                                </h2>
+                                <div id="collapseOne5" class="accordion-collapse collapse" aria-labelledby="headingOne5"
+                                    data-bs-parent="#householdAccordion">
+                                    <div class="accordion-body">
+                                        <p>
+                                        If the household is not receiving LIHWAP, it will say "None".
+                                        </p>
+                                        <p>
+                                        "Vendor" will show the vendor where the LIHWAP grant has been sent. "Payment Date" will show the date the payment was
+                                        sent to your vendor.
+                                        </p>
+                                        <p>
+                                        If a case is closed, rejected, or has not yet been processed, certain benefit details may be unavailable.
+
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                </div>
+                <!-- </div> -->
+
+            </div>
+        </div>
+        <div class="row mb-3 mt-3">
+            <div class="col text-center">
+                <a href="https://www.humanservices.state.pa.us/csws/?Preference=Desktop&Owner=Client"
+                    target="_blank">Access the Pennslyvania Child Support Program</a>
+            </div>
+        </div>
+        <!-- <div class="row mb-3">
+            <div class="col text-center"> 
+                <button type="button" class="btn btn-primary">
+                    <i class="fa-regular fa-print"></i> Print
+                </button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-tertiary">
+                Upload Document
+            </button>
+        </div> -->
+    </div>
+</ng-container>

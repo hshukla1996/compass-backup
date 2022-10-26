@@ -1,0 +1,26 @@
+<div class="p-4" [formGroup]="familyPanningAfraidGroup">
+    <div class="mb-3">
+        <fieldset class="button-group">
+            <legend>
+                Is {{currentUserName}} afraid that information sent to where they live about Family Planning Services could cause physical, emotional or other
+                harm from their spouse, parents, or other person?<span>{{'lblrequired' | translate}}</span></legend>
+            <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('familyPanningAfraid')"
+                [formControlName]="'familyPanningAfraid'" [required]="requiredFields.indexOf('familyPanningAfraid')>-1"
+                [radioButtonGroupName]="'familyPanningAfraid'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'Yes'" [radioBtnValue]="'Y'"
+                [radioBtnId]="'familyPanningAfraid_1'"></compass-ui-cw-radiobutton>
+            <compass-ui-cw-radiobutton ngDefaultControl [showError]="isFieldValid('familyPanningAfraid')"
+                [formControlName]="'familyPanningAfraid'" [required]="requiredFields.indexOf('familyPanningAfraid')>-1"
+                [radioButtonGroupName]="'familyPanningAfraid'" [labelClass]="'btn btn-outline-tertiary'"
+                [radioClass]="'btn-check'" [radioLabel]="'No'" [radioBtnValue]="'N'"
+                [radioBtnId]="'familyPanningAfraid_2'">
+            </compass-ui-cw-radiobutton>
+        </fieldset>
+        <div *ngIf="isFieldValid('familyPanningAfraid')" class="error-text"><i
+                class="fa-regular fa-circle-exclamation"></i>
+            {{'basidDetailRequiredMessage' | translate}}</div>
+    </div>
+</div>
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

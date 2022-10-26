@@ -1,0 +1,45 @@
+<form [formGroup]="drinkingWaterCompMailForm">
+
+        <h1>What is your drinking water provider's mailing address?</h1>
+
+        <div class="form-group pt-3">
+            <compass-ui-text [fieldId]="'addressLine1'" [FormGroup]="drinkingWaterCompMailForm"
+                [fieldLabel]="'Street Address'" 
+                [fieldType]="'streetType'" [maxLength]="26">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'addressType'" [FormGroup]="drinkingWaterCompMailForm"
+                [fieldLabel]="'Street Address (2)'" [fieldType]="'streetType'" [maxLength]="26">
+            </compass-ui-text>
+            <compass-ui-text [fieldId]="'city'" [FormGroup]="drinkingWaterCompMailForm" [fieldLabel]="'City'"
+                [displayError]="isFieldValid('city')" [fieldType]="'cityType'" [maxLength]="26" [errorText]="errorMap('city')">
+            </compass-ui-text>
+            <compass-ui-cw-select [fieldId]="'state'" [fieldLabel]="'State'" [FormGroup]="drinkingWaterCompMailForm">
+                <option value="" selected>- Select One -</option>
+                <option *ngFor="let state of states" value="{{state.id}}">{{state.displayValue}}</option>
+            </compass-ui-cw-select>
+            <compass-ui-text [fieldId]="'zip'"
+            [FormGroup]="drinkingWaterCompMailForm"
+            [fieldLabel]="'ZIP Code'"
+            [errorText]="'Enter valid Zip'"
+            (keypress)="OnlyNumberAllowed($event)"
+            [maxLength]="5"
+            [displayError]="isFieldValid('zip')"
+            [errorMsg]="errorMap('zip')">
+            </compass-ui-text>
+
+        </div>
+
+    <div class="row action-bar">
+        <div class="col">
+            <button type="button" class="btn btn-outline-tertiary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" (click)="goNext()">
+                Next
+            </button>
+        </div>
+    </div>
+</form>
+

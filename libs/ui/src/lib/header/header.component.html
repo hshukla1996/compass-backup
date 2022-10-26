@@ -1,0 +1,68 @@
+<header class="navbar navbar-expand-xl navbar-dark bg-tertiary" [formGroup]="headerForm">
+    <div class="container">
+        <a class="navbar-brand" routerLink='/'><img src="./assets/img/logo_w.svg" alt="COMPASS Logo" /></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="container">
+                <div class="d-flex d-xl-none justify-content-between top">
+                    <a class="navbar-brand" href="#"><img src="./assets/img/logo_w.svg" alt="COMPASS Logo" /></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-light fa-fw fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-xl-none">
+                        <a class="nav-link" href="www.google.com">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Programs<i
+                                class="fa-solid fa-angle-right"></i></a>
+                        <ul class="dropdown-menu" data-bs-popper="none" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="http://www.google.com">Health Care Coverage</a></li>
+                            <li><a class="dropdown-item" href="http://www.google.com">Food Assistance</a></li>
+                            <li><a class="dropdown-item" href="http://www.google.com">Cash Assistance</a></li>
+                            <li><a class="dropdown-item" href="http://www.google.com">Help with Child Care Costs</a></li>
+                            <li><a class="dropdown-item" href="http://www.google.com">Free or Reduced Price School Meals</a></li>
+                            <li><a class="dropdown-item" href="http://www.google.com">All Benefits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resources</a>
+                    </li>
+                </ul>
+                <div class="form d-xl-none mb-2">
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-tertiary" [routerLink]="[applynowPath]">Apply
+                            Now</button>
+                        <button class="btn btn-outline-secondary">Log In</button>
+                    </div>
+                    <p>New? <a href="www.google.com">Create an Account</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-text d-none d-md-block">
+            <select class="form-select" aria-label="Select a Language" id="selectedLang" formControlName="selectLang"
+                (change)="switchLang($event)">
+                <option value="en" selected>English</option>
+                <option value="es">Spanish</option>
+            </select>
+        </div>
+        <span class="navbar-text d-none d-xl-block">
+            <button class="btn btn-secondary" [routerLink]="[applynowPath]">Apply Now</button>
+        </span>
+        <span class="navbar-text">
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                data-bs-target="#closeLoginHeaderPopupModal" (click)="clickedLogin()">Log In</button>
+        </span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-light fa-fw fa-bars"></i>
+        </button>
+    </div>
+    <cw-login-modal></cw-login-modal>
+</header>

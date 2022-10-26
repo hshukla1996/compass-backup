@@ -1,0 +1,34 @@
+<form class="form-horizontal" [formGroup] = 'almonyExpDlsCmpForm' (ngSubmit)="onSubmit()" autocomplete="off">
+    <h1 class="panel-title">What is {{currentUser.firstName}}'s alimony expense?</h1>
+    <p>Tell us about this expense.</p>
+    <compass-ui-text [fieldId]="'amountActuallyPaid'" [FormGroup]="almonyExpDlsCmpForm"
+        requiredText="{{'lblrequired' | translate}}" type="currency"
+        [fieldLabel]="'expHowMuchPaid' | translate"
+        [requiredIndicator]="requiredFields.indexOf('amountActuallyPaid')>-1"
+        [isVisible]="fieldDisplays.amountActuallyPaid"
+        [displayError]="isFieldValid('amountActuallyPaid')"
+        [errorText]="errorMap('amountActuallyPaid')">
+      </compass-ui-text>
+      <compass-ui-cw-select [fieldId]="'frequency'"
+        [fieldLabel]="'expHowOften' | translate"
+        [FormGroup]="almonyExpDlsCmpForm"
+        [requiredIndicator]="requiredFields.indexOf('frequency')>-1"
+        [isVisible]="fieldDisplays.frequency"
+        [displayError]="isFieldValid('frequency')" [errorMsg]="errorMap('frequency')">
+        <option value="" selected>- Select One -</option>
+        <option *ngFor="let days of daysData" value="{{days.id}}">{{days.displayValue}}
+        </option>
+      </compass-ui-cw-select>
+    <nav class="action-bar d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-outline-tertiary" (click)="previous()">
+          Back
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </nav>
+</form>

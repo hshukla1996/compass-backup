@@ -1,0 +1,18 @@
+
+    <h1 class="standard-mb">{{'whois' | translate}}  {{currentUserName}}'s {{'parent' | translate}}</h1>
+    <p class="form-subtitle standard-mb">{{'diqsituationsubheader' | translate}}</p>
+    <cw-field-error-display [displayError]="isFieldValid()"
+        errorMsg="{{'basidDetailRequiredMessage' | translate}}"></cw-field-error-display>
+<div [formGroup]="isParentOrGuardianForm">
+    <div *ngFor="let basicDetail of filteredBasicDetails;let i=index">
+
+            <compass-ui-cw-checkbox requiredText="{{'diqProgramSelectOneOptionErrorMessage | translate}}"
+                (inputModelChange)="checkboxChange(basicDetail.id,$event)" id="isParentOrGuardian{{i}}"
+                label="{{basicDetail.firstName}} {{basicDetail.lastName}} {{basicDetail.age}} ({{basicDetail.gender}})"
+                [isChecked]="isChecked(basicDetail.id)" [textStyle]="'custom'"></compass-ui-cw-checkbox>
+    </div>
+</div>
+
+<compass-ui-cw-dpq-button backButtonLabel=" {{'backBtnText'| translate}}" nextButtonLabel="{{'nextBtnText'| translate}}"
+    (next)="next()" (back)="back()">
+</compass-ui-cw-dpq-button>

@@ -1,0 +1,17 @@
+{
+    "/api/*": {
+        "target": "http://compass-dev.dhs.pa.gov",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "*/referencetables/*": {
+        "target": "http://compass-dev.dhs.pa.gov",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/affwebservices/*": {
+        "target": "https://idxs-dev.dhs.pa.gov",
+        "secure": true,
+        "changeOrigin": true
+    }
+}
