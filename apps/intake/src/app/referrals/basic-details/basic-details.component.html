@@ -23,11 +23,7 @@
             [formControlName]="'dateOfBirth'" [required]="true" [displayError]="isFieldValid('dateOfBirth')"
             [showError]="isFieldValid('dateOfBirth')" errorMsg="{{errorMap('dateOfBirth') | translate}}">
         </compass-ui-cw-datepicker>
-
-
     </div>
-
-
     <nav class="action-bar d-flex justify-content-between">
         <div>
             <button type="button" class="btn btn-outline-tertiary" (click)="previous()">

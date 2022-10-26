@@ -38,7 +38,7 @@ export class DoIQualifyComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.toastrService.success('Message Success!', 'Title Success!');
+    // this.toastrService.success('Message Success!', 'Title Success!');
     this.subscription.add(
       this.router.events
         .pipe(filter((event) => event instanceof NavigationEnd))

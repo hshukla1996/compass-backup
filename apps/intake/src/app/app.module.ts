@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { CurrencyPipe  } from '@angular/common';
+import { CurrencyPipe } from "@angular/common";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SharedAuthModule } from "@compass-ui/shared/auth";
@@ -24,6 +24,8 @@ import { CanDeactivateGuard } from "./shared/services/route-prompt.service";
 // import { HeadersInterceptor } from "./shared/interceptors/headers.interceptor";
 import { GetstartedComponent } from "./shared/ui/getstarted/getstarted.component";
 import { CacheInterceptor } from "../../../../libs/shared/common/src/lib/interceptor/cache.interceptor";
+import { NotificationComponent } from "./shared/ui/notification/notification.component";
+import { ToasterNotificationService } from "./shared/services/toaster-notification.service";
 // import { LoaderInterceptor } from "./shared/interceptors/loader.interceptor";
 
 @NgModule({
@@ -32,6 +34,7 @@ import { CacheInterceptor } from "../../../../libs/shared/common/src/lib/interce
         HomeComponent,
         StyleGuideComponent,
         GetstartedComponent,
+        NotificationComponent,
     ],
     imports: [
         BrowserModule,
@@ -53,25 +56,18 @@ import { CacheInterceptor } from "../../../../libs/shared/common/src/lib/interce
         !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [
-        // CanDeactivateGuard,
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: HeadersInterceptor,
-        //     multi: true,
-        // },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: LoaderInterceptor,
-        //     multi: true,
-        // },
-         { 
-            provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CacheInterceptor,
+            multi: true,
         },
         CurrencyPipe,
+        ToasterNotificationService
     ],
     bootstrap: [AppComponent],
+    exports: [NotificationComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 export function httpTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http);

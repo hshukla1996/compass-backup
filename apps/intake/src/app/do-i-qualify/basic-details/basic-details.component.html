@@ -1,94 +1,79 @@
-
 <div class="p-4">
-<h1>{{'diqbasictitle' | translate}}</h1>
-<!-- <p class="subtitle">{{'diqbasicsubtitle' | translate}}</p> -->
-<!-- <div class="accordion page-tip mb-3" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            {{'diqbasichead' | translate}}
-        </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <p>{{ 'diqbasicheadp' | translate}}</p>
-                <ul>
-                    <li>{{'diqasicheadli' | translate}}</li>
-                    <li>{{'diqbasicheadli1' | translate}}</li>
-                    <li>{{'diqbasicheadli2' | translate}}</li>
-                </ul>
+    <h1>{{'diqbasictitle' | translate}}</h1>
+    <form [formGroup]="basicDetailsGroup">
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="basicDetailsGroup" [fieldId]="'firstName'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'firstName'"
+                fieldLabel="{{'lblFirstName' | translate}}" [requiredIndicator]="true" [fieldType]="'nameType'"
+                [maxLength]="11" errorText="{{'basidDetailRequiredMessage' | translate}}"
+                [displayError]="isFieldValid('firstName')">
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-text [FormGroup]="basicDetailsGroup" [fieldId]="'lastName'"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'lastName'"
+                fieldLabel="{{ 'lblLastName' | translate}}" [requiredIndicator]="true" [maxLength]="14"
+                [fieldType]="'nameType'" errorText="{{'basidDetailRequiredMessage' | translate}}"
+                [displayError]="isFieldValid('lastName')">
+            </compass-ui-text>
+        </div>
+        <div class="mb-3">
+            <compass-ui-cw-datepicker [maxRange]="maxDateRange" label="{{'lbldob' | translate }}"
+                requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'dob'"
+                [required]="true" [displayError]="isFieldValid('dob')" [showError]="isFieldValid('dob')"
+                [errorMsg]="errorMap('dob') | translate"></compass-ui-cw-datepicker>
+        </div>
+        <div class="mb-3">
+            <fieldset class="button-group">
+                <legend>{{'lblsex' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
+                <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="changeGender($event,'M')"
+                    [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="{{'genderlblmale'| translate}}"></compass-ui-cw-radiobutton>
+                <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="changeGender($event,'F')"
+                    [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
+                    [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
+                    [radioClass]="'btn-check'" radioLabel="{{'genderlblfemale'| translate}}">
+                </compass-ui-cw-radiobutton>
+            </fieldset>
+
+            <div *ngIf="isFieldValid('gender')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
+                {{'basidDetailRequiredMessage' | translate}}</div>
+        </div>
+        <div class="mb-3" *ngIf="basicDetails.length>0">
+
+            <div formArrayName="memberRelationships">
+                <div class="col-12"
+                    *ngFor="let memberRelationship of memberRelationshipFormGroup.controls; let i = index;">
+
+                    <div [formGroupName]="i" class="row">
+                        <div class="form-group col-12">
+                            <label class="form-label">
+
+                                {{'Relationship to '+basicDetails_relations[i].firstName+'
+                                '+basicDetails_relations[i].lastName}}
+                                <span>(required)</span></label>
+
+                            <select class="form-control" name="'relation'+basicDetails_relations[i].id" id="'test'"
+                                formControlName="{{basicDetails_relations[i].id}}" type="text">
+                                <option value="" selected>- Select One -</option>
+                                <option *ngFor="let relation of relationships" value="{{relation.id}}">
+                                    {{relation.displayValue}}</option>
+                            </select>
+
+                            <span class="text-danger"
+                                *ngIf="getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].id].touched && getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].id].hasError('required')">
+                                Relationship with {{basicDetails_relations[i].firstName}},
+                                {{basicDetails_relations[i].lastName}} is required! </span>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</div> -->
-<form [formGroup]="basicDetailsGroup">
-    <!-- checking
-    <div>{{basicDetailsGroup.get('firstName')?.invalid}}</div>
-    <div>{{basicDetailsGroup.get('firstName')?.dirty}}</div> -->
-<div class="mb-3">
-    <compass-ui-text [FormGroup]="basicDetailsGroup" [fieldId]="'firstName'"
-        requiredText="{{'lblrequired' | translate}}" ngDefaultControl [formControlName]="'firstName'"
-        fieldLabel="{{'lblFirstName' | translate}}" [requiredIndicator]="true" [fieldType]="'nameType'" [maxLength]="11"
-        errorText="{{'basidDetailRequiredMessage' | translate}}" [displayError]="isFieldValid('firstName')">
-    </compass-ui-text>
-</div>
-<div class="mb-3">
-    <compass-ui-text [FormGroup]="basicDetailsGroup" [fieldId]="'lastName'" requiredText="{{'lblrequired' | translate}}"
-        ngDefaultControl [formControlName]="'lastName'" fieldLabel="{{ 'lblLastName' | translate}}"
-        [requiredIndicator]="true" [maxLength]="14" [fieldType]="'nameType'"
-        errorText="{{'basidDetailRequiredMessage' | translate}}" [displayError]="isFieldValid('lastName')">
-    </compass-ui-text>
-</div>
-<div class="mb-3">
-    <compass-ui-cw-datepicker [maxRange]="maxDateRange" label="{{'lbldob' | translate }}" requiredText="{{'lblrequired' | translate}}"  ngDefaultControl [formControlName]="'dob'" [required]="true"
-     [displayError]="isFieldValid('dob')" [showError]="isFieldValid('dob')" [errorMsg]="errorMap('dob') | translate"
-    ></compass-ui-cw-datepicker>
-</div>
-<div class="mb-3">
-    <fieldset class="button-group">
-        <legend>{{'lblsex' | translate }}<span>{{'lblrequired' | translate}}</span></legend>
-        <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="changeGender($event,'M')"
-            [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
-            [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
-            [radioClass]="'btn-check'" radioLabel="{{'genderlblmale'| translate}}"></compass-ui-cw-radiobutton>
-        <compass-ui-cw-radiobutton ngDefaultControl (inputModelChange)="changeGender($event,'F')"
-            [showError]="isFieldValid('gender')" [formControlName]="'gender'" [required]="true"
-            [radioButtonGroupName]="'gender'" [labelClass]="'btn btn-outline-tertiary'"
-            [radioClass]="'btn-check'" radioLabel="{{'genderlblfemale'| translate}}">
-        </compass-ui-cw-radiobutton>
-    </fieldset>
-
-    <div *ngIf="isFieldValid('gender')" class="error-text"><i class="fa-regular fa-circle-exclamation"></i>
-       {{'basidDetailRequiredMessage' | translate}}</div>
-</div>
-<div class="mb-3" *ngIf="basicDetails.length>0">
-
-  <div  formArrayName="memberRelationships">
-    <div class="col-12" *ngFor="let memberRelationship of memberRelationshipFormGroup.controls; let i = index;">
-    
-    <div [formGroupName]="i" class="row">
-              <div class="form-group col-12">
-                <label  class="form-label">
-
-                {{'Relationship to '+basicDetails_relations[i].firstName+' '+basicDetails_relations[i].lastName}}
-                  <span>(required)</span></label>
-
-                <select class="form-control" name="'relation'+basicDetails_relations[i].id" id="'test'" formControlName="{{basicDetails_relations[i].id}}" type="text">
-                  <option value="" selected>- Select One -</option>
-                  <option *ngFor="let relation of relationships" value="{{relation.id}}">{{relation.displayValue}}</option>
-                </select>
-
-                <span class="text-danger" *ngIf="getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].id].touched && getmemberRelationshipsFormGroup(i).controls[basicDetails_relations[i].id].hasError('required')">
-                    Relationship with  {{basicDetails_relations[i].firstName}}, {{basicDetails_relations[i].lastName}}  is required! </span>
-
-        </div>
-
-      </div>
-    </div>
-
-</div>
-</div>
-</form>
+    </form>
 
 </div>
 

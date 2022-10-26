@@ -124,6 +124,7 @@ export class BasicDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('HIiiii')
     this.basicDetailsForm.markAllAsTouched();
     this.genderError = false;
     const isValid = this.basicDetailsForm.valid;
